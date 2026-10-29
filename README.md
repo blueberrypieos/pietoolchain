@@ -30,5 +30,5 @@ installs `pietoolchain` and `pietoolchain-sdk` and runs that build.
 
 ```sh
 git submodule update --init
-gbp buildpackage                          # ../build-area/pietoolchain_1.0-1_amd64.deb
+gbp buildpackage                          # ../build-area/pietoolchain_0.1.0-1_amd64.deb
 ```

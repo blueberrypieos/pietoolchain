@@ -6,6 +6,8 @@ on:
 jobs:
   package:
     runs-on: ubuntu-26.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -30,3 +32,16 @@ jobs:
         with:
           name: pietoolchain
           path: dist/
+
+      - name: Release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(dpkg-parsechangelog -SVersion)
+          if [ "$GITHUB_REF_NAME" != "${version%-*}" ]; then
+            echo "tag $GITHUB_REF_NAME is not ${version%-*}, debian/changelog's upstream version" >&2
+            exit 1
+          fi
+          gh release create "$GITHUB_REF_NAME" --title "pietoolchain $GITHUB_REF_NAME" \
+            --notes "pietoolchain $version, built from $GITHUB_SHA." dist/*
