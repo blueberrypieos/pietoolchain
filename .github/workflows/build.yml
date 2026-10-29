@@ -8,8 +8,11 @@ jobs:
     runs-on: ubuntu-26.04
     permissions:
       contents: write
+      attestations: write
+      id-token: write
+      artifact-metadata: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           submodules: recursive
@@ -28,7 +31,12 @@ jobs:
           mkdir -p dist
           cp "$RUNNER_TEMP"/build-area/pietoolchain* dist/
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/attest@v4
+        if: github.event_name != 'pull_request'
+        with:
+          subject-path: dist/*
+
+      - uses: actions/upload-artifact@v7
         with:
           name: pietoolchain
           path: dist/
@@ -46,7 +54,6 @@ jobs:
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" --clobber dist/*
           else
-            gh release create "$GITHUB_REF_NAME" --title "pietoolchain $GITHUB_REF_NAME" \
-              --notes "pietoolchain $version, built from $GITHUB_SHA." dist/*
+            gh release create "$GITHUB_REF_NAME" dist/*
           fi
 
