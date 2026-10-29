@@ -1,0 +1,32 @@
+name: build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  package:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Build dependencies
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            git-buildpackage dpkg-dev build-essential
+          sudo DEBIAN_FRONTEND=noninteractive apt-get build-dep -y --no-install-recommends ./
+
+      - name: Package
+        run: |
+          gbp buildpackage --git-ignore-branch --git-debian-branch=HEAD --git-export-dir="$RUNNER_TEMP/build-area" \
+            --git-builder="dpkg-buildpackage -us -uc -j$(nproc)"
+          mkdir -p dist
+          cp "$RUNNER_TEMP"/build-area/pietoolchain* dist/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pietoolchain
+          path: dist/

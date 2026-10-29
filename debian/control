@@ -1,0 +1,13 @@
+Source: pietoolchain
+Section: devel
+Maintainer: Maxwell <maxwell@blueberrypieos.com>
+Build-Depends: debhelper-compat (= 13), clang-21, llvm-21-dev, cmake, ninja-build, autoconf, automake, libtool, uuid-dev, python3
+Homepage: https://github.com/blueberrypieos/pietoolchain
+Vcs-Git: https://github.com/blueberrypieos/pietoolchain.git
+Vcs-Browser: https://github.com/blueberrypieos/pietoolchain
+
+Package: pietoolchain
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, clang-21, llvm-21, bison, flex, python3, make, pietoolchain-sdk
+Description: LLVM / Clang cross compiler toolchain for darwin-arm64

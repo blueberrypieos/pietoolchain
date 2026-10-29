@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# A clang wrapper that targets arm64 Darwin, for cross-compiling Darwin
+# software on Linux.
+#
+# Upstream clang accepts -arch and -mmacosx-version-min only when it
+# targets Darwin, so the wrapper sets the arm64 Darwin target; a -target or
+# --target option from the caller still takes precedence. When linking,
+# --ld-path points clang's Darwin driver at our ld64. It is not passed to
+# compile-only steps, where the unused option would trip -Werror.
+#
+# With PIE_REPRODUCIBLE=1, the output records /usr/src/pie as the
+# compilation directory, clang's resource directory as
+# /usr/src/pie/llvm-resource, and PIE_REPRO_SOURCE (the source tree) as
+# /usr/src/pie/src.
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+CLANG="${PIE_CLANG:-clang-21}"
+case "$(basename "$0")" in
+	clang++|c++) CLANG="${PIE_CLANGXX:-clang++-21}" ;;
+esac
+
+args=()
+if [ "${PIE_REPRODUCIBLE:-0}" = 1 ]; then
+	: "${SOURCE_DATE_EPOCH:?reproducible compilation requires SOURCE_DATE_EPOCH}"
+	args+=(-fdebug-compilation-dir=/usr/src/pie)
+	resource="$("$CLANG" -print-resource-dir)" || exit 1
+	args+=("-ffile-prefix-map=$resource=/usr/src/pie/llvm-resource")
+	[ -z "${PIE_REPRO_SOURCE:-}" ] || args+=("-ffile-prefix-map=$PIE_REPRO_SOURCE=/usr/src/pie/src")
+fi
+link=1
+for a in "$@"; do
+	case "$a" in
+		# Drop unsupported flags.
+		-mno-implicit-sme) ;;
+		-c|-E|-S|-M|-MM|-fsyntax-only) link=0; args+=("$a") ;;
+		*) args+=("$a") ;;
+	esac
+done
+
+linkargs=()
+if [ $link = 1 ]; then
+	linkargs=(--ld-path="${PIE_TARGET_LD:-$TOOLCHAIN/prefix/bin/aarch64-apple-darwin-ld}" -mlinker-version=956.6)
+fi
+
+exec "$CLANG" --target=arm64-apple-darwin "${linkargs[@]}" "${args[@]}"

@@ -1,0 +1,6 @@
+[submodule "toolchain/src/cctools-port"]
+	path = toolchain/src/cctools-port
+	url = https://github.com/blueberrypieos/cctools-port.git
+[submodule "toolchain/src/apple-libdispatch"]
+	path = toolchain/src/apple-libdispatch
+	url = https://github.com/blueberrypieos/apple-libdispatch.git
