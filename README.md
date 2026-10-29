@@ -11,7 +11,10 @@ the separate `pietoolchain-sdk` package, which `pietoolchain` depends on.
 A port's packaging repository lists `pietoolchain` in its Build-Depends.
 Its `debian/rules` includes `/usr/share/pietoolchain/rules.mk`, followed by
 the port's own build recipe, and the package is built with
-`dpkg-buildpackage -a darwin-arm64`. The reusable GitHub workflow in
+`dpkg-buildpackage -a darwin-arm64`. The recipe installs into one root;
+when `debian/control` names more than one package, each package after the
+first takes the files that `debian/PACKAGE.files` lists (one glob per
+line, such as `usr/include/*`), and the first gets the rest. The reusable GitHub workflow in
 [blueberrypieos/workflows](https://github.com/blueberrypieos/workflows)
 installs `pietoolchain` and `pietoolchain-sdk` and runs that build.
 
@@ -30,5 +33,5 @@ installs `pietoolchain` and `pietoolchain-sdk` and runs that build.
 
 ```sh
 git submodule update --init
-gbp buildpackage                          # ../build-area/pietoolchain_0.1.0-1_amd64.deb
+gbp buildpackage                          # ../build-area/pietoolchain_0.2.0-1_amd64.deb
 ```
