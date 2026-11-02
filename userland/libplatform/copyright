@@ -1,0 +1,265 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libplatform
+Source: https://github.com/apple-oss-distributions/libplatform
+ tag libplatform-375.120.2 (commit b7ed7cf5cf7dd12b98672435db2225a860f199d8)
+
+Files: *
+Copyright: 1998-2023 Apple Inc.
+ 1998-2018, 2020, 2024 Apple Computer, Inc.
+ 1995 NeXT Computer, Inc.
+License: APSL-2.0
+
+Files: man/*
+ src/atomics/OSAtomicFifo.h
+ src/force_libplatform_to_build.c
+ src/ucontext/arm64/mcontext.c
+ xcodeconfig/*
+Copyright: Apple Inc.
+License: APSL-2.0
+
+Files: LICENSE
+ include/os/*
+ internal/os/internal.h
+ internal/os/yield.h
+ private/os/*
+ src/os/*
+Copyright: 2008-2017, 2022-2025 Apple Inc.
+License: Apache-2.0
+
+Files: private/os/alloc_once_impl.h
+ private/os/log_simple_private.h
+ private/os/log_simple_private_impl.h
+ src/os/alloc_once.c
+Copyright: 2012-2013, 2020 Apple Inc.
+License: APSL-2.0
+
+Files: man/ffs.3
+ src/string/generic/ffsll.c
+ src/string/generic/flsll.c
+ src/string/generic/strstr.c
+Copyright: 1989-1991, 1993 The Regents of the University of California
+License: BSD-3-Clause
+
+Files: man/stdatomic.3
+Copyright: 2011 Ed Schouten <ed@FreeBSD.org>
+License: BSD-2-Clause
+
+Files: man/setjmp.3
+Copyright: 1990-1991, 1993 The Regents of the University of California
+License: BSD-4-Clause-UC
+
+Files: man/getcontext.3
+ man/makecontext.3
+ man/ucontext.3
+Copyright: 2002 Packet Design, LLC
+License: LicenseRef-Packet-Design
+
+Files: src/ucontext/generic/makecontext.c
+ src/ucontext/generic/swapcontext.c
+Copyright: 2007, 2009 Apple Inc.
+ 2001 Daniel M. Eischen <deischen@freebsd.org>
+License: APSL-2.0 AND LicenseRef-BSD-Eischen
+
+Files: src/setjmp/generic/setjmperr.c
+Copyright: 1999 Apple Computer, Inc.
+ 1980 Regents of the University of California
+License: APSL-2.0 AND BSD-4.3TAHOE
+
+Files: userland/libplatform/Makefile userland/libplatform/sources.list
+ userland/libplatform/arm64/asmdefs.h userland/libplatform/arm64/bzero.S
+ userland/libplatform/arm64/memcmp_zero.S userland/libplatform/arm64/memset_pattern.S
+ userland/libplatform/arm64/optimized-routines/VENDOR.md
+Copyright: 2026 The Blueberry Pie OS Authors
+License: BSD-2-Clause
+
+Files: userland/libplatform/arm64/optimized-routines/*.S
+ userland/libplatform/arm64/optimized-routines/LICENSE
+Copyright: 1999-2024 Arm Limited.
+License: MIT OR Apache-2.0 with LLVM exception
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: Apache-2.0 with LLVM exception
+ The full text of the Apache License 2.0 is in
+ /usr/share/common-licenses/Apache-2.0.
+ .
+ As an exception, if, as a result of your compiling your source code, portions
+ of this Software are embedded into an Object form of such source code, you
+ may redistribute such embedded portions in such Object form without complying
+ with the conditions of Sections 4(a), 4(b) and 4(d) of the License.
+ .
+ In addition, if you combine or link compiled forms of this Software with
+ software that is licensed under the GPLv2 ("Combined Software") and if a
+ court of competent jurisdiction determines that the patent provision (Section
+ 3), the indemnity provision (Section 9) or other Section of the License
+ conflicts with the conditions of the GPLv2, you may retroactively and
+ prospectively choose to deem waived or otherwise exclude such Section(s) of
+ the License, but only in their entirety and only with respect to the Combined
+ Software.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-4-Clause-UC
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+     This product includes software developed by the University of
+     California, Berkeley and its contributors.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-4.3TAHOE
+ Redistribution and use in source and binary forms are permitted
+ provided that the above copyright notice and this paragraph are
+ duplicated in all such forms and that any documentation,
+ advertising materials, and other materials related to such
+ distribution and use acknowledge that the software was developed
+ by the University of California, Berkeley.  The name of the
+ University may not be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+License: LicenseRef-BSD-Eischen
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Neither the name of the author nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-Packet-Design
+ Subject to the following obligations and disclaimer of warranty,
+ use and redistribution of this software, in source or object code
+ forms, with or without modifications are expressly permitted by
+ Packet Design; provided, however, that:
+ .
+    (i)  Any and all reproductions of the source or object code
+         must include the copyright notice above and the following
+         disclaimer of warranties; and
+    (ii) No rights are granted, in any manner or form, to use
+         Packet Design trademarks, including the mark "PACKET DESIGN"
+         on advertising, endorsements, or otherwise except as such
+         appears in the above copyright notice or in the software.
+ .
+ THIS SOFTWARE IS BEING PROVIDED BY PACKET DESIGN "AS IS", AND
+ TO THE MAXIMUM EXTENT PERMITTED BY LAW, PACKET DESIGN MAKES NO
+ REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, REGARDING
+ THIS SOFTWARE, INCLUDING WITHOUT LIMITATION, ANY AND ALL IMPLIED
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+ OR NON-INFRINGEMENT.  PACKET DESIGN DOES NOT WARRANT, GUARANTEE,
+ OR MAKE ANY REPRESENTATIONS REGARDING THE USE OF, OR THE RESULTS
+ OF THE USE OF THIS SOFTWARE IN TERMS OF ITS CORRECTNESS, ACCURACY,
+ RELIABILITY OR OTHERWISE.  IN NO EVENT SHALL PACKET DESIGN BE
+ LIABLE FOR ANY DAMAGES RESULTING FROM OR ARISING OUT OF ANY USE
+ OF THIS SOFTWARE, INCLUDING WITHOUT LIMITATION, ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL
+ DAMAGES, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, LOSS OF
+ USE, DATA OR PROFITS, HOWEVER CAUSED AND UNDER ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+ THE USE OF THIS SOFTWARE, EVEN IF PACKET DESIGN IS ADVISED OF
+ THE POSSIBILITY OF SUCH DAMAGE.

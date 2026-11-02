@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: CarbonHeaders
+Source: https://github.com/apple-oss-distributions/CarbonHeaders (tag CarbonHeaders-18.1)
+
+Files: *
+Copyright: 1985-2008 Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

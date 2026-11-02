@@ -1,0 +1,29 @@
+diff --git a/gen.subproj/getifmaddrs.c b/gen.subproj/getifmaddrs.c
+index 93049ff..5226bf0 100644
+--- a/gen.subproj/getifmaddrs.c
++++ b/gen.subproj/getifmaddrs.c
+@@ -30,6 +30,8 @@
+  * POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++#include "libinfo_common.h"
++
+ #include <sys/cdefs.h>
+ #include <sys/param.h>
+ #include <sys/sysctl.h>
+@@ -62,6 +64,7 @@
+ #define GIM_RTM_ADDR RTM_NEWMADDR
+ #endif
+ 
++LIBINFO_EXPORT
+ int
+ getifmaddrs(struct ifmaddrs **pif)
+ {
+@@ -203,6 +206,7 @@ getifmaddrs(struct ifmaddrs **pif)
+ 	return (0);
+ }
+ 
++LIBINFO_EXPORT
+ void
+ freeifmaddrs(struct ifmaddrs *ifmp)
+ {

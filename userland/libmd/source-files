@@ -1,0 +1,11 @@
+include/sha224.h
+include/sha256.h
+include/sha384.h
+include/sha512.h
+libmd/md4.h
+libmd/md5.h
+libmd/mdXhl.c
+libmd/sha.h
+libmd/sha0c.c
+libmd/sha_locl.h
+xcodescripts/generate_sources.sh

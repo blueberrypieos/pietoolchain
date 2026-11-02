@@ -1,0 +1,31 @@
+# Files the build requires to exist without reading them, which the trace cannot
+# tell from files a tool only looks at. OpenSSL's Configure checks the sources
+# of every target, built or not. ICU's data builder lists data/in/*.nrm and
+# drops nfc.nrm from that list by name.
+src/openssl/config
+src/openssl/providers/common/securitycheck_fips.c
+src/openssl/providers/implementations/ciphers/cipher_blowfish.c
+src/openssl/providers/implementations/ciphers/cipher_blowfish_hw.c
+src/openssl/providers/implementations/ciphers/cipher_cast5.c
+src/openssl/providers/implementations/ciphers/cipher_cast5_hw.c
+src/openssl/providers/implementations/ciphers/cipher_des.c
+src/openssl/providers/implementations/ciphers/cipher_des_hw.c
+src/openssl/providers/implementations/ciphers/cipher_desx.c
+src/openssl/providers/implementations/ciphers/cipher_desx_hw.c
+src/openssl/providers/implementations/ciphers/cipher_idea.c
+src/openssl/providers/implementations/ciphers/cipher_idea_hw.c
+src/openssl/providers/implementations/ciphers/cipher_rc2.c
+src/openssl/providers/implementations/ciphers/cipher_rc2_hw.c
+src/openssl/providers/implementations/ciphers/cipher_rc4.c
+src/openssl/providers/implementations/ciphers/cipher_rc4_hmac_md5.c
+src/openssl/providers/implementations/ciphers/cipher_rc4_hmac_md5_hw.c
+src/openssl/providers/implementations/ciphers/cipher_rc4_hw.c
+src/openssl/providers/implementations/ciphers/cipher_seed.c
+src/openssl/providers/implementations/ciphers/cipher_seed_hw.c
+src/openssl/providers/implementations/digests/md4_prov.c
+src/openssl/providers/implementations/digests/mdc2_prov.c
+src/openssl/providers/implementations/digests/wp_prov.c
+src/openssl/providers/implementations/kdfs/pbkdf1.c
+src/openssl/providers/implementations/kdfs/pvkkdf.c
+src/openssl/providers/implementations/rands/fips_crng_test.c
+src/ICU/icu/icu4c/source/data/in/nfc.nrm

@@ -1,0 +1,64 @@
+diff --git a/CFInternal.h b/CFInternal.h
+index 6b8e9ed..062e904 100644
+--- a/CFInternal.h
++++ b/CFInternal.h
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: arm64 support, and libdispatch's main queue callback type (APSL 2.0 section 2.2(b)). */
+ 
+ /*	CFInternal.h
+ 	Copyright (c) 1998-2014, Apple Inc. All rights reserved.
+@@ -140,7 +141,9 @@ CF_PRIVATE CFIndex __CFActiveProcessorCount();
+ #define __builtin_unreachable() do { } while (0)
+ #endif
+ 
+-#if defined(__i386__) || defined(__x86_64__)
++#if defined(__arm64__) || defined(__aarch64__)
++    #define HALT do { __builtin_trap(); kill(getpid(), 9); __builtin_unreachable(); } while (0)
++#elif defined(__i386__) || defined(__x86_64__)
+     #if defined(__GNUC__)
+         #define HALT do {asm __volatile__("int3"); kill(getpid(), 9); __builtin_unreachable(); } while (0)
+     #elif defined(_MSC_VER)
+diff --git a/CFRunLoop.c b/CFRunLoop.c
+index 4934968..ce052a7 100644
+--- a/CFRunLoop.c
++++ b/CFRunLoop.c
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: arm64 support, and libdispatch's main queue callback type (APSL 2.0 section 2.2(b)). */
+ 
+ /*	CFRunLoop.c
+ 	Copyright (c) 1998-2014, Apple Inc. All rights reserved.
+@@ -56,7 +57,7 @@
+ #include <pthread/private.h>
+ #include <os/voucher_private.h>
+ extern mach_port_t _dispatch_get_main_queue_port_4CF(void);
+-extern void _dispatch_main_queue_callback_4CF(mach_msg_header_t *msg);
++extern void _dispatch_main_queue_callback_4CF(void *msg);
+ #elif DEPLOYMENT_TARGET_WINDOWS
+ #include <process.h>
+ DISPATCH_EXPORT HANDLE _dispatch_get_main_queue_handle_4CF(void);
+diff --git a/CoreFoundation.h b/CoreFoundation.h
+index 8a776ab..13605c6 100644
+--- a/CoreFoundation.h
++++ b/CoreFoundation.h
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: arm64 support, and libdispatch's main queue callback type (APSL 2.0 section 2.2(b)). */
+ 
+ /*	CoreFoundation.h
+ 	Copyright (c) 1998-2014, Apple Inc. All rights reserved.
+@@ -98,6 +99,7 @@
+ #endif
+ 
+ #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)) || (TARGET_OS_EMBEDDED || TARGET_OS_IPHONE)
++#include <CoreFoundation/CFMachPort.h>
+ #endif
+ 
+ #if (TARGET_OS_MAC && !(TARGET_OS_EMBEDDED || TARGET_OS_IPHONE))

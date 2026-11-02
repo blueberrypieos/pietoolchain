@@ -1,0 +1,82 @@
+Description: Sanitizer denylists without xnu's corecrypto
+ The corecrypto files are left out of the source package. The denylist
+ generator fails on entries for files that are not there.
+Forwarded: not-needed
+
+--- a/san/coverage/kcov-denylist-x86_64
++++ b/san/coverage/kcov-denylist-x86_64
+@@ -1,10 +1,9 @@
++# Modified 2026-11-01: entries for xnu's corecrypto are removed (APSL 2.0 section 2.2(b)).
+ # x86_64 specific denylist
+ 
+ # Early boot AUTOGEN
+ src:./bsd/kern/kdebug.c
+ src:./bsd/kern/kern_csr.c
+-src:./osfmk/corecrypto/cc_clear.c
+-src:./osfmk/corecrypto/ccdrbg_nisthmac.c
+ src:./osfmk/device/subrs.c
+ src:./osfmk/i386/Diagnostics.c
+ src:./osfmk/i386/acpi.c
+@@ -36,7 +35,6 @@ src:./pexpert/i386/pe_serial.c
+ src:./osfmk/mach/dyld_kernel_fixups.h
+ 
+ # Nothing below is needed before kasan init, so most of it should go away.
+-src:./osfmk/corecrypto/*.c
+ src:./pexpert/*
+ src:./osfmk/console/video_console.c
+ src:./bsd/dev/unix_startup.c
+@@ -73,8 +71,6 @@ fun:getsegbynamefromheader
+ fun:getsectbynamefromheader
+ 
+ src:./osfmk/i386/*.h
+-src:./EXTERNAL_HEADERS/corecrypto/*.h
+-src:./osfmk/corecrypto/*.h
+ src:./osfmk/kern/queue.h
+ src:*/libkern/libkern/*.h
+ 
+--- a/san/memory/kasan-denylist-x86_64
++++ b/san/memory/kasan-denylist-x86_64
+@@ -1,3 +1,4 @@
++# Modified 2026-11-01: entries for xnu's corecrypto are removed (APSL 2.0 section 2.2(b)).
+ # x86_64 specific denylist
+ 
+ [address]
+@@ -5,8 +6,6 @@
+ # Early boot AUTOGEN
+ src:./bsd/kern/kdebug.c
+ src:./bsd/kern/kern_csr.c
+-src:./osfmk/corecrypto/cc_clear.c
+-src:./osfmk/corecrypto/ccdrbg_nisthmac.c
+ src:./osfmk/device/subrs.c
+ src:./osfmk/i386/Diagnostics.c
+ src:./osfmk/i386/acpi.c
+@@ -36,7 +35,6 @@ src:./pexpert/i386/pe_serial.c
+ src:./osfmk/mach/dyld_kernel_fixups.h
+ 
+ # Nothing below is needed before kasan init, so most of it should go away.
+-src:./osfmk/corecrypto/*.c
+ src:./pexpert/*
+ src:./osfmk/console/video_console.c
+ src:./bsd/dev/unix_startup.c
+@@ -74,8 +72,6 @@ fun:getsectbynamefromheader
+ fun:getsectbynamefromseg
+ 
+ src:./osfmk/i386/*.h
+-src:./EXTERNAL_HEADERS/corecrypto/*.h
+-src:./osfmk/corecrypto/*.h
+ src:./osfmk/kern/queue.h
+ src:*/libkern/libkern/*.h
+ 
+--- a/san/memory/ubsan-denylist
++++ b/san/memory/ubsan-denylist
+@@ -1,9 +1,9 @@
++# Modified 2026-11-01: entries for xnu's corecrypto are removed (APSL 2.0 section 2.2(b)).
+ [.*]
+ src:./san/memory/ubsan.c
+ src:./san/memory/ubsan_log.c
+ 
+ [bounds]
+-src:./osfmk/corecrypto/*
+ 
+ [alignment]
+ 

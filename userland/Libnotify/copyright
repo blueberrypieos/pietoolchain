@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Libnotify
+Source: https://github.com/apple-oss-distributions/Libnotify
+ tag Libnotify-348.120.4 (commit 227c145bcf26ec93e18304ba81306a3014d9bd56)
+
+Files: *
+Copyright: 2003-2015, 2018, 2020 Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

@@ -1,0 +1,285 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libpcap
+Upstream-Contact: The Tcpdump Group <https://www.tcpdump.org/>
+Source: https://github.com/apple-oss-distributions/libpcap
+ tag libpcap-146 (commit aa560f1fd969af63ebfb182fa33373d1d2549de5)
+
+Files: *
+Copyright: Apple Inc.
+License: APSL-2.0
+
+Files: libpcap/*
+Copyright: 1987-1998, 2000 The Regents of the University of California
+License: BSD-4-Clause-Shortened
+
+Files: libpcap/charconv.h
+ libpcap/diag-control.h
+ libpcap/fad-getad.c
+ libpcap/fmtutils.c
+ libpcap/fmtutils.h
+ libpcap/ftmacros.h
+ libpcap/nametoaddr.h
+ libpcap/pcap-int.h
+ libpcap/pcap-namedb.h
+ libpcap/pcap.c
+ libpcap/pcap.h
+ libpcap/pcap/*
+ libpcap/portability.h
+ libpcap/varattrs.h
+Copyright: 1993-1998 The Regents of the University of California
+License: LicenseRef-BSD-4-Clause-LBL-CSE
+
+Files: libpcap/pcap/bluetooth.h
+ libpcap/pcap/usb.h
+Copyright: 2006 Paolo Abeni (Italy)
+License: BSD-3-Clause
+
+Files: libpcap/pcap-darwin.c
+ libpcap/pcap-pktap.h
+ libpcap/pcap-util.c
+ libpcap/pcap-util.h
+ libpcap/pcap/pcap-ng.h
+ libpcap/pcap_ng.3
+ libpcap/pcapng-private.h
+ libpcap/pcapng.c
+Copyright: 2012-2024 Apple Inc.
+License: APSL-2.0
+
+Files: libpcap/pcap-types.h
+ libpcap/pcap/pcap-inttypes.h
+Copyright: 2002-2005 NetGroup, Politecnico di Torino (Italy)
+ 2005-2009 CACE Technologies
+ 2005-2009 CACE Technologies, Inc. Davis (California)
+License: BSD-3-Clause
+
+Files: libpcap/LICENSE
+ libpcap/config.h
+ libpcap/pcap-apple-stubs.c
+ libpcap/pcap-config
+ libpcap/pcap_get_tstamp_precision.3pcap
+ libpcap/pcap_get_tstamp_precision.3pcap.in
+ libpcap/pcap_set_tstamp_precision.3pcap
+ libpcap/pcap_set_tstamp_precision.3pcap.in
+Copyright: 2013 Michal Sekletar
+License: BSD-3-Clause
+
+Files: libpcap/arcnet.h
+ libpcap/bpf_filter.c
+ libpcap/pcap-bpf.h
+ libpcap/pcap/can_socketcan.h
+ libpcap/pcap/ipnet.h
+ libpcap/pcap/sll.h
+ libpcap/pcap/vlan.h
+Copyright: 1982, 1986-1987, 1990-1997 The Regents of the University of California
+License: BSD-4-Clause-UC
+
+Files: libpcap/pcap/nflog.h
+Copyright: 2013 Petar Alilovic
+License: BSD-2-Clause
+
+Files: libpcap/atmuni31.h
+ libpcap/sunatmpos.h
+Copyright: 1997 Yen Yen Lim and North Dakota State University
+License: LicenseRef-BSD-4-Clause-Yen-Yen-Lim-NDSU
+
+Files: libpcap/pcap/bpf.h
+ libpcap/pcap/dlt.h
+Copyright: 1990-1997 The Regents of the University of California
+License: BSD-3-Clause
+
+Files: libpcap/ppp.h
+Copyright: 1989 Carnegie Mellon
+License: LicenseRef-CMU-PPP
+
+Files: libpcap/gencode.h
+Copyright: 1990-1996 The Regents of the University of California
+ 1997 Yen Yen Lim and North Dakota State University
+License: BSD-4-Clause-Shortened AND LicenseRef-BSD-4-Clause-Yen-Yen-Lim-NDSU
+
+Files: libpcap/nlpid.h
+Copyright: 1996 Juniper Networks, Inc.
+License: LicenseRef-Juniper
+
+Files: libpcap/pcap/pcap.h
+Copyright: 2002-2003 NetGroup, Politecnico di Torino (Italy)
+ 1993-1997 The Regents of the University of California
+License: BSD-3-Clause AND LicenseRef-BSD-4-Clause-LBL-CSE
+
+Files: libpcap/ieee80211.h
+Copyright: 2001 Atsushi Onoe
+ 2002-2005 Sam Leffler, Errno Consulting
+License: BSD-3-Clause OR GPL-2.0-only
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS''AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+   1. Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+   2. Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+   3. The names of the authors may not be used to endorse or promote
+      products derived from this software without specific prior
+      written permission.
+ .
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+License: BSD-4-Clause-Shortened
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that: (1) source code distributions
+ retain the above copyright notice and this paragraph in its entirety, (2)
+ distributions including binary code include the above copyright notice and
+ this paragraph in its entirety in the documentation or other materials
+ provided with the distribution, and (3) all advertising materials mentioning
+ features or use of this software display the following acknowledgement:
+ ``This product includes software developed by the University of California,
+ Lawrence Berkeley Laboratory and its contributors.'' Neither the name of
+ the University nor the names of its contributors may be used to endorse
+ or promote products derived from this software without specific prior
+ written permission.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+License: BSD-4-Clause-UC
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the University of
+      California, Berkeley and its contributors.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-CMU-PPP
+ Permission to use, copy, modify, and distribute this program for any
+ purpose and without fee is hereby granted, provided that this copyright
+ and permission notice appear on all copies and supporting documentation,
+ the name of Carnegie Mellon not be used in advertising or publicity
+ pertaining to distribution of the program without specific prior
+ permission, and notice be given in supporting documentation that copying
+ and distribution is by permission of Carnegie Mellon and Stanford
+ University.  Carnegie Mellon makes no representations about the
+ suitability of this software for any purpose.  It is provided "as is"
+ without express or implied warranty.
+
+License: LicenseRef-BSD-4-Clause-LBL-CSE
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the Computer Systems
+      Engineering Group at Lawrence Berkeley Laboratory.
+ 4. Neither the name of the University nor of the Laboratory may be used
+    to endorse or promote products derived from this software without
+    specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Yen-Yen-Lim-NDSU
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by Yen Yen Lim and
+         North Dakota State University
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-Juniper
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that: (1) source code distributions
+ retain the above copyright notice and this paragraph in its entirety, (2)
+ distributions including binary code include the above copyright notice and
+ this paragraph in its entirety in the documentation or other materials
+ provided with the distribution.  The name of Juniper Networks may not
+ be used to endorse or promote products derived from this software
+ without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.

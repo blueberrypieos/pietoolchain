@@ -1,0 +1,14 @@
+LICENSE
+checkint.3
+checkint.h
+removefile.3
+removefile.c
+removefile.h
+removefile.plist
+removefile.xcodeproj/*
+removefile_priv.h
+removefile_random.c
+removefile_rename_unlink.c
+removefile_sunlink.c
+removefile_tree_walker.c
+xcodescripts/*

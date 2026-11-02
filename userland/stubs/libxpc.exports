@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+_bootstrap_parent
+_vproc_swap_integer

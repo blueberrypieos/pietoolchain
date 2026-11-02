@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+__dispatch_source_type_mach_recv
+_dispatch_activate
+_dispatch_async
+_dispatch_async_and_wait
+_dispatch_get_current_queue
+_dispatch_get_global_queue
+_dispatch_group_async_f
+_dispatch_group_create
+_dispatch_group_wait
+_dispatch_once
+_dispatch_once_f
+_dispatch_queue_create
+_dispatch_release
+_dispatch_retain
+_dispatch_source_cancel
+_dispatch_source_create
+_dispatch_source_set_cancel_handler
+_dispatch_source_set_event_handler

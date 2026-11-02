@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# iig: generate a DriverKit interface's header and implementation
+# (toolchain/iig/iig.py).
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+exec "${PYTHON_FOR_BUILD:-python3}" -I "$TOOLCHAIN/iig/iig.py" "$@"

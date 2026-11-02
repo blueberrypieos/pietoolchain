@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: copyfile
+Source: https://github.com/apple-oss-distributions/copyfile
+ tag copyfile-240 (commit 9f91eb6ced021952278816cdc76ad68da8631ccb)
+
+Files: *
+Copyright: 2004-2024 Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

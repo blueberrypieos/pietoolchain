@@ -1,0 +1,93 @@
+#!/usr/bin/make -f
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# One source package, built twice:
+#   dpkg-buildpackage -B                  pietoolchain, the toolchain for a
+#                                         Linux build machine (linux-any)
+#   dpkg-buildpackage -a darwin-arm64 -b  pietoolchain-sdk (all) and the
+#                                         libSystem runtime packages
+#                                         (darwin-arm64)
+
+include /usr/share/dpkg/architecture.mk
+include /usr/share/dpkg/buildopts.mk
+include /usr/share/dpkg/pkg-info.mk
+export SOURCE_DATE_EPOCH
+
+B := $(CURDIR)/debian/build
+L := debian/pietoolchain/usr/lib/pietoolchain/toolchain
+# The SDK build sets its own flags, so it runs without dpkg-buildflags'.
+FLAGS := ASFLAGS CFLAGS CPPFLAGS CXXFLAGS DFLAGS FCFLAGS FFLAGS GCJFLAGS LDFLAGS OBJCFLAGS OBJCXXFLAGS
+NOFLAGS := env $(foreach f,$(FLAGS) $(addsuffix _FOR_BUILD,$(FLAGS)),-u $(f))
+
+build: build-arch build-indep
+binary: binary-arch binary-indep
+
+debian/stamp-check:
+ifeq ($(PIE_FULL_SOURCE),)
+	python3 sdk/pie-source-guard $(CURDIR)
+endif
+	python3 sdk/mksrccopyright.py $(CURDIR) --check
+	touch $@
+
+debian/stamp-sdk: debian/stamp-check
+	$(NOFLAGS) ./build.sh toolchain userland
+	touch $@
+
+build-indep: debian/stamp-sdk
+binary-indep: build-indep
+	python3 sdk/mkdebs.py $(CURDIR) indep
+
+ifeq ($(DEB_HOST_ARCH_OS),darwin)
+build-arch: debian/stamp-sdk
+binary-arch: build-arch
+	python3 sdk/mkdebs.py $(CURDIR) arch
+else
+build-arch: debian/stamp-check
+	dh build-arch -ppietoolchain
+binary-arch: build-arch
+	dh binary-arch -ppietoolchain
+endif
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	PREFIX=$(B)/prefix BUILD=$(B) JOBS=$(or $(DEB_BUILD_OPTION_PARALLEL),1) toolchain/build-cctools.sh
+	PREFIX=$(B)/prefix BUILD=$(B) toolchain/build-mig.sh
+
+override_dh_auto_test:
+ifeq ($(filter nocheck,$(DEB_BUILD_OPTIONS)),)
+	PYTHONDONTWRITEBYTECODE=1 python3 toolchain/tests/reproducible.py
+endif
+
+override_dh_auto_install:
+	install -d $(L)/prefix/bin $(L)/prefix/libexec debian/pietoolchain/usr/share/pietoolchain
+	cp -a toolchain/bin $(L)/
+	cp -P $(B)/prefix/bin/aarch64-apple-darwin-* $(B)/prefix/bin/mig $(L)/prefix/bin/
+	cp $(B)/prefix/libexec/migcom $(L)/prefix/libexec/
+	# mig preprocesses with the cc next to it: pietoolchain's clang.
+	ln -s ../../bin/cc $(L)/prefix/bin/cc
+	cp -a toolchain/xnu-make toolchain/hostcompat toolchain/iig toolchain/kernel $(L)/
+	set -e; for f in $$(grep -v '^#' debian/hostinc); do \
+		install -D -m 644 src/cctools-port/cctools/include/$$f $(L)/hostinc/$$f; \
+	done
+	install -d $(L)/prefix/lib/cctools-host
+	install -m 644 $(B)/prefix/lib/cctools-host/libstuff.a $(B)/prefix/lib/cctools-host/libmacho.a $(L)/prefix/lib/cctools-host/
+	install -m 644 share/rules.mk share/tools.mk debian/pietoolchain/usr/share/pietoolchain/
+	install -D -m 644 sdk/README.source debian/pietoolchain/usr/share/doc/pietoolchain/README.source
+	install -m 755 share/pbxproj-tools.py share/pbxproj-sources.py share/pie-cross-deps \
+		share/pie-source-guard debian/pietoolchain/usr/share/pietoolchain/
+
+# dwz cannot read clang's DWARF 5 debug info (.debug_addr), so skip it.
+override_dh_dwz:
+
+clean:
+	set -e; for p in $$(ls -r xnu-patches/*.patch); do \
+		if patch -d xnu -p1 -R -s -f --dry-run < $$p >/dev/null 2>&1; then \
+			patch -d xnu -p1 -R -s -f --no-backup-if-mismatch < $$p; fi; done
+	dh_clean
+	rm -rf build toolchain/build toolchain/prefix toolchain/sdk $(B) debian/stamp-check debian/stamp-sdk \
+		debian/files debian/*.substvars \
+		$(foreach p,$(shell sed -n 's/^Package: *//p' debian/control),debian/$(p))
+
+.PHONY: build build-arch build-indep binary binary-arch binary-indep clean

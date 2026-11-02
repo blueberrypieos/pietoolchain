@@ -1,0 +1,1783 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: xnu
+Source: https://github.com/apple-oss-distributions/xnu
+ tag xnu-12377.121.6
+
+Files: xnu/*
+Copyright: 1993-1995, 1997-2026 Apple Inc.
+ 1990, 1996-2025 Apple Computer, Inc.
+ 1987-1989 Carnegie-Mellon University
+ 1992, 1995 NeXT Computer, Inc.
+ 1989, 1995 NeXT, Inc.
+ 1990 NeXT
+ 1994-1996 NeXT Software, Inc.
+ 1987 Avadis Tevanian, Jr.
+ 2005 SPARTA, Inc.
+License: APSL-2.0-OS-reference
+
+Files: xnu/APPLE_LICENSE
+ xnu/EXTERNAL_HEADERS/*
+ xnu/Makefile
+ xnu/SETUP/*
+ xnu/bsd/Makefile
+ xnu/bsd/arm/Makefile
+ xnu/bsd/arm/_limits.h
+ xnu/bsd/arm/_param.h
+ xnu/bsd/arm/_types.h
+ xnu/bsd/arm/disklabel.h
+ xnu/bsd/arm/profile.h
+ xnu/bsd/arm/signal.h
+ xnu/bsd/arm/vmparam.h
+ xnu/bsd/crypto/Makefile
+ xnu/bsd/crypto/aesxts.h
+ xnu/bsd/crypto/entropy/Makefile
+ xnu/bsd/dev/Makefile
+ xnu/bsd/dev/random/Makefile
+ xnu/bsd/kern/Makefile
+ xnu/bsd/kern/ariadne_plists/*
+ xnu/bsd/kern/makesyscalls.sh
+ xnu/bsd/kern/syscalls.master
+ xnu/bsd/kern/trace_codes
+ xnu/bsd/libkern/Makefile
+ xnu/bsd/machine/Makefile
+ xnu/bsd/man/Makefile
+ xnu/bsd/man/man2/EV_SET.2
+ xnu/bsd/man/man2/FD_CLR.2
+ xnu/bsd/man/man2/FD_COPY.2
+ xnu/bsd/man/man2/FD_ISSET.2
+ xnu/bsd/man/man2/FD_SET.2
+ xnu/bsd/man/man2/FD_ZERO.2
+ xnu/bsd/man/man2/Makefile
+ xnu/bsd/man/man2/audit.2
+ xnu/bsd/man/man2/auditctl.2
+ xnu/bsd/man/man2/auditon.2
+ xnu/bsd/man/man2/clonefileat.2
+ xnu/bsd/man/man2/dup2.2
+ xnu/bsd/man/man2/errno.2
+ xnu/bsd/man/man2/faccessat.2
+ xnu/bsd/man/man2/fchdir.2
+ xnu/bsd/man/man2/fchflags.2
+ xnu/bsd/man/man2/fchmod.2
+ xnu/bsd/man/man2/fchmodat.2
+ xnu/bsd/man/man2/fchown.2
+ xnu/bsd/man/man2/fchownat.2
+ xnu/bsd/man/man2/fclonefileat.2
+ xnu/bsd/man/man2/fgetattrlist.2
+ xnu/bsd/man/man2/fgetxattr.2
+ xnu/bsd/man/man2/fhopen.2
+ xnu/bsd/man/man2/fileport_makefd.2
+ xnu/bsd/man/man2/fileport_makeport.2
+ xnu/bsd/man/man2/flistxattr.2
+ xnu/bsd/man/man2/fpathconf.2
+ xnu/bsd/man/man2/freadlink.2
+ xnu/bsd/man/man2/fremovexattr.2
+ xnu/bsd/man/man2/fs_snapshot_delete.2
+ xnu/bsd/man/man2/fs_snapshot_list.2
+ xnu/bsd/man/man2/fs_snapshot_mount.2
+ xnu/bsd/man/man2/fs_snapshot_rename.2
+ xnu/bsd/man/man2/fs_snapshot_revert.2
+ xnu/bsd/man/man2/fsetattrlist.2
+ xnu/bsd/man/man2/fsetxattr.2
+ xnu/bsd/man/man2/fstat.2
+ xnu/bsd/man/man2/fstat64.2
+ xnu/bsd/man/man2/fstatat.2
+ xnu/bsd/man/man2/fstatfs.2
+ xnu/bsd/man/man2/fstatfs64.2
+ xnu/bsd/man/man2/ftruncate.2
+ xnu/bsd/man/man2/futimens.2
+ xnu/bsd/man/man2/futimes.2
+ xnu/bsd/man/man2/getattrlistat.2
+ xnu/bsd/man/man2/getaudit.2
+ xnu/bsd/man/man2/getauid.2
+ xnu/bsd/man/man2/getegid.2
+ xnu/bsd/man/man2/geteuid.2
+ xnu/bsd/man/man2/getpgid.2
+ xnu/bsd/man/man2/getppid.2
+ xnu/bsd/man/man2/getxattr.2
+ xnu/bsd/man/man2/kevent.2
+ xnu/bsd/man/man2/kevent64.2
+ xnu/bsd/man/man2/kevent_qos.2
+ xnu/bsd/man/man2/lchown.2
+ xnu/bsd/man/man2/linkat.2
+ xnu/bsd/man/man2/listxattr.2
+ xnu/bsd/man/man2/lstat.2
+ xnu/bsd/man/man2/lstat64.2
+ xnu/bsd/man/man2/mkdirat.2
+ xnu/bsd/man/man2/mkfifoat.2
+ xnu/bsd/man/man2/mknodat.2
+ xnu/bsd/man/man2/munlock.2
+ xnu/bsd/man/man2/nfsclnt.2
+ xnu/bsd/man/man2/openat.2
+ xnu/bsd/man/man2/openat_authenticated_np.2
+ xnu/bsd/man/man2/posix_madvise.2
+ xnu/bsd/man/man2/pread.2
+ xnu/bsd/man/man2/preadv.2
+ xnu/bsd/man/man2/pthread_setugid_np.2
+ xnu/bsd/man/man2/pwrite.2
+ xnu/bsd/man/man2/pwritev.2
+ xnu/bsd/man/man2/readlinkat.2
+ xnu/bsd/man/man2/readv.2
+ xnu/bsd/man/man2/recvfrom.2
+ xnu/bsd/man/man2/recvmsg.2
+ xnu/bsd/man/man2/removexattr.2
+ xnu/bsd/man/man2/renameat.2
+ xnu/bsd/man/man2/renameatx_np.2
+ xnu/bsd/man/man2/renamex_np.2
+ xnu/bsd/man/man2/sendmsg.2
+ xnu/bsd/man/man2/sendto.2
+ xnu/bsd/man/man2/setattrlistat.2
+ xnu/bsd/man/man2/setaudit.2
+ xnu/bsd/man/man2/setaudit_addr.2
+ xnu/bsd/man/man2/setauid.2
+ xnu/bsd/man/man2/setegid.2
+ xnu/bsd/man/man2/seteuid.2
+ xnu/bsd/man/man2/setgid.2
+ xnu/bsd/man/man2/setitimer.2
+ xnu/bsd/man/man2/setlogin.2
+ xnu/bsd/man/man2/setpgrp.2
+ xnu/bsd/man/man2/setpriority.2
+ xnu/bsd/man/man2/setrlimit.2
+ xnu/bsd/man/man2/setsockopt.2
+ xnu/bsd/man/man2/settimeofday.2
+ xnu/bsd/man/man2/setxattr.2
+ xnu/bsd/man/man2/shmdt.2
+ xnu/bsd/man/man2/stat64.2
+ xnu/bsd/man/man2/statfs64.2
+ xnu/bsd/man/man2/symlinkat.2
+ xnu/bsd/man/man2/unlinkat.2
+ xnu/bsd/man/man2/unmount.2
+ xnu/bsd/man/man2/vfork.2
+ xnu/bsd/man/man2/wait3.2
+ xnu/bsd/man/man2/wait4.2
+ xnu/bsd/man/man2/waitpid.2
+ xnu/bsd/man/man2/writev.2
+ xnu/bsd/man/man3/Makefile
+ xnu/bsd/man/man3/getiopolicy_np.3
+ xnu/bsd/man/man5/*
+ xnu/bsd/man/man7/Makefile
+ xnu/bsd/man/man9/*
+ xnu/bsd/miscfs/*
+ xnu/bsd/net/Makefile
+ xnu/bsd/net/altq/Makefile
+ xnu/bsd/net/aop/Makefile
+ xnu/bsd/net/classq/Makefile
+ xnu/bsd/net/content_filter.h
+ xnu/bsd/net/net.modulemap
+ xnu/bsd/net/net_private.modulemap
+ xnu/bsd/net/packet_mangler.h
+ xnu/bsd/net/pktsched/Makefile
+ xnu/bsd/netinet/Makefile
+ xnu/bsd/netinet/netinet.modulemap
+ xnu/bsd/netinet/netinet_private.modulemap
+ xnu/bsd/pthread/Makefile
+ xnu/bsd/security/Makefile
+ xnu/bsd/skywalk/Makefile
+ xnu/bsd/skywalk/channel/Makefile
+ xnu/bsd/skywalk/core/Makefile
+ xnu/bsd/skywalk/mem/Makefile
+ xnu/bsd/skywalk/module.modulemap
+ xnu/bsd/skywalk/namespace/Makefile
+ xnu/bsd/skywalk/nexus/Makefile
+ xnu/bsd/skywalk/packet/Makefile
+ xnu/bsd/sys/Makefile
+ xnu/bsd/sys/_types/Makefile
+ xnu/bsd/sys/lctx.h
+ xnu/bsd/sys/mem_acct_private.h
+ xnu/bsd/sys/unicode.h
+ xnu/bsd/sys/vfs_context.h
+ xnu/bsd/uuid/*
+ xnu/bsd/vfs/Makefile
+ xnu/bsd/vm/Makefile
+ xnu/config/*
+ xnu/iokit/Exclaves/Makefile
+ xnu/iokit/IOKit/IOKitDiagnosticsUserClient.h
+ xnu/iokit/IOKit/IOSharedLock.h
+ xnu/iokit/IOKit/Makefile
+ xnu/iokit/IOKit/nvram/Makefile
+ xnu/iokit/IOKit/platform/Makefile
+ xnu/iokit/IOKit/power/Makefile
+ xnu/iokit/IOKit/pwr_mgt/Makefile
+ xnu/iokit/IOKit/rtc/Makefile
+ xnu/iokit/IOKit/skywalk/Makefile
+ xnu/iokit/IOKit/system_management/Makefile
+ xnu/iokit/IOKitUser/*
+ xnu/iokit/Makefile
+ xnu/iokit/System/*
+ xnu/libkern/Makefile
+ xnu/libkern/libcxx_support/Makefile
+ xnu/libkern/libkern/Makefile
+ xnu/libkern/libkern/amfi/Makefile
+ xnu/libkern/libkern/apple_encrypted_archive/Makefile
+ xnu/libkern/libkern/arm/Makefile
+ xnu/libkern/libkern/c++/Makefile
+ xnu/libkern/libkern/compression/Makefile
+ xnu/libkern/libkern/coreanalytics/Makefile
+ xnu/libkern/libkern/coretrust/Makefile
+ xnu/libkern/libkern/crypto/Makefile
+ xnu/libkern/libkern/image4/Makefile
+ xnu/libkern/libkern/img4/Makefile
+ xnu/libkern/libkern/machine/Makefile
+ xnu/libkern/os/Makefile
+ xnu/libkern/os/alloc_util.h
+ xnu/libkern/os/cpp_util.h
+ xnu/libkern/os/log.h
+ xnu/libkern/os/log_private.h
+ xnu/libkern/os/refcnt_internal.h
+ xnu/libkern/os/system_event_log.h
+ xnu/libkern/os/trace.h
+ xnu/libsa/Makefile
+ xnu/libsyscall/Platforms/*
+ xnu/libsyscall/mach/add_attributes_to_mig.txt
+ xnu/libsyscall/mach/err_vm.sub
+ xnu/libsyscall/wrappers/__commpage_gettimeofday.c
+ xnu/libsyscall/wrappers/__get_cpu_capabilities.s
+ xnu/libsyscall/wrappers/_libc_weak_funcptr.c
+ xnu/libsyscall/wrappers/cancelable/*
+ xnu/libsyscall/wrappers/carbon_delete.c
+ xnu/libsyscall/wrappers/clonefile.c
+ xnu/libsyscall/wrappers/coalition.c
+ xnu/libsyscall/wrappers/csr.c
+ xnu/libsyscall/wrappers/event_wrappers.c
+ xnu/libsyscall/wrappers/fs_snapshot.c
+ xnu/libsyscall/wrappers/gethostuuid.c
+ xnu/libsyscall/wrappers/getiopolicy_np.c
+ xnu/libsyscall/wrappers/guarded_open_dprotected_np.c
+ xnu/libsyscall/wrappers/guarded_open_np.c
+ xnu/libsyscall/wrappers/init_cpu_capabilities.c
+ xnu/libsyscall/wrappers/ioctl.c
+ xnu/libsyscall/wrappers/kdebug_trace.c
+ xnu/libsyscall/wrappers/kern_debug.c
+ xnu/libsyscall/wrappers/kill.c
+ xnu/libsyscall/wrappers/legacy/*
+ xnu/libsyscall/wrappers/libproc/*
+ xnu/libsyscall/wrappers/mach_approximate_time.c
+ xnu/libsyscall/wrappers/mach_boottime.c
+ xnu/libsyscall/wrappers/mach_bridge_remote_time.c
+ xnu/libsyscall/wrappers/mach_continuous_time.c
+ xnu/libsyscall/wrappers/mach_get_times.c
+ xnu/libsyscall/wrappers/mach_timebase_info.c
+ xnu/libsyscall/wrappers/nfsclnt.c
+ xnu/libsyscall/wrappers/open-base.c
+ xnu/libsyscall/wrappers/open_dprotected_np.c
+ xnu/libsyscall/wrappers/persona.c
+ xnu/libsyscall/wrappers/pid_shutdown_networking.c
+ xnu/libsyscall/wrappers/posix_sem_obsolete.c
+ xnu/libsyscall/wrappers/proc.c
+ xnu/libsyscall/wrappers/quota_obsolete.c
+ xnu/libsyscall/wrappers/reboot.c
+ xnu/libsyscall/wrappers/remove-counter.c
+ xnu/libsyscall/wrappers/rename.c
+ xnu/libsyscall/wrappers/renameat.c
+ xnu/libsyscall/wrappers/renamex.c
+ xnu/libsyscall/wrappers/rmdir.c
+ xnu/libsyscall/wrappers/select-base.c
+ xnu/libsyscall/wrappers/setpriority.c
+ xnu/libsyscall/wrappers/sfi.c
+ xnu/libsyscall/wrappers/sigsuspend-base.c
+ xnu/libsyscall/wrappers/spawn/*
+ xnu/libsyscall/wrappers/stackshot.c
+ xnu/libsyscall/wrappers/statfs_ext.c
+ xnu/libsyscall/wrappers/system-version-compat.c
+ xnu/libsyscall/wrappers/terminate_with_reason.c
+ xnu/libsyscall/wrappers/unix03/*
+ xnu/libsyscall/wrappers/unlink.c
+ xnu/libsyscall/wrappers/unlinkat.c
+ xnu/libsyscall/wrappers/utimensat.c
+ xnu/libsyscall/wrappers/varargs_wrappers.s
+ xnu/libsyscall/wrappers/work_interval.c
+ xnu/libsyscall/xcodescripts/create-syscalls.pl
+ xnu/libsyscall/xcodescripts/filter_mig.awk
+ xnu/makedefs/*
+ xnu/osfmk/Makefile
+ xnu/osfmk/UserNotification/Makefile
+ xnu/osfmk/arm/Makefile
+ xnu/osfmk/arm/cpu_x86_64_capabilities.h
+ xnu/osfmk/arm64/Makefile
+ xnu/osfmk/arm64/sptm/Makefile
+ xnu/osfmk/arm64/sptm/pmap/Makefile
+ xnu/osfmk/atm/Makefile
+ xnu/osfmk/bank/Makefile
+ xnu/osfmk/bank/bank.modulemap
+ xnu/osfmk/console/Makefile
+ xnu/osfmk/corpses/Makefile
+ xnu/osfmk/default_pager/Makefile
+ xnu/osfmk/gssd/Makefile
+ xnu/osfmk/kdp/Makefile
+ xnu/osfmk/kern/Makefile
+ xnu/osfmk/kern/arithmetic_128.h
+ xnu/osfmk/kern/kcdata.modulemap
+ xnu/osfmk/kern/kern_debug.modulemap
+ xnu/osfmk/kern/kern_private.modulemap
+ xnu/osfmk/kern/mpqueue.h
+ xnu/osfmk/kextd/Makefile
+ xnu/osfmk/kperf/Makefile
+ xnu/osfmk/libsa/Makefile
+ xnu/osfmk/lockd/Makefile
+ xnu/osfmk/mach/Makefile
+ xnu/osfmk/mach/arm/Makefile
+ xnu/osfmk/mach/arm64/Makefile
+ xnu/osfmk/mach/audit_triggers_types.h
+ xnu/osfmk/mach/coalition_notification.defs
+ xnu/osfmk/mach/dyld_pager.h
+ xnu/osfmk/mach/iocompressionstats_notification.defs
+ xnu/osfmk/mach/machine/Makefile
+ xnu/osfmk/mach/memory_error_notification.defs
+ xnu/osfmk/mach/shared_region.h
+ xnu/osfmk/mach/telemetry_notification.defs
+ xnu/osfmk/machine/Makefile
+ xnu/osfmk/prng/Makefile
+ xnu/osfmk/tests/Makefile
+ xnu/osfmk/vm/Makefile
+ xnu/osfmk/vm/vm_shared_region.h
+ xnu/osfmk/voucher/Makefile
+ xnu/pexpert/Makefile
+ xnu/pexpert/pexpert/Makefile
+ xnu/pexpert/pexpert/arm/AIC.h
+ xnu/pexpert/pexpert/arm/Makefile
+ xnu/pexpert/pexpert/arm/PL192_VIC.h
+ xnu/pexpert/pexpert/arm/apple_uart_regs.h
+ xnu/pexpert/pexpert/arm/board_config.h
+ xnu/pexpert/pexpert/arm/boot.h
+ xnu/pexpert/pexpert/arm/protos.h
+ xnu/pexpert/pexpert/arm64/AIC.h
+ xnu/pexpert/pexpert/arm64/Makefile
+ xnu/pexpert/pexpert/arm64/apple_arm64_regs.h
+ xnu/pexpert/pexpert/arm64/board_config.h
+ xnu/pexpert/pexpert/arm64/boot.h
+ xnu/pexpert/pexpert/machine/Makefile
+ xnu/san/Makefile
+ xnu/san/coverage/Makefile
+ xnu/san/coverage/kcov-denylist
+ xnu/san/coverage/kcov-denylist-arm64
+ xnu/san/coverage/kcov-denylist-x86_64
+ xnu/san/memory/Makefile
+ xnu/san/memory/kasan-denylist
+ xnu/san/memory/kasan-denylist-arm64
+ xnu/san/memory/kasan-denylist-x86_64
+ xnu/san/memory/ubsan-denylist
+ xnu/san/tools/validate_denylist.sh
+Copyright: 1999-2025 Apple Inc.
+ 1997-2012, 2014, 2017 Apple Computer, Inc.
+ 1992 NeXT Computer, Inc.
+ 1995 NeXT
+License: APSL-2.0
+
+Files: xnu/libsyscall/mach/error_codes.c
+ xnu/libsyscall/mach/errorlib.h
+ xnu/libsyscall/mach/mach/mach.h
+ xnu/libsyscall/mach/mach/mach_error.h
+ xnu/libsyscall/mach/mach/mach_init.h
+ xnu/libsyscall/mach/mach/mach_sync_ipc.h
+ xnu/libsyscall/mach/mach_error.c
+ xnu/libsyscall/mach/mach_error_string.c
+ xnu/libsyscall/mach/mach_init.c
+ xnu/libsyscall/mach/mach_msg.c
+ xnu/libsyscall/mach/mach_traps.s
+ xnu/libsyscall/mach/mig_allocate.c
+ xnu/libsyscall/mach/mig_deallocate.c
+ xnu/libsyscall/mach/mig_reply_setup.c
+ xnu/libsyscall/mach/mig_strncpy.c
+ xnu/libsyscall/mach/ms_thread_switch.c
+ xnu/libsyscall/mach/panic.c
+ xnu/osfmk/arm/asm.h
+ xnu/osfmk/arm/cpu_number.h
+ xnu/osfmk/arm/lock.h
+ xnu/osfmk/arm/simple_lock.h
+ xnu/osfmk/arm/thread.h
+ xnu/osfmk/arm/trap.h
+ xnu/osfmk/arm64/asm.h
+ xnu/osfmk/arm64/proc_reg.h
+ xnu/osfmk/device/*
+ xnu/osfmk/ipc/*
+ xnu/osfmk/kern/assert.h
+ xnu/osfmk/kern/cpu_number.h
+ xnu/osfmk/kern/host.h
+ xnu/osfmk/kern/ipc_kobject.h
+ xnu/osfmk/kern/kalloc.h
+ xnu/osfmk/kern/lock.h
+ xnu/osfmk/kern/mach_param.h
+ xnu/osfmk/kern/macro_help.h
+ xnu/osfmk/kern/processor.h
+ xnu/osfmk/kern/queue.h
+ xnu/osfmk/kern/sched_prim.h
+ xnu/osfmk/kern/simple_lock.h
+ xnu/osfmk/kern/zalloc.h
+ xnu/osfmk/mach/arm/boolean.h
+ xnu/osfmk/mach/arm/kern_return.h
+ xnu/osfmk/mach/arm/vm_types.h
+ xnu/osfmk/mach/boolean.h
+ xnu/osfmk/mach/error.h
+ xnu/osfmk/mach/exc.defs
+ xnu/osfmk/mach/exception.h
+ xnu/osfmk/mach/exception_types.h
+ xnu/osfmk/mach/host_info.h
+ xnu/osfmk/mach/host_priv.defs
+ xnu/osfmk/mach/host_security.defs
+ xnu/osfmk/mach/host_special_ports.h
+ xnu/osfmk/mach/kern_return.h
+ xnu/osfmk/mach/mach_exc.defs
+ xnu/osfmk/mach/mach_host.defs
+ xnu/osfmk/mach/mach_param.h
+ xnu/osfmk/mach/mach_port.defs
+ xnu/osfmk/mach/mach_traps.h
+ xnu/osfmk/mach/mach_types.defs
+ xnu/osfmk/mach/mach_types.h
+ xnu/osfmk/mach/mach_vm.defs
+ xnu/osfmk/mach/machine.h
+ xnu/osfmk/mach/memory_object_control.h
+ xnu/osfmk/mach/memory_object_types.h
+ xnu/osfmk/mach/message.h
+ xnu/osfmk/mach/mig_errors.h
+ xnu/osfmk/mach/notify.defs
+ xnu/osfmk/mach/notify.h
+ xnu/osfmk/mach/policy.h
+ xnu/osfmk/mach/port.h
+ xnu/osfmk/mach/processor.defs
+ xnu/osfmk/mach/processor_info.h
+ xnu/osfmk/mach/processor_set.defs
+ xnu/osfmk/mach/std_types.defs
+ xnu/osfmk/mach/std_types.h
+ xnu/osfmk/mach/syscall_sw.h
+ xnu/osfmk/mach/task.defs
+ xnu/osfmk/mach/task_info.h
+ xnu/osfmk/mach/task_special_ports.h
+ xnu/osfmk/mach/thread_act.defs
+ xnu/osfmk/mach/thread_info.h
+ xnu/osfmk/mach/thread_special_ports.h
+ xnu/osfmk/mach/thread_status.h
+ xnu/osfmk/mach/thread_switch.h
+ xnu/osfmk/mach/time_value.h
+ xnu/osfmk/mach/upl.defs
+ xnu/osfmk/mach/vm_attributes.h
+ xnu/osfmk/mach/vm_inherit.h
+ xnu/osfmk/mach/vm_map.defs
+ xnu/osfmk/mach/vm_param.h
+ xnu/osfmk/mach/vm_prot.h
+ xnu/osfmk/mach/vm_statistics.h
+ xnu/osfmk/mach/vm_sync.h
+ xnu/osfmk/mach_debug/*
+ xnu/osfmk/vm/pmap.h
+ xnu/osfmk/vm/vm_fault.h
+ xnu/osfmk/vm/vm_kern.h
+ xnu/osfmk/vm/vm_map.h
+ xnu/osfmk/vm/vm_map_internal.h
+ xnu/osfmk/vm/vm_object_xnu.h
+ xnu/osfmk/vm/vm_page.h
+ xnu/osfmk/vm/vm_pageout.h
+Copyright: 1986-1992 Carnegie Mellon University
+ 1999-2025 Apple Inc.
+ 1998-2024 Apple Computer, Inc.
+ 2005-2006 SPARTA, Inc.
+ 1998 Apple Computer
+ 1987-1991 Carnegie Mellon University
+ 1986 Avadis Tevanian, Jr., Michael Wayne Young
+License: APSL-2.0-OS-reference AND CMU-Mach
+
+Files: xnu/bsd/arm/endian.h
+ xnu/bsd/arm/limits.h
+ xnu/bsd/arm/param.h
+ xnu/bsd/arm/types.h
+ xnu/bsd/man/man2/_exit.2
+ xnu/bsd/man/man2/accept.2
+ xnu/bsd/man/man2/acct.2
+ xnu/bsd/man/man2/adjtime.2
+ xnu/bsd/man/man2/bind.2
+ xnu/bsd/man/man2/chdir.2
+ xnu/bsd/man/man2/chflags.2
+ xnu/bsd/man/man2/chmod.2
+ xnu/bsd/man/man2/chown.2
+ xnu/bsd/man/man2/chroot.2
+ xnu/bsd/man/man2/close.2
+ xnu/bsd/man/man2/connect.2
+ xnu/bsd/man/man2/dup.2
+ xnu/bsd/man/man2/execve.2
+ xnu/bsd/man/man2/flock.2
+ xnu/bsd/man/man2/fork.2
+ xnu/bsd/man/man2/fsync.2
+ xnu/bsd/man/man2/getdirentries.2
+ xnu/bsd/man/man2/getdtablesize.2
+ xnu/bsd/man/man2/getfsstat.2
+ xnu/bsd/man/man2/getgid.2
+ xnu/bsd/man/man2/getitimer.2
+ xnu/bsd/man/man2/getlogin.2
+ xnu/bsd/man/man2/getpeername.2
+ xnu/bsd/man/man2/getpgrp.2
+ xnu/bsd/man/man2/getpid.2
+ xnu/bsd/man/man2/getpriority.2
+ xnu/bsd/man/man2/getrlimit.2
+ xnu/bsd/man/man2/getrusage.2
+ xnu/bsd/man/man2/getsockname.2
+ xnu/bsd/man/man2/getsockopt.2
+ xnu/bsd/man/man2/gettimeofday.2
+ xnu/bsd/man/man2/getuid.2
+ xnu/bsd/man/man2/intro.2
+ xnu/bsd/man/man2/ioctl.2
+ xnu/bsd/man/man2/issetugid.2
+ xnu/bsd/man/man2/kill.2
+ xnu/bsd/man/man2/link.2
+ xnu/bsd/man/man2/listen.2
+ xnu/bsd/man/man2/lseek.2
+ xnu/bsd/man/man2/madvise.2
+ xnu/bsd/man/man2/mincore.2
+ xnu/bsd/man/man2/minherit.2
+ xnu/bsd/man/man2/mkdir.2
+ xnu/bsd/man/man2/mkfifo.2
+ xnu/bsd/man/man2/mknod.2
+ xnu/bsd/man/man2/mlock.2
+ xnu/bsd/man/man2/mount.2
+ xnu/bsd/man/man2/msync.2
+ xnu/bsd/man/man2/pathconf.2
+ xnu/bsd/man/man2/pipe.2
+ xnu/bsd/man/man2/quotactl.2
+ xnu/bsd/man/man2/read.2
+ xnu/bsd/man/man2/readlink.2
+ xnu/bsd/man/man2/reboot.2
+ xnu/bsd/man/man2/recv.2
+ xnu/bsd/man/man2/rename.2
+ xnu/bsd/man/man2/revoke.2
+ xnu/bsd/man/man2/rmdir.2
+ xnu/bsd/man/man2/select.2
+ xnu/bsd/man/man2/send.2
+ xnu/bsd/man/man2/setgroups.2
+ xnu/bsd/man/man2/setpgid.2
+ xnu/bsd/man/man2/setregid.2
+ xnu/bsd/man/man2/setreuid.2
+ xnu/bsd/man/man2/setsid.2
+ xnu/bsd/man/man2/setuid.2
+ xnu/bsd/man/man2/shutdown.2
+ xnu/bsd/man/man2/sigaction.2
+ xnu/bsd/man/man2/sigaltstack.2
+ xnu/bsd/man/man2/sigpending.2
+ xnu/bsd/man/man2/sigprocmask.2
+ xnu/bsd/man/man2/sigstack.2
+ xnu/bsd/man/man2/sigsuspend.2
+ xnu/bsd/man/man2/socket.2
+ xnu/bsd/man/man2/socketpair.2
+ xnu/bsd/man/man2/stat.2
+ xnu/bsd/man/man2/statfs.2
+ xnu/bsd/man/man2/symlink.2
+ xnu/bsd/man/man2/sync.2
+ xnu/bsd/man/man2/truncate.2
+ xnu/bsd/man/man2/umask.2
+ xnu/bsd/man/man2/undelete.2
+ xnu/bsd/man/man2/unlink.2
+ xnu/bsd/man/man2/utimes.2
+ xnu/bsd/man/man2/wait.2
+ xnu/bsd/man/man2/write.2
+ xnu/bsd/man/man3/queue.3
+ xnu/bsd/man/man4/*
+ xnu/bsd/man/man5/acct.5
+ xnu/bsd/man/man5/dir.5
+ xnu/bsd/man/man5/types.5
+ xnu/bsd/man/man9/intro.9
+Copyright: 1980, 1983, 1985-1994 The Regents of the University of California
+ 2000-2023 Apple Inc.
+ 1995 NeXT Computer, Inc.
+ 1995, 1997-1998 Apple Computer, Inc.
+ 1994 Jan-Simon Pendry
+ 1980, 1991 Regents of the University of California
+License: BSD-4-Clause-UC
+
+Files: xnu/bsd/miscfs/devfs/*
+ xnu/bsd/net/altq/altq.h
+ xnu/bsd/net/altq/altq_priq.h
+ xnu/bsd/net/classq/classq_blue.h
+ xnu/bsd/net/classq/classq_red.h
+ xnu/bsd/net/classq/classq_rio.h
+ xnu/bsd/net/if_pflog.h
+ xnu/bsd/net/nat464_utils.h
+ xnu/bsd/net/pfvar.h
+ xnu/bsd/net/pktsched/pktsched_priq.h
+ xnu/bsd/netinet/cpu_in_cksum_gen.c
+ xnu/bsd/netinet/ip_dummynet.h
+ xnu/bsd/netinet/ip_flowid.h
+ xnu/bsd/netinet/tcp_cc.h
+ xnu/bsd/skywalk/channel/os_channel_private.h
+ xnu/bsd/sys/event.h
+ xnu/bsd/sys/event_private.h
+ xnu/bsd/sys/eventhandler.h
+ xnu/bsd/sys/eventvar.h
+ xnu/bsd/sys/linker_set.h
+ xnu/bsd/sys/pipe.h
+ xnu/bsd/sys/priv.h
+ xnu/libkern/libkern/tree.h
+ xnu/security/*
+Copyright: 2000-2025 Apple Inc.
+ 2001-2005 Networks Associates Technology, Inc.
+ 2013-2014 Universita` di Pisa
+ 1999-2002 Robert N. M. Watson
+ 2005-2007 SPARTA, Inc.
+ 2001 Daniel Hartmeier
+ 2001 Ilmar S. Habibulin
+ 2000-2020 Apple Computer, Inc.
+ 2012-2014 Matteo Landi, Luigi Rizzo, Giuseppe Lettieri
+ 1997-2003 Sony Computer Science Laboratories Inc.
+ 2002-2013 Henning Brauer
+ 1997-1998 Julian Elischer
+ 2010 Viagenie Inc. (http://www.viagenie.ca)
+ 1999-2001 Jonathan Lemon <jlemon@FreeBSD.org>
+ 1998-2002 Luigi Rizzo, Universita` di Pisa
+ 2006 nCircle Network Security, Inc.
+ 2001-2002 Niels Provos <provos@citi.umich.edu>
+ 2000 Akamba Corp.
+ 1996 John S. Dyson
+ 1999 Michael Smith <msmith@freebsd.org>
+ 2008 Joerg Sonnenberger <joerg@NetBSD.org>
+ 1999 John D. Polstra
+ 2008 Swinburne University of Technology, Melbourne, Australia
+License: APSL-2.0-OS-reference AND BSD-2-Clause
+
+Files: xnu/bsd/man/man2/aio_return.2
+ xnu/bsd/man/man2/kqueue.2
+Copyright: 2008-2024 Apple Inc.
+ 2000 Jonathan Lemon
+ 1999 Softweyr LLC
+License: APSL-2.0 AND BSD-2-Clause
+
+Files: xnu/bsd/sys/shm.h
+ xnu/bsd/sys/shm_internal.h
+Copyright: 2000-2025 Apple Inc.
+ 2000-2005 Apple Computer, Inc.
+ 1994 Adam Glass
+License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Adam-Glass
+
+Files: xnu/bsd/net/classq/classq.h
+ xnu/bsd/net/pktsched/pktsched_rmclass.h
+Copyright: 2000-2025 Apple Inc.
+ 2000-2005 Apple Computer, Inc.
+ 1991-1997 Regents of the University of California
+License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-LBL-NRG
+
+Files: xnu/bsd/net/if_media.h
+Copyright: 2000-2025 Apple Inc.
+ 2000-2005 Apple Computer, Inc.
+ 1997 Jonathan Stone and Jason R. Thorpe
+License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Jonathan-Stone-Jason-Thorpe
+
+Files: xnu/bsd/net/if_bridgevar.h
+Copyright: 2000-2025 Apple Inc.
+ 2000-2005 Apple Computer, Inc.
+ 2001 Wasabi Systems, Inc.
+ 1999-2000 Jason L. Wright (jason@thought.net)
+License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Wasabi-Systems
+
+Files: xnu/bsd/man/man2/poll.2
+Copyright: 2008 Apple Inc.
+ 2005 Apple Computer, Inc.
+ 1996 Charles M. Hannum
+License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Charles-Hannum
+
+Files: xnu/bsd/man/man9/copy.9
+Copyright: 2008 Apple Inc.
+ 2005 Apple Computer, Inc.
+ 1996 Jason R. Thorpe
+License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Jason-Thorpe
+
+Files: xnu/bsd/net/altq/altq_cbq.h
+ xnu/bsd/net/pktsched/pktsched_cbq.h
+Copyright: 2011-2016 Apple Inc.
+ 1993-1998 Sun Microsystems, Inc.
+License: APSL-2.0-OS-reference AND LicenseRef-Sun-CBQ
+
+Files: xnu/bsd/net/if_mib.h
+ xnu/bsd/net/if_mib_private.h
+ xnu/bsd/net/if_vlan_var.h
+Copyright: 2000-2024 Apple Inc.
+ 1994-1996, 1998 Massachusetts Institute of Technology
+ 2003, 2017, 2024 Apple Computer, Inc.
+License: APSL-2.0-OS-reference AND LicenseRef-HPND-MIT
+
+Files: xnu/bsd/sys/timex.h
+Copyright: 2000-2024 Apple Inc.
+ 2003, 2017, 2024 Apple Computer, Inc.
+License: APSL-2.0-OS-reference AND LicenseRef-HPND-UDel
+
+Files: xnu/bsd/net/altq/altq_hfsc.h
+ xnu/bsd/net/pktsched/pktsched_hfsc.h
+Copyright: 2011-2016 Apple Inc.
+ 1997-1999 Carnegie Mellon University
+License: APSL-2.0-OS-reference AND LicenseRef-CMU-HFSC
+
+Files: xnu/bsd/net/ppp_comp.h
+ xnu/bsd/net/ppp_defs.h
+Copyright: 2000 Apple Computer, Inc.
+ 1994 The Australian National University
+License: APSL-2.0-OS-reference AND LicenseRef-ANU-PPP
+
+Files: xnu/libsyscall/mach/err_ipc.sub
+ xnu/libsyscall/mach/err_kern.sub
+ xnu/libsyscall/mach/err_mach_ipc.sub
+ xnu/libsyscall/mach/err_server.sub
+ xnu/libsyscall/mach/err_us.sub
+Copyright: 1987-1991 Carnegie Mellon University
+ 1986 Carnegie-Mellon University
+License: CMU-Mach
+
+Files: xnu/libkern/firehose/*
+ xnu/libkern/os/base.h
+ xnu/libkern/os/base_private.h
+ xnu/libkern/os/object.h
+Copyright: 2008-2024 Apple Inc.
+License: Apache-2.0
+
+Files: xnu/bsd/man/man2/shmat.2
+ xnu/bsd/man/man2/shmctl.2
+ xnu/bsd/man/man2/shmget.2
+Copyright: 1995 Frank van der Linden
+License: LicenseRef-BSD-4-Clause-Frank-van-der-Linden
+
+Files: xnu/bsd/man/man9/fetch.9
+ xnu/bsd/man/man9/store.9
+Copyright: 1996 Jason R. Thorpe
+License: LicenseRef-BSD-4-Clause-Jason-Thorpe
+
+Files: xnu/osfmk/kern/task.h
+ xnu/osfmk/kern/thread.h
+Copyright: 2000-2021 Apple Inc.
+ 1987-1991 Carnegie Mellon University
+ 1993 The University of Utah and the Computer Systems Laboratory (CSL)
+ 2005 SPARTA, Inc.
+ 1994 The University of Utah and the Computer Systems Laboratory at the University of Utah (CSL)
+License: APSL-2.0-OS-reference AND CMU-Mach AND LicenseRef-HPND-Utah-CSL
+
+Files: xnu/EXTERNAL_HEADERS/ptrauth.h
+ xnu/EXTERNAL_HEADERS/stdarg.h
+ xnu/EXTERNAL_HEADERS/stdatomic.h
+ xnu/EXTERNAL_HEADERS/stddef.h
+Copyright: 2008 Eli Friedman
+License: MIT
+
+Files: xnu/libkern/libkern/zconf.h
+ xnu/libkern/libkern/zlib.h
+Copyright: 2008-2020 Apple Inc.
+ 1995-2005 Mark Adler
+ 1995-2005 Jean-loup Gailly
+ 1995-2005 Jean-loup Gailly and Mark Adler
+License: APSL-2.0-OS-reference AND Zlib
+
+Files: xnu/iokit/System/OSUnserializeXMLSharedImplementation.h
+Copyright: 1984, 1989-1990, 2000-2006 Free Software Foundation, Inc.
+ 1999-2019 Apple Inc.
+ 2000 Apple Computer, Inc.
+License: APSL-2.0-OS-reference AND GPL-2.0-or-later with Bison-2.2 exception
+
+Files: xnu/bsd/machine/limits.h
+ xnu/bsd/man/man2/ptrace.2
+Copyright: none: placed in the public domain by its authors
+License: public-domain
+
+Files: xnu/bsd/man/man2/getentropy.2
+Copyright: 2015 Apple Inc.
+ 2014 Theo de Raadt
+License: ISC
+
+Files: xnu/bsd/man/man2/pselect.2
+ xnu/bsd/man/man4/ifmib.4
+Copyright: 1994-1996, 2002 Massachusetts Institute of Technology
+License: LicenseRef-HPND-MIT
+
+Files: xnu/bsd/net/if_ppp.h
+Copyright: 2000 Apple Computer, Inc.
+ 1989 Carnegie Mellon University
+License: APSL-2.0-OS-reference AND BSD-4.3TAHOE
+
+Files: xnu/EXTERNAL_HEADERS/ptrcheck.h
+Copyright: The LLVM Project contributors
+License: Apache-2.0 with LLVM exception
+
+Files: xnu/bsd/net/pfkeyv2.h
+Copyright: 2000-2011 Apple Computer, Inc.
+ 1995-1998 WIDE Project
+License: APSL-2.0-OS-reference AND BSD-3-Clause AND public-domain
+
+Files: xnu/bsd/man/man5/core.5
+Copyright: 2001-2020 Apple Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.2. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.2.
+
+Files: xnu/SETUP/config/*
+Copyright: 1987-1990 Carnegie-Mellon University
+ 1999-2006 Apple Computer, Inc.
+ 1980 Regents of the University of California
+ 1999-2016 Apple Inc.
+License: APSL-2.0 AND BSD-4.3TAHOE
+Comment: The Apple code was originally distributed under APSL-1.0. It is used
+ here under APSL-2.0, as permitted by section 7 of APSL-1.0.
+
+Files: xnu/EXTERNAL_HEADERS/architecture/byte_order.h
+ xnu/SETUP/config/externs.c
+ xnu/SETUP/config/openp.c
+ xnu/SETUP/config/searchp.c
+ xnu/SETUP/decomment/decomment.c
+Copyright: 1999-2002 Apple Computer, Inc.
+ 1992 NeXT Computer, Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.0. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.0.
+
+Files: xnu/SETUP/config/lexer.l
+ xnu/SETUP/config/parser.y
+Copyright: 1987-1990 Carnegie-Mellon University
+ 1980, 1988 Regents of the University of California
+License: BSD-4.3TAHOE
+
+Files: xnu/bsd/arm/_endian.h
+ xnu/bsd/libkern/libkern.h
+ xnu/bsd/miscfs/devfs/fdesc.h
+ xnu/bsd/miscfs/fifofs/fifo.h
+ xnu/bsd/miscfs/specfs/specdev.h
+ xnu/bsd/miscfs/union/union.h
+ xnu/bsd/net/bpf.h
+ xnu/bsd/net/bpf_compat.h
+ xnu/bsd/net/bpf_private.h
+ xnu/bsd/net/bpfdesc.h
+ xnu/bsd/net/if.h
+ xnu/bsd/net/if_arp.h
+ xnu/bsd/net/if_dl.h
+ xnu/bsd/net/if_private.h
+ xnu/bsd/net/if_types.h
+ xnu/bsd/net/if_var.h
+ xnu/bsd/net/if_var_private.h
+ xnu/bsd/net/if_var_status.h
+ xnu/bsd/net/radix.h
+ xnu/bsd/net/raw_cb.h
+ xnu/bsd/net/route.h
+ xnu/bsd/net/route_private.h
+ xnu/bsd/netinet/icmp_var.h
+ xnu/bsd/netinet/if_ether.h
+ xnu/bsd/netinet/igmp.h
+ xnu/bsd/netinet/igmp_var.h
+ xnu/bsd/netinet/in.h
+ xnu/bsd/netinet/in_pcb.h
+ xnu/bsd/netinet/in_private.h
+ xnu/bsd/netinet/in_systm.h
+ xnu/bsd/netinet/in_var.h
+ xnu/bsd/netinet/ip.h
+ xnu/bsd/netinet/ip_icmp.h
+ xnu/bsd/netinet/ip_var.h
+ xnu/bsd/netinet/tcp.h
+ xnu/bsd/netinet/tcp_fsm.h
+ xnu/bsd/netinet/tcp_private.h
+ xnu/bsd/netinet/tcp_seq.h
+ xnu/bsd/netinet/tcp_timer.h
+ xnu/bsd/netinet/tcp_var.h
+ xnu/bsd/netinet/tcpip.h
+ xnu/bsd/netinet/udp.h
+ xnu/bsd/netinet/udp_var.h
+ xnu/bsd/nfs/*
+ xnu/bsd/sys/__endian.h
+ xnu/bsd/sys/_endian.h
+ xnu/bsd/sys/acct.h
+ xnu/bsd/sys/buf.h
+ xnu/bsd/sys/cdefs.h
+ xnu/bsd/sys/conf.h
+ xnu/bsd/sys/dir.h
+ xnu/bsd/sys/dirent.h
+ xnu/bsd/sys/dirent_private.h
+ xnu/bsd/sys/disklabel.h
+ xnu/bsd/sys/dkstat.h
+ xnu/bsd/sys/domain.h
+ xnu/bsd/sys/errno.h
+ xnu/bsd/sys/fcntl.h
+ xnu/bsd/sys/fcntl_private.h
+ xnu/bsd/sys/file.h
+ xnu/bsd/sys/file_internal.h
+ xnu/bsd/sys/filedesc.h
+ xnu/bsd/sys/filio.h
+ xnu/bsd/sys/fsctl.h
+ xnu/bsd/sys/gmon.h
+ xnu/bsd/sys/imgact.h
+ xnu/bsd/sys/imgsrc.h
+ xnu/bsd/sys/ioccom.h
+ xnu/bsd/sys/ioctl.h
+ xnu/bsd/sys/ioctl_compat.h
+ xnu/bsd/sys/ipc.h
+ xnu/bsd/sys/kernel.h
+ xnu/bsd/sys/lock.h
+ xnu/bsd/sys/malloc.h
+ xnu/bsd/sys/mbuf.h
+ xnu/bsd/sys/mman.h
+ xnu/bsd/sys/mman_private.h
+ xnu/bsd/sys/mount.h
+ xnu/bsd/sys/mount_internal.h
+ xnu/bsd/sys/msgbuf.h
+ xnu/bsd/sys/namei.h
+ xnu/bsd/sys/param.h
+ xnu/bsd/sys/proc.h
+ xnu/bsd/sys/proc_internal.h
+ xnu/bsd/sys/proc_private.h
+ xnu/bsd/sys/protosw.h
+ xnu/bsd/sys/ptrace.h
+ xnu/bsd/sys/quota.h
+ xnu/bsd/sys/reboot.h
+ xnu/bsd/sys/resource.h
+ xnu/bsd/sys/resourcevar.h
+ xnu/bsd/sys/select.h
+ xnu/bsd/sys/signal.h
+ xnu/bsd/sys/signalvar.h
+ xnu/bsd/sys/socket.h
+ xnu/bsd/sys/socket_private.h
+ xnu/bsd/sys/socketvar.h
+ xnu/bsd/sys/sockio.h
+ xnu/bsd/sys/sockio_private.h
+ xnu/bsd/sys/stat.h
+ xnu/bsd/sys/sysctl.h
+ xnu/bsd/sys/syslimits.h
+ xnu/bsd/sys/systm.h
+ xnu/bsd/sys/termios.h
+ xnu/bsd/sys/time.h
+ xnu/bsd/sys/timeb.h
+ xnu/bsd/sys/times.h
+ xnu/bsd/sys/tprintf.h
+ xnu/bsd/sys/trace.h
+ xnu/bsd/sys/tty.h
+ xnu/bsd/sys/ttychars.h
+ xnu/bsd/sys/ttycom.h
+ xnu/bsd/sys/ttydefaults.h
+ xnu/bsd/sys/ttydev.h
+ xnu/bsd/sys/types.h
+ xnu/bsd/sys/ucred.h
+ xnu/bsd/sys/uio.h
+ xnu/bsd/sys/uio_internal.h
+ xnu/bsd/sys/un.h
+ xnu/bsd/sys/unistd.h
+ xnu/bsd/sys/unpcb.h
+ xnu/bsd/sys/user.h
+ xnu/bsd/sys/utsname.h
+ xnu/bsd/sys/vadvise.h
+ xnu/bsd/sys/vcmd.h
+ xnu/bsd/sys/vm.h
+ xnu/bsd/sys/vmmeter.h
+ xnu/bsd/sys/vnode.h
+ xnu/bsd/sys/vnode_if.h
+ xnu/bsd/sys/vnode_internal.h
+ xnu/bsd/sys/wait.h
+Copyright: 1980-1995 The Regents of the University of California
+ 1999-2025 Apple Inc.
+ 1993-1995 NeXT Computer, Inc.
+ 1995, 1997-2025 Apple Computer, Inc.
+ 1988 University of Utah
+ 1987 Carnegie-Mellon University
+ 1988 Stephen Deering
+ 1993 David Greenman
+ 1994 Jan-Simon Pendry
+ 1982, 1986, 1988 Regents of the University of California
+ UNIX System Laboratories, Inc.
+License: APSL-2.0-OS-reference AND BSD-4-Clause-UC
+
+Files: xnu/EXTERNAL_HEADERS/mach-o/nlist.h
+ xnu/bsd/man/man2/fcntl.2
+ xnu/bsd/man/man2/getfh.2
+ xnu/bsd/man/man2/getgroups.2
+ xnu/bsd/man/man2/mprotect.2
+ xnu/bsd/man/man2/munmap.2
+ xnu/bsd/man/man2/nfssvc.2
+ xnu/bsd/man/man2/open.2
+Copyright: 1980, 1983, 1989, 1991, 1993 The Regents of the University of California
+ 1999-2022 Apple Inc.
+ 1999-2003 Apple Computer, Inc.
+ UNIX System Laboratories, Inc.
+License: APSL-2.0 AND BSD-4-Clause-UC
+
+Files: xnu/bsd/man/man4/vsock.4
+ xnu/bsd/miscfs/devfs/devfs_proto.h
+ xnu/bsd/nfs/krpc.h
+ xnu/osfmk/ipc/ipc_types.h
+ xnu/osfmk/ipc/ipc_voucher.h
+ xnu/osfmk/mach_debug/lockgroup_info.h
+ xnu/osfmk/mach_debug/mach_debug.h
+Copyright: 2000-2010, 2020 Apple Inc.
+ 2000-2005 Apple Computer, Inc.
+ 1998 Apple Computer
+ 1995 NeXT Computer, Inc.
+License: APSL-2.0-OS-reference
+
+Files: xnu/SETUP/config/Makefile
+ xnu/bsd/man/man4/Makefile
+ xnu/bsd/man/man4/dummynet.4
+ xnu/bsd/man/man4/ipl.4
+ xnu/bsd/man/man4/networking.4
+ xnu/bsd/man/man4/random.4
+ xnu/bsd/man/man4/stderr.4
+ xnu/bsd/man/man4/stdin.4
+ xnu/bsd/man/man4/stdout.4
+ xnu/bsd/man/man4/urandom.4
+ xnu/bsd/miscfs/devfs/Makefile
+ xnu/bsd/nfs/Makefile
+ xnu/libkern/firehose/Makefile
+ xnu/libkern/firehose/module.modulemap
+ xnu/osfmk/device/Makefile
+ xnu/osfmk/device/device.modulemap
+ xnu/osfmk/ipc/Makefile
+ xnu/osfmk/mach_debug/Makefile
+ xnu/osfmk/mach_debug/mach_debug.modulemap
+ xnu/security/Makefile
+Copyright: Apple Inc.
+License: APSL-2.0
+
+Files: xnu/bsd/man/man2/clonefile.2
+ xnu/bsd/man/man2/exchangedata.2
+ xnu/bsd/man/man2/fs_snapshot_create.2
+ xnu/bsd/man/man2/fsgetpath.2
+ xnu/bsd/man/man2/getattrlist.2
+ xnu/bsd/man/man2/getattrlistbulk.2
+ xnu/bsd/man/man2/getdirentriesattr.2
+ xnu/bsd/man/man2/searchfs.2
+ xnu/bsd/man/man2/sem_close.2
+ xnu/bsd/man/man2/sem_open.2
+ xnu/bsd/man/man2/sem_post.2
+ xnu/bsd/man/man2/sem_unlink.2
+ xnu/bsd/man/man2/sem_wait.2
+ xnu/bsd/man/man2/setattrlist.2
+ xnu/bsd/man/man2/shm_open.2
+ xnu/bsd/man/man2/shm_unlink.2
+ xnu/bsd/sys/code_signing.h
+ xnu/bsd/sys/code_signing_internal.h
+ xnu/bsd/sys/kdebug_triage.h
+ xnu/bsd/sys/lockdown_mode.h
+ xnu/bsd/sys/trust_caches.h
+ xnu/bsd/sys/trusted_execution_monitor.h
+ xnu/libkern/libkern/version.h.template
+ xnu/libsyscall/mach/err_iokit.sub
+ xnu/libsyscall/mach/err_libkern.sub
+ xnu/osfmk/vm/pmap_cs.h
+Copyright: 1999-2005, 2013, 2015, 2017-2018, 2021-2022, 2025 Apple Computer, Inc.
+ 2000-2021 Apple Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.1.
+
+Files: xnu/bsd/net/altq/altq_fairq.h
+ xnu/bsd/net/if_llc.h
+ xnu/bsd/net/net_osdep.h
+ xnu/bsd/net/pktsched/pktsched_fairq.h
+ xnu/bsd/netinet/in_gif.h
+ xnu/bsd/netinet/ip_ecn.h
+ xnu/bsd/netinet/ip_encap.h
+ xnu/bsd/netinet6/*
+ xnu/bsd/sys/endian.h
+ xnu/bsd/sys/lockf.h
+ xnu/bsd/sys/poll.h
+ xnu/bsd/sys/queue.h
+ xnu/bsd/sys/syslog.h
+Copyright: 2000-2025 Apple Inc.
+ 1982, 1986-1988, 1991, 1993 The Regents of the University of California
+ 1995-2001 WIDE Project
+ 2000-2005 Apple Computer, Inc.
+ 2008 The DragonFly Project
+ 1995 NeXT Computer, Inc.
+ 1997 Peter Wemm <peter@freebsd.org>
+License: APSL-2.0-OS-reference AND BSD-3-Clause
+
+Files: xnu/EXTERNAL_HEADERS/mach-o/reloc.h
+Copyright: 1999 Apple Computer, Inc.
+ 1993 Christopher G. Demetriou
+License: APSL-2.0 AND BSD-3-Clause
+
+Files: xnu/bsd/net/etherdefs.h
+Copyright: 2000 Apple Computer, Inc.
+ 1987 Carnegie-Mellon University
+ 1982, 1986 Regents of the University of California
+License: APSL-2.0-OS-reference AND BSD-4.3RENO
+
+Files: xnu/bsd/bsm/*
+ xnu/bsd/man/man2/access.2
+ xnu/bsd/man/man2/mmap.2
+ xnu/bsd/man/man2/utimensat.2
+ xnu/bsd/man/man4/aio.4
+ xnu/bsd/man/man4/gif.4
+ xnu/bsd/man/man4/icmp6.4
+ xnu/bsd/man/man4/inet6.4
+ xnu/bsd/man/man4/ip6.4
+ xnu/bsd/man/man4/ipsec.4
+ xnu/bsd/man/man4/stf.4
+ xnu/bsd/man/man7/sticky.7
+ xnu/bsd/netinet6/ah.h
+ xnu/bsd/netinet6/ah6.h
+ xnu/bsd/netinet6/in6_gif.h
+ xnu/bsd/netinet6/ipcomp.h
+ xnu/bsd/netinet6/ipsec.h
+ xnu/bsd/netinet6/ipsec6.h
+ xnu/bsd/netkey/*
+ xnu/bsd/security/audit/*
+ xnu/bsd/sys/sbuf.h
+ xnu/bsd/uuid/uuid.h
+ xnu/libsyscall/wrappers/string/*
+ xnu/osfmk/mach/audit_triggers.defs
+Copyright: 1999-2022 Apple Inc.
+ 1980, 1983, 1986, 1990-1991, 1993 The Regents of the University of California
+ 2005-2008 Robert N. M. Watson
+ 2005 SPARTA, Inc.
+ 2002 Dag-Erling Coïdan Smørgrav
+ 2012 Jilles Tjoelker
+ 2000 Poul-Henning Kamp and Dag-Erling Coïdan Smørgrav
+ 1996-1998 Theodore Ts'o
+ 1999 WIDE Project
+License: BSD-3-Clause
+
+Files: xnu/bsd/netinet/icmp6.h
+ xnu/bsd/netinet/ip6.h
+ xnu/bsd/netinet6/in6.h
+ xnu/bsd/netinet6/in6_pcb.h
+ xnu/bsd/netinet6/in6_private.h
+ xnu/bsd/netinet6/in6_var.h
+ xnu/bsd/netinet6/ip6_var.h
+ xnu/bsd/netinet6/ip6protosw.h
+ xnu/bsd/netinet6/tcp6_var.h
+ xnu/bsd/netinet6/udp6_var.h
+Copyright: 2000-2026 Apple Inc.
+ 1982, 1985-1986, 1988-1995 The Regents of the University of California
+ 1999 WIDE Project
+License: APSL-2.0-OS-reference AND BSD-3-Clause AND BSD-4-Clause-UC
+
+Files: xnu/libsyscall/wrappers/string/strings.h
+Copyright: 2000, 2007, 2010 Apple Inc.
+ 1990, 1993 The Regents of the University of California
+License: APSL-2.0 AND BSD-4-Clause-UC
+
+Files: xnu/EXTERNAL_HEADERS/stdbool.h
+ xnu/bsd/man/man2/aio_cancel.2
+ xnu/bsd/man/man2/aio_error.2
+ xnu/bsd/man/man2/aio_read.2
+ xnu/bsd/man/man2/aio_suspend.2
+ xnu/bsd/man/man2/aio_write.2
+ xnu/bsd/man/man2/getsid.2
+ xnu/bsd/man/man2/lio_listio.2
+ xnu/bsd/man/man2/semctl.2
+ xnu/bsd/man/man2/semget.2
+ xnu/bsd/man/man2/semop.2
+ xnu/bsd/man/man2/sendfile.2
+ xnu/bsd/man/man4/audit.4
+ xnu/bsd/man/man4/auditpipe.4
+ xnu/bsd/man/man9/byteorder.9
+ xnu/bsd/man/man9/style.9
+ xnu/bsd/security/audit/audit_ioctl.h
+ xnu/libsyscall/wrappers/string/strlen.c
+Copyright: 2006 Robert N. M. Watson
+ 1999 Softweyr LLC
+ 2008-2009 Apple, Inc.
+ 1995 David Hovemeyer <daveho@infocom.com>
+ 2005-2006 SPARTA, Inc.
+ 2003 David G. Lawrence
+ 1995-2001 FreeBSD Inc.
+ 2000 Jeroen Ruigrok van der Werven <asmodai@FreeBSD.org>
+ 2002 Mike Barcroft <mike@FreeBSD.org>
+ 1997 Peter Wemm <peter@FreeBSD.org>
+ 1998 Terry Lambert
+ 2003 Tim J. Robbins
+ 2009 Xin LI <delphij@FreeBSD.org>
+License: BSD-2-Clause
+
+Files: xnu/bsd/arm/fasttrap_isa.h
+ xnu/bsd/sys/dtrace.h
+ xnu/bsd/sys/dtrace_impl.h
+ xnu/bsd/sys/fasttrap.h
+ xnu/bsd/sys/lockstat.h
+ xnu/bsd/sys/sdt.h
+ xnu/osfmk/mach/arm/sdt_isa.h
+ xnu/osfmk/mach/machine/sdt.h
+ xnu/osfmk/mach/sdt.h
+Copyright: 1997-2009 Sun Microsystems, Inc.
+ 2007-2022 Apple Inc.
+ 1984, 1986-1989 AT&T
+ 2012-2013 Delphix
+ 2013, 2015-2016 Joyent, Inc.
+License: CDDL-1.0
+
+Files: xnu/bsd/bsm/Makefile
+ xnu/bsd/dev/dtrace/Makefile
+ xnu/bsd/dev/dtrace/scripts/*
+ xnu/bsd/miscfs/bindfs/Makefile
+ xnu/bsd/miscfs/nullfs/Makefile
+ xnu/bsd/netinet6/Makefile
+ xnu/bsd/netinet6/netinet6.modulemap
+ xnu/bsd/netkey/Makefile
+ xnu/bsd/security/audit/Makefile
+ xnu/libsyscall/wrappers/string/strcpy.c
+ xnu/libsyscall/wrappers/string/strlcpy.c
+Copyright: 2006-2012, 2016 Apple Inc.
+ 2006-2008, 2013 Apple Computer, Inc.
+License: APSL-2.0
+
+Files: xnu/bsd/netinet6/esp_chachapoly.h
+ xnu/bsd/netkey/keysock_private.h
+Copyright: 2017, 2022-2023, 2025 Apple Inc.
+License: APSL-2.0-OS-reference
+
+Files: xnu/bsd/dev/dtrace/scripts/darwin.d
+ xnu/bsd/dev/dtrace/scripts/errno.d
+ xnu/bsd/dev/dtrace/scripts/io.d
+ xnu/bsd/dev/dtrace/scripts/ptrauth_arm64.d
+ xnu/bsd/dev/dtrace/scripts/signal.d
+Copyright: 2005-2006, 2019 Apple Computer, Inc.
+ 2007 Apple, Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.1.
+
+Files: xnu/bsd/dev/dtrace/scripts/unistd.d
+Copyright: 2007 Sun Microsystems, Inc.
+License: CDDL-1.0
+
+Files: xnu/bsd/sys/msg.h
+Copyright: 2000-2019 Apple Inc.
+ 1993 Daniel Boulet and RTMX Inc.
+ 2005 SPARTA, Inc.
+License: APSL-2.0-OS-reference AND LicenseRef-Boulet-RTMX
+
+Files: xnu/libkern/libkern/crypto/md5.h
+Copyright: 2000-2006 Apple Computer, Inc.
+ 1991-1992 RSA Data Security, Inc.
+License: APSL-2.0-OS-reference AND RSA-MD
+
+Files: xnu/bsd/netinet/ip_compat.h
+Copyright: 2000 Apple Computer, Inc.
+ 1993-1997 Darren Reed
+License: APSL-2.0-OS-reference AND LicenseRef-Reed-IPFilter
+
+Files: xnu/libkern/libkern/Block.h
+ xnu/libkern/libkern/Block_private.h
+Copyright: 2008-2010 Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: APSL-2.0-OS-reference
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+ .
+ The rights granted to you under the License may not be used to create,
+ or enable the creation or redistribution of, unlawful or unlicensed
+ copies of an Apple operating system, or to circumvent, violate, or
+ enable the circumvention or violation of, any terms of an Apple
+ operating system software license agreement.
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ 3. Neither the name of the copyright holder nor the names of its
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-4-Clause-UC
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the University of
+      California, Berkeley and its contributors.
+ .
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-4.3RENO
+ Redistribution and use in source and binary forms are permitted
+ provided that this notice is preserved and that due credit is given
+ to the University of California at Berkeley. The name of the University
+ may not be used to endorse or promote products derived from this
+ software without specific prior written permission. This software
+ is provided ``as is'' without express or implied warranty.
+
+License: BSD-4.3TAHOE
+ Redistribution and use in source and binary forms are permitted
+ provided that the above copyright notice and this paragraph are
+ duplicated in all such forms and that any documentation,
+ advertising materials, and other materials related to such
+ distribution and use acknowledge that the software was developed
+ by the University of California, Berkeley.  The name of the
+ University may not be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+License: CDDL-1.0
+ The full text is in /usr/share/common-licenses/CDDL-1.0.
+
+License: CMU-Mach
+ Permission to use, copy, modify and distribute this software and its
+ documentation is hereby granted, provided that both the copyright
+ notice and this permission notice appear in all copies of the
+ software, derivative works or modified versions, and any portions
+ thereof, and that both notices appear in supporting documentation.
+ .
+ CARNEGIE MELLON ALLOWS FREE USE OF THIS SOFTWARE IN ITS "AS IS"
+ CONDITION.  CARNEGIE MELLON DISCLAIMS ANY LIABILITY OF ANY KIND FOR
+ ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.
+ .
+ Carnegie Mellon requests users of this software to return to
+ .
+  Software Distribution Coordinator  or  Software.Distribution@CS.CMU.EDU
+  School of Computer Science
+  Carnegie Mellon University
+  Pittsburgh PA 15213-3890
+ .
+ any improvements or extensions that they make and grant Carnegie Mellon
+ the rights to redistribute these changes.
+
+License: GPL-2.0-or-later
+ The full text is in /usr/share/common-licenses/GPL-2.0-or-later.
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: LicenseRef-ANU-PPP
+ Permission to use, copy, modify, and distribute this software and its
+ documentation is hereby granted, provided that the above copyright
+ notice appears in all copies.  This software is provided without any
+ warranty, express or implied. The Australian National University
+ makes no representations about the suitability of this software for
+ any purpose.
+ .
+ IN NO EVENT SHALL THE AUSTRALIAN NATIONAL UNIVERSITY BE LIABLE TO ANY
+ PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF
+ THE AUSTRALIAN NATIONAL UNIVERSITY HAVE BEEN ADVISED OF THE POSSIBILITY
+ OF SUCH DAMAGE.
+ .
+ THE AUSTRALIAN NATIONAL UNIVERSITY SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+ ON AN "AS IS" BASIS, AND THE AUSTRALIAN NATIONAL UNIVERSITY HAS NO
+ OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS,
+ OR MODIFICATIONS.
+
+License: LicenseRef-Boulet-RTMX
+ This system call was implemented by Daniel Boulet under contract from RTMX.
+ .
+ Redistribution and use in source forms, with and without modification,
+ are permitted provided that this entire comment appears intact.
+ .
+ Redistribution in binary form may occur without any restrictions.
+ Obviously, it would be nice if you gave credit where credit is due
+ but requiring it would be too onerous.
+ .
+ This software is provided ``AS IS'' without any warranties of any kind.
+
+License: LicenseRef-CMU-HFSC
+ Permission to use, copy, modify, and distribute this software and
+ its documentation is hereby granted (including for commercial or
+ for-profit use), provided that both the copyright notice and this
+ permission notice appear in all copies of the software, derivative
+ works, or modified versions, and any portions thereof.
+ .
+ THIS SOFTWARE IS EXPERIMENTAL AND IS KNOWN TO HAVE BUGS, SOME OF
+ WHICH MAY HAVE SERIOUS CONSEQUENCES.  CARNEGIE MELLON PROVIDES THIS
+ SOFTWARE IN ITS ``AS IS'' CONDITION, AND ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.  IN NO EVENT SHALL CARNEGIE MELLON UNIVERSITY BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+ OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+ DAMAGE.
+ .
+ Carnegie Mellon encourages (but does not require) users of this
+ software to return any improvements or extensions that they make,
+ and to grant Carnegie Mellon the rights to redistribute these
+ changes without encumbrance.
+
+License: LicenseRef-Reed-IPFilter
+ Redistribution and use in source and binary forms are permitted
+ provided that this notice is preserved and due credit is given
+ to the original author and the contributors.
+
+License: LicenseRef-Sun-CBQ
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the SMCC Technology
+      Development Group at Sun Microsystems, Inc.
+ .
+ 4. The name of the Sun Microsystems, Inc nor may not be used to endorse or
+      promote products derived from this software without specific prior
+      written permission.
+ .
+ SUN MICROSYSTEMS DOES NOT CLAIM MERCHANTABILITY OF THIS SOFTWARE OR THE
+ SUITABILITY OF THIS SOFTWARE FOR ANY PARTICULAR PURPOSE.  The software is
+ provided "as is" without express or implied warranty of any kind.
+ .
+ These notices must be retained in any copies of any part of this software.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+
+License: RSA-MD
+ License to copy and use this software is granted provided that it
+ is identified as the "RSA Data Security, Inc. MD5 Message-Digest
+ Algorithm" in all material mentioning or referencing this software
+ or this function.
+ .
+ License is also granted to make and use derivative works provided
+ that such works are identified as "derived from the RSA Data
+ Security, Inc. MD5 Message-Digest Algorithm" in all material
+ mentioning or referencing the derived work.
+ .
+ RSA Data Security, Inc. makes no representations concerning either
+ the merchantability of this software or the suitability of this
+ software for any particular purpose. It is provided "as is"
+ without express or implied warranty of any kind.
+ .
+ These notices must be retained in any copies of any part of this
+ documentation and/or software.
+
+License: Zlib
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ .
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ .
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+
+License: public-domain
+ The authors placed these files in the public domain.
+
+License: LicenseRef-BSD-4-Clause-Adam-Glass
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by Adam Glass.
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Charles-Hannum
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+     This product includes software developed by Charles M. Hannum.
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Frank-van-der-Linden
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed for the NetBSD Project
+      by Frank van der Linden
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Jason-Thorpe
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+     This product includes software developed for the NetBSD Project
+     by Jason R. Thorpe.
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Jonathan-Stone-Jason-Thorpe
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by Jonathan Stone
+      and Jason R. Thorpe for the NetBSD Project.
+ 4. The names of the authors may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHORS ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-LBL-NRG
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the Network Research
+      Group at Lawrence Berkeley Laboratory.
+ 4. Neither the name of the University nor of the Laboratory may be used
+    to endorse or promote products derived from this software without
+    specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Wasabi-Systems
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed for the NetBSD Project by
+      Wasabi Systems, Inc.
+ 4. The name of Wasabi Systems, Inc. may not be used to endorse
+    or promote products derived from this software without specific prior
+    written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY WASABI SYSTEMS, INC. ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL WASABI SYSTEMS, INC
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-HPND-MIT
+ Permission to use, copy, modify, and distribute this software and
+ its documentation for any purpose and without fee is hereby
+ granted, provided that both the above copyright notice and this
+ permission notice appear in all copies, that both the above
+ copyright notice and this permission notice appear in all
+ supporting documentation, and that the name of M.I.T. not be used
+ in advertising or publicity pertaining to distribution of the
+ software without specific, written prior permission.  M.I.T. makes
+ no representations about the suitability of this software for any
+ purpose.  It is provided "as is" without express or implied
+ warranty.
+
+License: LicenseRef-HPND-UDel
+ Permission to use, copy, modify, and distribute this software and
+ its documentation for any purpose and without fee is hereby
+ granted, provided that the above copyright notice appears in all
+ copies and that both the copyright notice and this permission
+ notice appear in supporting documentation, and that the name
+ University of Delaware not be used in advertising or publicity
+ pertaining to distribution of the software without specific,
+ written prior permission. The University of Delaware makes no
+ representations about the suitability this software for any
+ purpose. It is provided "as is" without express or implied
+ warranty.
+
+License: LicenseRef-HPND-Utah-CSL
+ Permission to use, copy, modify and distribute this software and its
+ documentation is hereby granted, provided that both the copyright
+ notice and this permission notice appear in all copies of the
+ software, derivative works or modified versions, and any portions
+ thereof, and that both notices appear in supporting documentation.
+ .
+ THE UNIVERSITY OF UTAH AND CSL ALLOW FREE USE OF THIS SOFTWARE IN ITS "AS
+ IS" CONDITION.  THE UNIVERSITY OF UTAH AND CSL DISCLAIM ANY LIABILITY OF
+ ANY KIND FOR ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.
+ .
+ CSL requests users of this software to return to csl-dist@cs.utah.edu any
+ improvements that they make and grant CSL redistribution rights.

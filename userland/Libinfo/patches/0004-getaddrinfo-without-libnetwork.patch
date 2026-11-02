@@ -1,0 +1,23 @@
+diff --git a/lookup.subproj/si_getaddrinfo.c b/lookup.subproj/si_getaddrinfo.c
+index 31649f4..b2d4474 100644
+--- a/lookup.subproj/si_getaddrinfo.c
++++ b/lookup.subproj/si_getaddrinfo.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: getaddrinfo works without libnetwork (APSL 2.0 section 2.2(b)). */
+ 
+ #include "libinfo_common.h"
+ 
+@@ -217,6 +218,10 @@ static void _gai_load_libnetwork_once(void)
+ 	// si_set_nat64_v4_synthesize, si_set_nat64_v4_requires_synthesis, and
+ 	// si_set_path_check
+ 	static void *handle;
++	if (access("/usr/lib/libnetwork.dylib", F_OK) != 0) {
++		os_log_debug(gai_log(), "No libnetwork.dylib");
++		return;
++	}
+ 	os_log_debug(gai_log(), "Opening libnetwork.dylib");
+ 	handle = dlopen("/usr/lib/libnetwork.dylib", RTLD_LAZY | RTLD_LOCAL);
+ 	if (handle == NULL) {

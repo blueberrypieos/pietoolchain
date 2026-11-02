@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+_asl_append
+_asl_get
+_asl_match
+_asl_new
+_asl_next
+_asl_open
+_asl_release
+_asl_send
+_asl_set
+_asl_set_query
+_syslog$DARWIN_EXTSN

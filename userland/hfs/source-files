@@ -1,0 +1,8 @@
+core/hfs_format.h
+core/hfs_mount.h
+core/hfs_unistr.h
+fsck_hfs/fsck_hfs.c
+lib_fsck_hfs/dfalib/uuid.c
+mount_hfs/mount_hfs.c
+newfs_hfs/makehfs.c
+newfs_hfs/newfs_hfs.h

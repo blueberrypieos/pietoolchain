@@ -1,0 +1,167 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OpenSSL
+Upstream-Contact: https://openssl-library.org/
+Source: https://github.com/openssl/openssl
+ tag openssl-3.5.9 (commit 45e844fa2a14ec92d146bd8f5778ac130b6625fb)
+
+Files: *
+Copyright: 1995-2026 The OpenSSL Project Authors
+ 2013-2014 Timo Teräs <timo.teras@gmail.com>
+ 2004-2014 Akamai Technologies
+ 2006 Network Resonance, Inc.
+ 2011 RTFM, Inc.
+ 2017 National Security Research Institute
+ 2002 The OpenTSA Project
+ 2002, 2017-2019 Oracle and/or its affiliates
+ 2004 EdelKey Project
+ 2014, 2020 Intel Corporation
+ 2015 CloudFlare, Inc.
+ 2016 David Gwynne <david@gwynne.id.au>
+ 2005, 2007-2020 Nokia
+ 2006 NTT (Nippon Telegraph and Telephone Corporation)
+ 2012 Samuel Neves <sneves@dei.uc.pt>
+ 2014-2016 Cryptography Research, Inc.
+ 2017 BaishanCloud
+ 2017 Ribose Inc.
+ 2019 Red Hat, Inc.
+ 1995 Patrick Powell
+ 2015-2020, 2022 Siemens AG
+License: Apache-2.0
+
+Files: crypto/LPdir_*.c
+ include/internal/o_dir.h
+Copyright: 2004-2023 The OpenSSL Project Authors
+ 2004, 2018 Richard Levitte <richard@levitte.org>
+License: Apache-2.0 OR BSD-2-Clause
+
+Files: crypto/x509/v3_pci.c
+ crypto/x509/v3_pcia.c
+Copyright: 2004-2024 The OpenSSL Project Authors
+ 2004 Kungliga Tekniska Högskolan (Royal Institute of Technology,
+ Stockholm, Sweden)
+License: Apache-2.0 OR BSD-3-Clause
+
+Files: crypto/aes/aes_core.c
+ crypto/aes/asm/vpaes-armv8.pl
+Copyright: 2002-2025 The OpenSSL Project Authors
+License: Apache-2.0 AND public-domain
+
+Files: crypto/sha/asm/sha512-armv8.pl
+Copyright: 2014-2025 The OpenSSL Project Authors
+License: Apache-2.0 OR GPL-2.0-only
+
+Files: crypto/siphash/siphash.c
+Copyright: 2017-2022 The OpenSSL Project Authors
+ 2012-2016 Jean-Philippe Aumasson
+ 2012-2014 Daniel J. Bernstein
+License: Apache-2.0 AND CC0-1.0
+
+Files: crypto/seed/seed.c
+ crypto/seed/seed_local.h
+ include/openssl/seed.h
+Copyright: 2007-2021 The OpenSSL Project Authors
+ 2007 KISA (Korea Information Security Agency)
+License: Apache-2.0 AND BSD-2-Clause-KISA
+
+Files: external/perl/Text-Template-*
+Copyright: 2013 Mark Jason Dominus <mjd@cpan.org>
+License: Artistic-1.0-Perl OR GPL-1.0-or-later
+
+Files: userland/*
+Copyright: 2026 The Blueberry Pie OS Authors
+License: BSD-2-Clause
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: Artistic-1.0-Perl
+ The full text is in /usr/share/common-licenses/Artistic-1.0-Perl.
+
+License: GPL-1.0-or-later
+ The full text is in /usr/share/common-licenses/GPL-1.0-or-later.
+
+License: GPL-2.0-only
+ The full text is in /usr/share/common-licenses/GPL-2.0-only.
+
+License: CC0-1.0
+ The full text is in /usr/share/common-licenses/CC0-1.0.
+
+License: public-domain
+ Vincent Rijmen, Antoon Bosselaers and Paulo Barreto placed the AES code of
+ crypto/aes/aes_core.c in the public domain. Mike Hamburg placed the vector
+ AES code of crypto/aes/asm/vpaes-armv8.pl in the public domain.
+
+License: BSD-2-Clause-KISA
+ Copyright (c) 2007 KISA(Korea Information Security Agency). All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Neither the name of author nor the names of its contributors may
+    be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ 3. Neither the name of the Institute nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.

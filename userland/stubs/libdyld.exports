@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+_NSVersionOfLinkTimeLibrary
+__availability_version_check
+__dyld_get_image_header
+__dyld_get_image_name
+__dyld_get_image_slide
+__dyld_get_image_uuid
+__dyld_get_image_vmaddr_slide
+__dyld_get_shared_cache_range
+__dyld_get_shared_cache_uuid
+__dyld_image_count
+__dyld_images_for_addresses
+__dyld_is_memory_immutable
+__dyld_register_for_bulk_image_loads
+__dyld_stack_range
+__tlv_atexit
+__tlv_exit
+_dladdr
+_dlopen
+_dlsym
+_dyld_get_active_platform
+_dyld_get_program_min_os_version
+_dyld_get_program_sdk_version_token
+_dyld_image_header_containing_address
+_dyld_process_is_restricted
+_dyld_program_sdk_at_least
+_dyld_sdk_at_least

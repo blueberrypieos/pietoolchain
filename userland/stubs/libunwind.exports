@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+__Unwind_GetIP
+__Unwind_GetLanguageSpecificData
+__Unwind_GetRegionStart
+__Unwind_Resume
+__Unwind_SetGR
+__Unwind_SetIP

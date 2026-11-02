@@ -1,0 +1,154 @@
+diff --git a/mount_hfs/mount_hfs.c b/mount_hfs/mount_hfs.c
+index b2bfa6b..e5ad1ed 100644
+--- a/mount_hfs/mount_hfs.c
++++ b/mount_hfs/mount_hfs.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: it builds without CoreFoundation and IOKit (APSL 2.0 section 2.2(b)). */
+ 
+ #include <sys/types.h>
+ 
+@@ -51,8 +52,10 @@
+ #include <hfs/hfs_mount.h>
+ #include <hfs/hfs_format.h>
+ 
++#if HAVE_IOKIT
+ #include <IOKit/IOKitLib.h>
+ #include <DiskImages2/DICommon.h>
++#endif
+ 
+ #include <TargetConditionals.h>
+ 
+@@ -69,7 +72,7 @@ struct hfs_backingstoreinfo {
+ 
+ /* Sensible wrappers over the byte-swapping routines */
+ #include "hfs_endian.h"
+-#if TARGET_OS_OSX  
++#if TARGET_OS_OSX && HAVE_IOKIT
+ #include "optical.h"  //only include optical headers on Macs
+ #endif //osx
+ 
+@@ -725,6 +728,7 @@ main(argc, argv)
+ 		 * diskimage via DI2, we need to detect and issue
+ 		 * HFSIOC_SETBACKINGSTOREINFO.
+ 		 */
++#if HAVE_IOKIT
+ 		if (dev) {
+ 			char *bname;
+ 			size_t pdevlen = strlen(_PATH_DEV);
+@@ -802,6 +806,7 @@ main(argc, argv)
+ 				}
+ 			}
+ 		}
++#endif
+ 	}
+ 
+ #if DEBUG
+@@ -817,7 +822,7 @@ main(argc, argv)
+ 
+ #endif
+ 
+-#if TARGET_OS_OSX
++#if TARGET_OS_OSX && HAVE_IOKIT
+     /*
+      * We shouldn't really be calling up to other layers, but
+      * an exception was made in this case to fix the situation
+diff --git a/newfs_hfs/makehfs.c b/newfs_hfs/makehfs.c
+index 46fd8e0..3618b3f 100644
+--- a/newfs_hfs/makehfs.c
++++ b/newfs_hfs/makehfs.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: it builds without CoreFoundation and IOKit (APSL 2.0 section 2.2(b)). */
+ /*
+ 	File:		makehfs.c
+ 
+@@ -51,7 +52,7 @@
+ 
+ #include <TargetConditionals.h>
+ 
+-#if TARGET_OS_IPHONE
++#if TARGET_OS_IPHONE || !HAVE_COREFOUNDATION
+ 
+ // CoreServices is not available, so...
+ 
+@@ -90,6 +91,7 @@ enum {
+ 
+ #include <libkern/OSByteOrder.h>
+ 
++#if HAVE_COREFOUNDATION
+ #include <CoreFoundation/CFString.h>
+ #include <CoreFoundation/CFStringEncodingExt.h>
+ #include <IOKit/IOKitLib.h>
+@@ -98,6 +100,19 @@ enum {
+ #include <TargetConditionals.h>
+ 
+ extern Boolean _CFStringGetFileSystemRepresentation(CFStringRef string, UInt8 *buffer, CFIndex maxBufLen);
++#else
++#include <MacTypes.h>
++typedef const char *CFStringRef;
++#define kCFAllocatorDefault             NULL
++#define kCFStringEncodingUTF8           0
++#define CFStringCreateWithCString(allocator, string, encoding)  (string)
++#define CFRelease(string)               ((void)(string))
++static Boolean
++_CFStringGetFileSystemRepresentation(CFStringRef string, UInt8 *buffer, long maxBufLen)
++{
++	return string != NULL && strlcpy((char *)buffer, string, (size_t)maxBufLen) < (size_t)maxBufLen;
++}
++#endif
+ 
+ 
+ #include <hfs/hfs_format.h>
+@@ -194,7 +209,7 @@ void SETOFFSET (void *buffer, UInt16 btNodeSize, SInt16 recOffset, SInt16 vecOff
+ 
+ #define ROUNDUP(x, u)	(((x) % (u) == 0) ? (x) : ((x)/(u) + 1) * (u))
+ 
+-#if TARGET_OS_IPHONE
++#if TARGET_OS_IPHONE || !HAVE_COREFOUNDATION
+ #define ENCODING_TO_BIT(e)				 \
+ 	  ((e) < 48 ? (e) : 0)
+ #else  // !TARGET_OS_IPHONE
+@@ -1380,6 +1395,12 @@ WriteAttributesFile(const DriveInfo *driveInfo, UInt64 startingSector,
+ static int
+ get_dev_uuid(const char *disk_name, char *dev_uuid_str, int dev_uuid_len)
+ {
++#if !HAVE_COREFOUNDATION
++    (void)disk_name;
++    (void)dev_uuid_len;
++    dev_uuid_str[0] = '\0';
++    return ENOTSUP;
++#else
+     io_service_t service;
+     CFStringRef uuid_str;
+     int ret = EINVAL;
+@@ -1403,6 +1424,7 @@ get_dev_uuid(const char *disk_name, char *dev_uuid_str, int dev_uuid_len)
+     }
+ 
+     return ret;
++#endif
+ }
+ 
+ static int
+diff --git a/newfs_hfs/newfs_hfs.h b/newfs_hfs/newfs_hfs.h
+index 8401126..472a28f 100644
+--- a/newfs_hfs/newfs_hfs.h
++++ b/newfs_hfs/newfs_hfs.h
+@@ -20,8 +20,13 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: it builds without CoreFoundation and IOKit (APSL 2.0 section 2.2(b)). */
+  
++#if HAVE_COREFOUNDATION
+ #include <CoreFoundation/CFBase.h>
++#else
++#include <MacTypes.h>
++#endif
+ 
+ enum {
+ 	kMinHFSPlusVolumeSize	= (512 * 1024),

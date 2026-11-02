@@ -1,0 +1,39 @@
+#!/bin/sh
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+#   check-isa OBJDUMP BUILD-DIR
+set -eu
+OBJDUMP=$1
+cd "$2"
+
+scan='for o; do
+	d=$("$OBJDUMP" -d --no-show-raw-insn "$o") || { echo "unreadable:$o"; continue; }
+	printf "%s\n" "$d" | awk -F "\t" -v o="$o" '\''
+		NF >= 2 && $2 ~ /^(aes(e|d|mc|imc)|pmull2?\.1q|sha(1|256|512)[a-z0-9]*|eor3|bcax|rax1|xar|sm[34][a-z0-9]*)(\.|$)/ {
+			print o; exit
+		}'\''
+done'
+export OBJDUMP
+
+sed -n 's/^\([^ :]*\.o\): [^ ]*\.S$/\1/p' Makefile | sort -u > isa-asm.list
+find . -name '*.o' | sed 's|^\./||' | sort | comm -23 - isa-asm.list > isa-c.list
+asm=$(xargs -P "$(nproc)" -n 8 sh -c "$scan" sh < isa-asm.list | sort -u)
+bad=$(xargs -P "$(nproc)" -n 64 sh -c "$scan" sh < isa-c.list | sort -u)
+case "$asm $bad" in
+*unreadable:*)
+	echo "check-isa: $OBJDUMP cannot read" $(printf '%s\n' $asm $bad | sed -n 's/^unreadable://p')
+	exit 1
+	;;
+esac
+asm=$(printf '%s\n' $asm | grep -c . || true)
+if [ -n "$bad" ]; then
+	echo "check-isa: Crypto Extension instructions in objects compiled from C:" $bad
+	exit 1
+fi
+if [ "$asm" = 0 ]; then
+	echo "check-isa: none in the perlasm objects either: the check sees nothing"
+	exit 1
+fi
+echo "check-isa: $(wc -l < isa-c.list) objects from C are plain ARMv8.0" \
+	"(Crypto Extension instructions in $asm of the $(wc -l < isa-asm.list) perlasm objects)"

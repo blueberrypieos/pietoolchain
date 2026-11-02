@@ -1,0 +1,21 @@
+diff --git a/copyfile.c b/copyfile.c
+index eaa8542..0f166d2 100644
+--- a/copyfile.c
++++ b/copyfile.c
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: it builds without libquarantine (APSL 2.0 section 2.2(b)). */
+ 
+ #include <err.h>
+ #include <errno.h>
+@@ -55,7 +56,7 @@
+ #endif
+ 
+ #include <TargetConditionals.h>
+-#if !TARGET_OS_IPHONE
++#if !TARGET_OS_IPHONE && __has_include(<quarantine.h>)
+ #include <quarantine.h>
+ 
+ #define	XATTR_QUARANTINE_NAME qtn_xattr_name

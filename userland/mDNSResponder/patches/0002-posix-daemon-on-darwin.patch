@@ -1,0 +1,23 @@
+diff --git a/mDNSPosix/PosixDaemon.c b/mDNSPosix/PosixDaemon.c
+index c63e654..3196a32 100644
+--- a/mDNSPosix/PosixDaemon.c
++++ b/mDNSPosix/PosixDaemon.c
+@@ -19,6 +19,7 @@
+     Contains:	main & associated Application layer for mDNSResponder on Linux.
+ 
+  */
++/* Modified 2026-10-31: the POSIX daemon runs on Darwin (Apache-2.0 section 4(b)). */
+ 
+ #if __APPLE__
+ // In Mac OS X 10.5 and later trying to use the daemon function gives a “‘daemon’ is deprecated”
+@@ -118,10 +119,6 @@ mDNSlocal void ParseCmdLineArgs(int argc, char **argv)
+     {
+         int result = daemon(0, 0);
+         if (result != 0) { LogMsg("Could not run as daemon - exiting"); exit(result); }
+-#if __APPLE__
+-        LogMsg("The POSIX mdnsd should only be used on OS X for testing - exiting");
+-        exit(-1);
+-#endif
+     }
+ }
+ 

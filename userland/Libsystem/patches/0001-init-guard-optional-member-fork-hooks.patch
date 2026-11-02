@@ -1,0 +1,52 @@
+diff --git a/init.c b/init.c
+index 0794818..e4000b8 100644
+--- a/init.c
++++ b/init.c
+@@ -25,6 +25,7 @@
+  *
+  * @APPLE_OSREFERENCE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: the optional members' fork hooks are guarded (APSL 2.0 section 2.2(b)). */
+ 
+ #include <TargetConditionals.h>	// for TARGET_OS_*
+ #include <stddef.h>
+@@ -488,7 +489,9 @@ libSystem_atfork_prepare(unsigned int flags, ...)
+ 	// third call hardwired fork prepare handlers for Libsystem components
+ 	// in the _reverse_ order of library initalization above
+ #if !TARGET_OS_DRIVERKIT
++#if defined(HAVE_SYSTEM_CONFIGURATION)
+ 	_libSC_info_fork_prepare();
++#endif
+ 	xpc_atfork_prepare();
+ #endif // !TARGET_OS_DRIVERKIT
+ 	dispatch_atfork_prepare();
+@@ -512,7 +515,9 @@ libSystem_atfork_parent(unsigned int flags, ...)
+ 	dispatch_atfork_parent();
+ #if !TARGET_OS_DRIVERKIT
+ 	xpc_atfork_parent();
++#if defined(HAVE_SYSTEM_CONFIGURATION)
+ 	_libSC_info_fork_parent();
++#endif
+ #endif // !TARGET_OS_DRIVERKIT
+ 
+ 	// second dlopen
+@@ -544,13 +549,19 @@ libSystem_atfork_child(unsigned int flags, ...)
+ #if defined(HAVE_SYSTEM_CORESERVICES)
+ 	_libcoreservices_fork_child();
+ #endif
++#if defined(HAVE_SYSTEM_ASL)
+ 	_asl_fork_child();
++#endif
++#if defined(HAVE_SYSTEM_NOTIFY)
+ 	_notify_fork_child();
++#endif
+ 	xpc_atfork_child();
+ #endif // !TARGET_OS_DRIVERKIT
+ 	_libtrace_fork_child();
+ #if !TARGET_OS_DRIVERKIT
++#if defined(HAVE_SYSTEM_CONFIGURATION)
+ 	_libSC_info_fork_child();
++#endif
+ #endif // !TARGET_OS_DRIVERKIT
+ 
+ 	// second dlopen

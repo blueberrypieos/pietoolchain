@@ -1,0 +1,370 @@
+Source: pietoolchain
+Section: devel
+Priority: optional
+Maintainer: Maxwell <maxwell@blueberrypieos.com>
+Build-Depends: debhelper-compat (= 13),
+ clang-21:native,
+ clang-tools-21:native,
+ lld-21:native,
+ llvm-21:native,
+ llvm-21-dev:native,
+ libclang-21-dev:native,
+ libclang-rt-21-dev:native,
+ python3-clang-21:native,
+ bison,
+ flex,
+ m4,
+ tcsh,
+ unifdef:native,
+ original-awk,
+ autoconf,
+ automake,
+ libtool,
+ gperf,
+ cmake,
+ ninja-build,
+ pkgconf:native,
+ uuid-dev:native,
+ python3:native,
+ git,
+ patch,
+ ed
+Standards-Version: 4.7.3
+Homepage: https://github.com/blueberrypieos/pietoolchain
+Vcs-Git: https://github.com/blueberrypieos/pietoolchain.git
+Vcs-Browser: https://github.com/blueberrypieos/pietoolchain
+Rules-Requires-Root: no
+
+Package: pietoolchain
+Architecture: linux-any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, clang-21, llvm-21, bison, flex, python3, make, pkgconf, pietoolchain-sdk,
+ tcsh, unifdef, original-awk, m4, uuid-dev, cmake, ninja-build, python3-clang-21
+Description: LLVM / Clang cross compiler toolchain for darwin-arm64
+
+Package: pietoolchain-sdk
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Provides: ${sdk:Provides}
+Description: darwin-arm64 SDK for pietoolchain
+ The SDK headers, libraries and frameworks for pietoolchain to build against.
+
+Package: libsystem-kernel
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_kernel
+X-Pie-Version: 0-1
+Description: system calls and Mach traps (libsystem_kernel)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-platform
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libplatform
+X-Pie-Version: 375.120.2-1
+Description: string, atomics and context primitives (libsystem_platform)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-pthread
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libpthread
+X-Pie-Version: 539.100.4-1
+Description: POSIX threads (libsystem_pthread)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-malloc
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libmalloc
+X-Pie-Version: 812.100.31-1
+Description: memory allocator (libsystem_malloc)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-blocks
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libclosure
+X-Pie-Version: 96-1
+Description: blocks runtime (libsystem_blocks)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-featureflags
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_featureflags
+X-Pie-Version: 0-1
+Description: feature flags with their defaults
+ Part of libSystem, built by pietoolchain.
+
+Package: libcorecrypto
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libcorecrypto
+X-Pie-Version: 1:0.2.0-1
+Description: corecrypto (piecrypto): digests, ciphers, RSA, EC, DH and RNG
+ Part of libSystem, built by pietoolchain.
+
+Package: libcompiler-rt
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: compiler-rt
+X-Pie-Version: 0-1
+Description: compiler runtime builtins
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-c
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: Libc
+X-Pie-Version: 1752.120.2-1
+Description: C library (libsystem_c, libdarwin, collections)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-m
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: openlibm
+X-Pie-Version: 0.8.8-1
+Description: math library (OpenLibm)
+ Part of libSystem, built by pietoolchain.
+
+Package: libmacho
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: cctools
+X-Pie-Version: 1035.1.102-1
+Description: Mach-O reading library (libmacho)
+ Part of libSystem, built by pietoolchain.
+
+Package: dyld
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: dyld
+X-Pie-Version: 1378-1
+Description: dynamic linker
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-trace
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_trace
+X-Pie-Version: 0-1
+Description: os_log and os_activity
+ Part of libSystem, built by pietoolchain.
+
+Package: libdispatch
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libdispatch
+X-Pie-Version: 1542.100.32-1
+Description: Grand Central Dispatch
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-sanitizers
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_sanitizers
+X-Pie-Version: 0-1
+Description: sanitizer hooks for libSystem
+ Part of libSystem, built by pietoolchain.
+
+Package: libxpc
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libxpc
+X-Pie-Version: 0-1
+Description: XPC object model and bootstrap client
+ Part of libSystem, built by pietoolchain.
+
+Package: libnotify
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: admin
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: Libnotify
+X-Pie-Version: 348.120.4-1
+Description: notification library, notifyd and notifyutil
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-asl
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: syslog
+X-Pie-Version: 406-1
+Description: ASL and syslog(3) (libsystem_asl)
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-configuration
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_configuration
+X-Pie-Version: 1405.120.5-1
+Description: DNS configuration and fork hooks
+ Part of libSystem, built by pietoolchain.
+
+Package: mdnsresponder
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: net
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: mDNSResponder
+X-Pie-Version: 2881.120.11-1
+Description: DNS and Bonjour daemon and its client library
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-info
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: Libinfo
+X-Pie-Version: 600-1
+Description: user, group, host and service lookups (libsystem_info)
+ Part of libSystem, built by pietoolchain.
+
+Package: libremovefile
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: removefile
+X-Pie-Version: 85.100.6-1
+Description: recursive file removal library
+ Part of libSystem, built by pietoolchain.
+
+Package: libcopyfile
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: copyfile
+X-Pie-Version: 240-1
+Description: file copying library
+ Part of libSystem, built by pietoolchain.
+
+Package: libcommoncrypto
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: CommonCrypto
+X-Pie-Version: 600035-1
+Description: CommonCrypto: digests, HMAC, ciphers, RSA, EC, DH, key derivation
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-sandbox
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_sandbox
+X-Pie-Version: 0-1
+Description: sandbox API
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem-coreservices
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libsystem_coreservices
+X-Pie-Version: 0-1
+Description: per-user directories and standard paths
+ Part of libSystem, built by pietoolchain.
+
+Package: libcxx
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: llvm-runtimes
+X-Pie-Version: 0-1
+Description: C++ standard library, C++ ABI and unwinder
+ Part of libSystem, built by pietoolchain.
+
+Package: libsystem
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: Libsystem
+X-Pie-Version: 1356-1
+Description: libSystem, the umbrella of the system libraries
+ Part of libSystem, built by pietoolchain.
+
+Package: libresolv
+Architecture: darwin-arm64
+Essential: yes
+Priority: required
+Section: libs
+Depends: ${runtime:Depends}, ${misc:Depends}
+X-Pie-Project: libresolv
+X-Pie-Version: 96-1
+Description: DNS resolver library
+ Part of libSystem, built by pietoolchain.

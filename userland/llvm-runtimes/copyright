@@ -1,0 +1,304 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: LLVM (libc++, libc++abi, libunwind)
+Upstream-Contact: https://llvm.org/
+Source: https://github.com/llvm/llvm-project
+ tag llvmorg-21.1.8 (commit 2078da43e25a4623cab2d0d60decddf709aaea28)
+
+Files: *
+Copyright: The LLVM project contributors
+ 2003-2019 University of Illinois at Urbana-Champaign
+ 2009-2019 the contributors listed in CREDITS.TXT (compiler-rt, libcxx,
+ libcxxabi and libunwind)
+License: Apache-2.0 with LLVM exception
+
+Files: compiler-rt/lib/builtins/extendhftf2.c
+ compiler-rt/lib/builtins/trunctfhf2.c
+Copyright: 2009-2019 the contributors listed in compiler-rt/CREDITS.TXT
+License: NCSA OR MIT
+
+Files: compiler-rt/lib/BlocksRuntime/*
+Copyright: 2008-2010 Apple Inc.
+License: MIT
+
+Files: compiler-rt/lib/fuzzer/FuzzerSHA1.cpp
+Copyright: The LLVM project contributors
+ Wei Dai and other contributors (public domain)
+License: Apache-2.0 with LLVM exception
+
+Files: compiler-rt/lib/profile/WindowsMMap.c
+Copyright: Mike Frysinger <vapier@gentoo.org>, who placed it in the public
+ domain
+License: public-domain
+
+Files: libcxx/include/__mdspan/* libcxx/include/__cxx03/__mdspan/*
+ libcxx/include/__fwd/mdspan.h libcxx/include/__cxx03/__fwd/mdspan.h
+ libcxx/include/__atomic/atomic_ref.h
+ libcxx/include/__cxx03/__atomic/atomic_ref.h
+ libcxx/test/std/containers/views/mdspan/CustomTestLayouts.h
+ libcxx/test/std/containers/views/mdspan/mdspan/CustomTestAccessors.h
+Copyright: 2022 National Technology & Engineering Solutions of Sandia, LLC
+ (NTESS)
+ The LLVM project contributors
+License: Apache-2.0 with LLVM exception
+
+Files: libcxx/src/charconv.cpp libcxx/src/include/to_chars_floating_point.h
+ libcxx/test/std/utilities/charconv/charconv.msvc/*
+Copyright: Microsoft Corporation
+ The LLVM project contributors
+License: Apache-2.0 with LLVM exception
+
+Files: libcxx/src/ryu/* libcxx/src/include/ryu/*
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_fixed_precision_to_chars_test_cases_1.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_fixed_precision_to_chars_test_cases_2.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_fixed_precision_to_chars_test_cases_3.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_scientific_precision_to_chars_test_cases_1.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_scientific_precision_to_chars_test_cases_2.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_scientific_precision_to_chars_test_cases_3.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/double_to_chars_test_cases.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/float_fixed_precision_to_chars_test_cases.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/float_scientific_precision_to_chars_test_cases.hpp
+ libcxx/test/std/utilities/charconv/charconv.msvc/float_to_chars_test_cases.hpp
+Copyright: 2018 Ulf Adams
+ Microsoft Corporation
+License: Apache-2.0 with LLVM exception AND BSL-1.0
+
+Files: libcxx/include/__format/escaped_output_table.h
+ libcxx/include/__format/extended_grapheme_cluster_table.h
+ libcxx/include/__format/indic_conjunct_break_table.h
+ libcxx/include/__format/width_estimation_table.h
+ libcxx/include/__cxx03/__format/escaped_output_table.h
+ libcxx/include/__cxx03/__format/extended_grapheme_cluster_table.h
+ libcxx/include/__cxx03/__format/indic_conjunct_break_table.h
+ libcxx/include/__cxx03/__format/width_estimation_table.h
+ libcxx/test/libcxx/utilities/format/format.string/format.string.std/extended_grapheme_cluster.h
+ libcxx/utils/generate_escaped_output_table.py
+ libcxx/utils/generate_extended_grapheme_cluster_table.py
+ libcxx/utils/generate_extended_grapheme_cluster_test.py
+ libcxx/utils/generate_indic_conjunct_break_table.py
+ libcxx/utils/generate_width_estimation_table.py
+Copyright: 1991-2022 Unicode, Inc.
+ Microsoft Corporation
+ The LLVM project contributors
+License: Apache-2.0 with LLVM exception AND Unicode-DFS-2016
+
+Files: libcxx/utils/data/unicode/DerivedCoreProperties.txt
+ libcxx/utils/data/unicode/DerivedGeneralCategory.txt
+ libcxx/utils/data/unicode/EastAsianWidth.txt
+ libcxx/utils/data/unicode/GraphemeBreakProperty.txt
+ libcxx/utils/data/unicode/GraphemeBreakTest.txt
+ libcxx/utils/data/unicode/emoji-data.txt
+Copyright: 2023 Unicode, Inc.
+License: Unicode-DFS-2016
+
+Files: libunwind/src/dwarf2.h
+Copyright: The LLVM project contributors
+License: Apache-2.0 with LLVM exception
+
+Files: llvm/cmake/config.guess
+Copyright: 1992-2011 Free Software Foundation, Inc.
+License: GPL-2.0-or-later with Autoconf-generic exception
+
+Files: third-party/benchmark/*
+Copyright: 2015, 2018, 2020-2021 Google Inc.
+ 2016 Ismael Jimenez Martinez
+ 2017 Roman Lebedev
+License: Apache-2.0
+
+Files: third-party/unittest/googlemock/* third-party/unittest/googletest/*
+Copyright: 2005-2008, 2013, 2015 Google Inc.
+License: BSD-3-Clause
+
+Files: third-party/unittest/googletest/include/gtest/internal/custom/raw-ostream.h
+Copyright: The LLVM project contributors
+License: Apache-2.0 with LLVM exception
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: Apache-2.0 with LLVM exception
+ The full text of the Apache License 2.0 is in
+ /usr/share/common-licenses/Apache-2.0.
+ .
+ As an exception, if, as a result of your compiling your source code, portions
+ of this Software are embedded into an Object form of such source code, you
+ may redistribute such embedded portions in such Object form without complying
+ with the conditions of Sections 4(a), 4(b) and 4(d) of the License.
+ .
+ In addition, if you combine or link compiled forms of this Software with
+ software that is licensed under the GPLv2 ("Combined Software") and if a
+ court of competent jurisdiction determines that the patent provision (Section
+ 3), the indemnity provision (Section 9) or other Section of the License
+ conflicts with the conditions of the GPLv2, you may retroactively and
+ prospectively choose to deem waived or otherwise exclude such Section(s) of
+ the License, but only in their entirety and only with respect to the Combined
+ Software.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+     * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+     * Redistributions in binary form must reproduce the above
+ copyright notice, this list of conditions and the following disclaimer
+ in the documentation and/or other materials provided with the
+ distribution.
+     * Neither the name of Google Inc. nor the names of its
+ contributors may be used to endorse or promote products derived from
+ this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSL-1.0
+ Boost Software License - Version 1.0 - August 17th, 2003
+ .
+ Permission is hereby granted, free of charge, to any person or organization
+ obtaining a copy of the software and accompanying documentation covered by
+ this license (the "Software") to use, reproduce, display, distribute,
+ execute, and transmit the Software, and to prepare derivative works of the
+ Software, and to permit third-parties to whom the Software is furnished to
+ do so, all subject to the following:
+ .
+ The copyright notices in the Software and this entire statement, including
+ the above license grant, this restriction and the following disclaimer,
+ must be included in all copies of the Software, in whole or in part, and
+ all derivative works of the Software, unless such copies or derivative
+ works are solely in the form of machine-executable object code generated by
+ a source language processor.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+ SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+ FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ DEALINGS IN THE SOFTWARE.
+
+License: GPL-2.0-or-later with Autoconf-generic exception
+ The full text is in /usr/share/common-licenses/GPL-2.0-or-later.
+ .
+ As a special exception to the GNU General Public License, if you
+ distribute this file as part of a program that contains a
+ configuration script generated by Autoconf, you may include it under
+ the same distribution terms that you use for the rest of that program.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+
+License: NCSA
+ University of Illinois/NCSA
+ Open Source License
+ .
+ Developed by:
+ .
+     LLVM Team
+ .
+     University of Illinois at Urbana-Champaign
+ .
+     http://llvm.org
+ .
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal with
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ of the Software, and to permit persons to whom the Software is furnished to do
+ so, subject to the following conditions:
+ .
+     * Redistributions of source code must retain the above copyright notice,
+       this list of conditions and the following disclaimers.
+ .
+     * Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimers in the
+       documentation and/or other materials provided with the distribution.
+ .
+     * Neither the names of the LLVM Team, University of Illinois at
+       Urbana-Champaign, nor the names of its contributors may be used to
+       endorse or promote products derived from this Software without specific
+       prior written permission.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+ CONTRIBUTORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH THE
+ SOFTWARE.
+
+License: public-domain
+ Author: Mike Frysinger <vapier@gentoo.org>
+ Placed into the public domain
+
+License: Unicode-DFS-2016
+ UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE
+ .
+ See Terms of Use <https://www.unicode.org/copyright.html>
+ for definitions of Unicode Inc.'s Data Files and Software.
+ .
+ NOTICE TO USER: Carefully read the following legal agreement.
+ BY DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING UNICODE INC.'S
+ DATA FILES ("DATA FILES"), AND/OR SOFTWARE ("SOFTWARE"),
+ YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+ TERMS AND CONDITIONS OF THIS AGREEMENT.
+ IF YOU DO NOT AGREE, DO NOT DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE
+ THE DATA FILES OR SOFTWARE.
+ .
+ COPYRIGHT AND PERMISSION NOTICE
+ .
+ Copyright (c) 1991-2022 Unicode, Inc. All rights reserved.
+ Distributed under the Terms of Use in https://www.unicode.org/copyright.html.
+ .
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of the Unicode data files and any associated documentation
+ (the "Data Files") or Unicode software and any associated documentation
+ (the "Software") to deal in the Data Files or Software
+ without restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, and/or sell copies of
+ the Data Files or Software, and to permit persons to whom the Data Files
+ or Software are furnished to do so, provided that either
+ (a) this copyright and permission notice appear with all copies
+ of the Data Files or Software, or
+ (b) this copyright and permission notice appear in associated
+ Documentation.
+ .
+ THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
+ ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT OF THIRD PARTY RIGHTS.
+ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS
+ NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL
+ DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+ DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+ TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THE DATA FILES OR SOFTWARE.
+ .
+ Except as contained in this notice, the name of a copyright holder
+ shall not be used in advertising or otherwise to promote the sale,
+ use or other dealings in these Data Files or Software without prior
+ written authorization of the copyright holder.

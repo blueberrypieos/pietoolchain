@@ -1,0 +1,122 @@
+diff --git a/membership.subproj/membership.c b/membership.subproj/membership.c
+index d341b67..46c8283 100644
+--- a/membership.subproj/membership.c
++++ b/membership.subproj/membership.c
+@@ -19,6 +19,16 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/*
++ * Modifications Copyright (c) 2026 The Blueberry Pie OS Authors.
++ * Modified 2026-10-31: group membership comes from the files without
++ * Directory Services.
++ *
++ * This file was originally made available by Apple under the Apple Public
++ * Source License Version 1.1. Pursuant to section 7 of that license, it is
++ * used and distributed here under the Apple Public Source License
++ * Version 2.0.
++ */
+ 
+ #include "libinfo_common.h"
+ #include "od_debug.h"
+@@ -26,6 +36,8 @@
+ #include <stdlib.h>
+ #include <sys/errno.h>
+ #include <sys/types.h>
++#include <sys/param.h>
++#include <string.h>
+ #include <pwd.h>
+ #include <grp.h>
+ #include <unistd.h>
+@@ -968,6 +980,82 @@ _dd_mbr_check_membership_ext(int userid_type, const void *userid, size_t userid_
+ }
+ #endif // DARWIN_DIRECTORY_AVAILABLE
+ 
++#if !DS_AVAILABLE
++static int
++_files_mbr_check_membership_ext(int userid_type, const void *userid, size_t userid_size, int groupid_type, const void *groupid, int *isMember)
++{
++	long bufsize = sysconf(_SC_GETPW_R_SIZE_MAX);
++	long grbufsize = sysconf(_SC_GETGR_R_SIZE_MAX);
++	struct passwd pwd, *pwdp = NULL;
++	struct group grp, *grpp = NULL;
++	char name[MAXLOGNAME + 1];
++	id_t id;
++	int type;
++	gid_t pgid;
++
++	if (bufsize == -1) bufsize = 4096;
++	if (grbufsize == -1) grbufsize = 4096;
++
++	char buffer[bufsize];
++	switch (userid_type) {
++		case ID_TYPE_UUID:
++			if (userid_size != sizeof(uuid_t) || !parse_compatibility_uuid(userid, &id, &type) ||
++			    type != MBR_REC_TYPE_USER) {
++				return ENOENT;
++			}
++			getpwuid_r(id, &pwd, buffer, bufsize, &pwdp);
++			break;
++		case ID_TYPE_UID:
++			if (userid_size != sizeof(id_t)) return EINVAL;
++			getpwuid_r(*(const id_t *)userid, &pwd, buffer, bufsize, &pwdp);
++			break;
++		case ID_TYPE_USERNAME:
++			if (userid_size > MAXLOGNAME) return ENOENT;
++			memcpy(name, userid, userid_size);
++			name[userid_size] = '\0';
++			getpwnam_r(name, &pwd, buffer, bufsize, &pwdp);
++			break;
++		default:
++			return EINVAL;
++	}
++	if (pwdp == NULL) return ENOENT;
++	strlcpy(name, pwd.pw_name, sizeof(name));
++	pgid = pwd.pw_gid;
++
++	char grbuffer[grbufsize];
++	switch (groupid_type) {
++		case ID_TYPE_UUID:
++			if (!parse_compatibility_uuid(groupid, &id, &type) || type != MBR_REC_TYPE_GROUP) {
++				*isMember = 0;
++				return 0;
++			}
++			getgrgid_r(id, &grp, grbuffer, grbufsize, &grpp);
++			break;
++		case ID_TYPE_GID:
++			getgrgid_r(*(const id_t *)groupid, &grp, grbuffer, grbufsize, &grpp);
++			break;
++		case ID_TYPE_GROUPNAME:
++			getgrnam_r(groupid, &grp, grbuffer, grbufsize, &grpp);
++			break;
++		default:
++			return EINVAL;
++	}
++	*isMember = 0;
++	if (grpp == NULL) return 0;
++	if (grp.gr_gid == pgid) {
++		*isMember = 1;
++		return 0;
++	}
++	for (char **m = grp.gr_mem; m != NULL && *m != NULL; m++) {
++		if (strcmp(*m, name) == 0) {
++			*isMember = 1;
++			break;
++		}
++	}
++	return 0;
++}
++#endif
++
+ LIBINFO_EXPORT
+ int
+ mbr_check_membership_ext(int userid_type, const void *userid, size_t userid_size, int groupid_type, const void *groupid, int refresh, int *isMember)
+@@ -1001,6 +1089,8 @@ mbr_check_membership_ext(int userid_type, const void *userid, size_t userid_size
+ 
+ #ifdef DS_AVAILABLE
+ 	result = _od_mbr_check_membership_ext(userid_type, userid, userid_size, groupid_type, groupid, refresh, isMember);
++#else
++	result = _files_mbr_check_membership_ext(userid_type, userid, userid_size, groupid_type, groupid, isMember);
+ #endif
+ 
+ 	return result;

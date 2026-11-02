@@ -1,0 +1,22 @@
+diff --git a/mach_o/LinkerOptimizationHints.cpp b/mach_o/LinkerOptimizationHints.cpp
+index f18535f..1605bf5 100644
+--- a/mach_o/LinkerOptimizationHints.cpp
++++ b/mach_o/LinkerOptimizationHints.cpp
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: valid() returns Error::none() (APSL 2.0 section 2.2(b)). */
+ 
+ #include "LinkerOptimizationHints.h"
+ #include "Fixups.h"
+@@ -121,8 +122,7 @@ static Error validFPAC(const char* name, std::span<const uint64_t> addrs,
+ 
+ Error LinkerOptimizationHints::valid(std::span<const MappedSegment> segments, uint64_t loadAddress) const
+ {
+-
+-    return std::move(lohErr);
++    return Error::none();
+ }
+ 
+ } // namespace mach_o

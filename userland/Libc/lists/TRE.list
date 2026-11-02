@@ -1,0 +1,9 @@
+regex/TRE/lib/regcomp.c
+regex/TRE/lib/regexec.c
+regex/TRE/lib/tre-ast.c
+regex/TRE/lib/tre-compile.c
+regex/TRE/lib/tre-match-backtrack.c
+regex/TRE/lib/tre-match-parallel.c
+regex/TRE/lib/tre-mem.c
+regex/TRE/lib/tre-parse.c
+regex/TRE/lib/tre-stack.c

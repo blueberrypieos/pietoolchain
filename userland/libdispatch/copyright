@@ -1,0 +1,30 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libdispatch
+Source: https://github.com/apple-oss-distributions/libdispatch
+ tag libdispatch-1542.100.32 (commit 701f4d1a24ae9c6863901bbbb22624b7d1b87321)
+
+Files: *
+Copyright: 2008-2025 Apple Inc.
+ 2014-2019 Apple Inc. and the Swift project authors
+ 2009-2010 Mark Heily <mark@heily.com>
+License: Apache-2.0
+
+Files: config/config.h
+ libdispatch.xcodeproj/project.pbxproj
+ man/*
+ os/clock.h
+ os/eventlink_private.h
+ os/workgroup_base.h
+ os/workgroup_interval_private.h
+ os/workgroup_object_private.h
+ os/workgroup_private.h
+ src/eventlink_internal.h
+ xcodescripts/install-swiftmodules.sh
+Copyright: Apple Inc.
+License: APSL-2.0
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

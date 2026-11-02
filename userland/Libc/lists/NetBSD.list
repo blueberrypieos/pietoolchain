@@ -1,0 +1,4 @@
+gen/NetBSD/rb.c
+gen/NetBSD/utmpx.c
+stdlib/NetBSD/strfmon.c
+string/NetBSD/memset_s.c

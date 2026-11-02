@@ -1,0 +1,12 @@
+libdarwin/bsd.c
+libdarwin/ctl.c
+libdarwin/dirstat.c
+libdarwin/dirstat_collection.c
+libdarwin/err.c
+libdarwin/exception.c
+libdarwin/init.c
+libdarwin/mach.c
+libdarwin/stdio.c
+libdarwin/stdlib.c
+libdarwin/string.c
+libdarwin/variant.c

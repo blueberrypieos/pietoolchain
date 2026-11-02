@@ -1,0 +1,63 @@
+diff --git a/Source/ARM/fenv.h b/Source/ARM/fenv.h
+index 8d0bd3e..a11c56e 100644
+--- a/Source/ARM/fenv.h
++++ b/Source/ARM/fenv.h
+@@ -19,6 +19,15 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/*
++ * Modifications Copyright (c) 2026 The Blueberry Pie OS Authors.
++ * Modified 2026-10-31: arm64 support.
++ *
++ * This file was originally made available by Apple under the Apple Public
++ * Source License Version 1.1. Pursuant to section 7 of that license, it is
++ * used and distributed here under the Apple Public Source License
++ * Version 2.0.
++ */
+  
+ /*******************************************************************************
+ *                                                                              *
+@@ -32,7 +41,7 @@
+ #define __FENV__
+ 
+ /*  We require VFP for this set of interfaces to work  */
+-#if !defined(__VFP_FP__) || defined(__SOFTFP__)
++#if !defined(__arm64__) && (!defined(__VFP_FP__) || defined(__SOFTFP__))
+ 	#warning The <fenv.h> functions are not supported on platforms that do not have hardware floating-point.
+ #else
+ 
+@@ -67,6 +76,12 @@ extern "C" {
+ 
+ 
+ 
++#if defined(__arm64__)
++typedef struct {
++    unsigned long long      __fpsr;
++    unsigned long long      __fpcr;
++} fenv_t;
++#else
+ typedef struct {
+     union
+     {
+@@ -109,6 +124,7 @@ typedef struct {
+ #endif
+     };
+ } fenv_t;
++#endif
+ 
+ typedef unsigned short fexcept_t;
+ 
+@@ -118,7 +134,12 @@ typedef unsigned short fexcept_t;
+ #define FE_OVERFLOW         0x0004
+ #define FE_DIVBYZERO        0x0002
+ #define FE_INVALID          0x0001
++#if defined(__arm64__)
++#define FE_FLUSHTOZERO      0x0080
++#define FE_ALL_EXCEPT       0x009F
++#else
+ #define FE_ALL_EXCEPT       0x001F
++#endif
+ 
+ /*    Definitions of rounding direction macros                                */
+ #define FE_TONEAREST        0x00000000

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+here="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+tool="$here/../../toolchain/prefix/bin/aarch64-apple-darwin-install_name_tool"
+err=$("$tool" "$@" 2>&1 >/dev/null)
+rc=$?
+[ -z "$err" ] || printf '%s\n' "$err" | grep -v 'will invalidate the code signature' >&2
+[ $rc = 0 ] || exit $rc
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-change|-rpath) shift 3 ;;
+		-id|-add_rpath|-delete_rpath|-prepend_rpath) shift 2 ;;
+		-*) shift ;;
+		*) exec "$here/cs-rehash" "$1" ;;
+	esac
+done

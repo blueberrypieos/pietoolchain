@@ -1,0 +1,6 @@
+/build/
+/toolchain/build/
+/toolchain/prefix/
+/toolchain/sdk/
+/toolchain/src/
+__pycache__/

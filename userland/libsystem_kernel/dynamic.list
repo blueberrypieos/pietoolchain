@@ -1,0 +1,12 @@
+wrappers/_libc_funcptr.c
+wrappers/string/strlen.c
+wrappers/_libkernel_init.c
+wrappers/string/index.c
+wrappers/string/strcmp.c
+wrappers/string/memset.c
+wrappers/string/memcpy.c
+wrappers/system-version-compat.c
+wrappers/string/strsep.c
+wrappers/string/strcpy.c
+wrappers/spawn/posix_spawn_filtering.c
+wrappers/string/strlcpy.c

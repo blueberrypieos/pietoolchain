@@ -1,0 +1,15 @@
+bootparam_prot.x
+klm_prot.x
+mount.x
+nfs_prot.x
+nlm_prot.x
+rex.x
+rnusers.x
+rquota.x
+rstat.x
+rusers.x
+rwall.x
+sm_inter.x
+spray.x
+yp.x
+yppasswd.x

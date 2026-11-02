@@ -1,0 +1,40 @@
+# The cctools headers pietoolchain installs as hostinc, from
+# src/cctools-port/cctools/include. host-cc and host-c++ use them for
+# xnu's host tools. These are the ones a traced kernel build reads.
+foreign/Availability.h
+foreign/architecture/byte_order.h
+foreign/i386/_types.h
+foreign/i386/types.h
+foreign/libkern/OSByteOrder.h
+foreign/libkern/_OSByteOrder.h
+foreign/libkern/i386/OSByteOrder.h
+foreign/libkern/i386/_OSByteOrder.h
+foreign/mach/boolean.h
+foreign/mach/i386/boolean.h
+foreign/mach/i386/kern_return.h
+foreign/mach/i386/vm_param.h
+foreign/mach/i386/vm_types.h
+foreign/mach/kern_return.h
+foreign/mach/machine/boolean.h
+foreign/mach/machine/kern_return.h
+foreign/mach/machine/thread_status.h
+foreign/mach/machine/vm_types.h
+foreign/mach/message.h
+foreign/mach/port.h
+foreign/mach/vm_prot.h
+foreign/machine/_types.h
+foreign/machine/types.h
+foreign/sys/_types.h
+i386/eflags.h
+mach-o/arch.h
+mach-o/fat.h
+mach-o/loader.h
+mach-o/nlist.h
+mach-o/ranlib.h
+mach-o/reloc.h
+mach-o/swap.h
+mach/i386/_structs.h
+mach/i386/fp_reg.h
+mach/i386/thread_state.h
+mach/i386/thread_status.h
+mach/machine.h

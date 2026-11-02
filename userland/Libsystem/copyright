@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Libsystem
+Source: https://github.com/apple-oss-distributions/Libsystem
+ tag Libsystem-1356 (commit c23b51183e46e613375dc7639fb4bf11fbf59ba8)
+
+Files: *
+Copyright: 2007-2008, 2010-2013 Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

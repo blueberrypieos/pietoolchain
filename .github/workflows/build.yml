@@ -1,0 +1,168 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    outputs:
+      name: ${{ steps.source.outputs.name }}
+    steps:
+      - name: Host packages
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            dpkg-dev devscripts lintian licenserecon xz-utils python3
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Submodules
+        run: git submodule update --init --recursive --depth 1 --jobs 8
+
+      - name: The workflows' tools
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: blueberrypieos/workflows
+          ref: f87a98ea145aed8e3d116e85f12885249a054b4d # v1
+          path: .workflows
+          persist-credentials: false
+
+      - name: Check tag matches debian/changelog
+        if: github.ref_type == 'tag'
+        run: |
+          version=$(dpkg-parsechangelog -SVersion)
+          if [ "$GITHUB_REF_NAME" != "$version" ]; then
+            echo "tag $GITHUB_REF_NAME is not $version, debian/changelog's version" >&2
+            exit 1
+          fi
+
+      - name: Source package
+        id: source
+        run: |
+          python3 .workflows/tools/pie-source source -o "$RUNNER_TEMP/source"
+          echo "name=pietoolchain_$(dpkg-parsechangelog -SVersion)" >> "$GITHUB_OUTPUT"
+          ls -l "$RUNNER_TEMP/source"
+
+      - name: Check the source package
+        run: python3 .workflows/tools/pie-verify check "$RUNNER_TEMP/source/${{ steps.source.outputs.name }}.dsc"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: source
+          path: ${{ runner.temp }}/source/
+          if-no-files-found: error
+
+  package:
+    needs: source
+    strategy:
+      matrix:
+        include:
+          # pietoolchain, for the Linux build machine.
+          - build: amd64
+            args: -B
+          # pietoolchain-sdk and the libSystem runtime packages.
+          - build: darwin-arm64
+            args: -a darwin-arm64 -b
+    runs-on: ubuntu-26.04
+    timeout-minutes: 360
+    container: ubuntu:26.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: source
+          path: /build/source/
+
+      - name: Extract the source package
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends dpkg-dev devscripts
+          dpkg-source -x "/build/source/${{ needs.source.outputs.name }}.dsc" /build/src
+
+      - name: Build dependencies
+        run: DEBIAN_FRONTEND=noninteractive apt-get build-dep -y --no-install-recommends /build/src
+
+      - name: Binary packages
+        working-directory: /build/src
+        run: dpkg-buildpackage ${{ matrix.args }} -us -uc -j$(nproc)
+
+      - name: Packages
+        run: |
+          name='${{ needs.source.outputs.name }}'
+          build='${{ matrix.build }}'
+          cd /build
+          cp source/* .
+          mergechanges -f "${name}_source.changes" "${name}_${build}.changes"
+          mv "${name}_multi.changes" "${name}_${build}.changes"
+          mkdir -p "$GITHUB_WORKSPACE/dist"
+          cp "${name}_${build}.changes" "$GITHUB_WORKSPACE/dist/"
+          sed -n '/^Files:/,/^[^ ]/s/^ [0-9a-f]\{32\} [0-9]* [^ ]* [^ ]* //p' "${name}_${build}.changes" |
+            while read -r f; do cp "$f" "$GITHUB_WORKSPACE/dist/"; done
+          ls -l "$GITHUB_WORKSPACE/dist/"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: pietoolchain-${{ matrix.build }}
+          path: dist/
+          if-no-files-found: error
+
+  attest:
+    needs: package
+    if: >-
+      github.event_name == 'push' &&
+      (github.ref_type == 'tag' ||
+       github.ref == format('refs/heads/{0}', github.event.repository.default_branch))
+    runs-on: ubuntu-26.04
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: pietoolchain-*
+          merge-multiple: true
+          path: dist/
+
+      - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: dist/*
+
+  release:
+    needs: attest
+    if: github.event_name == 'push' && github.ref_type == 'tag'
+    runs-on: ubuntu-26.04
+    environment: release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: pietoolchain-*
+          merge-multiple: true
+          path: dist/
+
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          (cd dist && sha256sum -- * > SHA256SUMS)
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" --clobber dist/*
+          else
+            gh release create "$GITHUB_REF_NAME" dist/*
+          fi

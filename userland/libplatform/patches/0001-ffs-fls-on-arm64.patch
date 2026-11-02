@@ -1,0 +1,26 @@
+diff --git a/src/string/generic/ffsll.c b/src/string/generic/ffsll.c
+index 7543db1..16008a7 100644
+--- a/src/string/generic/ffsll.c
++++ b/src/string/generic/ffsll.c
+@@ -57,7 +57,7 @@ ffsll(long long mask)
+ #endif
+ }
+ 
+-#if VARIANT_DYLD && TARGET_OS_SIMULATOR
++#if (VARIANT_DYLD && TARGET_OS_SIMULATOR) || defined(__arm64__)
+ int
+ ffsl(long mask)
+ {
+diff --git a/src/string/generic/flsll.c b/src/string/generic/flsll.c
+index 3f52579..fb29d76 100644
+--- a/src/string/generic/flsll.c
++++ b/src/string/generic/flsll.c
+@@ -57,7 +57,7 @@ flsll(long long mask)
+ #endif
+ }
+ 
+-#if VARIANT_DYLD && TARGET_OS_SIMULATOR
++#if (VARIANT_DYLD && TARGET_OS_SIMULATOR) || defined(__arm64__)
+ int
+ flsl(long mask)
+ {

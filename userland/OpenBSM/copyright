@@ -1,0 +1,94 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OpenBSM
+Source: https://github.com/apple-oss-distributions/OpenBSM/tree/OpenBSM-21
+
+Files: *
+Copyright: 2005-2007 Robert N. M. Watson
+ 2008-2009 Apple Inc.
+ 2005 Wayne J. Salamon
+ 2002 Thomas Moestl <tmm@FreeBSD.org>
+License: BSD-2-Clause
+
+Files: openbsm/bin/audit/audit.8
+ openbsm/bin/auditd/auditd.8
+ openbsm/bin/auditreduce/auditreduce.1
+ openbsm/bin/praudit/praudit.1
+ openbsm/bsm/audit_uevents.h
+ openbsm/bsm/auditd_lib.h
+ openbsm/bsm/libbsm.h
+ openbsm/libbsm/*.c
+ openbsm/libbsm/au_domain.3
+ openbsm/libbsm/au_errno.3
+ openbsm/libbsm/au_fcntl_cmd.3
+ openbsm/libbsm/au_free_token.3
+ openbsm/libbsm/au_socket_type.3
+ openbsm/libbsm/audit_submit.3
+ openbsm/man/audit_class.5
+ openbsm/man/audit_control.5
+ openbsm/man/audit_event.5
+ openbsm/man/audit_user.5
+ openbsm/man/audit_warn.5
+Copyright: 1999-2009 Apple Inc.
+ 2005-2006 Robert N. M. Watson
+ 2005 SPARTA, Inc.
+ 2006 Martin Voros
+ 2006 Christian S.J. Peron
+License: BSD-3-Clause
+
+Files: amt/*
+Copyright: 2008 Apple Inc.
+License: APSL-2.0
+
+Files: OpenBSM.xcodeproj/project.pbxproj
+Copyright: Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1.  Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+ 2.  Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in the
+     documentation and/or other materials provided with the distribution.
+ 3.  Neither the name of Apple Inc. ("Apple") nor the names of
+     its contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY APPLE AND ITS CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL APPLE OR ITS CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.

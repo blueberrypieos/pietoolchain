@@ -1,0 +1,36 @@
+diff --git a/fsck_hfs/fsck_hfs.c b/fsck_hfs/fsck_hfs.c
+index 21d4d34..ac7bc86 100644
+--- a/fsck_hfs/fsck_hfs.c
++++ b/fsck_hfs/fsck_hfs.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: logging is set up for live checks (APSL 2.0 section 2.2(b)). */
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/param.h>
+@@ -54,6 +55,7 @@ static void usage __P((void));
+ static char*    check_path(char *name);
+ static int      add_file_block(const char *filepath);
+ static int      open_device(char * dev);
++extern void     setup_logging(void);
+ static int      read_disk_info();
+ static void     close_device(void);
+ static char*    get_mount_point(const char *cdev);
+@@ -434,6 +436,7 @@ int main(int argc, char *argv[])
+         }
+ 		ret |= checkfilesys(devPath);
+         close_device();
++        cleanup_fs_fd();
+     }
+     
+     if (msgsContext) {
+@@ -477,6 +480,7 @@ open_device(char* dev) {
+ 
+         if (statfs(mntonname, &stfs_buf) == 0) {
+             if (fsck_get_lflag()) {
++                setup_logging();
+                 // Need to try to freeze it
+                 fsck_set_fd(open(mntonname, O_RDONLY));
+                 if (fsck_get_fd() < 0) {

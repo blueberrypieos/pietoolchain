@@ -1,0 +1,237 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libpthread
+Source: https://github.com/apple-oss-distributions/libpthread
+ tag libpthread-539.100.4 (commit 1f4f5265b319111142f1bf3a27d4484ef5a98314)
+
+Files: *
+Copyright: 1999-2019, 2021 Apple Inc.
+ 1995-2005, 2012 Apple Computer, Inc.
+License: APSL-2.0
+
+Files: include/pthread/pthread.h
+ include/pthread/pthread_spis.h
+ private/pthread/posix_sched.h
+ private/pthread/spinlock_private.h
+ private/pthread/tsd_private.h
+ src/internal.h
+ src/pthread.c
+ src/pthread_cancelable.c
+ src/pthread_cond.c
+ src/pthread_mutex.c
+ src/pthread_tsd.c
+Copyright: 2000-2013 Apple Inc.
+ 2000-2003, 2013 Apple Computer, Inc.
+ 1991-1997 Open Software Foundation, Inc.
+License: APSL-2.0 AND LicenseRef-HPND-OSF
+
+Files: include/pthread/stack_np.h
+ src/resolver/*
+Copyright: 2015, 2018 Apple Inc.
+License: Apache-2.0
+
+Files: man/*
+Copyright: 1997 Brian Cully <shmit@kublai.com>
+ 2001 Apple Computer, Inc.
+License: BSD-3-Clause
+
+Files: man/pthread.3
+ man/pthread_create.3
+ man/pthread_detach.3
+ man/pthread_equal.3
+ man/pthread_exit.3
+ man/pthread_getspecific.3
+ man/pthread_join.3
+ man/pthread_key_create.3
+ man/pthread_key_delete.3
+ man/pthread_once.3
+ man/pthread_self.3
+ man/pthread_setspecific.3
+Copyright: 1996-1998 John Birrell <jb@cimlogic.com.au>
+ 2001 Apple Computer, Inc.
+License: LicenseRef-BSD-4-Clause-John-Birrell
+
+Files: man/pthread_main_np.3
+ man/pthread_rwlock_destroy.3
+ man/pthread_rwlock_init.3
+ man/pthread_rwlock_rdlock.3
+ man/pthread_rwlock_unlock.3
+ man/pthread_rwlock_wrlock.3
+ man/pthread_rwlockattr_destroy.3
+ man/pthread_rwlockattr_getpshared.3
+ man/pthread_rwlockattr_init.3
+ man/pthread_rwlockattr_setpshared.3
+ man/pthread_setname_np.3
+Copyright: 1998 Alex Nash
+ 2003 Alexey Zelkin <phantom@FreeBSD.org>
+License: BSD-2-Clause
+
+Files: man/pthread_attr_init_destroy.3
+ man/pthread_attr_set_getdetachstate.3
+ man/pthread_attr_set_getinheritsched.3
+ man/pthread_attr_set_getschedparam.3
+ man/pthread_attr_set_getschedpolicy.3
+ man/pthread_attr_set_getscope.3
+ man/pthread_attr_set_getstackaddr.3
+ man/pthread_attr_set_getstacksize.3
+ man/pthread_jit_write_protect_np.3
+ man/pthread_threadid_np.3
+Copyright: 2004-2007, 2016, 2020 Apple Inc.
+License: APSL-2.0
+
+Files: man/pthread_attr.3
+ man/pthread_condattr.3
+ man/pthread_getschedparam.3
+ man/pthread_kill.2
+ man/pthread_sigmask.2
+Copyright: 2000 Jason Evans <jasone@FreeBSD.org>
+License: LicenseRef-BSD-Evans
+
+Files: man/pthread_cancel.3
+ man/pthread_setcancelstate.3
+Copyright: FreeBSD's contributors (the files name none)
+License: APSL-2.0
+
+Files: man/pthread_yield_np.3
+Copyright: Marco S Hyman <marc@snafu.org> (dedicated to the public domain)
+License: public-domain
+
+Files: man/pthread_atfork.3
+Copyright: 2004 Apple Computer, Inc.
+ 2001-2004 The Institute of Electrical and Electronics Engineers, Inc. and The Open Group
+License: BSD-2-Clause
+
+Files: man/pthread_mutexattr.3
+Copyright: 2002, 2010 The NetBSD Foundation, Inc.
+ 2000 Jason Evans <jasone@FreeBSD.org>
+License: BSD-2-Clause AND LicenseRef-BSD-Evans
+
+Files: src/pthread_rwlock.c
+Copyright: 2000-2003, 2007-2008 Apple Inc.
+ 1998 Alex Nash
+License: APSL-2.0 AND BSD-2-Clause
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: public-domain
+ PUBLIC DOMAIN: No Rights Reserved. Marco S Hyman <marc@snafu.org>
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the author nor the names of any co-contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY JOHN BIRRELL AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-Evans
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice(s), this list of conditions and the following disclaimer as
+    the first lines of this file unmodified other than the possible
+    addition of one or more copyright notices.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice(s), this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) ``AS IS'' AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDER(S) BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-John-Birrell
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by John Birrell.
+ 4. Neither the name of the author nor the names of any co-contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY JOHN BIRRELL AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-HPND-OSF
+ Permission to use, copy, modify, and distribute this software and
+ its documentation for any purpose and without fee is hereby granted,
+ provided that the above copyright notice appears in all copies and
+ that both the copyright notice and this permission notice appear in
+ supporting documentation.
+ .
+ OSF DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE.
+ .
+ IN NO EVENT SHALL OSF BE LIABLE FOR ANY SPECIAL, INDIRECT, OR
+ CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN ACTION OF CONTRACT,
+ NEGLIGENCE, OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION
+ WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.

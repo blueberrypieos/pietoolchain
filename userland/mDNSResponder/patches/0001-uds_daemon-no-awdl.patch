@@ -1,0 +1,21 @@
+diff --git a/mDNSShared/uds_daemon.c b/mDNSShared/uds_daemon.c
+index 6486f1e..deb5835 100644
+--- a/mDNSShared/uds_daemon.c
++++ b/mDNSShared/uds_daemon.c
+@@ -13,6 +13,7 @@
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
+  */
++/* Modified 2026-10-31: no AWDL split queries (Apache-2.0 section 4(b)). */
+ 
+ #if defined(_WIN32)
+ #include <process.h>
+@@ -3626,7 +3627,7 @@ mDNSlocal void resolve_result_callback(mDNS *const m, DNSQuestion *question, con
+     request_state *const req = question->QuestionContext;
+     const mDNSu32 name_hash = mDNS_DomainNameFNV1aHash(&question->qname);
+     const mDNSBool isMDNSQuestion = mDNSOpaque16IsZero(question->TargetQID);
+-    const mDNSBool is_split_awdl_query = (req->resolve_awdl && question->InterfaceID == AWDLInterfaceID);
++    const mDNSBool is_split_awdl_query = mDNSfalse;
+     UDS_LOG_ANSWER_EVENT(isMDNSQuestion ? MDNS_LOG_CATEGORY_MDNS : MDNS_LOG_CATEGORY_DEFAULT, MDNS_LOG_DEFAULT,
+         req, question, answer, mDNSfalse, "DNSServiceResolve result", AddRecord);
+ 

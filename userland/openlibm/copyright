@@ -1,0 +1,213 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: OpenLibm
+Upstream-Contact: https://github.com/JuliaMath/openlibm
+Source: https://github.com/JuliaMath/openlibm
+ tag v0.8.8 (commit 5fe399749f9276eaa0b8403e507470da05cbbb3f)
+
+Files: *
+Copyright: 1993, 2004 Sun Microsystems, Inc.
+ 2008 Steven G. Kargl, David Schultz, Bruce D. Evans
+ 2013 Elliot Saba
+ 2009-2011 Bruce D. Evans, Steven G. Kargl, David Schultz
+ 1997, 1999 Free Software Foundation, Inc.
+ 2008 Stephen L. Moshier <steve@moshier.net>
+ 1992-2011 The FreeBSD Project
+ 2011-2014 The Julia Project
+License: SunPro
+
+Files: include/*
+ src/aarch64_fpmath.h
+ src/fpmath.h
+ src/k_exp.c
+ src/k_expf.c
+ src/s_carg.c
+ src/s_cargf.c
+ src/s_ccosh.c
+ src/s_ccoshf.c
+ src/s_cexp.c
+ src/s_cexpf.c
+ src/s_cimag.c
+ src/s_cimagf.c
+ src/s_conj.c
+ src/s_conjf.c
+ src/s_cproj.c
+ src/s_cprojf.c
+ src/s_creal.c
+ src/s_crealf.c
+ src/s_csinh.c
+ src/s_csinhf.c
+ src/s_csqrt.c
+ src/s_csqrtf.c
+ src/s_ctanh.c
+ src/s_ctanhf.c
+ src/s_exp2.c
+ src/s_exp2f.c
+ src/s_fdim.c
+ src/s_fma.c
+ src/s_fmaf.c
+ src/s_fmax.c
+ src/s_fmaxf.c
+ src/s_fmin.c
+ src/s_fminf.c
+ src/s_isfinite.c
+ src/s_isinf.c
+ src/s_isnan.c
+ src/s_isnormal.c
+ src/s_lrint.c
+ src/s_lround.c
+ src/s_nan.c
+ src/s_nearbyint.c
+ src/s_round.c
+ src/s_roundf.c
+ src/s_scalbln.c
+ src/s_signbit.c
+ src/s_tgammaf.c
+Copyright: 2002-2011 David Schultz <das@FreeBSD.ORG>
+ 2004 Stefan Farfeleder
+ 2003, 2007 Steven G. Kargl
+ 2007, 2011 David Schultz
+ 2005 Bruce D. Evans and Steven G. Kargl
+ 2003 Mike Barcroft <mike@FreeBSD.org>
+ 2014 The FreeBSD Foundation
+License: BSD-2-Clause
+
+Files: include/openlibm_complex.h
+ src/s_cacos.c
+ src/s_cacosf.c
+ src/s_cacosh.c
+ src/s_cacoshf.c
+ src/s_casin.c
+ src/s_casinf.c
+ src/s_casinh.c
+ src/s_casinhf.c
+ src/s_catan.c
+ src/s_catanf.c
+ src/s_catanh.c
+ src/s_catanhf.c
+ src/s_clog.c
+ src/s_clogf.c
+ src/s_cpow.c
+ src/s_cpowf.c
+Copyright: 2008 Stephen L. Moshier <steve@moshier.net>
+ 2008, 2011 Martynas Venckus <martynas@openbsd.org>
+License: ISC
+
+Files: src/w_cabs.c
+ src/w_cabsf.c
+Copyright: none; written by J.T. Conklin and others, who placed them in the public domain
+License: public-domain
+
+Files: bsdsrc/*
+Copyright: 1985, 1988, 1990-1993 The Regents of the University of California
+License: BSD-3-Clause
+
+Files: include/openlibm_math.h
+Copyright: 1993 Sun Microsystems, Inc.
+License: SunPro
+
+Files: include/openlibm_defs.h
+ include/openlibm_fenv.h
+ src/cdefs-compat.h
+ src/common.c
+ src/s_signgam.c
+ src/types-compat.h
+Copyright: 2011-2014 The Julia Project
+ the OpenLibm contributors (https://github.com/JuliaMath/openlibm/graphs/contributors)
+License: MIT
+
+Files: src/s_llrint.c
+ src/s_llrintf.c
+ src/s_llround.c
+ src/s_llroundf.c
+ src/s_lrintf.c
+ src/s_lroundf.c
+Copyright: 2005 David Schultz <das@FreeBSD.ORG>
+License: BSD-2-Clause
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: MIT
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+License: public-domain
+ The authors placed these files in the public domain.
+
+License: SunPro
+ Permission to use, copy, modify, and distribute this
+ software is freely granted, provided that this notice
+ is preserved.

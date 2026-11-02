@@ -1,0 +1,17 @@
+diff --git a/src/cdefs-compat.h b/src/cdefs-compat.h
+index 834c547..3ca72a5 100644
+--- a/src/cdefs-compat.h
++++ b/src/cdefs-compat.h
+@@ -11,7 +11,11 @@
+ #endif
+ #endif /* !defined(__BEGIN_DECLS) */
+ 
+-#ifdef __GNUC__
++#if defined(__APPLE__) && defined(__MACH__)
++#define openlibm_strong_reference(sym,alias)
++#define openlibm_weak_reference(sym,alias)
++#define openlibm_warn_references(sym,msg)
++#elif defined(__GNUC__)
+ #if defined(__strong_alias) && defined(__NetBSD__)
+ #define openlibm_strong_reference(sym,alias) __strong_alias(alias,sym)
+ #elif defined(__strong_reference)

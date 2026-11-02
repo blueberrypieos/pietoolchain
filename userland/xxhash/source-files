@@ -1,0 +1,5 @@
+LICENSE
+libxxhash.pc.in
+xxh3.h
+xxhash.c
+xxhash.h

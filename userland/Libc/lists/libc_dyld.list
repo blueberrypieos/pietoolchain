@@ -1,0 +1,526 @@
+compat-43/FreeBSD/creat.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CREAT
+compat-43/FreeBSD/gethostid.c
+compat-43/FreeBSD/getwd.c
+compat-43/FreeBSD/killpg.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_KILLPG
+compat-43/FreeBSD/sethostid.c
+compat-43/FreeBSD/setpgrp.c
+compat-43/FreeBSD/setrgid.c
+compat-43/FreeBSD/setruid.c
+compat-43/setregid.c	-DLIBC_ALIAS_SETREGID
+compat-43/setreuid.c	-DLIBC_ALIAS_SETREUID
+compat-43/sigaltstk.c
+compat-43/sigcompat.c	-DLIBC_ALIAS_SIGPAUSE
+darwin/forceLibcToBuild.c
+darwin/kvm.c
+darwin/subsystem.c
+db/btree/FreeBSD/bt_close.c
+db/btree/FreeBSD/bt_conv.c
+db/btree/FreeBSD/bt_debug.c
+db/btree/FreeBSD/bt_delete.c
+db/btree/FreeBSD/bt_get.c
+db/btree/FreeBSD/bt_open.c
+db/btree/FreeBSD/bt_overflow.c
+db/btree/FreeBSD/bt_page.c
+db/btree/FreeBSD/bt_put.c
+db/btree/FreeBSD/bt_search.c
+db/btree/FreeBSD/bt_seq.c
+db/btree/FreeBSD/bt_split.c
+db/btree/FreeBSD/bt_utils.c
+db/db/FreeBSD/db.c
+db/hash/FreeBSD/hash.c
+db/hash/FreeBSD/hash_bigkey.c
+db/hash/FreeBSD/hash_buf.c
+db/hash/FreeBSD/hash_func.c
+db/hash/FreeBSD/hash_log2.c
+db/hash/FreeBSD/hash_page.c
+db/hash/FreeBSD/ndbm.c
+db/mpool/FreeBSD/mpool.c
+db/recno/FreeBSD/rec_close.c
+db/recno/FreeBSD/rec_delete.c
+db/recno/FreeBSD/rec_get.c
+db/recno/FreeBSD/rec_open.c
+db/recno/FreeBSD/rec_put.c
+db/recno/FreeBSD/rec_search.c
+db/recno/FreeBSD/rec_seq.c
+db/recno/FreeBSD/rec_utils.c
+emulated/brk.c
+emulated/bsd_signal.c
+emulated/lchflags.c
+emulated/lchmod.c
+emulated/lutimes.c
+emulated/statvfs.c
+emulated/tcgetsid.c
+gdtoa/FreeBSD/_hdtoa.c
+gdtoa/FreeBSD/_ldtoa.c
+gdtoa/FreeBSD/gdtoa-dmisc.c
+gdtoa/FreeBSD/gdtoa-dtoa.c
+gdtoa/FreeBSD/gdtoa-gdtoa.c
+gdtoa/FreeBSD/gdtoa-gmisc.c
+gdtoa/FreeBSD/gdtoa-misc.c
+gdtoa/FreeBSD/gdtoa-smisc.c
+gdtoa/FreeBSD/gdtoa-sum.c
+gdtoa/FreeBSD/gdtoa-ulp.c
+gdtoa/FreeBSD/glue.c
+gdtoa/_ldbl_util.c
+gen/FreeBSD/_rand48.c
+gen/FreeBSD/alarm.c
+gen/FreeBSD/arc4random.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/assert.c
+gen/FreeBSD/basename.c
+gen/FreeBSD/clock.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CLOCK
+gen/FreeBSD/closedir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CLOSEDIR -include gen/__dirent.h
+gen/FreeBSD/ctermid.c
+gen/FreeBSD/daemon.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/dirname.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/drand48.c
+gen/FreeBSD/erand48.c
+gen/FreeBSD/err.c
+gen/FreeBSD/exec.c
+gen/FreeBSD/fmtcheck.c
+gen/FreeBSD/fmtmsg.c
+gen/FreeBSD/fnmatch.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FNMATCH
+gen/FreeBSD/ftok.c
+gen/FreeBSD/getbsize.c
+gen/FreeBSD/getcap.c
+gen/FreeBSD/getcwd.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/gethostname.c
+gen/FreeBSD/getlogin.c
+gen/FreeBSD/getmntinfo.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/getpagesize.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/getpeereid.c
+gen/FreeBSD/getprogname.c
+gen/FreeBSD/glob.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_GLOB
+gen/FreeBSD/isatty.c
+gen/FreeBSD/jrand48.c
+gen/FreeBSD/lcong48.c
+gen/FreeBSD/lockf.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_LOCKF
+gen/FreeBSD/lrand48.c
+gen/FreeBSD/mrand48.c
+gen/FreeBSD/nice.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_NICE
+gen/FreeBSD/nrand48.c
+gen/FreeBSD/opendir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS___OPENDIR2 -DLIBC_ALIAS_OPENDIR -include gen/__dirent.h
+gen/FreeBSD/pause.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_PAUSE
+gen/FreeBSD/popen.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_POPEN
+gen/FreeBSD/psignal.c
+gen/FreeBSD/readdir.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
+gen/FreeBSD/readpassphrase.c
+gen/FreeBSD/rewinddir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_REWINDDIR -include gen/__dirent.h
+gen/FreeBSD/scandir.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
+gen/FreeBSD/scandir_b.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
+gen/FreeBSD/seed48.c
+gen/FreeBSD/seekdir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SEEKDIR -include gen/__dirent.h
+gen/FreeBSD/sethostname.c
+gen/FreeBSD/setmode.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SETMODE
+gen/FreeBSD/setprogname.c
+gen/FreeBSD/siginterrupt.c
+gen/FreeBSD/siglist.c
+gen/FreeBSD/signal.c
+gen/FreeBSD/sleep.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SLEEP
+gen/FreeBSD/srand48.c
+gen/FreeBSD/stringlist.c
+gen/FreeBSD/sysconf.c
+gen/FreeBSD/sysctl.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/sysctlbyname.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/sysctlnametomib.c
+gen/FreeBSD/telldir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS__SEEKDIR -DLIBC_ALIAS_TELLDIR -include gen/__dirent.h
+gen/FreeBSD/termios.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_TCDRAIN
+gen/FreeBSD/time.c
+gen/FreeBSD/times.c
+gen/FreeBSD/timespec_get.c
+gen/FreeBSD/timezone.c	$(FreeBSD_CFLAGS)
+gen/FreeBSD/ttyname.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_TTYNAME_R
+gen/FreeBSD/ttyslot.c
+gen/FreeBSD/ualarm.c
+gen/FreeBSD/ulimit.c
+gen/FreeBSD/unvis.c
+gen/FreeBSD/usleep.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_USLEEP
+gen/FreeBSD/utime.c
+gen/FreeBSD/vis.c
+gen/FreeBSD/wait.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_WAIT
+gen/FreeBSD/wait3.c
+gen/FreeBSD/waitpid.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_WAITPID
+gen/FreeBSD/wordexp.c
+gen/NetBSD/utmpx.c
+gen/authentication.c
+gen/backtrace.c
+gen/clock_gettime.c
+gen/confstr.c	-DLIBC_ALIAS_CONFSTR
+gen/crypt.c	-DLIBC_ALIAS_ENCRYPT -DLIBC_ALIAS_SETKEY
+gen/devname.c
+gen/dirfd.c
+gen/disklabel.c
+gen/errlst.c
+gen/filesec.c
+gen/fts.c	-DLIBC_ALIAS_FTS_CHILDREN -DLIBC_ALIAS_FTS_CLOSE -DLIBC_ALIAS_FTS_OPEN -DLIBC_ALIAS_FTS_OPEN_B -DLIBC_ALIAS_FTS_READ -DLIBC_ALIAS_FTS_SET
+gen/get_compat.c
+gen/getloadavg.c
+gen/getttyent.c
+gen/getusershell.c
+gen/getvfsbyname.c
+gen/nanosleep.c	-DLIBC_ALIAS_NANOSLEEP
+gen/nftw.c	-DLIBC_ALIAS_FTW -DLIBC_ALIAS_NFTW
+gen/nlist.c
+gen/oldsyslog.c
+gen/raise.c
+gen/setlogin.c
+gen/sigsetops.c
+gen/strtofflags.c
+gen/sync_volume_np.c
+gen/thread_stack_pcs.c
+gen/uname.c
+gen/utmpx-darwin.c
+gmon/gmon.c
+i386/gen/mcount.s
+locale/FreeBSD/ascii.c
+locale/FreeBSD/big5.c
+locale/FreeBSD/btowc.c
+locale/FreeBSD/collate.c
+locale/FreeBSD/collcmp.c
+locale/FreeBSD/euc.c
+locale/FreeBSD/fix_grouping.c
+locale/FreeBSD/gb18030.c
+locale/FreeBSD/gb2312.c
+locale/FreeBSD/gbk.c
+locale/FreeBSD/ldpart.c
+locale/FreeBSD/lmessages.c
+locale/FreeBSD/lmonetary.c
+locale/FreeBSD/lnumeric.c
+locale/FreeBSD/localeconv.c
+locale/FreeBSD/mblen.c
+locale/FreeBSD/mbrlen.c
+locale/FreeBSD/mbrtowc.c
+locale/FreeBSD/mbsinit.c
+locale/FreeBSD/mbsnrtowcs.c
+locale/FreeBSD/mbsrtowcs.c
+locale/FreeBSD/mbstowcs.c
+locale/FreeBSD/mbtowc.c
+locale/FreeBSD/mskanji.c
+locale/FreeBSD/nextwctype.c
+locale/FreeBSD/nl_langinfo.c
+locale/FreeBSD/nomacros.c
+locale/FreeBSD/none.c
+locale/FreeBSD/rune.c
+locale/FreeBSD/runetype.c
+locale/FreeBSD/setlocale.c
+locale/FreeBSD/setrunelocale.c
+locale/FreeBSD/table.c
+locale/FreeBSD/tolower.c
+locale/FreeBSD/toupper.c
+locale/FreeBSD/utf2.c
+locale/FreeBSD/utf8.c
+locale/FreeBSD/wcrtomb.c
+locale/FreeBSD/wcsftime.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_WCSFTIME -DLIBC_ALIAS_WCSFTIME_L
+locale/FreeBSD/wcsnrtombs.c
+locale/FreeBSD/wcsrtombs.c
+locale/FreeBSD/wcstod.c
+locale/FreeBSD/wcstof.c
+locale/FreeBSD/wcstoimax.c
+locale/FreeBSD/wcstol.c
+locale/FreeBSD/wcstold.c
+locale/FreeBSD/wcstoll.c
+locale/FreeBSD/wcstombs.c
+locale/FreeBSD/wcstoul.c
+locale/FreeBSD/wcstoull.c
+locale/FreeBSD/wcstoumax.c
+locale/FreeBSD/wctob.c
+locale/FreeBSD/wctomb.c
+locale/FreeBSD/wctrans.c
+locale/FreeBSD/wctype.c
+locale/FreeBSD/wcwidth.c
+locale/frune.c
+locale/isctype.c
+locale/iswctype.c
+locale/lconv.c
+locale/mbrune.c
+locale/runedepreciated.c
+locale/setinvalidrune.c
+locale/xlocale.c
+net/FreeBSD/addr2ascii.c
+net/FreeBSD/ascii2addr.c
+net/FreeBSD/inet_addr.c
+net/FreeBSD/inet_lnaof.c
+net/FreeBSD/inet_makeaddr.c
+net/FreeBSD/inet_net_ntop.c
+net/FreeBSD/inet_net_pton.c
+net/FreeBSD/inet_neta.c
+net/FreeBSD/inet_netof.c
+net/FreeBSD/inet_network.c
+net/FreeBSD/inet_ntoa.c
+net/FreeBSD/linkaddr.c
+net/FreeBSD/nsap_addr.c
+net/FreeBSD/recv.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_RECV
+net/FreeBSD/send.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SEND
+net/FreeBSD/sockatmark.c
+net/FreeBSD/sourcefilter.c
+net/inet_ntop.c
+net/inet_pton.c
+nls/FreeBSD/msgcat.c
+os/assumes.c
+os/debug_private.c
+posix1e/acl.c
+posix1e/acl_entry.c
+posix1e/acl_file.c
+posix1e/acl_flag.c
+posix1e/acl_perm.c
+posix1e/acl_translate.c
+regex/FreeBSD/regerror.c
+stdio/FreeBSD/_flock_stub.c
+stdio/FreeBSD/asprintf.c
+stdio/FreeBSD/clrerr.c
+stdio/FreeBSD/dprintf.c
+stdio/FreeBSD/fclose.c
+stdio/FreeBSD/fdopen.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FDOPEN
+stdio/FreeBSD/feof.c
+stdio/FreeBSD/ferror.c
+stdio/FreeBSD/fflush.c
+stdio/FreeBSD/fgetc.c
+stdio/FreeBSD/fgetln.c
+stdio/FreeBSD/fgetpos.c
+stdio/FreeBSD/fgets.c
+stdio/FreeBSD/fgetwc.c
+stdio/FreeBSD/fgetwln.c
+stdio/FreeBSD/fgetws.c
+stdio/FreeBSD/fileno.c
+stdio/FreeBSD/findfp.c
+stdio/FreeBSD/flags.c
+stdio/FreeBSD/fopen.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FOPEN
+stdio/FreeBSD/fprintf.c
+stdio/FreeBSD/fpurge.c
+stdio/FreeBSD/fputc.c
+stdio/FreeBSD/fputs.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FPUTS
+stdio/FreeBSD/fputwc.c
+stdio/FreeBSD/fputws.c
+stdio/FreeBSD/fread.c
+stdio/FreeBSD/freopen.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FREOPEN
+stdio/FreeBSD/fscanf.c
+stdio/FreeBSD/fseek.c
+stdio/FreeBSD/fsetpos.c
+stdio/FreeBSD/ftell.c
+stdio/FreeBSD/funopen.c
+stdio/FreeBSD/fvwrite.c
+stdio/FreeBSD/fwalk.c
+stdio/FreeBSD/fwide.c
+stdio/FreeBSD/fwprintf.c
+stdio/FreeBSD/fwrite.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_FWRITE
+stdio/FreeBSD/fwscanf.c
+stdio/FreeBSD/getc.c
+stdio/FreeBSD/getchar.c
+stdio/FreeBSD/getdelim.c
+stdio/FreeBSD/getline.c
+stdio/FreeBSD/gets.c
+stdio/FreeBSD/getw.c
+stdio/FreeBSD/getwc.c
+stdio/FreeBSD/getwchar.c
+stdio/FreeBSD/makebuf.c
+stdio/FreeBSD/mktemp.c
+stdio/FreeBSD/perror.c
+stdio/FreeBSD/printf-pos.c
+stdio/FreeBSD/printf.c
+stdio/FreeBSD/putc.c
+stdio/FreeBSD/putchar.c
+stdio/FreeBSD/puts.c
+stdio/FreeBSD/putw.c
+stdio/FreeBSD/putwc.c
+stdio/FreeBSD/putwchar.c
+stdio/FreeBSD/refill.c
+stdio/FreeBSD/remove.c
+stdio/FreeBSD/rewind.c
+stdio/FreeBSD/rget.c
+stdio/FreeBSD/scanf.c
+stdio/FreeBSD/setbuf.c
+stdio/FreeBSD/setbuffer.c
+stdio/FreeBSD/setvbuf.c
+stdio/FreeBSD/snprintf.c
+stdio/FreeBSD/sprintf.c
+stdio/FreeBSD/sscanf.c
+stdio/FreeBSD/stdio.c
+stdio/FreeBSD/swprintf.c
+stdio/FreeBSD/swscanf.c
+stdio/FreeBSD/tempnam.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_TEMPNAM
+stdio/FreeBSD/tmpfile.c	$(FreeBSD_CFLAGS) -D_DARWIN_UNLIMITED_STREAMS
+stdio/FreeBSD/tmpnam.c
+stdio/FreeBSD/ungetc.c
+stdio/FreeBSD/ungetwc.c
+stdio/FreeBSD/vasprintf.c
+stdio/FreeBSD/vdprintf.c
+stdio/FreeBSD/vfprintf.c
+stdio/FreeBSD/vfscanf.c
+stdio/FreeBSD/vfwprintf.c
+stdio/FreeBSD/vfwscanf.c
+stdio/FreeBSD/vprintf.c
+stdio/FreeBSD/vscanf.c
+stdio/FreeBSD/vsnprintf.c
+stdio/FreeBSD/vsprintf.c
+stdio/FreeBSD/vsscanf.c
+stdio/FreeBSD/vswprintf.c
+stdio/FreeBSD/vswscanf.c
+stdio/FreeBSD/vwprintf.c
+stdio/FreeBSD/vwscanf.c
+stdio/FreeBSD/wbuf.c
+stdio/FreeBSD/wprintf.c
+stdio/FreeBSD/wscanf.c
+stdio/FreeBSD/wsetup.c
+stdlib/FreeBSD/_Exit_.c
+stdlib/FreeBSD/abort.c
+stdlib/FreeBSD/abs.c
+stdlib/FreeBSD/atexit.c	$(FreeBSD_CFLAGS)
+stdlib/FreeBSD/atof.c
+stdlib/FreeBSD/atoi.c
+stdlib/FreeBSD/atol.c
+stdlib/FreeBSD/atoll.c
+stdlib/FreeBSD/bsearch.c
+stdlib/FreeBSD/div.c
+stdlib/FreeBSD/exit.c	$(FreeBSD_CFLAGS)
+stdlib/FreeBSD/getenv.c
+stdlib/FreeBSD/getopt.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_GETOPT
+stdlib/FreeBSD/getopt_long.c
+stdlib/FreeBSD/getsubopt.c
+stdlib/FreeBSD/hcreate.c
+stdlib/FreeBSD/heapsort.c	$(FreeBSD_CFLAGS)
+stdlib/FreeBSD/heapsort_b.c
+stdlib/FreeBSD/heapsort_r.c
+stdlib/FreeBSD/imaxabs.c
+stdlib/FreeBSD/imaxdiv.c
+stdlib/FreeBSD/insque.c
+stdlib/FreeBSD/labs.c
+stdlib/FreeBSD/ldiv.c
+stdlib/FreeBSD/llabs.c
+stdlib/FreeBSD/lldiv.c
+stdlib/FreeBSD/lsearch.c
+stdlib/FreeBSD/merge.c	$(FreeBSD_CFLAGS)
+stdlib/FreeBSD/putenv.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_PUTENV
+stdlib/FreeBSD/qsort.c	$(FreeBSD_CFLAGS)
+stdlib/FreeBSD/qsort_r.c
+stdlib/FreeBSD/quick_exit.c
+stdlib/FreeBSD/radixsort.c
+stdlib/FreeBSD/rand.c
+stdlib/FreeBSD/random.c
+stdlib/FreeBSD/realpath.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_REALPATH
+stdlib/FreeBSD/remque.c
+stdlib/FreeBSD/setenv.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_REALPATH
+stdlib/FreeBSD/strhash.c
+stdlib/FreeBSD/strtoimax.c
+stdlib/FreeBSD/strtol.c
+stdlib/FreeBSD/strtoll.c
+stdlib/FreeBSD/strtonum.c
+stdlib/FreeBSD/strtoq.c
+stdlib/FreeBSD/strtoul.c
+stdlib/FreeBSD/strtoull.c
+stdlib/FreeBSD/strtoumax.c
+stdlib/FreeBSD/strtouq.c
+stdlib/FreeBSD/system.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SYSTEM
+stdlib/FreeBSD/tdelete.c
+stdlib/FreeBSD/tfind.c
+stdlib/FreeBSD/tsearch.c
+stdlib/FreeBSD/twalk.c
+stdlib/NetBSD/strfmon.c
+stdlib/OpenBSD/ecvt.c
+stdlib/OpenBSD/gcvt.c
+stdlib/a64l.c
+stdlib/grantpt.c
+stdlib/l64a.c
+stdlib/qsort_b.c
+stdlib/strtofp.c
+stdtime/FreeBSD/asctime.c
+stdtime/FreeBSD/difftime.c
+stdtime/FreeBSD/ftime.c
+stdtime/FreeBSD/localtime.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_MKTIME
+stdtime/FreeBSD/strftime.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_STRFTIME -DLIBC_ALIAS_STRFTIME_L
+stdtime/FreeBSD/strptime.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_STRPTIME -DLIBC_ALIAS_STRPTIME_L
+stdtime/FreeBSD/time32.c
+stdtime/FreeBSD/timelocal.c
+stdtime/getdate.c	-D_DARWIN_UNLIMITED_STREAMS
+stdtime/timezone_unix03.c
+string/FreeBSD/memmem.c
+string/FreeBSD/rindex.c
+string/FreeBSD/rpmatch.c
+string/FreeBSD/strcasecmp.c
+string/FreeBSD/strcasestr.c
+string/FreeBSD/strcoll.c
+string/FreeBSD/strcspn.c
+string/FreeBSD/strdup.c	$(FreeBSD_CFLAGS)
+string/FreeBSD/strerror.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_STRERROR
+string/FreeBSD/strmode.c
+string/FreeBSD/strndup.c
+string/FreeBSD/strnstr.c
+string/FreeBSD/strpbrk.c
+string/FreeBSD/strrchr.c	$(FreeBSD_CFLAGS)
+string/FreeBSD/strsep.c
+string/FreeBSD/strsignal.c
+string/FreeBSD/strspn.c
+string/FreeBSD/strtok.c
+string/FreeBSD/strxfrm.c
+string/FreeBSD/swab.c
+string/FreeBSD/timingsafe_bcmp.c
+string/FreeBSD/wcpcpy.c
+string/FreeBSD/wcpncpy.c
+string/FreeBSD/wcscasecmp.c
+string/FreeBSD/wcscat.c
+string/FreeBSD/wcschr.c
+string/FreeBSD/wcscmp.c
+string/FreeBSD/wcscoll.c
+string/FreeBSD/wcscpy.c
+string/FreeBSD/wcscspn.c
+string/FreeBSD/wcsdup.c
+string/FreeBSD/wcslcat.c
+string/FreeBSD/wcslcpy.c
+string/FreeBSD/wcslen.c
+string/FreeBSD/wcsncasecmp.c
+string/FreeBSD/wcsncat.c
+string/FreeBSD/wcsncmp.c
+string/FreeBSD/wcsncpy.c
+string/FreeBSD/wcsnlen.c
+string/FreeBSD/wcspbrk.c
+string/FreeBSD/wcsrchr.c
+string/FreeBSD/wcsspn.c
+string/FreeBSD/wcsstr.c
+string/FreeBSD/wcstok.c
+string/FreeBSD/wcswidth.c
+string/FreeBSD/wcsxfrm.c
+string/FreeBSD/wmemchr.c
+string/FreeBSD/wmemcmp.c
+string/FreeBSD/wmemcpy.c
+string/FreeBSD/wmemmove.c
+string/FreeBSD/wmemset.c
+string/bcopy.c	-momit-leaf-frame-pointer
+string/stpcpy.c
+string/stpncpy.c
+string/strcat.c
+string/strncat.c
+sys/OSMemoryNotification.c
+sys/OSThermalNotification.c
+sys/OpenBSD/stack_protector.c
+sys/_libc_atfork.c
+sys/_libc_init.c
+sys/chmodx_np.c
+sys/crt_externs.c
+sys/fork.c
+sys/getgroups.c
+sys/gettimeofday.c
+sys/msgctl.c	-DLIBC_ALIAS_MSGCTL -DKERNEL
+sys/openx_np.c
+sys/posix_spawn.c
+sys/semctl.c	-DLIBC_ALIAS_SEMCTL -DKERNEL
+sys/settimeofday.c
+sys/shmctl.c	-DLIBC_ALIAS_SHMCTL -DKERNEL
+sys/sigaction.c
+sys/statx_np.c
+sys/umaskx_np.c
+util/fparseln.c
+util/login.c
+util/login_tty.c
+util/logout.c
+util/logwtmp.c
+util/mkpath_np.c
+util/opendev.c
+util/pty.c
+uuid/uuidsrc/clear.c
+uuid/uuidsrc/compare.c
+uuid/uuidsrc/copy.c
+uuid/uuidsrc/gen_uuid.c
+uuid/uuidsrc/isnull.c
+uuid/uuidsrc/pack.c
+uuid/uuidsrc/parse.c
+uuid/uuidsrc/unpack.c
+uuid/uuidsrc/unparse.c
+x86_64/gen/mcount.s

@@ -1,0 +1,13 @@
+diff --git a/common/MachOFile.cpp b/common/MachOFile.cpp
+--- a/common/MachOFile.cpp
++++ b/common/MachOFile.cpp
+@@ -2289,7 +2289,8 @@ static const char* const sTreatAsWeak[] = {
+     "__ZnamSt11align_val_t", "__ZnamSt11align_val_tRKSt9nothrow_t",
+     "__ZdlPvSt11align_val_t", "__ZdlPvSt11align_val_tRKSt9nothrow_t", "__ZdlPvmSt11align_val_t",
+     "__ZdaPvSt11align_val_t", "__ZdaPvSt11align_val_tRKSt9nothrow_t", "__ZdaPvmSt11align_val_t",
+-    "__ZnwmSt19__type_descriptor_t", "__ZnamSt19__type_descriptor_t"
++    // Modified 2026-10-31: the type descriptor operator new entries are removed
++    // (APSL 2.0 section 2.2(b)).
+ };
+ 
+ void MachOFile::forEachTreatAsWeakDef(void (^handler)(const char* symbolName))

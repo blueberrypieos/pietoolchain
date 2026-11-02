@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# A clang wrapper that targets arm64 Darwin, for cross-compiling Darwin
+# software on Linux.
+#
+# Upstream clang accepts -arch and -mmacosx-version-min only when it
+# targets Darwin, so the wrapper sets the arm64 Darwin target; a -target or
+# --target option from the caller still takes precedence. When linking,
+# --ld-path points clang's Darwin driver at our ld64. It is not passed to
+# compile-only steps, where the unused option would trip -Werror.
+#
+# PIE_SDKROOT, if set, is the sysroot. -lcc_kext links the sysroot's
+# usr/lib/libcc_kext.a.
+#
+# With PIE_REPRODUCIBLE=1, the output records /usr/src/pie as the
+# compilation directory and clang's resource directory as
+# /usr/src/pie/llvm-resource. PIE_REPRO_SOURCE (the source tree),
+# PIE_XNU_SOURCE, PIE_REPRO_OBJROOT and PIE_SDKROOT are recorded as
+# /usr/src/pie/src, xnu, obj and sdk.
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+CLANG="${PIE_CLANG:-clang-21}"
+case "$(basename "$0")" in
+	clang++|c++) CLANG="${PIE_CLANGXX:-clang++-21}" ;;
+esac
+
+sysroot="${PIE_SDKROOT:-$TOOLCHAIN/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk}"
+prev=""
+for a in "$@"; do
+	[ "$prev" = "-isysroot" ] && sysroot="$a"
+	prev="$a"
+done
+
+args=()
+if [ -n "${PIE_SDKROOT:-}" ]; then
+	args+=(-isysroot "$PIE_SDKROOT")
+fi
+if [ "${PIE_REPRODUCIBLE:-0}" = 1 ]; then
+	: "${SOURCE_DATE_EPOCH:?reproducible compilation requires SOURCE_DATE_EPOCH}"
+	args+=(-fdebug-compilation-dir=/usr/src/pie)
+	resource="$("$CLANG" -print-resource-dir)" || exit 1
+	args+=("-ffile-prefix-map=$resource=/usr/src/pie/llvm-resource")
+	for mapping in "${PIE_REPRO_SOURCE:-}=/usr/src/pie/src" \
+	               "${PIE_XNU_SOURCE:-}=/usr/src/pie/xnu" \
+	               "${PIE_REPRO_OBJROOT:-}=/usr/src/pie/obj" \
+	               "${PIE_SDKROOT:-}=/usr/src/pie/sdk"; do
+		[ "${mapping%%=*}" = '' ] || args+=("-ffile-prefix-map=$mapping")
+	done
+fi
+link=1
+for a in "$@"; do
+	case "$a" in
+		# Drop unsupported flags.
+		-mno-implicit-sme) ;;
+		-lcc_kext) args+=("$sysroot/usr/lib/libcc_kext.a") ;;
+		-c|-E|-S|-M|-MM|-fsyntax-only) link=0; args+=("$a") ;;
+		*) args+=("$a") ;;
+	esac
+done
+
+linkargs=()
+if [ $link = 1 ]; then
+	linkargs=(--ld-path="${PIE_TARGET_LD:-$TOOLCHAIN/prefix/bin/aarch64-apple-darwin-ld}" -mlinker-version=956.6)
+fi
+
+exec "$CLANG" --target=arm64-apple-darwin "${linkargs[@]}" "${args[@]}"

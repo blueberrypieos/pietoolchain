@@ -1,0 +1,262 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libarchive
+Upstream-Contact: https://www.libarchive.org/
+Source: https://github.com/apple-oss-distributions/libarchive
+ tag libarchive-167.120.3 (commit bd801c53e444038cf4bfed8318033e3b5cbce341)
+
+Files: *
+Copyright: Apple Inc.
+License: APSL-2.0
+
+Files: libarchive/*
+Copyright: 2003-2024 Tim Kientzle
+License: BSD-2-Clause
+
+Files: libarchive/cpio/*
+ libarchive/libarchive/*
+ libarchive/libarchive_fe/*
+ libarchive/tar/*
+Copyright: 2003-2017 Tim Kientzle
+ 2008-2014 Michihiro NAKAJIMA
+ 2016-2017, 2019-2020, 2023 Martin Matuska
+ 2007-2010 Joerg Sonnenberger
+ 2009-2011, 2017 Sean Purcell
+ 2011-2012 Andres Mejia
+ 2014 Sebastian Freundt
+ 1998, 2001, 2011 The NetBSD Foundation, Inc.
+ 2007 Kai Wang
+ 2009 Andreas Henriksson <andreas@fatal.se>
+ 2008 Anselm Strauss
+ 2018 Grzegorz Antoniak (http://antoniak.org)
+ 2009-2010 Joerg Sonnenberger <joerg@NetBSD.org>
+ 2023-2024 Klara, Inc.
+ 2013 Konrad Kleine
+ 2011-2012 libarchive Project
+ 2013 Marek Kubica
+ 2010 Nokia Corporation and/or its subsidiary(-ies)
+ 2015 Okhotnikov Kirill
+ 2012 Ondrej Holy
+ 2006 Rudolf Marek SYSGO s.r.o.
+ 2002 Thomas Moestl <tmm@FreeBSD.org>
+ 2003-2008 Tim Kientzle and Miklos Vajna
+ 2012-2014 Yann Collet
+License: BSD-2-Clause
+
+Files: libarchive/libarchive/archive_getdate.c
+ libarchive/libarchive/archive_ppmd7.c
+ libarchive/libarchive/archive_ppmd7_private.h
+ libarchive/libarchive/archive_ppmd8.c
+ libarchive/libarchive/archive_ppmd8_private.h
+ libarchive/libarchive/archive_ppmd_private.h
+Copyright: none; placed in the public domain by their authors (Igor Pavlov
+ and Dmitry Shkarin for PPMd; Steven M. Bellovin, Rich $alz, Jim Berets,
+ Tim Kientzle and others for getdate; Tim Kientzle for untar.c)
+License: public-domain
+
+Files: libarchive/libarchive/archive_blake2.h
+ libarchive/libarchive/archive_blake2_impl.h
+ libarchive/libarchive/archive_blake2s_ref.c
+ libarchive/libarchive/archive_blake2sp_ref.c
+Copyright: 2012 Samuel Neves <sneves@dei.uc.pt>
+License: CC0-1.0 OR OpenSSL OR Apache-2.0
+
+Files: libarchive/libarchive/mtree.5
+Copyright: 1989-1991, 1993 The Regents of the University of California
+License: BSD-3-Clause
+
+Files: libarchive/libarchive/archive_random.c
+ libarchive/libarchive_fe/passphrase.c
+Copyright: 2014 Michihiro NAKAJIMA
+ 2008 Damien Miller <djm@openbsd.org>
+ 1996 David Mazieres <dm@uun.org>
+ 2000-2002, 2007, 2010 Todd C. Miller <millert@openbsd.org>
+License: BSD-2-Clause AND ISC
+
+Files: libarchive/libarchive/archive_read_support_filter_compress.c
+ libarchive/libarchive/archive_write_add_filter_compress.c
+Copyright: 1985-1986, 1992-1993 The Regents of the University of California
+ 2008 Joerg Sonnenberger
+ 2003-2007 Tim Kientzle
+License: BSD-2-Clause AND BSD-3-Clause
+
+Files: libarchive/libarchive/archive_check_entitlement.h
+Copyright: Apple Inc.
+License: APSL-2.0
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR(S) ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR(S) BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: CC0-1.0
+ The full text is in /usr/share/common-licenses/CC0-1.0.
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: OpenSSL
+ OpenSSL License
+ .
+ Copyright (c) 1998-2008 The OpenSSL Project. All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ 3. All advertising materials mentioning features or use of this software
+ must display the following acknowledgment: "This product includes software
+ developed by the OpenSSL Project for use in the OpenSSL Toolkit.
+ (http://www.openssl.org/)"
+ .
+ 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to
+ endorse or promote products derived from this software without prior
+ written permission. For written permission, please contact openssl-
+ core@openssl.org.
+ .
+ 5. Products derived from this software may not be called "OpenSSL" nor may
+ "OpenSSL" appear in their names without prior written permission of the
+ OpenSSL Project.
+ .
+ 6. Redistributions of any form whatsoever must retain the following
+ acknowledgment: "This product includes software developed by the OpenSSL
+ Project for use in the OpenSSL Toolkit (http://www.openssl.org/)"
+ .
+ THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT ``AS IS'' AND ANY
+ EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE OpenSSL PROJECT OR ITS CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+ .
+ This product includes cryptographic software written by Eric Young
+ (eay@cryptsoft.com). This product includes software written by Tim Hudson
+ (tjh@cryptsoft.com).
+ .
+ Original SSLeay License
+ .
+ Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com) All rights reserved.
+ .
+ This package is an SSL implementation written by Eric Young
+ (eay@cryptsoft.com). The implementation was written so as to conform with
+ Netscapes SSL.
+ .
+ This library is free for commercial and non-commercial use as long as the
+ following conditions are aheared to. The following conditions apply to all
+ code found in this distribution, be it the RC4, RSA, lhash, DES, etc.,
+ code; not just the SSL code. The SSL documentation included with this
+ distribution is covered by the same copyright terms except that the holder
+ is Tim Hudson (tjh@cryptsoft.com).
+ .
+ Copyright remains Eric Young's, and as such any Copyright notices in the
+ code are not to be removed. If this package is used in a product, Eric
+ Young should be given attribution as the author of the parts of the library
+ used. This can be in the form of a textual message at program startup or in
+ documentation (online or textual) provided with the package.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the copyright notice, this
+ list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ 3. All advertising materials mentioning features or use of this software
+ must display the following acknowledgement: "This product includes
+ cryptographic software written by Eric Young (eay@cryptsoft.com)" The word
+ 'cryptographic' can be left out if the rouines from the library being used
+ are not cryptographic related :-).
+ .
+ 4. If you include any Windows specific code (or a derivative thereof) from
+ the apps directory (application code) you must include an acknowledgement:
+ "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
+ .
+ THIS SOFTWARE IS PROVIDED BY ERIC YOUNG ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN
+ NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+ DAMAGE.
+ .
+ The licence and distribution terms for any publically available version or
+ derivative of this code cannot be changed. i.e. this code cannot simply be
+ copied and put under another distribution licence [including the GNU Public
+ Licence.]
+
+License: public-domain
+ This file is in the public domain.
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

@@ -1,0 +1,21 @@
+diff --git a/libdyld/utils.cpp b/libdyld/utils.cpp
+index 508650e..14d901b 100644
+--- a/libdyld/utils.cpp
++++ b/libdyld/utils.cpp
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: it includes Fixups.h (APSL 2.0 section 2.2(b)). */
+ 
+ #include <TargetConditionals.h>
+ 
+@@ -41,7 +42,7 @@
+ // mach_o
+ #include "Architecture.h"
+ #include "Error.h"
+-#include "Fixup.h"
++#include "Fixups.h"
+ #include "GradedArchitectures.h"
+ #include "UnsafeHeader.h"
+ #include "Image.h"

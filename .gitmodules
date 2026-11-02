@@ -1,0 +1,163 @@
+[submodule "xnu"]
+	path = xnu
+	url = https://github.com/apple-oss-distributions/xnu.git
+[submodule "src/CF"]
+	path = src/CF
+	url = https://github.com/apple-oss-distributions/CF
+[submodule "src/CarbonHeaders"]
+	path = src/CarbonHeaders
+	url = https://github.com/apple-oss-distributions/CarbonHeaders
+[submodule "src/CommonCrypto"]
+	path = src/CommonCrypto
+	url = https://github.com/apple-oss-distributions/CommonCrypto
+[submodule "src/ICU"]
+	path = src/ICU
+	url = https://github.com/apple-oss-distributions/ICU
+[submodule "src/IOKitUser"]
+	path = src/IOKitUser
+	url = https://github.com/apple-oss-distributions/IOKitUser
+[submodule "src/IOStorageFamily"]
+	path = src/IOStorageFamily
+	url = https://github.com/apple-oss-distributions/IOStorageFamily
+[submodule "src/Libc"]
+	path = src/Libc
+	url = https://github.com/apple-oss-distributions/Libc
+[submodule "src/Libinfo"]
+	path = src/Libinfo
+	url = https://github.com/apple-oss-distributions/Libinfo
+[submodule "src/Libm"]
+	path = src/Libm
+	url = https://github.com/apple-oss-distributions/Libm
+[submodule "src/Libnotify"]
+	path = src/Libnotify
+	url = https://github.com/apple-oss-distributions/Libnotify
+[submodule "src/Librpcsvc"]
+	path = src/Librpcsvc
+	url = https://github.com/apple-oss-distributions/Librpcsvc
+[submodule "src/Libsystem"]
+	path = src/Libsystem
+	url = https://github.com/apple-oss-distributions/Libsystem
+[submodule "src/OpenBSM"]
+	path = src/OpenBSM
+	url = https://github.com/apple-oss-distributions/OpenBSM
+[submodule "src/OpenPAM"]
+	path = src/OpenPAM
+	url = https://github.com/apple-oss-distributions/OpenPAM
+[submodule "src/architecture"]
+	path = src/architecture
+	url = https://github.com/apple-oss-distributions/architecture
+[submodule "src/bzip2"]
+	path = src/bzip2
+	url = https://github.com/apple-oss-distributions/bzip2
+[submodule "src/cctools"]
+	path = src/cctools
+	url = https://github.com/apple-oss-distributions/cctools
+[submodule "src/copyfile"]
+	path = src/copyfile
+	url = https://github.com/apple-oss-distributions/copyfile
+[submodule "src/dyld"]
+	path = src/dyld
+	url = https://github.com/apple-oss-distributions/dyld
+[submodule "src/hfs"]
+	path = src/hfs
+	url = https://github.com/apple-oss-distributions/hfs
+[submodule "src/launchd"]
+	path = src/launchd
+	url = https://github.com/apple-oss-distributions/launchd
+[submodule "src/libarchive"]
+	path = src/libarchive
+	url = https://github.com/apple-oss-distributions/libarchive
+[submodule "src/libclosure"]
+	path = src/libclosure
+	url = https://github.com/apple-oss-distributions/libclosure
+[submodule "src/piecrypto"]
+	path = src/piecrypto
+	url = https://github.com/blueberrypieos/piecrypto.git
+[submodule "src/libdispatch"]
+	path = src/libdispatch
+	url = https://github.com/apple-oss-distributions/libdispatch
+[submodule "src/libedit"]
+	path = src/libedit
+	url = https://github.com/apple-oss-distributions/libedit
+[submodule "src/libiconv"]
+	path = src/libiconv
+	url = https://github.com/apple-oss-distributions/libiconv
+[submodule "src/ipsec"]
+	path = src/ipsec
+	url = https://github.com/apple-oss-distributions/ipsec
+[submodule "src/libmalloc"]
+	path = src/libmalloc
+	url = https://github.com/apple-oss-distributions/libmalloc
+[submodule "src/libmd"]
+	path = src/libmd
+	url = https://github.com/apple-oss-distributions/libmd
+[submodule "src/libpcap"]
+	path = src/libpcap
+	url = https://github.com/apple-oss-distributions/libpcap
+[submodule "src/libplatform"]
+	path = src/libplatform
+	url = https://github.com/apple-oss-distributions/libplatform
+[submodule "src/libpthread"]
+	path = src/libpthread
+	url = https://github.com/apple-oss-distributions/libpthread
+[submodule "src/libresolv"]
+	path = src/libresolv
+	url = https://github.com/apple-oss-distributions/libresolv
+[submodule "src/configd"]
+	path = src/configd
+	url = https://github.com/apple-oss-distributions/configd
+[submodule "src/libutil"]
+	path = src/libutil
+	url = https://github.com/apple-oss-distributions/libutil
+[submodule "src/libxml2"]
+	path = src/libxml2
+	url = https://github.com/apple-oss-distributions/libxml2
+[submodule "src/libxo"]
+	path = src/libxo
+	url = https://github.com/Juniper/libxo
+[submodule "src/lz4"]
+	path = src/lz4
+	url = https://github.com/lz4/lz4
+[submodule "src/mDNSResponder"]
+	path = src/mDNSResponder
+	url = https://github.com/apple-oss-distributions/mDNSResponder
+[submodule "src/ncurses"]
+	path = src/ncurses
+	url = https://github.com/apple-oss-distributions/ncurses
+[submodule "src/openlibm"]
+	path = src/openlibm
+	url = https://github.com/JuliaMath/openlibm
+[submodule "src/openssl"]
+	path = src/openssl
+	url = https://github.com/openssl/openssl
+[submodule "src/removefile"]
+	path = src/removefile
+	url = https://github.com/apple-oss-distributions/removefile
+[submodule "src/syslog"]
+	path = src/syslog
+	url = https://github.com/apple-oss-distributions/syslog
+[submodule "src/xxHash"]
+	path = src/xxHash
+	url = https://github.com/Cyan4973/xxHash
+[submodule "src/xz"]
+	path = src/xz
+	url = https://github.com/tukaani-project/xz
+[submodule "src/zlib"]
+	path = src/zlib
+	url = https://github.com/apple-oss-distributions/zlib
+[submodule "src/AvailabilityVersions"]
+	path = src/AvailabilityVersions
+	url = https://github.com/apple-oss-distributions/AvailabilityVersions
+[submodule "src/bootstrap_cmds"]
+	path = src/bootstrap_cmds
+	url = https://github.com/apple-oss-distributions/bootstrap_cmds
+[submodule "src/cctools-port"]
+	path = src/cctools-port
+	url = https://github.com/blueberrypieos/cctools-port.git
+[submodule "src/apple-libdispatch"]
+	path = src/apple-libdispatch
+	url = https://github.com/blueberrypieos/apple-libdispatch.git
+[submodule "src/llvm-project"]
+	path = src/llvm-project
+	url = https://github.com/llvm/llvm-project.git
+	shallow = true

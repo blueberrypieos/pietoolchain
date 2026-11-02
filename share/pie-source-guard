@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+"""usage: pie-source-guard SRCROOT
+
+Fails unless SRCROOT is an extracted source package that keeps only the
+upstream files debian/copyright's Files-Excluded and Files-Included leave
+in: it must not be a git tree, and every file outside debian/ must be one
+those fields keep or one that debian/patches creates. A component's
+directory follows its own Files-Excluded-COMPONENT and
+Files-Included-COMPONENT. rules.mk runs it
+before the build unless PIE_FULL_SOURCE=1 (pie-trace's analysis build).
+"""
+import os
+import re
+import sys
+
+
+def die(msg):
+    sys.exit("pie-source-guard: " + msg)
+
+
+def header(path):
+    text = open(path).read()
+    first = re.split(r"\n[ \t]*\n", text, maxsplit=1)[0]
+    fields = {}
+    for m in re.finditer(r"^([A-Za-z][A-Za-z0-9.+-]*):[ \t]*(.*(?:\n[ \t]+.*)*)", first, re.M):
+        name = m.group(1)
+        for f in ("files-excluded-", "files-included-"):
+            if name.lower().startswith(f):
+                name = f + name[len(f):]
+                break
+        else:
+            name = name.lower()
+        fields[name] = m.group(2).split()
+    return fields
+
+
+def matcher(patterns):
+    """copyright-format patterns: * and ? match / too; a directory matches
+    everything under it. Plain paths and dir/* go through sets."""
+    exact, prefixes, rx = set(), [], []
+    for p in patterns:
+        p = p.rstrip("/")
+        if "*" not in p and "?" not in p:
+            exact.add(p)
+            prefixes.append(p + "/")
+        elif p.endswith("/*") and "*" not in p[:-2] and "?" not in p[:-2]:
+            prefixes.append(p[:-1])
+        else:
+            rx.append(re.compile("".join(".*" if c == "*" else "." if c == "?" else re.escape(c) for c in p)
+                                 + r"(?:/.*)?\Z", re.S))
+    prefixes = tuple(prefixes)
+    return lambda f: f in exact or (bool(prefixes) and f.startswith(prefixes)) or any(r.match(f) for r in rx)
+
+
+def created_by_patches(root):
+    made = set()
+    series = os.path.join(root, "debian", "patches", "series")
+    if os.path.exists(series):
+        for line in open(series):
+            p = line.split("#", 1)[0].split()
+            if p:
+                text = open(os.path.join(root, "debian", "patches", p[0]), errors="replace").read()
+                for m in re.finditer(r"^--- /dev/null[^\n]*\n\+\+\+ (\S+)", text, re.M):
+                    made.add(m.group(1).split("/", 1)[1] if "/" in m.group(1) else m.group(1))
+    return made
+
+
+def main():
+    if len(sys.argv) != 2:
+        die(__doc__)
+    root = os.path.abspath(sys.argv[1])
+    if os.path.exists(os.path.join(root, ".git")):
+        die("%s is a git tree: build from the source package (dpkg-source -x)" % root)
+    fields = header(os.path.join(root, "debian", "copyright"))
+    if "files-excluded" not in fields:
+        return
+    comps = {k[len("files-excluded-"):]: (matcher(v), matcher(fields.get("files-included-" + k[len("files-excluded-"):], [])))
+             for k, v in fields.items() if k.startswith("files-excluded-")}
+    excluded = matcher(fields["files-excluded"])
+    included = matcher(fields.get("files-included", []))
+    made = created_by_patches(root)
+    extra = []
+
+    def left_out(path):
+        top, _, rest = path.partition("/")
+        if top in comps and rest:
+            exc, inc = comps[top]
+            return exc(rest) and not inc(rest)
+        return excluded(path) and not included(path)
+    for d, dirs, files in os.walk(root):
+        rel = os.path.relpath(d, root)
+        if rel == ".":
+            dirs[:] = [x for x in dirs if x not in ("debian", ".pc")]
+        for f in files + [x for x in dirs if os.path.islink(os.path.join(d, x))]:
+            path = os.path.normpath(os.path.join(rel, f))
+            if left_out(path) and path not in made:
+                extra.append(path)
+    if extra:
+        die("the tree has %d file(s) the source package leaves out, such as %s"
+            % (len(extra), ", ".join(sorted(extra)[:10])))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,651 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Libinfo
+Source: https://github.com/apple-oss-distributions/Libinfo
+ tag Libinfo-600 (commit 39b70c515baee5b609e7e91693edbd934b6845a1)
+
+Files: *
+Copyright: 1999-2023 Apple Inc.
+ 1999-2004 Apple Computer, Inc.
+ 1989 NeXT, Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.1.
+
+Files: gen.subproj/configuration_profile.c
+ gen.subproj/configuration_profile.h
+ lookup.subproj/aliasdb.h
+ lookup.subproj/bootparams.h
+ lookup.subproj/cache_module.c
+ lookup.subproj/ds_module.c
+ lookup.subproj/file_module.c
+ lookup.subproj/ils.c
+ lookup.subproj/ils.h
+ lookup.subproj/kvbuf.c
+ lookup.subproj/libinfo.c
+ lookup.subproj/libinfo.h
+ lookup.subproj/libinfo_muser.h
+ lookup.subproj/muser_module.c
+ lookup.subproj/netdb_async.h
+ lookup.subproj/search_module.c
+ lookup.subproj/si_data.c
+ lookup.subproj/si_data.h
+ lookup.subproj/si_getaddrinfo.c
+ lookup.subproj/si_module.c
+ lookup.subproj/si_module.h
+ lookup.subproj/thread_data.c
+ lookup.subproj/thread_data.h
+ util.subproj/hton.c
+Copyright: 1999-2025 Apple Inc.
+ 1989 NeXT, Inc.
+ 1994 NeXT Computer, Inc.
+License: APSL-2.0
+
+Files: rpc.subproj/*
+Copyright: 1999-2025 Apple Inc.
+ 1999 Apple Computer, Inc.
+ 1984-1987, 1990 Sun Microsystems, Inc.
+ 1996 Jason Downs
+License: APSL-2.0 AND LicenseRef-Sun-RPC
+Comment: The Apple code was originally distributed under APSL-1.1. It is used
+ here under APSL-2.0, as permitted by section 7 of APSL-1.1.
+
+Files: rpc.subproj/bindresvport.3
+ rpc.subproj/getrpcent.3
+ rpc.subproj/getrpcport.3
+ rpc.subproj/rpc.3
+ rpc.subproj/xdr.3
+Copyright: Sun Microsystems, Inc.
+License: LicenseRef-Sun-RPC
+
+Files: nis.subproj/*
+Copyright: 1999-2018 Apple Inc.
+ 1999 Apple Computer, Inc.
+ 1992-1993, 1996 Theo de Raadt
+License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Theo-de-Raadt
+Comment: The Apple code was originally distributed under APSL-1.1. It is used
+ here under APSL-2.0, as permitted by section 7 of APSL-1.1.
+
+Files: nis.subproj/*.3
+Copyright: 1996-1997 The NetBSD Foundation, Inc.
+License: LicenseRef-BSD-4-Clause-NetBSD-Foundation-2
+
+Files: util.subproj/hosts.equiv.5
+Copyright: 1996-1997 The NetBSD Foundation, Inc.
+ 1997 Todd Vierling
+License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
+
+Files: nis.subproj/yppasswdd_xdr.c
+Copyright: 1999-2018 Apple Inc.
+ 1994 Mats O Jansson
+License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Mats-Jansson
+Comment: The Apple code was originally distributed under APSL-1.1. It is used
+ here under APSL-2.0, as permitted by section 7 of APSL-1.1.
+
+Files: nis.subproj/yp_prot.h
+Copyright: 1992-1993 Theo de Raadt
+ 2018 Apple Inc.
+License: BSD-3-Clause
+
+Files: nis.subproj/yp.8
+Copyright: 1992-1993 Theo de Raadt
+ 2003-2013 Apple Inc.
+License: APSL-2.0 AND BSD-3-Clause
+
+Files: nis.subproj/getdomainname.c
+ nis.subproj/setdomainname.c
+Copyright: 1999-2018 Apple Inc.
+ 1995 NeXT Computer, Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.1.
+
+Files: gen.subproj/ether_addr.c
+ nis.subproj/innetgr.c
+Copyright: 1999-2018 Apple Inc.
+ 1999 Apple Computer, Inc.
+ 1985, 1990 Sun Microsystems, Inc.
+License: APSL-2.0
+Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
+ permitted by section 7 of APSL-1.1.
+
+Files: dns.subproj/herror.c
+ dns.subproj/res_comp.c
+ gen.subproj/map_v4v6.c
+Copyright: 1985, 1987-1988, 1993 The Regents of the University of California
+ 1993 Digital Equipment Corporation
+ 2018 Apple Inc.
+License: BSD-4-Clause-UC AND LicenseRef-DEC-resolver
+
+Files: gen.subproj/getifaddrs.3
+ gen.subproj/getifaddrs.c
+ gen.subproj/if_indextoname.3
+ gen.subproj/if_indextoname.c
+ gen.subproj/if_nameindex.c
+ gen.subproj/if_nametoindex.c
+ gen.subproj/ifaddrs.h
+Copyright: 1995, 1997, 1999-2000 Berkeley Software Design, Inc.
+ 2018 Apple Inc.
+License: BSD-1-Clause
+
+Files: gen.subproj/getifmaddrs.3
+Copyright: 2003 Bruce M. Simpson
+License: BSD-1-Clause
+
+Files: gen.subproj/getifmaddrs.c
+Copyright: 2003 Bruce M. Simpson
+License: LicenseRef-BSD-4-Clause-Bruce-Simpson
+
+Files: gen.subproj/inet6_opt_init.3
+ gen.subproj/inet6_rth_space.3
+ gen.subproj/ip6opt.c
+ gen.subproj/rthdr.c
+ gen.subproj/vars.c
+ lookup.subproj/getnameinfo_link.c
+Copyright: 1995-1998, 2004 WIDE Project
+ 2000 Ben Harris
+ 2018 Apple Inc.
+License: BSD-3-Clause
+
+Files: gen.subproj/inet6_option_space.3
+ gen.subproj/inet6_rthdr_space.3
+ lookup.subproj/grp.h
+ lookup.subproj/pwd.h
+ util.subproj/rcmd.3
+Copyright: 1983, 1987, 1989, 1991, 1993 The Regents of the University of California
+ UNIX System Laboratories, Inc.
+ 1995 Jason Downs
+ 2000-2018 Apple Inc.
+License: BSD-4-Clause-UC
+
+Files: gen.subproj/gethostbyname.3
+ gen.subproj/getipnodebyname.3
+ gen.subproj/getnetent.3
+ gen.subproj/getprotoent.3
+ gen.subproj/getservent.3
+ lookup.subproj/getnetgrent.3
+Copyright: 1983, 1987, 1991-1993 The Regents of the University of California
+License: BSD-3-Clause
+
+Files: lookup.subproj/getfsent.3
+ lookup.subproj/getgrent.3
+ lookup.subproj/getgrouplist.3
+ lookup.subproj/getpwent.3
+Copyright: 1983, 1988-1989, 1991, 1993 The Regents of the University of California
+ 2003-2013 Apple Inc.
+License: APSL-2.0 AND BSD-3-Clause
+
+Files: lookup.subproj/initgroups.3
+Copyright: 1983, 1991, 1993 The Regents of the University of California
+ 2003-2013 Apple Inc.
+License: APSL-2.0 AND BSD-4-Clause-UC
+
+Files: lookup.subproj/netdb.h
+Copyright: 2000-2009 Apple Inc.
+ 1980, 1983, 1988, 1993 The Regents of the University of California
+ 1993 Digital Equipment Corporation
+License: APSL-2.0 AND BSD-4-Clause-UC AND LicenseRef-DEC-resolver
+
+Files: lookup.subproj/mdns_module.c
+Copyright: 2008-2025 Apple Inc.
+ 1996-1999 Internet Software Consortium
+ 1988, 1993 The Regents of the University of California
+ 1993 Digital Equipment Corporation
+License: APSL-2.0 AND BSD-3-Clause AND ISC AND LicenseRef-DEC-resolver
+
+Files: lookup.subproj/gai_strerror.3
+ lookup.subproj/getaddrinfo.3
+ lookup.subproj/getnameinfo.3
+Copyright: 2004 Internet Systems Consortium, Inc. ("ISC")
+ 2000-2001 Internet Software Consortium
+License: ISC
+
+Files: lookup.subproj/bootparams.5
+ membership.subproj/mbr_check_membership.3
+ membership.subproj/mbr_uid_to_uuid.3
+Copyright: 2005-2011 Apple Inc.
+ 2006 Apple Computer, Inc.
+License: BSD-3-Clause
+
+Files: util.subproj/rcmd.c
+Copyright: 1999-2018 Apple Inc.
+ 1983, 1993-1994 The Regents of the University of California
+ 1995-1996, 1998 Theo de Raadt
+License: APSL-2.0 AND BSD-4-Clause-UC
+Comment: The Apple code was originally distributed under APSL-1.1. It is used
+ here under APSL-2.0, as permitted by section 7 of APSL-1.1.
+
+Files: Libinfo.xcodeproj/project.pbxproj
+ Libinfo/darwin_directory_enabled.h
+ Libinfo/libinfo_common.h
+ Libinfo/od_debug.c
+ Libinfo/od_debug.h
+ lookup.subproj/si_compare.c
+ lookup.subproj/si_compare.h
+ rpc.subproj/module.modulemap
+ rpc.subproj/pmap_wakeup.c
+ rpc.subproj/pmap_wakeup.h
+ xcodescripts/Libinfo.xcconfig
+ xcodescripts/install_files.sh
+Copyright: Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: BSD-1-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ THIS SOFTWARE IS PROVIDED BY Berkeley Software Design, Inc. ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL Berkeley Software Design, Inc. BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+ .
+ Bruce M. Simpson's, in gen.subproj/getifmaddrs.3:
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ THIS SOFTWARE IS PROVIDED BY Bruce M. Simpson ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL Bruce M. Simpson BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+ .
+ The WIDE Project's (KAME), in the IPv6 files of gen.subproj (ip6opt.c,
+ rthdr.c, vars.c and their manual pages) and lookup.subproj/getnameinfo_link.c:
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the project nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+ .
+ Apple's, in lookup.subproj/bootparams.5 and the membership manual pages:
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of Apple Computer nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+ .
+ Theo de Raadt's, in nis.subproj/yp_prot.h and yp.8:
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote
+    products derived from this software without specific prior written
+    permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-4-Clause-UC
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+         This product includes software developed by the University of
+         California, Berkeley and its contributors.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH
+ REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT,
+ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+ PERFORMANCE OF THIS SOFTWARE.
+ .
+ The Internet Software Consortium's, in lookup.subproj/mdns_module.c:
+ .
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
+ ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
+ CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+
+License: LicenseRef-DEC-resolver
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies, and that
+ the name of Digital Equipment Corporation not be used in advertising or
+ publicity pertaining to distribution of the document or software without
+ specific, written prior permission.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
+ WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS.   IN NO EVENT SHALL DIGITAL EQUIPMENT
+ CORPORATION BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+
+License: LicenseRef-Sun-RPC
+ Sun RPC is a product of Sun Microsystems, Inc. and is provided for
+ unrestricted use provided that this legend is included on all tape
+ media and as a part of the software program in whole or part.  Users
+ may copy or modify Sun RPC without charge, but are not authorized
+ to license or distribute it to anyone else except as part of a product or
+ program developed by the user.
+ .
+ SUN RPC IS PROVIDED AS IS WITH NO WARRANTIES OF ANY KIND INCLUDING THE
+ WARRANTIES OF DESIGN, MERCHANTIBILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE, OR ARISING FROM A COURSE OF DEALING, USAGE OR TRADE PRACTICE.
+ .
+ Sun RPC is provided with no support and without any obligation on the
+ part of Sun Microsystems, Inc. to assist in its use, correction,
+ modification or enhancement.
+ .
+ SUN MICROSYSTEMS, INC. SHALL HAVE NO LIABILITY WITH RESPECT TO THE
+ INFRINGEMENT OF COPYRIGHTS, TRADE SECRETS OR ANY PATENTS BY SUN RPC
+ OR ANY PART THEREOF.
+ .
+ In no event will Sun Microsystems, Inc. be liable for any lost revenue
+ or profits or other special, indirect and consequential damages, even if
+ Sun has been advised of the possibility of such damages.
+ .
+ Sun Microsystems, Inc.
+ 2550 Garcia Avenue
+ Mountain View, California  94043
+ .
+ Oracle America, Inc. took over Sun Microsystems, Inc. In 2010 it
+ relicensed the Sun RPC code under the terms below, which glibc's sunrpc
+ files carry:
+ .
+ Copyright (c) 2010, Oracle America, Inc.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+     * Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+     * Redistributions in binary form must reproduce the above
+       copyright notice, this list of conditions and the following
+       disclaimer in the documentation and/or other materials
+       provided with the distribution.
+     * Neither the name of the "Oracle America, Inc." nor the names of its
+       contributors may be used to endorse or promote products derived
+       from this software without specific prior written permission.
+ .
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+   FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+   COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+   INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+   GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Bruce-Simpson
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+        This product includes software developed by Bruce M. Simpson.
+ 4. Neither the name of Bruce M. Simpson nor the names of other
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY BRUCE M. SIMPSON AND AFFILIATES
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL BRUCE M. SIMPSON OR CONTRIBUTORS
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Mats-Jansson
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by Mats O Jansson
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+        This product includes software developed by the NetBSD
+        Foundation, Inc. and its contributors.
+ 4. Neither the name of The NetBSD Foundation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-NetBSD-Foundation-2
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+        This product includes software developed by the NetBSD
+        Foundation, Inc. and its contributors.
+ 4. Neither the name of The NetBSD Foundation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-Theo-de-Raadt
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by Theo de Raadt.
+ 4. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+ OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.

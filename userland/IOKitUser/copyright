@@ -1,0 +1,35 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: IOKitUser
+Source: https://github.com/apple-oss-distributions/IOKitUser
+ tag IOKitUser-100231.120.3 (commit 23a611d9d194b63465f6df2abfdda63d71c87e97)
+
+Files: *
+Copyright: 1994, 1996-2017, 2019, 2022, 2024-2025 Apple Computer, Inc.
+ 1999-2021, 2024 Apple Inc.
+ 1991 NeXT Computer, Inc.
+License: APSL-2.0
+
+Files: IOCFUnserialize.tab.c
+Copyright: 1999-2009 Apple Inc.
+ 1984, 1989-1990, 2000-2006 Free Software Foundation, Inc.
+License: APSL-2.0 AND GPL-2.0-or-later with Bison-2.2 exception
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: GPL-2.0-or-later with Bison-2.2 exception
+ The full text of the GPL is in
+ /usr/share/common-licenses/GPL-2.0-or-later.
+ .
+ As a special exception, you may create a larger work that contains
+ part or all of the Bison parser skeleton and distribute that work
+ under terms of your choice, so long as that work isn't itself a
+ parser generator using the skeleton or a modified version thereof
+ as a parser skeleton.  Alternatively, if you modify or redistribute
+ the parser skeleton itself, you may (at your option) remove this
+ special exception, which will cause the skeleton and the resulting
+ Bison output files to be licensed under the GNU General Public
+ License without this special exception.
+ .
+ This special exception was added by the Free Software Foundation in
+ version 2.2 of Bison.

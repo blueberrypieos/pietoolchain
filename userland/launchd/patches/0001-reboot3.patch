@@ -1,0 +1,22 @@
+diff --git a/liblaunch/reboot2.h b/liblaunch/reboot2.h
+index d5037e1..f58f672 100644
+--- a/liblaunch/reboot2.h
++++ b/liblaunch/reboot2.h
+@@ -17,6 +17,7 @@
+  * 
+  * @APPLE_APACHE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: reboot3 is declared (Apache-2.0 section 4(b)). */
+ 
+ #ifndef __REBOOT2_H__
+ #define __REBOOT2_H__
+@@ -34,6 +35,9 @@ __BEGIN_DECLS
+ __attribute__((visibility("default")))
+ void *reboot2(uint64_t flags);
+ 
++__attribute__((visibility("default")))
++int reboot3(uint64_t howto, ...);
++
+ __END_DECLS
+ 
+ #endif /* __REBOOT2_H__ */

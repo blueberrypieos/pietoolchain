@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+"""
+Minimal plutil(1) for building xnu on Linux, using plistlib.
+
+Supported:
+  plutil -lint [-s] file...
+  plutil -convert xml1|binary1 [-s] [-o out] file...
+  plutil -extract keypath raw|xml1|binary1 [-n] [-o out] file
+"""
+import plistlib
+import sys
+
+FORMATS = {"xml1": plistlib.FMT_XML, "binary1": plistlib.FMT_BINARY}
+
+
+def usage():
+    sys.stderr.write(__doc__)
+    sys.exit(1)
+
+
+def load(path):
+    with open(path, "rb") as f:
+        return plistlib.load(f)
+
+
+def main(argv):
+    if not argv:
+        usage()
+    cmd = argv[0]
+    args = argv[1:]
+    silent = False
+    out = None
+    newline = True
+    rest = []
+    i = 0
+    while i < len(args):
+        a = args[i]
+        if a == "-s":
+            silent = True
+        elif a == "-n":
+            newline = False
+        elif a == "-o":
+            out = args[i + 1]
+            i += 1
+        else:
+            rest.append(a)
+        i += 1
+
+    if cmd == "-lint":
+        status = 0
+        for path in rest:
+            try:
+                load(path)
+                if not silent:
+                    print("%s: OK" % path)
+            except Exception as e:
+                print("%s: %s" % (path, e))
+                status = 1
+        return status
+
+    if cmd == "-convert":
+        fmt = FORMATS.get(rest[0]) if rest else None
+        if fmt is None:
+            usage()
+        for path in rest[1:]:
+            data = load(path)
+            with open(out or path, "wb") as f:
+                plistlib.dump(data, f, fmt=fmt, sort_keys=False)
+        return 0
+
+    if cmd == "-extract":
+        if len(rest) < 3:
+            usage()
+        keypath, fmt, path = rest[0], rest[1], rest[2]
+        value = load(path)
+        for key in keypath.split("."):
+            value = value[int(key)] if isinstance(value, list) else value[key]
+        if fmt == "raw":
+            text = str(value).lower() if isinstance(value, bool) else str(value)
+            data = (text + ("\n" if newline else "")).encode()
+        elif fmt in FORMATS:
+            data = plistlib.dumps(value, fmt=FORMATS[fmt])
+        else:
+            usage()
+        if out and out != "-":
+            with open(out, "wb") as f:
+                f.write(data)
+        else:
+            sys.stdout.buffer.write(data)
+        return 0
+
+    usage()
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

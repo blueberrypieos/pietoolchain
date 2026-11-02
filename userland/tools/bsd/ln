@@ -1,0 +1,11 @@
+#!/bin/sh
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+args=
+for a in "$@"; do
+	case "$a" in
+	-*h*) a=$(printf '%s' "$a" | tr h n) ;;
+	esac
+	args="$args '$(printf '%s' "$a" | sed "s/'/'\\\\''/g")'"
+done
+eval exec /bin/ln $args

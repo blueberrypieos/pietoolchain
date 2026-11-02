@@ -1,0 +1,53 @@
+armcap: on Darwin arm64, ask the kernel for the Crypto Extensions
+
+OpenSSL assumes AES, PMULL, SHA-1 and SHA-256 on every Darwin arm64 CPU.
+They are missing on the Raspberry Pi 4, so the first AES or SHA-256
+operation raised SIGILL. Read hw.optional.arm.FEAT_AES, FEAT_PMULL,
+FEAT_SHA1 and FEAT_SHA256, which our xnu sets from ID_AA64ISAR0_EL1,
+and assume a feature only when its sysctl is missing. NEON is always
+there.
+
+diff --git a/crypto/armcap.c b/crypto/armcap.c
+index 3005d295cfd0..05c7a21c7bea 100644
+--- a/crypto/armcap.c
++++ b/crypto/armcap.c
+@@ -6,6 +6,7 @@
+  * in the file LICENSE in the source distribution or at
+  * https://www.openssl.org/source/license.html
+  */
++/* Modified 2026-10-31: on Darwin, the Crypto Extensions come from the hw.optional.arm sysctls (Apache-2.0 section 4(b)). */
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -231,6 +232,18 @@ static unsigned int sysctl_query(const char *name, unsigned int value)
+ 
+     return (sysctlbyname(name, &sys_value, &len, NULL, 0) == 0 && sys_value == 1) ? value : 0;
+ }
++
++#if defined(__aarch64__)
++static unsigned int sysctl_query_or_assume(const char *name, unsigned int value)
++{
++    unsigned int sys_value = 0;
++    size_t len = sizeof(sys_value);
++
++    if (sysctlbyname(name, &sys_value, &len, NULL, 0) != 0)
++        return value;
++    return sys_value == 1 ? value : 0;
++}
++#endif
+ #elif !defined(OSSL_IMPLEMENT_GETAUXVAL)
+ /*
+  * Calls a provided probe function, which may SIGILL. If it doesn't, return `value`, otherwise return 0.
+@@ -286,7 +299,11 @@ void OPENSSL_cpuid_setup(void)
+          * all of these have been available on 64-bit Apple Silicon from the
+          * beginning (the A7).
+          */
+-        OPENSSL_armcap_P |= ARMV7_NEON | ARMV8_PMULL | ARMV8_AES | ARMV8_SHA1 | ARMV8_SHA256;
++        OPENSSL_armcap_P |= ARMV7_NEON;
++        OPENSSL_armcap_P |= sysctl_query_or_assume("hw.optional.arm.FEAT_AES", ARMV8_AES);
++        OPENSSL_armcap_P |= sysctl_query_or_assume("hw.optional.arm.FEAT_PMULL", ARMV8_PMULL);
++        OPENSSL_armcap_P |= sysctl_query_or_assume("hw.optional.arm.FEAT_SHA1", ARMV8_SHA1);
++        OPENSSL_armcap_P |= sysctl_query_or_assume("hw.optional.arm.FEAT_SHA256", ARMV8_SHA256);
+ 
+         /* More recent extensions are indicated by sysctls */
+         OPENSSL_armcap_P |= sysctl_query("hw.optional.armv8_2_sha512", ARMV8_SHA512);

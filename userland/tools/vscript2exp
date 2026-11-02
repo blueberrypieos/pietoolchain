@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+#   vscript2exp SCRIPT LIST
+import re
+import sys
+
+
+def exports(text):
+	text = re.sub(r'/\*.*?\*/', ' ', text, flags=re.S)
+	text = re.sub(r'#[^\n]*', ' ', text)
+	if re.search(r'extern\s+"C\+\+"', text):
+		raise SystemExit('vscript2exp: extern "C++" blocks are not supported')
+	names = []
+	scope = 'global'
+	for tok in re.findall(r'[A-Za-z_][\w.$*?\[\]]*:|[{};]|[^\s{};]+', text):
+		if tok in ('global:', 'local:'):
+			scope = tok[:-1]
+		elif tok == '{':
+			scope = 'global'
+		elif tok in ('}', ';'):
+			continue
+		elif scope == 'global':
+			names.append(tok)
+	nodes = set(re.findall(r'([\w.]+)\s*\{', text)) | set(re.findall(r'\}\s*([\w.]+)\s*;', text))
+	return [n for n in names if n not in nodes]
+
+
+def main(argv):
+	with open(argv[0]) as f:
+		names = exports(f.read())
+	with open(argv[1], 'w') as f:
+		for n in names:
+			f.write('_' + n + '\n')
+	return 0
+
+
+if __name__ == '__main__':
+	sys.exit(main(sys.argv[1:]))

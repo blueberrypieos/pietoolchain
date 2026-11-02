@@ -1,0 +1,25 @@
+#!/bin/sh
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+set -eu
+case "$1" in install|upgrade) ;; *) exit 0 ;; esac
+root=${DPKG_ROOT:-}
+lib="$root/usr/lib/system/libcommonCrypto.dylib"
+marker="$root/usr/lib/blueberry-pie-os/commoncrypto-ckg-stubs.sha256"
+[ -e "$lib" ] || exit 0
+expected=''
+if [ -r "$marker" ]; then
+    IFS= read -r expected < "$marker" || true
+    if command -v sha256 >/dev/null 2>&1; then
+        actual=$(sha256 -q "$lib")
+    else
+        actual=$(sha256sum "$lib")
+        actual=${actual%% *}
+    fi
+    [ -n "$expected" ] && [ "$actual" = "$expected" ] && exit 0
+fi
+cat >&2 <<'MSG'
+libcorecrypto: install the matching libcommoncrypto package first.
+Refusing to replace libcorecrypto while it is in use.
+MSG
+exit 1

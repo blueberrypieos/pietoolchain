@@ -1,0 +1,11 @@
+APPLE_LICENSE
+copyfile.3
+copyfile.c
+copyfile.h
+copyfile.xcodeproj/*
+copyfile_private.h
+xattr_flags.c
+xattr_flags.h
+xattr_name_with_flags.3
+xattr_properties.h
+xcodescripts/*

@@ -1,0 +1,54 @@
+diff --git a/lookup.subproj/search_module.c b/lookup.subproj/search_module.c
+index dece1ee..00a5fcc 100644
+--- a/lookup.subproj/search_module.c
++++ b/lookup.subproj/search_module.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: the mDNS module is optional (APSL 2.0 section 2.2(b)). */
+ 
+ #include <stdlib.h>
+ #include <paths.h>
+@@ -982,7 +983,9 @@ si_module_static_search(void)
+ #ifdef DS_AVAILABLE
+ 			"ds",
+ #endif
++#ifdef MDNS_AVAILABLE
+ 			"mdns",
++#endif
+ 			"file",
+ 		};
+ 
+diff --git a/lookup.subproj/si_module.c b/lookup.subproj/si_module.c
+index dd09f20..b909228 100644
+--- a/lookup.subproj/si_module.c
++++ b/lookup.subproj/si_module.c
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: the mDNS module is optional (APSL 2.0 section 2.2(b)). */
+ 
+ #include "libinfo_common.h"
+ 
+@@ -88,7 +89,9 @@ si_mod_t *si_module_static_muser(void);
+ #ifdef DS_AVAILABLE
+ si_mod_t *si_module_static_ds(void);
+ #endif
++#ifdef MDNS_AVAILABLE
+ si_mod_t *si_module_static_mdns(void);
++#endif
+ #ifdef DARWIN_DIRECTORY_AVAILABLE
+ si_mod_t *si_module_static_darwin_directory(void);
+ #endif
+@@ -197,7 +200,9 @@ si_module_with_name(const char *name)
+ #ifdef DS_AVAILABLE
+ 		{ "ds", si_module_static_ds, NULL },
+ #endif
++#ifdef MDNS_AVAILABLE
+ 		{ "mdns", si_module_static_mdns, NULL },
++#endif
+ #ifdef DARWIN_DIRECTORY_AVAILABLE
+ 		{ "darwin_directory", si_module_static_darwin_directory, NULL },
+ #endif

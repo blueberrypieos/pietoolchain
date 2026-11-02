@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: launchd
+Source: https://github.com/apple-oss-distributions/launchd (tag launchd-842.92.1)
+
+Files: *
+Copyright: 1999-2012 Apple Inc. and Apple Computer, Inc.
+License: Apache-2.0
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.

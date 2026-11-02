@@ -1,0 +1,22 @@
+Description: Sanitizer denylists may name files the source package leaves out
+ The SDK builds only xnu's headers, and its source package keeps only the
+ xnu files that build reads. validate_denylist.sh now reports a denylisted
+ file that is missing without failing.
+Forwarded: not-needed
+
+--- a/san/tools/validate_denylist.sh
++++ b/san/tools/validate_denylist.sh
+@@ -1,4 +1,5 @@
+ #!/bin/bash
++# Modified 2026-11-01: a missing file is reported without failing (APSL 2.0 section 2.2(b)).
+ 
+ # Ensure all denylisted files exist. Paths with wildcards are ignored.
+ # Run against a denylist with fully-qualified paths.
+@@ -21,7 +22,6 @@
+ for f in $denylist_files ; do
+ 	if ! [[ -e $f ]] ; then
+ 		echo "KASan: denylisted file $f not found" >&2
+-		ret=1
+ 	fi
+ done
+ 

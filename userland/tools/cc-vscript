@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+here="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+case "$(basename "$0")" in
+	c++-vscript) cc="$here/../../toolchain/bin/clang++" ;;
+	*) cc="$here/../../toolchain/bin/clang" ;;
+esac
+out=a.out
+prev=
+for a in "$@"; do
+	[ "$prev" = -o ] && out="$a"
+	prev="$a"
+done
+args=()
+script=
+for a in "$@"; do
+	if [ "$script" = next ]; then
+		script="${a#-Wl,}"
+	else
+		case "$a" in
+			-Wl,--version-script) script=next; continue ;;
+			-Wl,--version-script,*|-Wl,--version-script=*) script="${a#-Wl,--version-script?}" ;;
+			*) args+=("$a"); continue ;;
+		esac
+	fi
+	"$here/vscript2exp" "$script" "$out.exp" || exit 1
+	args+=("-Wl,-exported_symbols_list,$out.exp")
+	script=
+done
+exec "$cc" "${args[@]}"

@@ -1,0 +1,171 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libresolv
+Source: https://github.com/apple-oss-distributions/libresolv
+ tag libresolv-96 (commit e48cd914edc1cb14f8289b8e2dfdaac360481cd2)
+
+Files: *
+Copyright: 2004-2009 Internet Systems Consortium, Inc. ("ISC")
+ 1995-2003 Internet Software Consortium
+ 1995-1998 Trusted Information Systems, Inc.
+License: ISC
+
+Files: APPLE_LICENSE
+ dns.c
+ dns.h
+ dns_async.c
+ dns_private.h
+ dns_util.c
+ dns_util.h
+ libresolv.xcodeproj/*
+ xcodescripts/*
+Copyright: 1999-2008 Apple Inc.
+ 2003-2006 Apple Computer, Inc.
+License: APSL-2.0
+
+Files: arpa/nameser.h
+ nameser.h
+ resolv.h
+Copyright: 1983, 1987, 1989, 1993 The Regents of the University of California
+ 2004-2009 Internet Systems Consortium, Inc. ("ISC")
+ 1995-2003 Internet Software Consortium
+License: BSD-3-Clause AND ISC
+
+Files: res_comp.c
+ res_init.c
+ res_mkquery.c
+ res_query.c
+ res_send.c
+Copyright: 1985, 1988-1989, 1993 The Regents of the University of California
+ 1993 Digital Equipment Corporation
+ 2004-2009 Internet Systems Consortium, Inc. ("ISC")
+ 1996-2003 Internet Software Consortium
+License: BSD-3-Clause AND ISC AND LicenseRef-DEC
+
+Files: res_debug.c
+Copyright: 1985 The Regents of the University of California
+ 1993 Digital Equipment Corporation
+ 1995 International Business Machines, Inc.
+ 2004-2009 Internet Systems Consortium, Inc. ("ISC")
+ 1996-2003 Internet Software Consortium
+License: BSD-3-Clause AND ISC AND LicenseRef-DEC AND LicenseRef-IBM
+
+Files: base64.c
+Copyright: 1996, 1998 Internet Software Consortium
+ 1995 International Business Machines, Inc.
+License: ISC AND LicenseRef-IBM
+
+Files: resolver.3
+ resolver.5
+Copyright: 1985-1986, 1991, 1993 The Regents of the University of California
+ 2003 Apple Computer, Inc.
+License: BSD-3-Clause
+
+Files: res_state.c
+Copyright: 2006 The FreeBSD Project
+License: BSD-2-Clause
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: ISC
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: LicenseRef-DEC
+ Portions Copyright (c) 1993 by Digital Equipment Corporation.
+ .
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies, and that
+ the name of Digital Equipment Corporation not be used in advertising or
+ publicity pertaining to distribution of the document or software without
+ specific, written prior permission.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
+ WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS.   IN NO EVENT SHALL DIGITAL EQUIPMENT
+ CORPORATION BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+
+License: LicenseRef-IBM
+ Portions Copyright (c) 1995 by International Business Machines, Inc.
+ .
+ International Business Machines, Inc. (hereinafter called IBM) grants
+ permission under its copyrights to use, copy, modify, and distribute this
+ Software with or without fee, provided that the above copyright notice and
+ all paragraphs of this notice appear in all copies, and that the name of IBM
+ not be used in connection with the marketing of any product incorporating
+ the Software or modifications thereof, without specific, written prior
+ permission.
+ .
+ To the extent it has a right to do so, IBM grants an immunity from suit
+ under its patents, if any, for the use, sale or manufacture of products to
+ the extent that such products are used for performing Domain Name System
+ dynamic updates in TCP/IP networks by means of the Software.  No immunity is
+ granted for any product per se or for any other function of any product.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", AND IBM DISCLAIMS ALL WARRANTIES,
+ INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE.  IN NO EVENT SHALL IBM BE LIABLE FOR ANY SPECIAL,
+ DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER ARISING
+ OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE, EVEN
+ IF IBM IS APPRISED OF THE POSSIBILITY OF SUCH DAMAGES.

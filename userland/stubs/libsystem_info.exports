@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+_freeifaddrs
+_getgrgid
+_getgrnam
+_getgroupcount
+_getgrouplist
+_getifaddrs
+_getpwnam
+_getpwuid
+_getpwuid_r
+_if_nametoindex
+_mbr_gid_to_uuid
+_mbr_uid_to_uuid
+_mbr_uuid_to_id
+_mbr_check_membership

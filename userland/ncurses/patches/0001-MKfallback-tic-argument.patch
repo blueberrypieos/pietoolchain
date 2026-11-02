@@ -1,0 +1,18 @@
+diff --git a/xcodescripts/derived_sources.sh b/xcodescripts/derived_sources.sh
+index 8bbe031..6d8b590 100644
+--- a/xcodescripts/derived_sources.sh
++++ b/xcodescripts/derived_sources.sh
+@@ -1,4 +1,5 @@
+ #!/bin/sh
++# Modified 2026-10-31: tic is given its argument for MKfallback.sh (APSL 2.0 section 2.2(b)).
+ set -e -x
+ 
+ CC=`xcrun -find cc -sdk macosx.internal`
+@@ -33,6 +34,7 @@ sh "$PROJECT_DIR"/ncurses/ncurses/tty/MKexpanded.sh \
+ sh "$PROJECT_DIR/ncurses/ncurses/tinfo/MKfallback.sh" \
+ 	/usr/share/terminfo \
+ 	"$PROJECT_DIR"/ncurses/misc/terminfo.src \
++	tic \
+ 	> "$BUILT_PRODUCTS_DIR"/fallback.c
+ 
+ # lib_gen.c

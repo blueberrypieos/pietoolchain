@@ -1,0 +1,17 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: AvailabilityVersions
+Source: https://github.com/apple-oss-distributions/AvailabilityVersions (tag AvailabilityVersions-157.2)
+
+Files: *
+Copyright: 2007-2025 Apple Inc.
+License: APSL-2.0
+
+Files: templates/os_availability.h
+Copyright: 2008-2025 Apple Inc.
+License: Apache-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.

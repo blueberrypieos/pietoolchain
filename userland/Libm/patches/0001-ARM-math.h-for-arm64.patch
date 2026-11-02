@@ -1,0 +1,107 @@
+diff --git a/Source/ARM/math.h b/Source/ARM/math.h
+index f34828c..aaf5ab7 100644
+--- a/Source/ARM/math.h
++++ b/Source/ARM/math.h
+@@ -19,6 +19,15 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/*
++ * Modifications Copyright (c) 2026 The Blueberry Pie OS Authors.
++ * Modified 2026-10-31: arm64 support.
++ *
++ * This file was originally made available by Apple under the Apple Public
++ * Source License Version 1.1. Pursuant to section 7 of that license, it is
++ * used and distributed here under the Apple Public Source License
++ * Version 2.0.
++ */
+  
+ /*******************************************************************************
+ *                                                                              *
+@@ -27,8 +36,14 @@
+ *     Contains: typedefs, prototypes, and macros germane to C99 floating point.*
+ *                                                                              *
+ *******************************************************************************/
++#ifndef __MATH_H__
++#define __MATH_H__
+ #ifndef __MATH__
+ #define __MATH__
++#endif
++
++#include <sys/cdefs.h>
++#include <Availability.h>
+ 
+ #ifdef __cplusplus
+ extern "C" {
+@@ -99,6 +114,11 @@ extern "C" {
+ #undef FP_FAST_FMA
+ #undef FP_FAST_FMAF
+ #undef FP_FAST_FMAL
++#if defined(__arm64__)
++#define FP_FAST_FMA     1
++#define FP_FAST_FMAF    1
++#define FP_FAST_FMAL    1
++#endif
+ 
+ /* The values returned by `ilogb' for 0 and NaN respectively. */
+ #define FP_ILOGB0      (-2147483647 - 1)
+@@ -126,11 +146,11 @@ extern int __math_errhandling ( void );
+ 
+ #define fpclassify(x)    \
+     (    sizeof (x) == sizeof(float )    ?    __fpclassifyf((float)(x))    \
+-    :    sizeof (x) == sizeof(double)    ?    __fpclassify((double)(x))    \
++    :    sizeof (x) == sizeof(double)    ?    __fpclassifyd((double)(x))    \
+                                          :    __fpclassifyl ((long double)(x)))
+ 
+ extern int __fpclassifyf(float      );
+-extern int __fpclassify(double     );
++extern int __fpclassifyd(double    );
+ extern int __fpclassifyl(long double);
+ 
+ 
+@@ -518,8 +538,44 @@ extern long double lgammal_r(long double, int *);
+ 	
+ 	
+ 
++#if !defined(_ANSI_SOURCE) && (!defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE))
++extern float  __exp10f(float);
++extern double __exp10(double);
++extern float  __cospif(float);
++extern double __cospi(double);
++extern float  __sinpif(float);
++extern double __sinpi(double);
++extern float  __tanpif(float);
++extern double __tanpi(double);
++
++struct __float2  { float  __sinval; float  __cosval; };
++struct __double2 { double __sinval; double __cosval; };
++extern struct __float2  __sincosf_stret(float);
++extern struct __double2 __sincos_stret(double);
++extern struct __float2  __sincospif_stret(float);
++extern struct __double2 __sincospi_stret(double);
++
++static __inline__ __MATH_H_ALWAYS_INLINE__ void
++__sincosf(float __x, float *__sinp, float *__cosp)
++{ const struct __float2 __s = __sincosf_stret(__x); *__sinp = __s.__sinval; *__cosp = __s.__cosval; }
++static __inline__ __MATH_H_ALWAYS_INLINE__ void
++__sincos(double __x, double *__sinp, double *__cosp)
++{ const struct __double2 __s = __sincos_stret(__x); *__sinp = __s.__sinval; *__cosp = __s.__cosval; }
++static __inline__ __MATH_H_ALWAYS_INLINE__ void
++__sincospif(float __x, float *__sinp, float *__cosp)
++{ const struct __float2 __s = __sincospif_stret(__x); *__sinp = __s.__sinval; *__cosp = __s.__cosval; }
++static __inline__ __MATH_H_ALWAYS_INLINE__ void
++__sincospi(double __x, double *__sinp, double *__cosp)
++{ const struct __double2 __s = __sincospi_stret(__x); *__sinp = __s.__sinval; *__cosp = __s.__cosval; }
++
++extern int    finite(double);
++extern double gamma(double);
++extern double drem(double, double);
++extern double significand(double);
++#endif
++
+ #ifdef __cplusplus
+ }
+ #endif
+ 
+-#endif /* __MATH__ */
++#endif

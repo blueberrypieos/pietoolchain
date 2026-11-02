@@ -1,0 +1,25 @@
+diff --git a/src/nano_zone.h b/src/nano_zone.h
+index e9828c5..c281dde 100644
+--- a/src/nano_zone.h
++++ b/src/nano_zone.h
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: the arm64 nano zone layout (APSL 2.0 section 2.2(b)). */
+ 
+ 
+ #ifndef __NANO_ZONE_H
+@@ -39,6 +40,12 @@
+ #define NANO_SLOT_BITS			4
+ #define NANO_OFFSET_BITS		17
+ 
++#elif defined(__arm64__)
++#define NANO_MAG_BITS			6
++#define NANO_BAND_BITS			17
++#define NANO_SLOT_BITS			4
++#define NANO_OFFSET_BITS		17
++
+ #else
+ #error Unknown Architecture
+ #endif

@@ -1,0 +1,23 @@
+diff --git a/include/mach-o/dyld.h b/include/mach-o/dyld.h
+index 7bf19c0..c5e565d 100644
+--- a/include/mach-o/dyld.h
++++ b/include/mach-o/dyld.h
+@@ -20,6 +20,7 @@
+  * 
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: DYLD_EXCLAVEKIT_UNAVAILABLE is defined when missing (APSL 2.0 section 2.2(b)). */
+ #ifndef _MACH_O_DYLD_H_
+ #define _MACH_O_DYLD_H_
+ 
+@@ -41,6 +42,10 @@ extern "C" {
+  #define DYLD_DRIVERKIT_UNAVAILABLE
+ #endif
+ 
++#ifndef DYLD_EXCLAVEKIT_UNAVAILABLE
++ #define DYLD_EXCLAVEKIT_UNAVAILABLE
++#endif
++
+ 
+ /*
+  * The following functions allow you to iterate through all loaded images.  

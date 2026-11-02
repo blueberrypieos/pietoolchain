@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# Run xnu's GNU make with pietoolchain, from the xnu source directory:
+#
+#   xnu-make [MAKE ARGS...]
+#
+# It passes the values the xnu makefiles expect from xcrun, sw_vers and
+# sysctl. PIE_SDKROOT is the kernel SDK (kernel/make-sdk.sh), and JOBS, if
+# set, make's -j. With PIE_REPRODUCIBLE=1, SOURCE_DATE_EPOCH is the
+# kernel's build date.
+set -euo pipefail
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+export PATH="$TOOLCHAIN/bin:$TOOLCHAIN/prefix/bin:$PATH"
+if [ "${PIE_REPRODUCIBLE:-0}" = 1 ]; then
+	: "${SOURCE_DATE_EPOCH:?reproducible kernel builds require SOURCE_DATE_EPOCH}"
+	KERNEL_BUILD_DATE="$("${PYTHON_FOR_BUILD:-python3}" -I -c 'import datetime,os; value=os.environ["SOURCE_DATE_EPOCH"]; assert value.isascii() and value.isdecimal(); print(datetime.datetime.fromtimestamp(int(value),datetime.timezone.utc).strftime("%a %b %d %H:%M:%S UTC %Y"))')"
+	export KERNEL_BUILD_DATE
+	export KERNEL_BUILD_USER=root KERNEL_BUILD_OBJROOT=/usr/src/pie/obj
+	export TZ=UTC LC_ALL=C ZERO_AR_DATE=1
+fi
+NCPU="$(getconf _NPROCESSORS_ONLN)"
+MEMSIZE="$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) ))"
+if [ "${PIE_REPRODUCIBLE:-0}" = 1 ] && [ -n "${PIE_REPRO_OBJROOT:-}" ]; then
+	export PIE_REAL_TARGET_LD="${PIE_TARGET_LD:-$TOOLCHAIN/prefix/bin/aarch64-apple-darwin-ld}"
+	export PIE_TARGET_LD="$TOOLCHAIN/bin/ld-repro"
+fi
+JOBS_ARG=()
+if [ -n "${JOBS:-}" ]; then
+	JOBS_ARG=(-j"$JOBS")
+fi
+exec make "${JOBS_ARG[@]}" \
+	XCRUN="$TOOLCHAIN/bin/xcrun" \
+	SDKROOT=macosx HOST_SDKROOT="${PIE_HOST_SDKROOT:-macosx}" \
+	HOST_OS_VERSION="${PIE_HOST_OS_VERSION:-26.5}" \
+	RC_DARWIN_KERNEL_VERSION="${RC_DARWIN_KERNEL_VERSION:-25.5.0}" \
+	HOST_CC="$TOOLCHAIN/bin/host-cc" \
+	HOST_CODESIGN=/bin/true \
+	DOCONF_SHELL="${PIE_TCSH:-$(command -v tcsh)}" \
+	AWK="$TOOLCHAIN/bin/awk" \
+	PLUTIL="$TOOLCHAIN/bin/plutil" \
+	SYSCTL_HW_PHYSICALCPU="$NCPU" SYSCTL_HW_LOGICALCPU="$NCPU" \
+	MEMORY_SIZE="$MEMSIZE" \
+	"$@"

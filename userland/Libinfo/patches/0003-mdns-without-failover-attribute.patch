@@ -1,0 +1,21 @@
+diff --git a/lookup.subproj/mdns_module.c b/lookup.subproj/mdns_module.c
+index 4cc8048..63df83f 100644
+--- a/lookup.subproj/mdns_module.c
++++ b/lookup.subproj/mdns_module.c
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: the failover attribute is used only when dns_sd.h has it (APSL 2.0 section 2.2(b)). */
+ /*
+  * Portions Copyright (c) 1996-1999 by Internet Software Consortium.
+  *
+@@ -1326,7 +1327,7 @@ _mdns_query_start(mdns_query_context_t *ctx, mdns_reply_t *reply, uint8_t *answe
+ 
+ 	_mdns_debug_message(";; mdns query %s type %d class %d ifindex %d [ctx %p]\n", qname, type, class, (int)iface, ctx);
+ 
+-#if _DNS_SD_H >= 15030000
++#if _DNS_SD_H >= 15030000 && defined(HAVE_DNSSD_ATTR_ALLOW_FAILOVER)
+ 	status = DNSServiceQueryRecordWithAttribute(&ctx->sd, flags, iface, qname, type, class, &kDNSServiceAttrAllowFailover, _mdns_query_callback, ctx);
+ #else
+ 	status = DNSServiceQueryRecord(&ctx->sd, flags, iface, qname, type, class, _mdns_query_callback, ctx);

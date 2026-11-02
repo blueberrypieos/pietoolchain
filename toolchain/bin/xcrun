@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# xcrun(1) for building xnu, with what the xnu makefiles use:
+#   xcrun [-verbose] [-sdk SDK] -find TOOL
+#   xcrun [-sdk SDK] -show-sdk-path | -show-sdk-version |
+#         -show-sdk-platform-path | -show-sdk-build-version
+#   xcrun [-sdk SDK] TOOL [ARGS...]
+#
+# Every SDK name means PIE_SDKROOT (default: pietoolchain-sdk's SDK); an
+# argument that is a directory is used as it is.
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+PREFIX="$TOOLCHAIN/prefix"
+PLATFORM_DIR="$TOOLCHAIN/sdk/MacOSX.platform"
+DEFAULT_SDK="$PLATFORM_DIR/Developer/SDKs/MacOSX.sdk"
+SDK_VERSION="${PIE_SDK_VERSION:-26.5}"
+LLVM_BIN="${PIE_LLVM_BIN:-/usr/lib/llvm-21/bin}"
+sdk=""
+verbose=0
+
+resolve_sdk() {
+	if [ -n "$1" ] && [ -d "$1" ]; then
+		(cd "$1" && pwd)
+	else
+		echo "${PIE_SDKROOT:-$DEFAULT_SDK}"
+	fi
+}
+
+find_tool() {
+	local t="$1"
+	case "$t" in
+		ld) echo "${PIE_TARGET_LD:-$PREFIX/bin/aarch64-apple-darwin-ld}"; return 0 ;;
+		ctfconvert|ctfmerge|ctfdump|docc|scan-build) return 1 ;;
+		gm4) t=m4 ;;
+		objdump) t=llvm-objdump ;;
+	esac
+	local c
+	for c in "$TOOLCHAIN/bin/$t" \
+	         "$PREFIX/bin/$t" \
+	         "$PREFIX/bin/aarch64-apple-darwin-$t" \
+	         "$PREFIX/libexec/$t" \
+	         "$LLVM_BIN/$t"; do
+		if [ -x "$c" ] && [ ! -d "$c" ]; then
+			echo "$c"
+			return 0
+		fi
+	done
+	command -v "$t" 2>/dev/null
+}
+
+while [ $# -gt 0 ]; do
+	case "$1" in
+		-verbose|-v) verbose=1; shift ;;
+		-sdk|--sdk) sdk="$2"; shift 2 ;;
+		-toolchain|--toolchain) shift 2 ;;
+		-no-cache|-kill-cache|-log|-l|-n) shift ;;
+		-find|--find|-f)
+			find_tool "$2" || { echo "xcrun: error: unable to find utility \"$2\"" >&2; exit 1; }
+			exit 0 ;;
+		-show-sdk-path|--show-sdk-path)
+			resolve_sdk "$sdk"; exit 0 ;;
+		-show-sdk-version|--show-sdk-version)
+			echo "$SDK_VERSION"; exit 0 ;;
+		-show-sdk-build-version|--show-sdk-build-version)
+			echo "pie"; exit 0 ;;
+		-show-sdk-platform-path|--show-sdk-platform-path)
+			echo "$PLATFORM_DIR"; exit 0 ;;
+		-show-sdk-platform-version|--show-sdk-platform-version)
+			echo "$SDK_VERSION"; exit 0 ;;
+		-run|-r) shift; break ;;
+		-*) echo "xcrun: error: unsupported option $1" >&2; exit 1 ;;
+		*) break ;;
+	esac
+done
+
+[ $# -gt 0 ] || { echo "usage: xcrun [-sdk SDK] (-find TOOL | TOOL [ARGS...])" >&2; exit 1; }
+tool="$(find_tool "$1")" || { echo "xcrun: error: unable to find utility \"$1\"" >&2; exit 1; }
+shift
+[ $verbose = 1 ] && echo "xcrun: exec $tool $*" >&2
+export SDKROOT="${SDKROOT:-$(resolve_sdk "$sdk")}"
+exec "$tool" "$@"

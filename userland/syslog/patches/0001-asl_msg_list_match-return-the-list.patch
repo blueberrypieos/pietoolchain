@@ -1,0 +1,27 @@
+diff --git a/libsystem_asl.tproj/src/asl_msg_list.c b/libsystem_asl.tproj/src/asl_msg_list.c
+index 8840691..5ba0be5 100644
+--- a/libsystem_asl.tproj/src/asl_msg_list.c
++++ b/libsystem_asl.tproj/src/asl_msg_list.c
+@@ -20,6 +20,7 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-10-31: asl_msg_list_match returns the list (APSL 2.0 section 2.2(b)). */
+ 
+ #include <string.h>
+ #include <stdio.h>
+@@ -445,12 +446,12 @@ asl_msg_list_match(asl_msg_list_t *list, asl_msg_list_t *qlist, size_t *last, si
+ 			n++;
+ 		}
+ 
+-		if (n >= count) return n;
++		if (n >= count) return out;
+ 
+ 		/* check the timer */
+ 		if ((finish.tv_sec != 0) && (gettimeofday(&now, NULL) == 0))
+ 		{
+-			if ((now.tv_sec > finish.tv_sec) || ((now.tv_sec == finish.tv_sec) && (now.tv_usec > finish.tv_usec))) return n;
++			if ((now.tv_sec > finish.tv_sec) || ((now.tv_sec == finish.tv_sec) && (now.tv_usec > finish.tv_usec))) return out;
+ 		}
+ 
+ 		i += direction;

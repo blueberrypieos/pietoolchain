@@ -1,0 +1,12 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: hfs
+Source: https://github.com/apple-oss-distributions/hfs
+ tag hfs-715.120.4 (commit 124b970fd5390f1c2cd6f985478616a04f6eeb1f)
+
+Files: *
+Copyright: 1992-2024 Apple Inc.
+ 1985-1986, 1990, 1992-2023 Apple Computer, Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.

@@ -1,0 +1,23 @@
+Description: Do not install the DriverKit headers
+ Generating them needs iig, which the SDK does not build.
+Forwarded: not-needed
+
+--- a/iokit/Makefile
++++ b/iokit/Makefile
+@@ -1,3 +1,4 @@
++# Modified 2026-10-31: the DriverKit headers are not installed (APSL 2.0 section 2.2(b)).
+ export MakeInc_cmd=${SRCROOT}/makedefs/MakeInc.cmd
+ export MakeInc_def=${SRCROOT}/makedefs/MakeInc.def
+ export MakeInc_rule=${SRCROOT}/makedefs/MakeInc.rule
+@@ -6,9 +7,9 @@
+ include $(MakeInc_cmd)
+ include $(MakeInc_def)
+ 
+-INSTINC_SUBDIRS = IOKit DriverKit System IOKitUser Exclaves
++INSTINC_SUBDIRS = IOKit System IOKitUser Exclaves
+ 
+-EXPINC_SUBDIRS = IOKit DriverKit Exclaves
++EXPINC_SUBDIRS = IOKit Exclaves
+ 
+ COMP_SUBDIRS = conf
+ 

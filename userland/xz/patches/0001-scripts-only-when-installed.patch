@@ -1,0 +1,19 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2370,6 +2370,8 @@
+     set(xz "xz")
+     set(POSIX_SHELL "${XZ_POSIX_SHELL}")
+ 
++    # Configure the scripts only when they are installed.
++    if(ENABLE_SCRIPTS)
+     foreach(S xzdiff xzgrep xzmore xzless)
+         configure_file("src/scripts/${S}.in" "${S}"
+                @ONLY
+@@ -2384,6 +2386,7 @@
+                     COMPONENT scripts_Runtime)
+         endif()
+     endforeach()
++    endif()
+ 
+     unset(xz)
+     unset(POSIX_SHELL)

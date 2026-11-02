@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# The build machine's C and C++ compilers (host-cc, host-c++) for xnu's
+# SETUP tools. -isysroot and -mmacosx-version-min are dropped. Darwin's
+# headers come from toolchain/hostcompat and cctools (toolchain/hostinc),
+# and links get cctools' libstuff and libmacho.
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+CC="${PIE_HOST_CC:-clang-21}"
+case "$(basename "$0")" in
+	host-c++) CC="${PIE_HOST_CXX:-clang++-21}" ;;
+esac
+args=()
+skip=0
+link=1
+for a in "$@"; do
+	if [ $skip = 1 ]; then skip=0; continue; fi
+	case "$a" in
+		-isysroot) skip=1 ;;
+		-mmacosx-version-min=*) ;;
+		-c|-E|-S|-M|-MM) link=0; args+=("$a") ;;
+		*) args+=("$a") ;;
+	esac
+done
+libs=()
+if [ $link = 1 ]; then
+	L="$TOOLCHAIN/prefix/lib/cctools-host"
+	libs=(-Wl,--start-group "$L/libstuff.a" "$L/libmacho.a" -Wl,--end-group -luuid)
+fi
+exec "$CC" -include "$TOOLCHAIN/hostcompat/include/compat.h" \
+	-I"$TOOLCHAIN/hostcompat/include" -idirafter "$TOOLCHAIN/hostinc" -idirafter "$TOOLCHAIN/hostinc/foreign" \
+	"${args[@]}" "${libs[@]}"

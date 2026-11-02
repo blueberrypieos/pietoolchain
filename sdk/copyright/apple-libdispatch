@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: apple-libdispatch
+
+Files: src/apple-libdispatch/*
+Copyright: 2008-2024 Apple Inc. and the Swift project authors
+License: Apache-2.0 with Runtime Library exception
+
+License: Apache-2.0 with Runtime Library exception
+ On Debian and Ubuntu systems, the full text of the Apache License 2.0 is
+ in /usr/share/common-licenses/Apache-2.0. The Runtime Library exception:
+ .
+ As an exception, if you use this Software to compile your source code and
+     portions of this Software are embedded into the binary product as a result,
+     you may redistribute such product without providing attribution as would
+     otherwise be required by Sections 4(a), 4(b) and 4(d) of the License.

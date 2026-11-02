@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+# ld64 with its inputs' paths mapped for reproducible kernels
+# (toolchain/hostcompat/ld-repro.py).
+set -euo pipefail
+TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+exec "${PYTHON_FOR_BUILD:-python3}" -I "$TOOLCHAIN/hostcompat/ld-repro.py" "$@"

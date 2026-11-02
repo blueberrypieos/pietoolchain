@@ -1,0 +1,10 @@
+#!/bin/sh
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+if [ "$1" = -E ]; then
+	shift
+	d=$1
+	shift
+	exec /usr/bin/find -L "$d" -regextype posix-extended "$@"
+fi
+exec /usr/bin/find -L "$@"

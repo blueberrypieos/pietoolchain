@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+#
+#   cs-rehash FILE...          rewrite the code-slot hashes
+#   cs-rehash --check FILE...  exit 1 if any code-slot hash is stale
+import hashlib
+import struct
+import sys
+
+MH_MAGIC_64 = 0xfeedfacf
+LC_CODE_SIGNATURE = 0x1d
+CSMAGIC_EMBEDDED_SIGNATURE = 0xfade0cc0
+CSMAGIC_CODEDIRECTORY = 0xfade0c02
+HASHES = {1: hashlib.sha1, 2: hashlib.sha256}
+
+
+def signature_range(data):
+	magic, _, _, _, ncmds, _, _, _ = struct.unpack_from('<8I', data, 0)
+	if magic != MH_MAGIC_64:
+		raise ValueError('not a thin 64-bit Mach-O file')
+	off = 32
+	for _ in range(ncmds):
+		cmd, size = struct.unpack_from('<2I', data, off)
+		if cmd == LC_CODE_SIGNATURE:
+			return struct.unpack_from('<2I', data, off + 8)
+		off += size
+	return None
+
+
+def code_directories(data, sigoff):
+	magic, _, count = struct.unpack_from('>3I', data, sigoff)
+	if magic != CSMAGIC_EMBEDDED_SIGNATURE:
+		raise ValueError('no embedded signature')
+	for i in range(count):
+		_, off = struct.unpack_from('>2I', data, sigoff + 12 + 8 * i)
+		cd = sigoff + off
+		if struct.unpack_from('>I', data, cd)[0] == CSMAGIC_CODEDIRECTORY:
+			yield cd
+
+
+def rehash(path, check):
+	with open(path, 'rb') as f:
+		data = bytearray(f.read())
+	sig = signature_range(data)
+	if sig is None:
+		return True
+	sigoff, _ = sig
+	stale = False
+	for cd in code_directories(data, sigoff):
+		(hashoff, _, _, ncode, limit, hsize, htype, _, pageshift) = \
+			struct.unpack_from('>5I4B', data, cd + 16)
+		if limit != sigoff:
+			raise ValueError('codeLimit %#x is not the signature offset %#x' % (limit, sigoff))
+		page = 1 << pageshift if pageshift else limit
+		for slot in range(ncode):
+			start = slot * page
+			digest = HASHES[htype](data[start:min(start + page, limit)]).digest()[:hsize]
+			at = cd + hashoff + slot * hsize
+			if data[at:at + hsize] != digest:
+				stale = True
+				data[at:at + hsize] = digest
+	if stale and not check:
+		with open(path, 'r+b') as f:
+			f.write(data)
+	return not stale
+
+
+def main(argv):
+	check = argv[:1] == ['--check']
+	paths = argv[1:] if check else argv
+	ok = True
+	for p in paths:
+		good = rehash(p, check)
+		if check and not good:
+			print('%s: stale code signature' % p, file=sys.stderr)
+		ok = ok and good
+	return 0 if ok or not check else 1
+
+
+if __name__ == '__main__':
+	sys.exit(main(sys.argv[1:]))

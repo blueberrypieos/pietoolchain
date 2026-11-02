@@ -1,0 +1,144 @@
+#!/usr/bin/python3
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+"""pie-cross-deps [DIR]: install the build dependencies of the source
+package in DIR (default .) for a darwin-arm64 build. Run it as root,
+before dpkg-buildpackage -a darwin-arm64 -d.
+
+Build-Depends are split in two:
+
+- The target's: each relation whose first package the ports' repository
+  has for darwin-arm64. A relation marked :native is not, and nor is one
+  that a build machine's package of that name satisfies for any
+  architecture (Multi-Arch: foreign or Architecture: all). apt resolves
+  them for darwin-arm64 alone, against an apt state of their own:
+  pietoolchain-sdk, which provides core's runtime packages, and any
+  darwin-arm64 packages the build machine has. They are downloaded and
+  unpacked into PIE_CROSS_ROOT, by default /var/lib/pietoolchain/cross-root,
+  where rules.mk finds them.
+- The build machine's: the rest, installed with apt-get satisfy.
+
+The ports' repository must be an apt source for darwin-arm64.
+"""
+import glob, os, re, shutil, subprocess, sys, tempfile
+
+ROOT = os.environ.get("PIE_CROSS_ROOT", "/var/lib/pietoolchain/cross-root")
+ARCH = "darwin-arm64"
+
+
+def control_fields(path):
+    text = open(path).read()
+    src = re.split(r"\n\s*\n", text.strip())[0]
+    fields, last = {}, None
+    for line in src.splitlines():
+        if line[:1].isspace() and last:
+            fields[last] += " " + line.strip()
+        elif ":" in line and not line.startswith("#"):
+            last, v = line.split(":", 1)
+            fields[last.strip()] = v.strip()
+    return fields
+
+
+def relations(fields):
+    rels = []
+    for f in ("Build-Depends", "Build-Depends-Arch", "Build-Depends-Indep"):
+        for r in fields.get(f, "").split(","):
+            r = re.sub(r"\[[^]]*\]|<[^>]*>", "", r).strip()
+            if r:
+                rels.append(re.sub(r"\s+", " ", r))
+    return rels
+
+
+def first_name(rel):
+    return re.split(r"[\s(|]", rel.split("|")[0].strip())[0]
+
+
+def target_apt(state):
+    return ["-o", "Dir::State::status=" + state, "-o", "APT::Architecture=" + ARCH,
+            "-o", "APT::Architectures::=" + ARCH, "-o", "Debug::NoLocking=1",
+            "-o", "Dir::Cache::pkgcache=", "-o", "Dir::Cache::srcpkgcache="]
+
+
+def native_tool(name):
+    """Whether the build machine's NAME satisfies a dependency for any
+    architecture: Multi-Arch: foreign, or Architecture: all."""
+    out = subprocess.run(["apt-cache", "show", "--no-all-versions", name],
+                         capture_output=True, text=True).stdout
+    for par in out.split("\n\n"):
+        if re.search(r"^Architecture: %s$" % ARCH, par, re.M):
+            continue
+        if re.search(r"^Multi-Arch: foreign$", par, re.M) or re.search(r"^Architecture: all$", par, re.M):
+            return True
+    return False
+
+
+def has_target(name, state):
+    """Whether NAME is the target's: the ports' repository has a real
+    darwin-arm64 package of that name, and the build machine has no build
+    tool that satisfies it for any architecture."""
+    if name.endswith(":native") or name.endswith(":any"):
+        return False
+    if native_tool(name):
+        return False
+    out = subprocess.run(["apt-cache", "show", "--no-all-versions", "%s:%s" % (name, ARCH)],
+                         capture_output=True, text=True).stdout
+    return bool(re.search(r"^Architecture: %s$" % ARCH, out, re.M))
+
+
+def provider(par):
+    out, kept = [], False
+    for line in par.split("\n"):
+        if line[:1] in (" ", "\t"):
+            if kept:
+                out.append(line)
+            continue
+        kept = line.split(":", 1)[0] in ("Package", "Status", "Version", "Architecture",
+                                         "Multi-Arch", "Provides")
+        if kept:
+            out.append(line)
+    return "\n".join(out)
+
+
+def main():
+    d = sys.argv[1] if len(sys.argv) > 1 else "."
+    rels = relations(control_fields(os.path.join(d, "debian", "control")))
+    tmp = tempfile.mkdtemp()
+    os.chmod(tmp, 0o755)
+    try:
+        # The target's apt state, from dpkg's status: the darwin-arm64
+        # packages installed here, and pietoolchain-sdk's Provides.
+        state = os.path.join(tmp, "status")
+        pars = re.split(r"\n\s*\n", open("/var/lib/dpkg/status").read().strip())
+        keep = [p for p in pars if re.search(r"^Architecture: %s$" % ARCH, p, re.M)]
+        keep += [provider(p) for p in pars if re.search(r"^Package: pietoolchain-sdk$", p, re.M)
+                 and re.search(r"^Status: install ok installed$", p, re.M)]
+        open(state, "w").write("\n\n".join(keep) + "\n")
+        target = [r for r in rels if has_target(first_name(r), state)]
+        native = [re.sub(r":native\b", "", r) for r in rels if r not in target]
+        if native:
+            subprocess.run(["apt-get", "satisfy", "-y", "-q", "--no-install-recommends", ", ".join(native)],
+                           check=True, env=dict(os.environ, DEBIAN_FRONTEND="noninteractive"))
+        if os.path.isdir(ROOT):
+            shutil.rmtree(ROOT)
+        os.makedirs(ROOT)
+        if not target:
+            return
+        sim = subprocess.run(["apt-get"] + target_apt(state) + ["-s", "-q", "--no-install-recommends",
+                             "satisfy", ", ".join(target)], capture_output=True, text=True)
+        if sim.returncode:
+            sys.exit("pie-cross-deps: the target's build dependencies (%s) can't be satisfied:\n%s%s"
+                     % (", ".join(target), sim.stdout, sim.stderr))
+        pkgs = re.findall(r"^Inst (\S+) \((\S+) ", sim.stdout, re.M)
+        get = ["%s:%s=%s" % (n.split(":")[0], ARCH, v) for n, v in pkgs]
+        subprocess.run(["apt-get"] + target_apt(state) + ["download", "-q"] + get, cwd=tmp, check=True)
+        for deb in sorted(glob.glob(os.path.join(tmp, "*.deb"))):
+            subprocess.run(["dpkg-deb", "-x", deb, ROOT], check=True)
+            info = subprocess.run(["dpkg-deb", "-f", deb, "Package", "Version"], capture_output=True,
+                                  text=True, check=True).stdout.split()
+            print("pie-cross-deps: %s %s (%s) unpacked in %s" % (info[1], info[3], ARCH, ROOT))
+    finally:
+        shutil.rmtree(tmp)
+
+
+if __name__ == "__main__":
+    main()

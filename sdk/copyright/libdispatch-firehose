@@ -1,0 +1,13 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libdispatch
+Source: https://github.com/apple-oss-distributions/libdispatch (tag libdispatch-1542.100.32)
+
+Files: src/libdispatch/*
+Copyright: 2008-2023 Apple Inc.
+ 2014-2019 Apple Inc. and the Swift project authors
+ 2019, 2025 Apple
+ 2009-2010 Mark Heily <mark@heily.com>
+License: Apache-2.0
+
+License: Apache-2.0
+ The full text is in /usr/share/common-licenses/Apache-2.0.

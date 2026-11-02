@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: libclosure
+Source: https://github.com/apple-oss-distributions/libclosure
+ tag libclosure-96 (commit 3668b0837f47be3cc1c404fb5e360f4ff178ca13)
+
+Files: *
+Copyright: Apple Inc.
+License: APSL-2.0
+
+License: APSL-2.0
+ The full text is in /usr/share/common-licenses/APSL-2.0.
