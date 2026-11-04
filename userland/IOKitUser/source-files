@@ -1,4 +1,5 @@
 APPLE_LICENSE
+CustomInfo.plist
 IOCFBundle.h
 IOCFPlugIn.h
 IOCFSerialize.c
@@ -18,6 +19,5 @@ IOKitLibPrivate.h
 IOMIGMachPort.c
 IOMIGMachPort.h
 IOTrap.s
-Info.plist
 ps.subproj/IOPSKeys.h
 ps.subproj/IOPowerSources.h

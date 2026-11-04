@@ -49,7 +49,7 @@ define framework
 	ln -sfn A $(1)/$(FW)/Versions/Current
 	ln -sfn Versions/Current/IOKit $(1)/$(FW)/IOKit
 	ln -sfn Versions/Current/Resources $(1)/$(FW)/Resources
-	install -m 644 $(SRCROOT)/Info.plist $(1)/$(FW)/Versions/A/Resources/
+	install -m 644 $(SRCROOT)/CustomInfo.plist $(1)/$(FW)/Versions/A/Resources/Info.plist
 	install -m 755 $(DYLIB) $(1)/$(FW)/Versions/A/IOKit
 endef
 install: all
