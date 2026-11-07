@@ -54,8 +54,8 @@ the target.
 | `share/tools.mk`, `share/pbxproj-*.py` | Rules for building tools from project files. |
 | `share/pie-source-guard` | Checks that a port's source package holds only the files `debian/copyright` keeps. |
 | `src/`, `xnu/` | The upstream sources, as git submodules. |
-| `userland/`, `xnu-patches/` | How each libSystem project is built, and our patches to it. |
-| `build.sh` | Builds the toolchain, then libSystem and the base libraries into the SDK. |
+| `userland/`, `xnu-patches/` | How each libSystem project is built, and our patches to it. A project with a `debs` file installs its files from the pinned packages of a PIE port instead (`userland/debs.mk`). |
+| `build.sh` | Builds the toolchain, then libSystem and the base libraries into the SDK, and installs the libraries of PIE's ports from their packages. |
 | `sdk/` | The SDK packages (`mkdebs.py`), the copyright files of the upstream sources, and the lists of the files the source package keeps. |
 | `debian/` | The packaging. |
 
@@ -67,9 +67,14 @@ On Ubuntu 26.04:
 git submodule update --init --recursive
 sudo apt-get install dpkg-dev build-essential
 sudo apt-get build-dep ./
-PIE_FULL_SOURCE=1 dpkg-buildpackage -B -us -uc                  # ../pietoolchain_0.1.0_amd64.deb
-PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.1.0_all.deb and the runtime packages
+PIE_FULL_SOURCE=1 dpkg-buildpackage -B -us -uc                  # ../pietoolchain_0.2.0_amd64.deb
+PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.2.0_all.deb and the runtime packages
 ```
+
+The darwin-arm64 build takes the pinned packages of PIE's ports
+(`userland/*/debs`) from `/var/cache/pietoolchain/debs` (`PIE_DEB_CACHE`),
+or downloads them from https://blueberrypieos.com/apt (`PIE_APT`), and
+checks their SHA-256.
 
 `PIE_FULL_SOURCE=1` builds from the full checkout. The source package
 keeps only the files of `src/` and `xnu/` that the build reads, and a

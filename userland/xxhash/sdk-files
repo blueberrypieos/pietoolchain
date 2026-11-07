@@ -1,0 +1,5 @@
+usr/include/xxh3.h
+usr/include/xxhash.h
+usr/lib/libxxhash.0.dylib
+usr/lib/libxxhash.dylib
+usr/lib/pkgconfig/libxxhash.pc

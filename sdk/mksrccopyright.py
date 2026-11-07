@@ -35,20 +35,18 @@ PIETOOLCHAIN_TREES = ("src/cctools-port", "src/apple-libdispatch", "src/bootstra
 OWN = [
     ("userland/libplatform/arm64/optimized-routines/*", "2012-2024 Arm Limited",
      "MIT OR Apache-2.0 with LLVM exception"),
-    ("userland/CF/patches/* userland/CommonCrypto/patches/*\n"
+    ("userland/CommonCrypto/patches/*\n"
      " userland/Libinfo/patches/0001-* userland/Libinfo/patches/0003-*\n"
      " userland/Libinfo/patches/0004-* userland/Libinfo/patches/0005-*\n"
      " userland/Libinfo/patches/0006-* userland/Libm/patches/*\n"
      " userland/Libsystem/patches/* userland/copyfile/patches/*\n"
      " userland/dyld/patches/* userland/hfs/patches/* userland/libmalloc/patches/*\n"
-     " userland/ncurses/patches/* userland/syslog/patches/* xnu-patches/*", OURS, "APSL-2.0"),
+     " userland/syslog/patches/* xnu-patches/*", OURS, "APSL-2.0"),
     ("userland/launchd/patches/* userland/libdispatch/patches/*\n"
-     " userland/mDNSResponder/patches/* userland/openssl/patches/*", OURS, "Apache-2.0"),
+     " userland/mDNSResponder/patches/*", OURS, "Apache-2.0"),
     ("userland/Libinfo/patches/0002-*", OURS, "LicenseRef-BSD-4-Clause-Bruce-Simpson"),
-    ("userland/OpenBSM/patches/* userland/libplatform/patches/*", OURS, "BSD-3-Clause"),
+    ("userland/libplatform/patches/*", OURS, "BSD-3-Clause"),
     ("userland/openlibm/patches/*", OURS, "MIT"),
-    ("userland/zlib/patches/*", OURS, "Zlib"),
-    ("userland/bzip2/patches/*", OURS, "bzip2-1.0.6"),
 ]
 
 UBUNTU = {"Apache-2.0": "Apache-2.0", "CC0-1.0": "CC0-1.0", "GFDL-1.2": "GFDL-1.2",

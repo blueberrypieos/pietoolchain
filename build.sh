@@ -8,7 +8,8 @@
 #   toolchain  cctools and ld64, mig, the SDK's base headers
 #              (AvailabilityVersions), xnu's headers and firehose
 #   userland   libSystem and the base libraries, each built into the SDK
-#              (toolchain/sdk), and into its staging root,
+#              (toolchain/sdk), or installed there from the packages of PIE's
+#              ports (userland/*/debs), and into its staging root,
 #              build/pkgroot/<project>
 #   sdk        build/pietoolchain-sdk_VERSION_all.deb (sdk/mksdk.sh):
 #              VERSION is $PIE_SDK_PACKAGE_VERSION, else the date of the SDK's
@@ -82,7 +83,7 @@ LIBRARIES="CrashReporterClient libplatform libpthread libsystem_featureflags lib
 	libsystem_sandbox libsystem_coreservices llvm-runtimes:install-unwind Libsystem
 	llvm-runtimes libresolv
 	libutil zlib bzip2 xz xxhash lz4 openssl libiconv ICU libxml2 CF IOKitUser ncurses
-	libedit libmd libxo OpenBSM libsysmon libsbuf OpenPAM libarchive libpcap libipsec"
+	libedit libmd libxo OpenBSM libsysmon libsbuf OpenPAM libarchive libipsec"
 PROGRAMS="mDNSResponder Libnotify"
 
 fetch() {

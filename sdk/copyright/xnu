@@ -1383,9 +1383,6 @@ License: CMU-Mach
  any improvements or extensions that they make and grant Carnegie Mellon
  the rights to redistribute these changes.
 
-License: GPL-2.0-or-later
- The full text is in /usr/share/common-licenses/GPL-2.0-or-later.
-
 License: ISC
  Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
@@ -1781,3 +1778,40 @@ License: LicenseRef-HPND-Utah-CSL
  .
  CSL requests users of this software to return to csl-dist@cs.utah.edu any
  improvements that they make and grant CSL redistribution rights.
+
+License: Apache-2.0 with LLVM exception
+ On Debian and Ubuntu systems, the full text of the Apache License 2.0 is
+ in /usr/share/common-licenses/Apache-2.0. The LLVM exception:
+ .
+ ---- LLVM Exceptions to the Apache 2.0 License ----
+ .
+    As an exception, if, as a result of your compiling your source code, portions
+    of this Software are embedded into an Object form of such source code, you
+    may redistribute such embedded portions in such Object form without complying
+    with the conditions of Sections 4(a), 4(b) and 4(d) of the License.
+ .
+    In addition, if you combine or link compiled forms of this Software with
+    software that is licensed under the GPLv2 ("Combined Software") and if a
+    court of competent jurisdiction determines that the patent provision (Section
+    3), the indemnity provision (Section 9) or other Section of the License
+    conflicts with the conditions of the GPLv2, you may retroactively and
+    prospectively choose to deem waived or otherwise exclude such Section(s) of
+    the License, but only in their entirety and only with respect to the Combined
+    Software.
+
+License: GPL-2.0-or-later with Bison-2.2 exception
+ The full text of the GPL is in
+ /usr/share/common-licenses/GPL-2.0-or-later.
+ .
+ As a special exception, you may create a larger work that contains
+ part or all of the Bison parser skeleton and distribute that work
+ under terms of your choice, so long as that work isn't itself a
+ parser generator using the skeleton or a modified version thereof
+ as a parser skeleton.  Alternatively, if you modify or redistribute
+ the parser skeleton itself, you may (at your option) remove this
+ special exception, which will cause the skeleton and the resulting
+ Bison output files to be licensed under the GNU General Public
+ License without this special exception.
+ .
+ This special exception was added by the Free Software Foundation in
+ version 2.2 of Bison.

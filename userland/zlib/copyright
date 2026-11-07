@@ -1,26 +1,60 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: zlib
-Source: https://github.com/apple-oss-distributions/zlib
- tag zlib-100.120.1 (commit 3dbd11404a18ac1d6ed3ca9c1d6a01d049bf8674)
+Source: https://github.com/madler/zlib
+ tag v1.2.12 (commit 21767c654d31d2dccdde4330529775c6c5fd5389, signed by Mark Adler),
+ released as zlib-1.2.12.tar.xz
+ (sha256 7db46b8d7726232a621befaab4a1c870f00a90805511c0e0090441dac57def18)
+ and https://zlib.net/fossils/zlib-1.2.12.tar.gz
+ (sha256 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9)
+ https://chromium.googlesource.com/chromium/src/third_party/zlib
+ commit 9f9f52c60a14e8e772fb561029ae0a121fef7609 (debian/adler32_simd.c, debian/adler32_simd.h)
+Files-Excluded: *
+Files-Included:
+ adler32.c
+ compress.c
+ crc32.c
+ crc32.h
+ deflate.c
+ deflate.h
+ gzclose.c
+ gzguts.h
+ gzlib.c
+ gzread.c
+ gzwrite.c
+ infback.c
+ inffast.c
+ inffast.h
+ inffixed.h
+ inflate.c
+ inflate.h
+ inftrees.c
+ inftrees.h
+ trees.c
+ trees.h
+ uncompr.c
+ zconf.h
+ zlib.3
+ zlib.h
+ zutil.c
+ zutil.h
 
 Files: *
 Copyright: 1995-2022 Jean-loup Gailly and Mark Adler
- Cosmin Truta
 License: Zlib
 
-Files: AddOn/*
- libz.exp
- zlib.plist
- zlib.xcconfig
- zlib.xcodeproj/*
-Copyright: Apple Inc.
-License: APSL-2.0
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
+License: BSD-2-Clause
 
-Files: AddOn/zopt_inffast.c
- AddOn/zopt_inffixed.h
-Copyright: Apple Inc.
+Files: debian/adler32_simd.c debian/adler32_simd.h
+Copyright: 2017 The Chromium Authors
+License: LicenseRef-BSD-3-Clause-Chromium
+
+Files: debian/patches/*
+Copyright: 2026 The Blueberry Pie OS Authors
+ 1995-2022 Jean-loup Gailly
  1995-2022 Mark Adler
-License: APSL-2.0 AND Zlib
+License: Zlib
 
 License: Zlib
  This software is provided 'as-is', without any express or implied
@@ -39,5 +73,53 @@ License: Zlib
     misrepresented as being the original software.
  3. This notice may not be removed or altered from any source distribution.
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-Chromium
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+    * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above
+ copyright notice, this list of conditions and the following disclaimer
+ in the documentation and/or other materials provided with the
+ distribution.
+    * Neither the name of Google LLC nor the names of its
+ contributors may be used to endorse or promote products derived from
+ this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

@@ -1,11 +1,67 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libedit
 Source: https://github.com/apple-oss-distributions/libedit/tree/libedit-65
+ (commit 6e1e17138f87866e5605c809019d7d0c30801fe9)
+Files-Excluded: *
+Files-Included:
+ doc/*
+ local/common.h
+ local/emacs.h
+ local/fcns.c
+ local/fcns.h
+ local/help.c
+ local/help.h
+ local/historyn.c
+ local/tokenizern.c
+ local/vi.h
+ src/chared.c
+ src/chared.h
+ src/chartype.c
+ src/chartype.h
+ src/common.c
+ src/editline/*
+ src/el.c
+ src/el.h
+ src/eln.c
+ src/emacs.c
+ src/filecomplete.c
+ src/filecomplete.h
+ src/hist.c
+ src/hist.h
+ src/histedit.h
+ src/history.c
+ src/keymacro.c
+ src/keymacro.h
+ src/map.c
+ src/map.h
+ src/parse.c
+ src/parse.h
+ src/prompt.c
+ src/prompt.h
+ src/read.c
+ src/read.h
+ src/readline.c
+ src/refresh.c
+ src/refresh.h
+ src/search.c
+ src/search.h
+ src/sig.c
+ src/sig.h
+ src/sys.h
+ src/terminal.c
+ src/terminal.h
+ src/tokenizer.c
+ src/tty.c
+ src/tty.h
+ src/unvis.c
+ src/vi.c
+ src/vis.c
+ src/vis.h
+ src/wcsdup.c
 
 Files: *
 Copyright: 1989-1990, 1992-1993 The Regents of the University of California
- Apple Inc.
-License: BSD-3-Clause
+License: LicenseRef-BSD-3-Clause-UC
 
 Files: doc/editline.3
  doc/editrc.5
@@ -15,56 +71,52 @@ Files: doc/editline.3
  src/read.h
  src/readline.c
 Copyright: 1997-2003 The NetBSD Foundation, Inc.
+License: LicenseRef-BSD-2-Clause-NetBSD
+
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
 License: BSD-2-Clause
 
 Files: src/chartype.c
  src/chartype.h
  src/eln.c
 Copyright: 2009 The NetBSD Foundation, Inc.
-License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
+License: LicenseRef-BSD-4-Clause-NetBSD
 
 Files: src/vis.c
 Copyright: 1989, 1993 The Regents of the University of California
  1999, 2005 The NetBSD Foundation, Inc.
-License: BSD-3-Clause AND BSD-2-Clause
+License: LicenseRef-BSD-3-Clause-UC AND LicenseRef-BSD-2-Clause-NetBSD
 
 Files: src/wcsdup.c
 Copyright: 2006 Aleksey Cheusov
 License: LicenseRef-libedit-wcsdup
 
-Files: config.h
- libedit.xcodeproj/project.pbxproj
- local/libedit.plist
- unexports
- xcodescripts/install_misc.sh
- xcodescripts/libedit.xcconfig
- xcodescripts/make_lists.sh
-Copyright: Apple Inc.
-License: APSL-2.0
-
 License: BSD-2-Clause
  Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
- 1. Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
+ modification, are permitted provided that the following conditions are
+ met:
  .
- THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
- ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
- TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
- BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- POSSIBILITY OF SUCH DAMAGE.
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-License: BSD-3-Clause
+License: LicenseRef-BSD-3-Clause-UC
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -89,18 +141,29 @@ License: BSD-3-Clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-License: LicenseRef-libedit-wcsdup
- This material is provided "as is", with absolutely no warranty expressed
- or implied. Any use is at your own risk.
+License: LicenseRef-BSD-2-Clause-NetBSD
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
  .
- Permission to use or copy this software for any purpose is hereby granted
- without fee. Permission to modify the code and to distribute modified
- code is also granted without any restrictions.
+ THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
-
-License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
+License: LicenseRef-BSD-4-Clause-NetBSD
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -128,3 +191,11 @@ License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-libedit-wcsdup
+ This material is provided "as is", with absolutely no warranty expressed
+ or implied. Any use is at your own risk.
+ .
+ Permission to use or copy this software for any purpose is hereby granted
+ without fee. Permission to modify the code and to distribute modified
+ code is also granted without any restrictions.

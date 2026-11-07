@@ -1,0 +1,6 @@
+The libraries the SDK takes from the packages of PIE's ports come from those
+ports' source packages instead. The heading of each one's section in the
+copyright file names the source package and its version: the source package
+SOURCE at version VERSION is in the release tagged blueberry-pie-os/VERSION
+at https://github.com/blueberrypieos/SOURCE. Where the repository has another
+name, the heading gives its address after the version.

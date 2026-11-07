@@ -1,3 +1,10 @@
+pietoolchain (0.2.0) resolute; urgency=medium
+
+  * The SDK takes the libraries of PIE's released ports from their packages.
+  * The SDK no longer has libpcap. Ports build against libpcap-dev.
+
+ -- Maxwell <maxwell@blueberrypieos.com>  Fri, 06 Nov 2026 10:37:51 +0000
+
 pietoolchain (0.1.0) resolute; urgency=medium
 
   * Initial release.

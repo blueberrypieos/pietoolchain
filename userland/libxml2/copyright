@@ -2,31 +2,266 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: libxml2
 Source: https://github.com/apple-oss-distributions/libxml2
  tag libxml2-39.10 (commit 4a38cab210b7f915ffde8db164d2812263564342)
+Files-Excluded: *
+Files-Included:
+ Pregenerated?Files/include/libxml/*
+ libxml2/Copyright
+ libxml2/DOCBparser.c
+ libxml2/HTMLparser.c
+ libxml2/HTMLtree.c
+ libxml2/SAX.c
+ libxml2/SAX2.c
+ libxml2/buf.c
+ libxml2/buf.h
+ libxml2/c14n.c
+ libxml2/catalog.c
+ libxml2/chvalid.c
+ libxml2/debugXML.c
+ libxml2/dict.c
+ libxml2/doc/xmlcatalog.1
+ libxml2/doc/xmllint.1
+ libxml2/elfgcchack.h
+ libxml2/enc.h
+ libxml2/encoding.c
+ libxml2/entities.c
+ libxml2/error.c
+ libxml2/globals.c
+ libxml2/hash.c
+ libxml2/include/libxml/DOCBparser.h
+ libxml2/include/libxml/HTMLparser.h
+ libxml2/include/libxml/HTMLtree.h
+ libxml2/include/libxml/SAX.h
+ libxml2/include/libxml/SAX2.h
+ libxml2/include/libxml/c14n.h
+ libxml2/include/libxml/catalog.h
+ libxml2/include/libxml/chvalid.h
+ libxml2/include/libxml/debugXML.h
+ libxml2/include/libxml/dict.h
+ libxml2/include/libxml/encoding.h
+ libxml2/include/libxml/entities.h
+ libxml2/include/libxml/globals.h
+ libxml2/include/libxml/hash.h
+ libxml2/include/libxml/list.h
+ libxml2/include/libxml/nanoftp.h
+ libxml2/include/libxml/nanohttp.h
+ libxml2/include/libxml/parser.h
+ libxml2/include/libxml/parserInternals.h
+ libxml2/include/libxml/pattern.h
+ libxml2/include/libxml/relaxng.h
+ libxml2/include/libxml/schemasInternals.h
+ libxml2/include/libxml/schematron.h
+ libxml2/include/libxml/threads.h
+ libxml2/include/libxml/tree.h
+ libxml2/include/libxml/uri.h
+ libxml2/include/libxml/valid.h
+ libxml2/include/libxml/xinclude.h
+ libxml2/include/libxml/xlink.h
+ libxml2/include/libxml/xmlIO.h
+ libxml2/include/libxml/xmlautomata.h
+ libxml2/include/libxml/xmlerror.h
+ libxml2/include/libxml/xmlexports.h
+ libxml2/include/libxml/xmlmemory.h
+ libxml2/include/libxml/xmlmodule.h
+ libxml2/include/libxml/xmlreader.h
+ libxml2/include/libxml/xmlregexp.h
+ libxml2/include/libxml/xmlsave.h
+ libxml2/include/libxml/xmlschemas.h
+ libxml2/include/libxml/xmlschemastypes.h
+ libxml2/include/libxml/xmlstring.h
+ libxml2/include/libxml/xmlunicode.h
+ libxml2/include/libxml/xmlwriter.h
+ libxml2/include/libxml/xpath.h
+ libxml2/include/libxml/xpathInternals.h
+ libxml2/include/libxml/xpointer.h
+ libxml2/include/private/*
+ libxml2/legacy.c
+ libxml2/libxml.3
+ libxml2/libxml.h
+ libxml2/list.c
+ libxml2/nanoftp.c
+ libxml2/nanohttp.c
+ libxml2/parser.c
+ libxml2/parserInternals.c
+ libxml2/pattern.c
+ libxml2/relaxng.c
+ libxml2/save.h
+ libxml2/schematron.c
+ libxml2/threads.c
+ libxml2/timsort.h
+ libxml2/tree.c
+ libxml2/uri.c
+ libxml2/valid.c
+ libxml2/xinclude.c
+ libxml2/xlink.c
+ libxml2/xmlIO.c
+ libxml2/xmlcatalog.c
+ libxml2/xmllint.c
+ libxml2/xmlmemory.c
+ libxml2/xmlmodule.c
+ libxml2/xmlreader.c
+ libxml2/xmlregexp.c
+ libxml2/xmlsave.c
+ libxml2/xmlschemas.c
+ libxml2/xmlschemastypes.c
+ libxml2/xmlstring.c
+ libxml2/xmlunicode.c
+ libxml2/xmlversion.c
+ libxml2/xmlversionInternal.h
+ libxml2/xmlwriter.c
+ libxml2/xpath.c
+ libxml2/xpointer.c
 
 Files: *
 Copyright: 1998-2012 Daniel Veillard
- 2003 Red Hat, Inc.
- 2012 Google Inc.
- 2010-2017 Christopher Swenson
- 2012 Vojtech Fried
  Apple Inc.
 License: MIT
 
-Files: libxml2/dict.c
- libxml2/hash.c
- libxml2/list.c
-Copyright: 1998, 2000-2001 Bjorn Reese and Daniel Stenberg
- 2001 Bjorn Reese <breese@users.sourceforge.net>
- 2000, 2012 Bjorn Reese and Daniel Veillard
- 2003-2012 Daniel Veillard
- 2000 Gary Pennington and Daniel Veillard
+Files: libxml2/buf.h
+ libxml2/chvalid.c
+ libxml2/Copyright
+ libxml2/DOCBparser.c
+ libxml2/elfgcchack.h
+ libxml2/enc.h
+ libxml2/include/libxml/c14n.h
+ libxml2/include/libxml/catalog.h
+ libxml2/include/libxml/chvalid.h
+ libxml2/include/libxml/debugXML.h
+ libxml2/include/libxml/entities.h
+ libxml2/include/libxml/HTMLtree.h
+ libxml2/include/libxml/list.h
+ libxml2/include/libxml/nanoftp.h
+ libxml2/include/libxml/nanohttp.h
+ libxml2/include/libxml/parser.h
+ libxml2/include/libxml/pattern.h
+ libxml2/include/libxml/relaxng.h
+ libxml2/include/libxml/SAX2.h
+ libxml2/include/libxml/SAX.h
+ libxml2/include/libxml/schemasInternals.h
+ libxml2/include/libxml/schematron.h
+ libxml2/include/libxml/threads.h
+ libxml2/include/libxml/uri.h
+ libxml2/include/libxml/valid.h
+ libxml2/include/libxml/xinclude.h
+ libxml2/include/libxml/xlink.h
+ libxml2/include/libxml/xmlautomata.h
+ libxml2/include/libxml/xmlerror.h
+ libxml2/include/libxml/xmlexports.h
+ libxml2/include/libxml/xmlmodule.h
+ libxml2/include/libxml/xmlreader.h
+ libxml2/include/libxml/xmlregexp.h
+ libxml2/include/libxml/xmlsave.h
+ libxml2/include/libxml/xmlschemas.h
+ libxml2/include/libxml/xmlschemastypes.h
+ libxml2/include/libxml/xmlstring.h
+ libxml2/include/libxml/xmlwriter.h
+ libxml2/nanoftp.c
+ libxml2/save.h
+ libxml2/SAX.c
+ libxml2/xlink.c
+ libxml2/xmlmodule.c
+Copyright: 1998-2012 Daniel Veillard
+License: MIT
+
+Files: libxml2/xmlversion.c
+ libxml2/xmlversionInternal.h
+Copyright: Apple Inc.
+License: MIT
+
+Files: libxml2/xmlIO.c
+Copyright: 1998-2012 Daniel Veillard
+ Apple Inc.
+ 1995-1998 Jean-loup Gailly
+License: MIT AND Zlib
+
+Files: libxml2/HTMLparser.c
+Copyright: 1998-2012 Daniel Veillard
+ 1986 International Organization for Standardization
+ Apple Inc.
+License: MIT AND LicenseRef-ISO-8879-entities
+
+Files: libxml2/timsort.h
+Copyright: 2010-2017 Christopher Swenson
+ 2012 Vojtech Fried
+ 2012 Google Inc.
+ 1998-2012 Daniel Veillard
+License: MIT AND LicenseRef-Henry-Warren
+
+Files: libxml2/xmlwriter.c
+Copyright: 1998-2012 Daniel Veillard
+ Apple Inc.
+License: MIT AND public-domain
+
+Files: libxml2/doc/xmllint.1
+Copyright: 2001, 2004 John Fleck
+ 2001, 2004 Ziying Sherwin
+ 2001, 2004 Heiko Rupp
+License: MIT
+
+Files: libxml2/doc/xmlcatalog.1
+Copyright: 2001, 2004 John Fleck
+License: MIT
+
+Files: libxml2/libxml.3
+Copyright: Daniel Veillard
+ Ziying Sherwin
+License: MIT
+
+Files: libxml2/xmlunicode.c
+Copyright: 1998-2012 Daniel Veillard
+ Apple Inc.
+ 1991-2004 Unicode, Inc.
+License: MIT AND Unicode-3.0
+
+Files: libxml2/include/libxml/xmlunicode.h
+Copyright: 1998-2012 Daniel Veillard
+ 1991-2004 Unicode, Inc.
+License: MIT AND Unicode-3.0
+
+Files: libxml2/hash.c
+Copyright: 2000, 2012 Bjorn Reese and Daniel Veillard
+ Apple Inc.
 License: ISC-Veillard
 
-Files: Pregenerated?Files/include/config.h
- Pregenerated?Files/libxml2.exp
- libxml2.xcodeproj/*
+Files: libxml2/list.c
+Copyright: 2000 Gary Pennington and Daniel Veillard
+License: ISC-Veillard
+
+Files: libxml2/dict.c
+Copyright: 2003-2012 Daniel Veillard
+ Apple Inc.
+License: ISC-Veillard AND public-domain
+
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
+License: BSD-2-Clause
+
+Files: debian/libxml2.exp
 Copyright: Apple Inc.
-License: APSL-2.0
+License: MIT
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: MIT
  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,5 +292,104 @@ License: ISC-Veillard
  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE AUTHORS AND
  CONTRIBUTORS ACCEPT NO RESPONSIBILITY IN ANY CONCEIVABLE MANNER.
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
+License: LicenseRef-Henry-Warren
+ You are free to use, copy, and distribute any of the code on this web
+ site, whether modified by you or not. You need not give attribution.
+ This includes the algorithms (some of which appear in Hacker's
+ Delight), the Hacker's Assistant, and any code submitted by readers.
+ Submitters implicitly agree to this.
+ .
+ The textural material and pictures are copyright by the author, and
+ the usual copyright rules apply. E.g., you may store the material on
+ your computer and make hard or soft copies for your own use. However,
+ you may not incorporate this material into another publication without
+ written permission from the author (which the author may give by email).
+ .
+ The author has taken care in the preparation of this material, but
+ makes no expressed or implied warranty of any kind and assumes no
+ responsibility for errors or omissions. No liability is assumed for
+ incidental or consequential damages in connection with or arising out of
+ the use of the information or programs contained herein.
+
+License: LicenseRef-ISO-8879-entities
+ HTMLlat1.ent:
+ .
+ Portions (C) International Organization for Standardization 1986
+ Permission to copy in any form is granted for use with
+ conforming SGML systems and applications as defined in
+ ISO 8879, provided this notice is included in all copies.
+ .
+ HTMLsymbol.ent and HTMLspecial.ent:
+ .
+ Portions (C) International Organization for Standardization 1986:
+ Permission to copy in any form is granted for use with
+ conforming SGML systems and applications as defined in
+ ISO 8879, provided this notice is included in all copies.
+
+License: Unicode-3.0
+ UNICODE LICENSE V3
+ .
+ COPYRIGHT AND PERMISSION NOTICE
+ .
+ Copyright © 1991-2004 Unicode, Inc.
+ .
+ NOTICE TO USER: Carefully read the following legal agreement. BY
+ DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING DATA FILES, AND/OR
+ SOFTWARE, YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+ TERMS AND CONDITIONS OF THIS AGREEMENT. IF YOU DO NOT AGREE, DO NOT
+ DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE THE DATA FILES OR SOFTWARE.
+ .
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of data files and any associated documentation (the "Data Files") or
+ software and any associated documentation (the "Software") to deal in the
+ Data Files or Software without restriction, including without limitation
+ the rights to use, copy, modify, merge, publish, distribute, and/or sell
+ copies of the Data Files or Software, and to permit persons to whom the
+ Data Files or Software are furnished to do so, provided that either (a)
+ this copyright and permission notice appear with all copies of the Data
+ Files or Software, or (b) this copyright and permission notice appear in
+ associated Documentation.
+ .
+ THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+ KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF
+ THIRD PARTY RIGHTS.
+ .
+ IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS NOTICE
+ BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES,
+ OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+ WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THE DATA
+ FILES OR SOFTWARE.
+ .
+ Except as contained in this notice, the name of a copyright holder shall
+ not be used in advertising or otherwise to promote the sale, use or other
+ dealings in these Data Files or Software without prior written
+ authorization of the copyright holder.
+
+License: public-domain
+ xmlwriter.c, from John Walker's base64: "This software is in the public
+ domain. Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose and without fee is hereby granted, without any
+ conditions or restrictions. This software is provided "as is" without
+ express or implied warranty."
+ .
+ dict.c, from Bob Jenkins's hash functions for hash table lookup: "The code
+ given here are all public domain."
+
+License: Zlib
+ This software is provided 'as-is', without any express or implied
+ warranty.  In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ .
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ .
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.

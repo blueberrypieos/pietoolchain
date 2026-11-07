@@ -162,7 +162,9 @@ def indep(pie):
     subprocess.run([os.path.join(pie, "sdk", "mksdk.sh"), "-r", dst], check=True)
     doc = os.path.join(dst, "usr", "share", "doc", "pietoolchain-sdk")
     os.makedirs(doc, exist_ok=True)
-    shutil.copyfile(os.path.join(pie, "sdk", "README.source"), os.path.join(doc, "README.source"))
+    with open(os.path.join(doc, "README.source"), "w") as f:
+        f.write(open(os.path.join(pie, "sdk", "README.source")).read())
+        f.write(open(os.path.join(pie, "sdk", "README.source.ports")).read())
     finish(pie, "pietoolchain-sdk", dst, substvars=[("sdk:Provides", sdk_provides(pie))])
 
 

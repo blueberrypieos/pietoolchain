@@ -2,10 +2,24 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: xxHash
 Upstream-Contact: https://github.com/Cyan4973/xxHash
 Source: https://github.com/Cyan4973/xxHash
- tag v0.8.4 (commit c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0)
+Files-Excluded: *
+Files-Included:
+ LICENSE
+ libxxhash.pc.in
+ xxh3.h
+ xxhash.c
+ xxhash.h
 
 Files: *
-Copyright: 2012-2023 Yann Collet
+Copyright: 2012-2025 Yann Collet
+License: BSD-2-Clause
+
+Files: libxxhash.pc.in
+Copyright: 2012-2021 Yann Collet, Facebook
+License: BSD-2-Clause
+
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
 License: BSD-2-Clause
 
 License: BSD-2-Clause

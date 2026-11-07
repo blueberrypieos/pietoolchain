@@ -70,12 +70,24 @@ def main():
 
 Source: https://github.com/blueberrypieos/pietoolchain
 
-The SDK headers, libraries and frameworks, built from the projects below.
-Each section is one project's copyright file; the texts of uncommon
-licences are at the end."""]
+The SDK headers, libraries and frameworks, built from the projects below or
+taken from the packages of PIE's ports. Each section is that project's or
+package's copyright file; the texts of uncommon licences are at the end."""]
     for name, n in count.items():
         out.append("\n" + "=" * 76)
-        out.append("%s: %d file%s" % (name, n, "" if n == 1 else "s"))
+        heading = name
+        debs = os.path.join(pie, "userland", name, "debs")
+        if os.path.exists(debs):
+            path = open(debs).readline().split()[0]
+            src, ver = path.split("/")[2], os.path.basename(path).split("_")[1]
+            mk = open(os.path.join(pie, "userland", name, "Makefile")).read()
+            repo = re.search(r"^PIE_REPO\s*:=\s*(\S+)", mk, re.M)
+            if repo and repo.group(1) != src:
+                heading = "%s (%s %s, https://github.com/blueberrypieos/%s)" % (
+                    name, src, ver, repo.group(1))
+            else:
+                heading = "%s (%s %s)" % (name, src, ver)
+        out.append("%s: %d file%s" % (heading, n, "" if n == 1 else "s"))
         out.append("=" * 76 + "\n")
         out.append(open(source(pie, name)).read().strip("\n"))
     sys.stdout.write(with_texts(pie, "\n".join(out) + "\n"))

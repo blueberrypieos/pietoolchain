@@ -2,21 +2,133 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: OpenPAM
 Source: https://github.com/apple-oss-distributions/OpenPAM
  tag OpenPAM-35 (commit 4109ed3e83de0ff27e0e5b8a2be9cf911ffda483)
+Files-Excluded: *
+Files-Included:
+ openpam/LICENSE
+ openpam/doc/man/openpam.3
+ openpam/doc/man/openpam_borrow_cred.3
+ openpam/doc/man/openpam_free_data.3
+ openpam/doc/man/openpam_free_envlist.3
+ openpam/doc/man/openpam_get_option.3
+ openpam/doc/man/openpam_log.3
+ openpam/doc/man/openpam_nullconv.3
+ openpam/doc/man/openpam_readline.3
+ openpam/doc/man/openpam_restore_cred.3
+ openpam/doc/man/openpam_set_option.3
+ openpam/doc/man/openpam_ttyconv.3
+ openpam/doc/man/pam.3
+ openpam/doc/man/pam.conf.5
+ openpam/doc/man/pam_acct_mgmt.3
+ openpam/doc/man/pam_authenticate.3
+ openpam/doc/man/pam_chauthtok.3
+ openpam/doc/man/pam_close_session.3
+ openpam/doc/man/pam_conv.3
+ openpam/doc/man/pam_end.3
+ openpam/doc/man/pam_error.3
+ openpam/doc/man/pam_get_authtok.3
+ openpam/doc/man/pam_get_data.3
+ openpam/doc/man/pam_get_item.3
+ openpam/doc/man/pam_get_user.3
+ openpam/doc/man/pam_getenv.3
+ openpam/doc/man/pam_getenvlist.3
+ openpam/doc/man/pam_info.3
+ openpam/doc/man/pam_open_session.3
+ openpam/doc/man/pam_prompt.3
+ openpam/doc/man/pam_putenv.3
+ openpam/doc/man/pam_set_data.3
+ openpam/doc/man/pam_set_item.3
+ openpam/doc/man/pam_setcred.3
+ openpam/doc/man/pam_setenv.3
+ openpam/doc/man/pam_sm_acct_mgmt.3
+ openpam/doc/man/pam_sm_authenticate.3
+ openpam/doc/man/pam_sm_chauthtok.3
+ openpam/doc/man/pam_sm_close_session.3
+ openpam/doc/man/pam_sm_open_session.3
+ openpam/doc/man/pam_sm_setcred.3
+ openpam/doc/man/pam_start.3
+ openpam/doc/man/pam_strerror.3
+ openpam/doc/man/pam_verror.3
+ openpam/doc/man/pam_vinfo.3
+ openpam/doc/man/pam_vprompt.3
+ openpam/include/security/openpam.h
+ openpam/include/security/openpam_attr.h
+ openpam/include/security/openpam_version.h
+ openpam/include/security/pam_appl.h
+ openpam/include/security/pam_constants.h
+ openpam/include/security/pam_modules.h
+ openpam/include/security/pam_types.h
+ openpam/lib/openpam_borrow_cred.c
+ openpam/lib/openpam_configure.c
+ openpam/lib/openpam_dispatch.c
+ openpam/lib/openpam_dynamic.c
+ openpam/lib/openpam_findenv.c
+ openpam/lib/openpam_free_data.c
+ openpam/lib/openpam_free_envlist.c
+ openpam/lib/openpam_get_option.c
+ openpam/lib/openpam_impl.h
+ openpam/lib/openpam_load.c
+ openpam/lib/openpam_log.c
+ openpam/lib/openpam_nullconv.c
+ openpam/lib/openpam_readline.c
+ openpam/lib/openpam_restore_cred.c
+ openpam/lib/openpam_set_option.c
+ openpam/lib/openpam_static.c
+ openpam/lib/openpam_ttyconv.c
+ openpam/lib/pam_acct_mgmt.c
+ openpam/lib/pam_authenticate.c
+ openpam/lib/pam_chauthtok.c
+ openpam/lib/pam_close_session.c
+ openpam/lib/pam_end.c
+ openpam/lib/pam_error.c
+ openpam/lib/pam_get_authtok.c
+ openpam/lib/pam_get_data.c
+ openpam/lib/pam_get_item.c
+ openpam/lib/pam_get_user.c
+ openpam/lib/pam_getenv.c
+ openpam/lib/pam_getenvlist.c
+ openpam/lib/pam_info.c
+ openpam/lib/pam_open_session.c
+ openpam/lib/pam_prompt.c
+ openpam/lib/pam_putenv.c
+ openpam/lib/pam_set_data.c
+ openpam/lib/pam_set_item.c
+ openpam/lib/pam_setcred.c
+ openpam/lib/pam_setenv.c
+ openpam/lib/pam_start.c
+ openpam/lib/pam_strerror.c
+ openpam/lib/pam_verror.c
+ openpam/lib/pam_vinfo.c
+ openpam/lib/pam_vprompt.c
+ openpam/modules/pam_deny/pam_deny.c
+ openpam/modules/pam_permit/pam_permit.c
+ openpam/modules/pam_unix/pam_unix.c
 
 Files: *
 Copyright: 2001-2003 Networks Associates Technology, Inc.
  2004-2007 Dag-Erling Smørgrav
-License: BSD-3-Clause
+ All rights reserved.
+ .
+ This software was developed for the FreeBSD Project by ThinkSec AS and
+ Network Associates Laboratories, the Security Research Division of
+ Network Associates, Inc.  under DARPA/SPAWAR contract N66001-01-C-8035
+ ("CBOSS"), as part of the DARPA CHATS research program.
+License: LicenseRef-BSD-3-Clause-OpenPAM
 
-Files: openpam.xcodeproj/*
- pam.d/*
- openpam/doc/man/pam_unsetenv.3
- openpam/lib/openpam_apple_chains.c
- openpam/lib/pam_unsetenv.c
-Copyright: Apple Inc.
-License: APSL-2.0
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
+License: BSD-2-Clause
 
-License: BSD-3-Clause
+Files: openpam/lib/openpam_free_envlist.c
+Copyright: 2005 Dag-Erling Coïdan Smørgrav
+ All rights reserved.
+License: LicenseRef-BSD-3-Clause-envlist
+
+Files: openpam/doc/man/pam.conf.5
+Copyright: 2005 Dag-Erling Coïdan Smørgrav
+ All rights reserved.
+License: LicenseRef-BSD-3-Clause-OpenPAM
+
+License: LicenseRef-BSD-3-Clause-OpenPAM
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -41,5 +153,50 @@ License: BSD-3-Clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-envlist
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer
+    in this position and unchanged.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote products
+    derived from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

@@ -1,6 +1,5 @@
 foreign-arch xnu/osfmk/arm64/x86_64_compat\.h An arm64 header. It declares an arm64 check of the entitlements of x86_64 binaries.
 foreign-arch usr/lib/pietoolchain/toolchain/sdk/.*/arm64/x86_64_compat\.h The installed copy of that arm64 header.
-foreign-arch src/xz/src/liblzma/simple/[a-z0-9]+\.c liblzma's branch filters. liblzma decodes them on any machine.
 foreign-arch src/cctools(-port/cctools)?/(include|libstuff|libmacho)/.* cctools reads Mach-O files of every architecture. These files are compiled into it.
 foreign-arch usr/lib/pietoolchain/toolchain/sdk/.*/usr/include/mach-o/x86_64/reloc\.h dyld includes this header. dyld reads x86_64 relocations.
 foreign-arch usr/lib/pietoolchain/toolchain/hostinc/.* The cctools headers xnu's host tools read, for its i386 and Mach-O host code.

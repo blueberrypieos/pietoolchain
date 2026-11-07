@@ -3,47 +3,836 @@ Upstream-Name: ICU
 Upstream-Contact: https://icu.unicode.org/
 Source: https://github.com/apple-oss-distributions/ICU
  tag ICU-76142.5.1.200 (commit b7321cfa96c67c5985d04e0ae7fa0f5a95e29ba7)
-
-Files: *
-Copyright: 1995-2016 International Business Machines
- 1995-2016 International Business Machines Corporation and others
- 1991-2025 Unicode, Inc.
- 1996-2023 International Business Machines Corporation
- 2000-2014 IBM, Inc. and others
- 2003-2020, 2024-2025 Apple Inc.
- 2017, 2025 Unicode®, Inc.
- The Internet Society (2002)
- 2001-2015 IBM and others
- 2005-2014 IBM Corporation and Others
- 2001-2016 IBM, Inc.
- 2010 Yahoo! Inc.
- 1998-2016 IBM Corp.
- 2000-2016 IBM Corporation
- 2021, 2024 Apple
- 2003-2019 Unicode, Inc. and others
- 2011-2013 Apple Inc.; Unicode, Inc.; and others
- 2006-2008 Google Inc.
- 2008-2014 Google, International Business Machines Corporation and others
- 2011-2013 Apple Inc. and others
- 2008-2015 Google, International Business Machines Corporation
- 2005-2007, 2010 Apple Inc., Unicode Inc.
- 2013 Brian Eugene Wilson, Robert Martin Campbell
- 1996 Chih-Hao Tsai @ Beckman Institute
- 1999 Computer Systems and Communication Lab
- 2003-2015 IBM, Ken Foskey, and others
- 1995-2003, 2008, 2011-2013 International Business
- 2000-2003 International Business Machines Corp.
- 2007, 2012 International Business Machines Corporation, Apple Inc.
- 2001-2016 International Business Machines Corporation
- 2013 LeRoy Benjamin Sharon
- 2000-2003 Nara Institute of Science
- 1999 Pai-Hsiang Hsiao
- 1999 TaBE Project
- 1991 the Massachusetts Institute of Technology
- 2006-2011 the V8 project authors
-License: Unicode-3.0
-
-Files: icu/icu4c/source/data/brkitr/dictionaries/burmesedict.txt
+Files-Excluded: *
+Files-Included:
+ icu/LICENSE
+ icu/icu4c/source/Makefile.in
+ icu/icu4c/source/common/Makefile.in
+ icu/icu4c/source/common/appendable.cpp
+ icu/icu4c/source/common/bmpset.cpp
+ icu/icu4c/source/common/bmpset.h
+ icu/icu4c/source/common/brkeng.cpp
+ icu/icu4c/source/common/brkeng.h
+ icu/icu4c/source/common/brkiter.cpp
+ icu/icu4c/source/common/bytesinkutil.cpp
+ icu/icu4c/source/common/bytesinkutil.h
+ icu/icu4c/source/common/bytestream.cpp
+ icu/icu4c/source/common/bytestrie.cpp
+ icu/icu4c/source/common/bytestriebuilder.cpp
+ icu/icu4c/source/common/bytestrieiterator.cpp
+ icu/icu4c/source/common/caniter.cpp
+ icu/icu4c/source/common/capi_helper.h
+ icu/icu4c/source/common/characterproperties.cpp
+ icu/icu4c/source/common/chariter.cpp
+ icu/icu4c/source/common/charstr.cpp
+ icu/icu4c/source/common/charstr.h
+ icu/icu4c/source/common/charstrmap.h
+ icu/icu4c/source/common/cmemory.cpp
+ icu/icu4c/source/common/cmemory.h
+ icu/icu4c/source/common/cpputils.h
+ icu/icu4c/source/common/cstr.cpp
+ icu/icu4c/source/common/cstr.h
+ icu/icu4c/source/common/cstring.cpp
+ icu/icu4c/source/common/cstring.h
+ icu/icu4c/source/common/cwchar.cpp
+ icu/icu4c/source/common/cwchar.h
+ icu/icu4c/source/common/dictbe.cpp
+ icu/icu4c/source/common/dictbe.h
+ icu/icu4c/source/common/dictionarydata.cpp
+ icu/icu4c/source/common/dictionarydata.h
+ icu/icu4c/source/common/dtintrv.cpp
+ icu/icu4c/source/common/edits.cpp
+ icu/icu4c/source/common/emojiprops.cpp
+ icu/icu4c/source/common/emojiprops.h
+ icu/icu4c/source/common/errorcode.cpp
+ icu/icu4c/source/common/filteredbrk.cpp
+ icu/icu4c/source/common/filterednormalizer2.cpp
+ icu/icu4c/source/common/fixedstring.cpp
+ icu/icu4c/source/common/fixedstring.h
+ icu/icu4c/source/common/hash.h
+ icu/icu4c/source/common/icudataver.cpp
+ icu/icu4c/source/common/icuplug.cpp
+ icu/icu4c/source/common/icuplugimp.h
+ icu/icu4c/source/common/loadednormalizer2impl.cpp
+ icu/icu4c/source/common/localebuilder.cpp
+ icu/icu4c/source/common/localefallback_data.h
+ icu/icu4c/source/common/localematcher.cpp
+ icu/icu4c/source/common/localeprioritylist.cpp
+ icu/icu4c/source/common/localeprioritylist.h
+ icu/icu4c/source/common/localsvc.h
+ icu/icu4c/source/common/locavailable.cpp
+ icu/icu4c/source/common/locbased.cpp
+ icu/icu4c/source/common/locbased.h
+ icu/icu4c/source/common/locdispnames.cpp
+ icu/icu4c/source/common/locdistance.cpp
+ icu/icu4c/source/common/locdistance.h
+ icu/icu4c/source/common/locdspnm.cpp
+ icu/icu4c/source/common/locid.cpp
+ icu/icu4c/source/common/loclikely.cpp
+ icu/icu4c/source/common/loclikelysubtags.cpp
+ icu/icu4c/source/common/loclikelysubtags.h
+ icu/icu4c/source/common/locmap.cpp
+ icu/icu4c/source/common/locmap.h
+ icu/icu4c/source/common/locresdata.cpp
+ icu/icu4c/source/common/locutil.cpp
+ icu/icu4c/source/common/locutil.h
+ icu/icu4c/source/common/lsr.cpp
+ icu/icu4c/source/common/lsr.h
+ icu/icu4c/source/common/lstmbe.cpp
+ icu/icu4c/source/common/lstmbe.h
+ icu/icu4c/source/common/messageimpl.h
+ icu/icu4c/source/common/messagepattern.cpp
+ icu/icu4c/source/common/mlbe.cpp
+ icu/icu4c/source/common/mlbe.h
+ icu/icu4c/source/common/mutex.h
+ icu/icu4c/source/common/norm2_nfc_data.h
+ icu/icu4c/source/common/norm2allmodes.h
+ icu/icu4c/source/common/normalizer2.cpp
+ icu/icu4c/source/common/normalizer2impl.cpp
+ icu/icu4c/source/common/normalizer2impl.h
+ icu/icu4c/source/common/normlzr.cpp
+ icu/icu4c/source/common/parsepos.cpp
+ icu/icu4c/source/common/patternprops.cpp
+ icu/icu4c/source/common/patternprops.h
+ icu/icu4c/source/common/pluralmap.cpp
+ icu/icu4c/source/common/pluralmap.h
+ icu/icu4c/source/common/propname.cpp
+ icu/icu4c/source/common/propname.h
+ icu/icu4c/source/common/propname_data.h
+ icu/icu4c/source/common/propsvec.cpp
+ icu/icu4c/source/common/propsvec.h
+ icu/icu4c/source/common/punycode.cpp
+ icu/icu4c/source/common/punycode.h
+ icu/icu4c/source/common/putil.cpp
+ icu/icu4c/source/common/putilimp.h
+ icu/icu4c/source/common/rbbi.cpp
+ icu/icu4c/source/common/rbbi_cache.cpp
+ icu/icu4c/source/common/rbbi_cache.h
+ icu/icu4c/source/common/rbbidata.cpp
+ icu/icu4c/source/common/rbbidata.h
+ icu/icu4c/source/common/rbbinode.cpp
+ icu/icu4c/source/common/rbbinode.h
+ icu/icu4c/source/common/rbbirb.cpp
+ icu/icu4c/source/common/rbbirb.h
+ icu/icu4c/source/common/rbbirpt.h
+ icu/icu4c/source/common/rbbiscan.cpp
+ icu/icu4c/source/common/rbbiscan.h
+ icu/icu4c/source/common/rbbisetb.cpp
+ icu/icu4c/source/common/rbbisetb.h
+ icu/icu4c/source/common/rbbistbl.cpp
+ icu/icu4c/source/common/rbbitblb.cpp
+ icu/icu4c/source/common/rbbitblb.h
+ icu/icu4c/source/common/resbund.cpp
+ icu/icu4c/source/common/resbund_cnv.cpp
+ icu/icu4c/source/common/resource.cpp
+ icu/icu4c/source/common/resource.h
+ icu/icu4c/source/common/restrace.cpp
+ icu/icu4c/source/common/restrace.h
+ icu/icu4c/source/common/ruleiter.cpp
+ icu/icu4c/source/common/ruleiter.h
+ icu/icu4c/source/common/schriter.cpp
+ icu/icu4c/source/common/serv.cpp
+ icu/icu4c/source/common/servlk.cpp
+ icu/icu4c/source/common/servlkf.cpp
+ icu/icu4c/source/common/servloc.h
+ icu/icu4c/source/common/servls.cpp
+ icu/icu4c/source/common/servnotf.cpp
+ icu/icu4c/source/common/servrbf.cpp
+ icu/icu4c/source/common/servslkf.cpp
+ icu/icu4c/source/common/sharedobject.cpp
+ icu/icu4c/source/common/sharedobject.h
+ icu/icu4c/source/common/simpleformatter.cpp
+ icu/icu4c/source/common/sources.txt
+ icu/icu4c/source/common/sprpimpl.h
+ icu/icu4c/source/common/static_unicode_sets.cpp
+ icu/icu4c/source/common/static_unicode_sets.h
+ icu/icu4c/source/common/stringpiece.cpp
+ icu/icu4c/source/common/stringtriebuilder.cpp
+ icu/icu4c/source/common/uarrsort.cpp
+ icu/icu4c/source/common/uarrsort.h
+ icu/icu4c/source/common/uassert.h
+ icu/icu4c/source/common/ubidi.cpp
+ icu/icu4c/source/common/ubidi_props.cpp
+ icu/icu4c/source/common/ubidi_props.h
+ icu/icu4c/source/common/ubidi_props_data.h
+ icu/icu4c/source/common/ubidiimp.h
+ icu/icu4c/source/common/ubidiln.cpp
+ icu/icu4c/source/common/ubiditransform.cpp
+ icu/icu4c/source/common/ubidiwrt.cpp
+ icu/icu4c/source/common/ubrk.cpp
+ icu/icu4c/source/common/ubrkimpl.h
+ icu/icu4c/source/common/ucase.cpp
+ icu/icu4c/source/common/ucase.h
+ icu/icu4c/source/common/ucase_props_data.h
+ icu/icu4c/source/common/ucasemap.cpp
+ icu/icu4c/source/common/ucasemap_imp.h
+ icu/icu4c/source/common/ucasemap_titlecase_brkiter.cpp
+ icu/icu4c/source/common/ucat.cpp
+ icu/icu4c/source/common/uchar.cpp
+ icu/icu4c/source/common/uchar_props_data.h
+ icu/icu4c/source/common/ucharstrie.cpp
+ icu/icu4c/source/common/ucharstriebuilder.cpp
+ icu/icu4c/source/common/ucharstrieiterator.cpp
+ icu/icu4c/source/common/uchriter.cpp
+ icu/icu4c/source/common/ucln.h
+ icu/icu4c/source/common/ucln_cmn.cpp
+ icu/icu4c/source/common/ucln_cmn.h
+ icu/icu4c/source/common/ucln_imp.h
+ icu/icu4c/source/common/ucmndata.cpp
+ icu/icu4c/source/common/ucmndata.h
+ icu/icu4c/source/common/ucnv.cpp
+ icu/icu4c/source/common/ucnv2022.cpp
+ icu/icu4c/source/common/ucnv_bld.cpp
+ icu/icu4c/source/common/ucnv_bld.h
+ icu/icu4c/source/common/ucnv_cb.cpp
+ icu/icu4c/source/common/ucnv_cnv.cpp
+ icu/icu4c/source/common/ucnv_cnv.h
+ icu/icu4c/source/common/ucnv_ct.cpp
+ icu/icu4c/source/common/ucnv_err.cpp
+ icu/icu4c/source/common/ucnv_ext.cpp
+ icu/icu4c/source/common/ucnv_ext.h
+ icu/icu4c/source/common/ucnv_imp.h
+ icu/icu4c/source/common/ucnv_io.cpp
+ icu/icu4c/source/common/ucnv_io.h
+ icu/icu4c/source/common/ucnv_lmb.cpp
+ icu/icu4c/source/common/ucnv_set.cpp
+ icu/icu4c/source/common/ucnv_u16.cpp
+ icu/icu4c/source/common/ucnv_u32.cpp
+ icu/icu4c/source/common/ucnv_u7.cpp
+ icu/icu4c/source/common/ucnv_u8.cpp
+ icu/icu4c/source/common/ucnvbocu.cpp
+ icu/icu4c/source/common/ucnvdisp.cpp
+ icu/icu4c/source/common/ucnvhz.cpp
+ icu/icu4c/source/common/ucnvisci.cpp
+ icu/icu4c/source/common/ucnvlat1.cpp
+ icu/icu4c/source/common/ucnvmbcs.cpp
+ icu/icu4c/source/common/ucnvmbcs.h
+ icu/icu4c/source/common/ucnvscsu.cpp
+ icu/icu4c/source/common/ucnvsel.cpp
+ icu/icu4c/source/common/ucol_data.h
+ icu/icu4c/source/common/ucol_swp.cpp
+ icu/icu4c/source/common/ucol_swp.h
+ icu/icu4c/source/common/ucptrie.cpp
+ icu/icu4c/source/common/ucptrie_impl.h
+ icu/icu4c/source/common/ucurr.cpp
+ icu/icu4c/source/common/ucurrimp.h
+ icu/icu4c/source/common/udata.cpp
+ icu/icu4c/source/common/udatamem.cpp
+ icu/icu4c/source/common/udatamem.h
+ icu/icu4c/source/common/udataswp.cpp
+ icu/icu4c/source/common/udataswp.h
+ icu/icu4c/source/common/uelement.h
+ icu/icu4c/source/common/uenum.cpp
+ icu/icu4c/source/common/uenumimp.h
+ icu/icu4c/source/common/uhash.cpp
+ icu/icu4c/source/common/uhash.h
+ icu/icu4c/source/common/uhash_us.cpp
+ icu/icu4c/source/common/uidna.cpp
+ icu/icu4c/source/common/uinit.cpp
+ icu/icu4c/source/common/uinvchar.cpp
+ icu/icu4c/source/common/uinvchar.h
+ icu/icu4c/source/common/uiter.cpp
+ icu/icu4c/source/common/ulayout_props.h
+ icu/icu4c/source/common/ulist.cpp
+ icu/icu4c/source/common/ulist.h
+ icu/icu4c/source/common/uloc.cpp
+ icu/icu4c/source/common/uloc_keytype.cpp
+ icu/icu4c/source/common/uloc_tag.cpp
+ icu/icu4c/source/common/ulocale.cpp
+ icu/icu4c/source/common/ulocbuilder.cpp
+ icu/icu4c/source/common/ulocdata.cpp
+ icu/icu4c/source/common/ulocimp.h
+ icu/icu4c/source/common/umapfile.cpp
+ icu/icu4c/source/common/umapfile.h
+ icu/icu4c/source/common/umath.cpp
+ icu/icu4c/source/common/umutablecptrie.cpp
+ icu/icu4c/source/common/umutex.cpp
+ icu/icu4c/source/common/umutex.h
+ icu/icu4c/source/common/unames.cpp
+ icu/icu4c/source/common/unicode/appendable.h
+ icu/icu4c/source/common/unicode/brkiter.h
+ icu/icu4c/source/common/unicode/bytestream.h
+ icu/icu4c/source/common/unicode/bytestrie.h
+ icu/icu4c/source/common/unicode/bytestriebuilder.h
+ icu/icu4c/source/common/unicode/caniter.h
+ icu/icu4c/source/common/unicode/casemap.h
+ icu/icu4c/source/common/unicode/char16ptr.h
+ icu/icu4c/source/common/unicode/chariter.h
+ icu/icu4c/source/common/unicode/dbbi.h
+ icu/icu4c/source/common/unicode/docmain.h
+ icu/icu4c/source/common/unicode/dtintrv.h
+ icu/icu4c/source/common/unicode/edits.h
+ icu/icu4c/source/common/unicode/enumset.h
+ icu/icu4c/source/common/unicode/errorcode.h
+ icu/icu4c/source/common/unicode/filteredbrk.h
+ icu/icu4c/source/common/unicode/icudataver.h
+ icu/icu4c/source/common/unicode/icuplug.h
+ icu/icu4c/source/common/unicode/idna.h
+ icu/icu4c/source/common/unicode/localebuilder.h
+ icu/icu4c/source/common/unicode/localematcher.h
+ icu/icu4c/source/common/unicode/localpointer.h
+ icu/icu4c/source/common/unicode/locdspnm.h
+ icu/icu4c/source/common/unicode/locid.h
+ icu/icu4c/source/common/unicode/messagepattern.h
+ icu/icu4c/source/common/unicode/normalizer2.h
+ icu/icu4c/source/common/unicode/normlzr.h
+ icu/icu4c/source/common/unicode/parseerr.h
+ icu/icu4c/source/common/unicode/parsepos.h
+ icu/icu4c/source/common/unicode/platform.h
+ icu/icu4c/source/common/unicode/ptypes.h
+ icu/icu4c/source/common/unicode/putil.h
+ icu/icu4c/source/common/unicode/rbbi.h
+ icu/icu4c/source/common/unicode/rep.h
+ icu/icu4c/source/common/unicode/resbund.h
+ icu/icu4c/source/common/unicode/schriter.h
+ icu/icu4c/source/common/unicode/simpleformatter.h
+ icu/icu4c/source/common/unicode/std_string.h
+ icu/icu4c/source/common/unicode/strenum.h
+ icu/icu4c/source/common/unicode/stringoptions.h
+ icu/icu4c/source/common/unicode/stringpiece.h
+ icu/icu4c/source/common/unicode/stringtriebuilder.h
+ icu/icu4c/source/common/unicode/symtable.h
+ icu/icu4c/source/common/unicode/ubidi.h
+ icu/icu4c/source/common/unicode/ubiditransform.h
+ icu/icu4c/source/common/unicode/ubrk.h
+ icu/icu4c/source/common/unicode/ucasemap.h
+ icu/icu4c/source/common/unicode/ucat.h
+ icu/icu4c/source/common/unicode/uchar.h
+ icu/icu4c/source/common/unicode/ucharstrie.h
+ icu/icu4c/source/common/unicode/ucharstriebuilder.h
+ icu/icu4c/source/common/unicode/uchriter.h
+ icu/icu4c/source/common/unicode/uclean.h
+ icu/icu4c/source/common/unicode/ucnv.h
+ icu/icu4c/source/common/unicode/ucnv_cb.h
+ icu/icu4c/source/common/unicode/ucnv_err.h
+ icu/icu4c/source/common/unicode/ucnvsel.h
+ icu/icu4c/source/common/unicode/uconfig.h
+ icu/icu4c/source/common/unicode/ucpmap.h
+ icu/icu4c/source/common/unicode/ucptrie.h
+ icu/icu4c/source/common/unicode/ucurr.h
+ icu/icu4c/source/common/unicode/udata.h
+ icu/icu4c/source/common/unicode/udisplaycontext.h
+ icu/icu4c/source/common/unicode/uenum.h
+ icu/icu4c/source/common/unicode/uidna.h
+ icu/icu4c/source/common/unicode/uiter.h
+ icu/icu4c/source/common/unicode/uldnames.h
+ icu/icu4c/source/common/unicode/uloc.h
+ icu/icu4c/source/common/unicode/ulocale.h
+ icu/icu4c/source/common/unicode/ulocbuilder.h
+ icu/icu4c/source/common/unicode/ulocdata.h
+ icu/icu4c/source/common/unicode/umachine.h
+ icu/icu4c/source/common/unicode/umisc.h
+ icu/icu4c/source/common/unicode/umutablecptrie.h
+ icu/icu4c/source/common/unicode/unifilt.h
+ icu/icu4c/source/common/unicode/unifunct.h
+ icu/icu4c/source/common/unicode/unimatch.h
+ icu/icu4c/source/common/unicode/uniset.h
+ icu/icu4c/source/common/unicode/unistr.h
+ icu/icu4c/source/common/unicode/unorm.h
+ icu/icu4c/source/common/unicode/unorm2.h
+ icu/icu4c/source/common/unicode/uobject.h
+ icu/icu4c/source/common/unicode/urename.h
+ icu/icu4c/source/common/unicode/urep.h
+ icu/icu4c/source/common/unicode/ures.h
+ icu/icu4c/source/common/unicode/uscript.h
+ icu/icu4c/source/common/unicode/uset.h
+ icu/icu4c/source/common/unicode/usetiter.h
+ icu/icu4c/source/common/unicode/ushape.h
+ icu/icu4c/source/common/unicode/usprep.h
+ icu/icu4c/source/common/unicode/ustring.h
+ icu/icu4c/source/common/unicode/ustringtrie.h
+ icu/icu4c/source/common/unicode/utext.h
+ icu/icu4c/source/common/unicode/utf.h
+ icu/icu4c/source/common/unicode/utf16.h
+ icu/icu4c/source/common/unicode/utf32.h
+ icu/icu4c/source/common/unicode/utf8.h
+ icu/icu4c/source/common/unicode/utf_old.h
+ icu/icu4c/source/common/unicode/utfiterator.h
+ icu/icu4c/source/common/unicode/utfstring.h
+ icu/icu4c/source/common/unicode/utrace.h
+ icu/icu4c/source/common/unicode/utypes.h
+ icu/icu4c/source/common/unicode/uvernum.h
+ icu/icu4c/source/common/unicode/uversion.h
+ icu/icu4c/source/common/unifiedcache.cpp
+ icu/icu4c/source/common/unifiedcache.h
+ icu/icu4c/source/common/unifilt.cpp
+ icu/icu4c/source/common/unifunct.cpp
+ icu/icu4c/source/common/uniquecharstr.h
+ icu/icu4c/source/common/uniset.cpp
+ icu/icu4c/source/common/uniset_closure.cpp
+ icu/icu4c/source/common/uniset_props.cpp
+ icu/icu4c/source/common/unisetspan.cpp
+ icu/icu4c/source/common/unisetspan.h
+ icu/icu4c/source/common/unistr.cpp
+ icu/icu4c/source/common/unistr_case.cpp
+ icu/icu4c/source/common/unistr_case_locale.cpp
+ icu/icu4c/source/common/unistr_cnv.cpp
+ icu/icu4c/source/common/unistr_props.cpp
+ icu/icu4c/source/common/unistr_titlecase_brkiter.cpp
+ icu/icu4c/source/common/unorm.cpp
+ icu/icu4c/source/common/unormcmp.cpp
+ icu/icu4c/source/common/unormimp.h
+ icu/icu4c/source/common/uobject.cpp
+ icu/icu4c/source/common/uposixdefs.h
+ icu/icu4c/source/common/uprops.cpp
+ icu/icu4c/source/common/uprops.h
+ icu/icu4c/source/common/ures_cnv.cpp
+ icu/icu4c/source/common/uresbund.cpp
+ icu/icu4c/source/common/uresdata.cpp
+ icu/icu4c/source/common/uresdata.h
+ icu/icu4c/source/common/uresimp.h
+ icu/icu4c/source/common/ureslocs.h
+ icu/icu4c/source/common/usc_impl.cpp
+ icu/icu4c/source/common/usc_impl.h
+ icu/icu4c/source/common/uscript.cpp
+ icu/icu4c/source/common/uscript_props.cpp
+ icu/icu4c/source/common/uset.cpp
+ icu/icu4c/source/common/uset_imp.h
+ icu/icu4c/source/common/uset_props.cpp
+ icu/icu4c/source/common/usetiter.cpp
+ icu/icu4c/source/common/ushape.cpp
+ icu/icu4c/source/common/usprep.cpp
+ icu/icu4c/source/common/ustack.cpp
+ icu/icu4c/source/common/ustr_cnv.cpp
+ icu/icu4c/source/common/ustr_cnv.h
+ icu/icu4c/source/common/ustr_imp.h
+ icu/icu4c/source/common/ustr_titlecase_brkiter.cpp
+ icu/icu4c/source/common/ustr_wcs.cpp
+ icu/icu4c/source/common/ustrcase.cpp
+ icu/icu4c/source/common/ustrcase_locale.cpp
+ icu/icu4c/source/common/ustrenum.cpp
+ icu/icu4c/source/common/ustrenum.h
+ icu/icu4c/source/common/ustrfmt.cpp
+ icu/icu4c/source/common/ustrfmt.h
+ icu/icu4c/source/common/ustring.cpp
+ icu/icu4c/source/common/ustrtrns.cpp
+ icu/icu4c/source/common/utext.cpp
+ icu/icu4c/source/common/utf_impl.cpp
+ icu/icu4c/source/common/util.cpp
+ icu/icu4c/source/common/util.h
+ icu/icu4c/source/common/util_props.cpp
+ icu/icu4c/source/common/utrace.cpp
+ icu/icu4c/source/common/utracimp.h
+ icu/icu4c/source/common/utrie.cpp
+ icu/icu4c/source/common/utrie.h
+ icu/icu4c/source/common/utrie2.cpp
+ icu/icu4c/source/common/utrie2.h
+ icu/icu4c/source/common/utrie2_builder.cpp
+ icu/icu4c/source/common/utrie2_impl.h
+ icu/icu4c/source/common/utrie_swap.cpp
+ icu/icu4c/source/common/uts46.cpp
+ icu/icu4c/source/common/utypeinfo.h
+ icu/icu4c/source/common/utypes.cpp
+ icu/icu4c/source/common/uvector.cpp
+ icu/icu4c/source/common/uvector.h
+ icu/icu4c/source/common/uvectr32.cpp
+ icu/icu4c/source/common/uvectr32.h
+ icu/icu4c/source/common/uvectr64.cpp
+ icu/icu4c/source/common/uvectr64.h
+ icu/icu4c/source/common/wintz.cpp
+ icu/icu4c/source/config.guess
+ icu/icu4c/source/config.sub
+ icu/icu4c/source/config/Makefile.inc.in
+ icu/icu4c/source/config/gmakever.mk
+ icu/icu4c/source/config/icu-config-bottom
+ icu/icu4c/source/config/icu-config-top
+ icu/icu4c/source/config/icu.pc.in
+ icu/icu4c/source/config/make2sh.sed
+ icu/icu4c/source/config/mh-darwin
+ icu/icu4c/source/config/mh-linux
+ icu/icu4c/source/config/pkgdataMakefile.in
+ icu/icu4c/source/configure
+ icu/icu4c/source/data/BUILDRULES.py
+ icu/icu4c/source/data/Makefile.in
+ icu/icu4c/source/data/brkitr/LOCALE_DEPS.json
+ icu/icu4c/source/data/brkitr/de.txt
+ icu/icu4c/source/data/brkitr/dictionaries/*
+ icu/icu4c/source/data/brkitr/el.txt
+ icu/icu4c/source/data/brkitr/en.txt
+ icu/icu4c/source/data/brkitr/en_US.txt
+ icu/icu4c/source/data/brkitr/en_US_POSIX.txt
+ icu/icu4c/source/data/brkitr/es.txt
+ icu/icu4c/source/data/brkitr/fi.txt
+ icu/icu4c/source/data/brkitr/fr.txt
+ icu/icu4c/source/data/brkitr/it.txt
+ icu/icu4c/source/data/brkitr/ja.txt
+ icu/icu4c/source/data/brkitr/ko.txt
+ icu/icu4c/source/data/brkitr/pt.txt
+ icu/icu4c/source/data/brkitr/root.txt
+ icu/icu4c/source/data/brkitr/ru.txt
+ icu/icu4c/source/data/brkitr/rules/char.txt
+ icu/icu4c/source/data/brkitr/rules/line.txt
+ icu/icu4c/source/data/brkitr/rules/line_cj.txt
+ icu/icu4c/source/data/brkitr/rules/line_loose.txt
+ icu/icu4c/source/data/brkitr/rules/line_loose_cj.txt
+ icu/icu4c/source/data/brkitr/rules/line_loose_phrase_cj.txt
+ icu/icu4c/source/data/brkitr/rules/line_normal.txt
+ icu/icu4c/source/data/brkitr/rules/line_normal_cj.txt
+ icu/icu4c/source/data/brkitr/rules/line_normal_phrase_cj.txt
+ icu/icu4c/source/data/brkitr/rules/line_phrase_cj.txt
+ icu/icu4c/source/data/brkitr/rules/sent.txt
+ icu/icu4c/source/data/brkitr/rules/sent_el.txt
+ icu/icu4c/source/data/brkitr/rules/title.txt
+ icu/icu4c/source/data/brkitr/rules/word.txt
+ icu/icu4c/source/data/brkitr/rules/word_POSIX.txt
+ icu/icu4c/source/data/brkitr/rules/word_fi_sv.txt
+ icu/icu4c/source/data/brkitr/sv.txt
+ icu/icu4c/source/data/brkitr/zh.txt
+ icu/icu4c/source/data/brkitr/zh_Hant.txt
+ icu/icu4c/source/data/coll/*
+ icu/icu4c/source/data/curr/*
+ icu/icu4c/source/data/in/coll/ucadata-unihan.icu
+ icu/icu4c/source/data/in/nfc.nrm
+ icu/icu4c/source/data/in/nfkc.nrm
+ icu/icu4c/source/data/in/nfkc_cf.nrm
+ icu/icu4c/source/data/in/nfkc_scf.nrm
+ icu/icu4c/source/data/in/uemoji.icu
+ icu/icu4c/source/data/in/ulayout.icu
+ icu/icu4c/source/data/in/unames.icu
+ icu/icu4c/source/data/in/uts46.nrm
+ icu/icu4c/source/data/lang/*
+ icu/icu4c/source/data/locales/*
+ icu/icu4c/source/data/mappings/cns-11643-1992.ucm
+ icu/icu4c/source/data/mappings/convrtrs.txt
+ icu/icu4c/source/data/mappings/ebcdic-xml-us.ucm
+ icu/icu4c/source/data/mappings/euc-jp-2007.ucm
+ icu/icu4c/source/data/mappings/euc-tw-2014.ucm
+ icu/icu4c/source/data/mappings/gb18030-2022.ucm
+ icu/icu4c/source/data/mappings/gsm-03.38-2000.ucm
+ icu/icu4c/source/data/mappings/gsm-03.38-2009.ucm
+ icu/icu4c/source/data/mappings/ibm-1006_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1025_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1026_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1047_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1051_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1089_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1097_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1098_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1112_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1122_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1123_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1124_P100-1996.ucm
+ icu/icu4c/source/data/mappings/ibm-1125_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1129_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1130_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1131_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1132_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-1133_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1137_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1140_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1141_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1142_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1143_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1144_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1145_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1146_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1147_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1148_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1149_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1153_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1154_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1155_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1156_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1157_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1158_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1160_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1162_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1164_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1168_P100-2002.ucm
+ icu/icu4c/source/data/mappings/ibm-1250_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1251_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1252_P100-2000.ucm
+ icu/icu4c/source/data/mappings/ibm-1253_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1254_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1255_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1256_P110-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1257_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1258_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-12712_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-1276_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-1363_P110-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-1363_P11B-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-1364_P110-2007.ucm
+ icu/icu4c/source/data/mappings/ibm-1371_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1373_P100-2002.ucm
+ icu/icu4c/source/data/mappings/ibm-1375_P100-2008.ucm
+ icu/icu4c/source/data/mappings/ibm-1383_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-1386_P100-2001.ucm
+ icu/icu4c/source/data/mappings/ibm-1388_P100-2024.ucm
+ icu/icu4c/source/data/mappings/ibm-1390_P110-2003.ucm
+ icu/icu4c/source/data/mappings/ibm-1399_P110-2003.ucm
+ icu/icu4c/source/data/mappings/ibm-16684_P110-2003.ucm
+ icu/icu4c/source/data/mappings/ibm-16804_X110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-273_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-277_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-278_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-280_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-284_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-285_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-290_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-297_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-33722_P120-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-33722_P12A_P12A-2004_U2.ucm
+ icu/icu4c/source/data/mappings/ibm-33722_P12A_P12A-2009_U2.ucm
+ icu/icu4c/source/data/mappings/ibm-37_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-420_X120-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-424_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-437_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-4517_P100-2005.ucm
+ icu/icu4c/source/data/mappings/ibm-4899_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-4909_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-4971_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-500_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-5012_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-5123_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-5346_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5347_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5348_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-5349_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5350_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5351_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5352_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5353_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5354_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-5471_P100-2006.ucm
+ icu/icu4c/source/data/mappings/ibm-5478_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-720_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-737_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-775_P100-1996.ucm
+ icu/icu4c/source/data/mappings/ibm-803_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-813_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-838_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-8482_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-850_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-851_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-852_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-855_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-856_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-857_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-858_P100-1997.ucm
+ icu/icu4c/source/data/mappings/ibm-860_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-861_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-862_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-863_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-864_X110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-865_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-866_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-867_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-868_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-869_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-870_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-871_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-874_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-875_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-878_P100-1996.ucm
+ icu/icu4c/source/data/mappings/ibm-9005_X110-2007.ucm
+ icu/icu4c/source/data/mappings/ibm-901_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-902_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-9067_X100-2005.ucm
+ icu/icu4c/source/data/mappings/ibm-912_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-913_P100-2000.ucm
+ icu/icu4c/source/data/mappings/ibm-914_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-915_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-916_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-918_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-920_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-921_P100-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-922_P100-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-923_P100-1998.ucm
+ icu/icu4c/source/data/mappings/ibm-930_P120-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-933_P110-1995.ucm
+ icu/icu4c/source/data/mappings/ibm-935_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-937_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-939_P120-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-942_P12A-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-943_P130-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-943_P15A-2003.ucm
+ icu/icu4c/source/data/mappings/ibm-9447_P100-2002.ucm
+ icu/icu4c/source/data/mappings/ibm-9448_X100-2005.ucm
+ icu/icu4c/source/data/mappings/ibm-9449_P100-2002.ucm
+ icu/icu4c/source/data/mappings/ibm-949_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-949_P11A-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-950_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-954_P101-2007.ucm
+ icu/icu4c/source/data/mappings/ibm-964_P110-1999.ucm
+ icu/icu4c/source/data/mappings/ibm-970_P110_P110-2006_U2.ucm
+ icu/icu4c/source/data/mappings/ibm-971_P100-1995.ucm
+ icu/icu4c/source/data/mappings/icu-internal-25546.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d1.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d2.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d3.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d4.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d5.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d6.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-d7.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-s1.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-s2.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-s3.ucm
+ icu/icu4c/source/data/mappings/icu-internal-compound-t.ucm
+ icu/icu4c/source/data/mappings/iso-8859_10-1998.ucm
+ icu/icu4c/source/data/mappings/iso-8859_11-2001.ucm
+ icu/icu4c/source/data/mappings/iso-8859_14-1998.ucm
+ icu/icu4c/source/data/mappings/iso-8859_16-2001.ucm
+ icu/icu4c/source/data/mappings/iso-ir-165.ucm
+ icu/icu4c/source/data/mappings/jisx-212.ucm
+ icu/icu4c/source/data/mappings/lmb-excp.ucm
+ icu/icu4c/source/data/mappings/macos-0_2-10.2.ucm
+ icu/icu4c/source/data/mappings/macos-2566-10.2.ucm
+ icu/icu4c/source/data/mappings/macos-29-10.2.ucm
+ icu/icu4c/source/data/mappings/macos-35-10.2.ucm
+ icu/icu4c/source/data/mappings/macos-6-10.2.ucm
+ icu/icu4c/source/data/mappings/macos-6_2-10.4.ucm
+ icu/icu4c/source/data/mappings/macos-7_3-10.2.ucm
+ icu/icu4c/source/data/mappings/windows-874-2000.ucm
+ icu/icu4c/source/data/mappings/windows-936-2000.ucm
+ icu/icu4c/source/data/mappings/windows-949-2000.ucm
+ icu/icu4c/source/data/mappings/windows-950-2000.ucm
+ icu/icu4c/source/data/misc/currencyNumericCodes.txt
+ icu/icu4c/source/data/misc/dayPeriods.txt
+ icu/icu4c/source/data/misc/genderList.txt
+ icu/icu4c/source/data/misc/grammaticalFeatures.txt
+ icu/icu4c/source/data/misc/icustd.txt
+ icu/icu4c/source/data/misc/icuver.txt
+ icu/icu4c/source/data/misc/keyTypeData.txt
+ icu/icu4c/source/data/misc/langInfo.txt
+ icu/icu4c/source/data/misc/likelySubtags.txt
+ icu/icu4c/source/data/misc/metaZones.txt
+ icu/icu4c/source/data/misc/metadata.txt
+ icu/icu4c/source/data/misc/numberingSystems.txt
+ icu/icu4c/source/data/misc/pluralRanges.txt
+ icu/icu4c/source/data/misc/plurals.txt
+ icu/icu4c/source/data/misc/supplementalData.txt
+ icu/icu4c/source/data/misc/timezoneTypes.txt
+ icu/icu4c/source/data/misc/units.txt
+ icu/icu4c/source/data/misc/windowsZones.txt
+ icu/icu4c/source/data/misc/zoneinfo64.txt
+ icu/icu4c/source/data/pkgdataMakefile.in
+ icu/icu4c/source/data/rbnf/*
+ icu/icu4c/source/data/region/*
+ icu/icu4c/source/data/sprep/rfc3491.txt
+ icu/icu4c/source/data/sprep/rfc3530cs.txt
+ icu/icu4c/source/data/sprep/rfc3530csci.txt
+ icu/icu4c/source/data/sprep/rfc3530mixp.txt
+ icu/icu4c/source/data/sprep/rfc3722.txt
+ icu/icu4c/source/data/sprep/rfc3920node.txt
+ icu/icu4c/source/data/sprep/rfc3920res.txt
+ icu/icu4c/source/data/sprep/rfc4011.txt
+ icu/icu4c/source/data/sprep/rfc4013.txt
+ icu/icu4c/source/data/sprep/rfc4505.txt
+ icu/icu4c/source/data/sprep/rfc4518.txt
+ icu/icu4c/source/data/sprep/rfc4518ci.txt
+ icu/icu4c/source/data/translit/*
+ icu/icu4c/source/data/unidata/NormalizationCorrections.txt
+ icu/icu4c/source/data/unidata/UCARules.txt
+ icu/icu4c/source/data/unidata/confusables.txt
+ icu/icu4c/source/data/unidata/confusablesWholeScript.txt
+ icu/icu4c/source/data/unit/*
+ icu/icu4c/source/data/zone/*
+ icu/icu4c/source/extra/Makefile.in
+ icu/icu4c/source/extra/scrptrun/Makefile.in
+ icu/icu4c/source/extra/uconv/Makefile.in
+ icu/icu4c/source/extra/uconv/pkgdataMakefile.in
+ icu/icu4c/source/i18n/Makefile.in
+ icu/icu4c/source/i18n/alphaindex.cpp
+ icu/icu4c/source/i18n/anytrans.cpp
+ icu/icu4c/source/i18n/anytrans.h
+ icu/icu4c/source/i18n/astro.cpp
+ icu/icu4c/source/i18n/astro.h
+ icu/icu4c/source/i18n/basictz.cpp
+ icu/icu4c/source/i18n/bocsu.cpp
+ icu/icu4c/source/i18n/bocsu.h
+ icu/icu4c/source/i18n/brktrans.cpp
+ icu/icu4c/source/i18n/brktrans.h
+ icu/icu4c/source/i18n/buddhcal.cpp
+ icu/icu4c/source/i18n/buddhcal.h
+ icu/icu4c/source/i18n/calendar.cpp
+ icu/icu4c/source/i18n/casetrn.cpp
+ icu/icu4c/source/i18n/casetrn.h
+ icu/icu4c/source/i18n/cecal.cpp
+ icu/icu4c/source/i18n/cecal.h
+ icu/icu4c/source/i18n/chnsecal.cpp
+ icu/icu4c/source/i18n/chnsecal.h
+ icu/icu4c/source/i18n/choicfmt.cpp
+ icu/icu4c/source/i18n/coleitr.cpp
+ icu/icu4c/source/i18n/coll.cpp
+ icu/icu4c/source/i18n/collation.cpp
+ icu/icu4c/source/i18n/collation.h
+ icu/icu4c/source/i18n/collationbuilder.cpp
+ icu/icu4c/source/i18n/collationbuilder.h
+ icu/icu4c/source/i18n/collationcompare.cpp
+ icu/icu4c/source/i18n/collationcompare.h
+ icu/icu4c/source/i18n/collationdata.cpp
+ icu/icu4c/source/i18n/collationdata.h
+ icu/icu4c/source/i18n/collationdatabuilder.cpp
+ icu/icu4c/source/i18n/collationdatabuilder.h
+ icu/icu4c/source/i18n/collationdatareader.cpp
+ icu/icu4c/source/i18n/collationdatareader.h
+ icu/icu4c/source/i18n/collationdatawriter.cpp
+ icu/icu4c/source/i18n/collationdatawriter.h
+ icu/icu4c/source/i18n/collationfastlatin.cpp
+ icu/icu4c/source/i18n/collationfastlatin.h
+ icu/icu4c/source/i18n/collationfastlatinbuilder.cpp
+ icu/icu4c/source/i18n/collationfastlatinbuilder.h
+ icu/icu4c/source/i18n/collationfcd.cpp
+ icu/icu4c/source/i18n/collationfcd.h
+ icu/icu4c/source/i18n/collationiterator.cpp
+ icu/icu4c/source/i18n/collationiterator.h
+ icu/icu4c/source/i18n/collationkeys.cpp
+ icu/icu4c/source/i18n/collationkeys.h
+ icu/icu4c/source/i18n/collationroot.cpp
+ icu/icu4c/source/i18n/collationroot.h
+ icu/icu4c/source/i18n/collationrootelements.cpp
+ icu/icu4c/source/i18n/collationrootelements.h
+ icu/icu4c/source/i18n/collationruleparser.cpp
+ icu/icu4c/source/i18n/collationruleparser.h
+ icu/icu4c/source/i18n/collationsets.cpp
+ icu/icu4c/source/i18n/collationsets.h
+ icu/icu4c/source/i18n/collationsettings.cpp
+ icu/icu4c/source/i18n/collationsettings.h
+ icu/icu4c/source/i18n/collationtailoring.cpp
+ icu/icu4c/source/i18n/collationtailoring.h
+ icu/icu4c/source/i18n/collationweights.cpp
+ icu/icu4c/source/i18n/collationweights.h
+ icu/icu4c/source/i18n/collunsafe.h
+ icu/icu4c/source/i18n/compactdecimalformat.cpp
+ icu/icu4c/source/i18n/coptccal.cpp
+ icu/icu4c/source/i18n/coptccal.h
+ icu/icu4c/source/i18n/cpdtrans.cpp
+ icu/icu4c/source/i18n/cpdtrans.h
+ icu/icu4c/source/i18n/csdetect.cpp
+ icu/icu4c/source/i18n/csdetect.h
+ icu/icu4c/source/i18n/csmatch.cpp
+ icu/icu4c/source/i18n/csmatch.h
+ icu/icu4c/source/i18n/csr2022.cpp
+ icu/icu4c/source/i18n/csr2022.h
+ icu/icu4c/source/i18n/csrecog.cpp
+ icu/icu4c/source/i18n/csrecog.h
+ icu/icu4c/source/i18n/csrmbcs.cpp
+ icu/icu4c/source/i18n/csrmbcs.h
+ icu/icu4c/source/i18n/csrsbcs.cpp
+ icu/icu4c/source/i18n/csrsbcs.h
+ icu/icu4c/source/i18n/csrucode.cpp
+ icu/icu4c/source/i18n/csrucode.h
+ icu/icu4c/source/i18n/csrutf8.cpp
+ icu/icu4c/source/i18n/csrutf8.h
+ icu/icu4c/source/i18n/curramt.cpp
+ icu/icu4c/source/i18n/currfmt.cpp
+ icu/icu4c/source/i18n/currfmt.h
+ icu/icu4c/source/i18n/currpinf.cpp
+ icu/icu4c/source/i18n/currunit.cpp
+ icu/icu4c/source/i18n/dangical.cpp
+ icu/icu4c/source/i18n/dangical.h
+ icu/icu4c/source/i18n/datefmt.cpp
+ icu/icu4c/source/i18n/dayperiodrules.cpp
+ icu/icu4c/source/i18n/dayperiodrules.h
+ icu/icu4c/source/i18n/dcfmtsym.cpp
+ icu/icu4c/source/i18n/decContext.cpp
+ icu/icu4c/source/i18n/decContext.h
+ icu/icu4c/source/i18n/decNumber.cpp
+ icu/icu4c/source/i18n/decNumber.h
+ icu/icu4c/source/i18n/decNumberLocal.h
+ icu/icu4c/source/i18n/decimfmt.cpp
+ icu/icu4c/source/i18n/displayoptions.cpp
  icu/icu4c/source/i18n/double-conversion-bignum-dtoa.cpp
  icu/icu4c/source/i18n/double-conversion-bignum-dtoa.h
  icu/icu4c/source/i18n/double-conversion-bignum.cpp
@@ -62,61 +851,708 @@ Files: icu/icu4c/source/data/brkitr/dictionaries/burmesedict.txt
  icu/icu4c/source/i18n/double-conversion-strtod.h
  icu/icu4c/source/i18n/double-conversion-utils.h
  icu/icu4c/source/i18n/double-conversion.h
+ icu/icu4c/source/i18n/dt_impl.h
+ icu/icu4c/source/i18n/dtfmtsym.cpp
+ icu/icu4c/source/i18n/dtitv_impl.h
+ icu/icu4c/source/i18n/dtitvfmt.cpp
+ icu/icu4c/source/i18n/dtitvinf.cpp
+ icu/icu4c/source/i18n/dtptngen.cpp
+ icu/icu4c/source/i18n/dtptngen_impl.h
+ icu/icu4c/source/i18n/dtrule.cpp
+ icu/icu4c/source/i18n/erarules.cpp
+ icu/icu4c/source/i18n/erarules.h
+ icu/icu4c/source/i18n/esctrn.cpp
+ icu/icu4c/source/i18n/esctrn.h
+ icu/icu4c/source/i18n/ethpccal.cpp
+ icu/icu4c/source/i18n/ethpccal.h
+ icu/icu4c/source/i18n/fmtable.cpp
+ icu/icu4c/source/i18n/fmtable_cnv.cpp
+ icu/icu4c/source/i18n/fmtableimp.h
+ icu/icu4c/source/i18n/format.cpp
+ icu/icu4c/source/i18n/formatted_string_builder.cpp
+ icu/icu4c/source/i18n/formatted_string_builder.h
+ icu/icu4c/source/i18n/formattedval_impl.h
+ icu/icu4c/source/i18n/formattedval_iterimpl.cpp
+ icu/icu4c/source/i18n/formattedval_sbimpl.cpp
+ icu/icu4c/source/i18n/formattedvalue.cpp
+ icu/icu4c/source/i18n/fphdlimp.cpp
+ icu/icu4c/source/i18n/fphdlimp.h
+ icu/icu4c/source/i18n/fpositer.cpp
+ icu/icu4c/source/i18n/funcrepl.cpp
+ icu/icu4c/source/i18n/funcrepl.h
+ icu/icu4c/source/i18n/gender.cpp
+ icu/icu4c/source/i18n/gregocal.cpp
+ icu/icu4c/source/i18n/gregoimp.cpp
+ icu/icu4c/source/i18n/gregoimp.h
+ icu/icu4c/source/i18n/hebrwcal.cpp
+ icu/icu4c/source/i18n/hebrwcal.h
+ icu/icu4c/source/i18n/hinducal.cpp
+ icu/icu4c/source/i18n/hinducal.h
+ icu/icu4c/source/i18n/indiancal.cpp
+ icu/icu4c/source/i18n/indiancal.h
+ icu/icu4c/source/i18n/inputext.cpp
+ icu/icu4c/source/i18n/inputext.h
+ icu/icu4c/source/i18n/islamcal.cpp
+ icu/icu4c/source/i18n/islamcal.h
+ icu/icu4c/source/i18n/iso8601cal.cpp
+ icu/icu4c/source/i18n/iso8601cal.h
+ icu/icu4c/source/i18n/japancal.cpp
+ icu/icu4c/source/i18n/japancal.h
+ icu/icu4c/source/i18n/listformatter.cpp
+ icu/icu4c/source/i18n/measfmt.cpp
+ icu/icu4c/source/i18n/measunit.cpp
+ icu/icu4c/source/i18n/measunit_extra.cpp
+ icu/icu4c/source/i18n/measunit_impl.h
+ icu/icu4c/source/i18n/measure.cpp
+ icu/icu4c/source/i18n/messageformat2.cpp
+ icu/icu4c/source/i18n/messageformat2_arguments.cpp
+ icu/icu4c/source/i18n/messageformat2_checker.cpp
+ icu/icu4c/source/i18n/messageformat2_data_model.cpp
+ icu/icu4c/source/i18n/messageformat2_errors.cpp
+ icu/icu4c/source/i18n/messageformat2_evaluation.cpp
+ icu/icu4c/source/i18n/messageformat2_formattable.cpp
+ icu/icu4c/source/i18n/messageformat2_formatter.cpp
+ icu/icu4c/source/i18n/messageformat2_function_registry.cpp
+ icu/icu4c/source/i18n/messageformat2_parser.cpp
+ icu/icu4c/source/i18n/messageformat2_serializer.cpp
+ icu/icu4c/source/i18n/msgfmt.cpp
+ icu/icu4c/source/i18n/msgfmt_impl.h
+ icu/icu4c/source/i18n/name2uni.cpp
+ icu/icu4c/source/i18n/name2uni.h
+ icu/icu4c/source/i18n/nfrlist.h
+ icu/icu4c/source/i18n/nfrs.cpp
+ icu/icu4c/source/i18n/nfrs.h
+ icu/icu4c/source/i18n/nfrule.cpp
+ icu/icu4c/source/i18n/nfrule.h
+ icu/icu4c/source/i18n/nfsubs.cpp
+ icu/icu4c/source/i18n/nfsubs.h
+ icu/icu4c/source/i18n/nortrans.cpp
+ icu/icu4c/source/i18n/nortrans.h
+ icu/icu4c/source/i18n/nultrans.cpp
+ icu/icu4c/source/i18n/nultrans.h
+ icu/icu4c/source/i18n/number_affixutils.cpp
+ icu/icu4c/source/i18n/number_affixutils.h
+ icu/icu4c/source/i18n/number_asformat.cpp
+ icu/icu4c/source/i18n/number_asformat.h
+ icu/icu4c/source/i18n/number_capi.cpp
+ icu/icu4c/source/i18n/number_compact.cpp
+ icu/icu4c/source/i18n/number_compact.h
+ icu/icu4c/source/i18n/number_currencysymbols.cpp
+ icu/icu4c/source/i18n/number_currencysymbols.h
+ icu/icu4c/source/i18n/number_decimalquantity.cpp
+ icu/icu4c/source/i18n/number_decimalquantity.h
+ icu/icu4c/source/i18n/number_decimfmtprops.cpp
+ icu/icu4c/source/i18n/number_decimfmtprops.h
+ icu/icu4c/source/i18n/number_decnum.h
+ icu/icu4c/source/i18n/number_fluent.cpp
+ icu/icu4c/source/i18n/number_formatimpl.cpp
+ icu/icu4c/source/i18n/number_formatimpl.h
+ icu/icu4c/source/i18n/number_grouping.cpp
+ icu/icu4c/source/i18n/number_integerwidth.cpp
+ icu/icu4c/source/i18n/number_longnames.cpp
+ icu/icu4c/source/i18n/number_longnames.h
+ icu/icu4c/source/i18n/number_mapper.cpp
+ icu/icu4c/source/i18n/number_mapper.h
+ icu/icu4c/source/i18n/number_microprops.h
+ icu/icu4c/source/i18n/number_modifiers.cpp
+ icu/icu4c/source/i18n/number_modifiers.h
+ icu/icu4c/source/i18n/number_multiplier.cpp
+ icu/icu4c/source/i18n/number_multiplier.h
+ icu/icu4c/source/i18n/number_notation.cpp
+ icu/icu4c/source/i18n/number_output.cpp
+ icu/icu4c/source/i18n/number_padding.cpp
+ icu/icu4c/source/i18n/number_patternmodifier.cpp
+ icu/icu4c/source/i18n/number_patternmodifier.h
+ icu/icu4c/source/i18n/number_patternstring.cpp
+ icu/icu4c/source/i18n/number_patternstring.h
+ icu/icu4c/source/i18n/number_rounding.cpp
+ icu/icu4c/source/i18n/number_roundingutils.h
+ icu/icu4c/source/i18n/number_scientific.cpp
+ icu/icu4c/source/i18n/number_scientific.h
+ icu/icu4c/source/i18n/number_simple.cpp
+ icu/icu4c/source/i18n/number_skeletons.cpp
+ icu/icu4c/source/i18n/number_skeletons.h
+ icu/icu4c/source/i18n/number_symbolswrapper.cpp
+ icu/icu4c/source/i18n/number_types.h
+ icu/icu4c/source/i18n/number_usageprefs.cpp
+ icu/icu4c/source/i18n/number_usageprefs.h
+ icu/icu4c/source/i18n/number_utils.cpp
+ icu/icu4c/source/i18n/number_utils.h
+ icu/icu4c/source/i18n/number_utypes.h
+ icu/icu4c/source/i18n/numfmt.cpp
+ icu/icu4c/source/i18n/numparse_affixes.cpp
+ icu/icu4c/source/i18n/numparse_affixes.h
+ icu/icu4c/source/i18n/numparse_compositions.cpp
+ icu/icu4c/source/i18n/numparse_compositions.h
+ icu/icu4c/source/i18n/numparse_currency.cpp
+ icu/icu4c/source/i18n/numparse_currency.h
+ icu/icu4c/source/i18n/numparse_decimal.cpp
+ icu/icu4c/source/i18n/numparse_decimal.h
+ icu/icu4c/source/i18n/numparse_impl.cpp
+ icu/icu4c/source/i18n/numparse_impl.h
+ icu/icu4c/source/i18n/numparse_parsednumber.cpp
+ icu/icu4c/source/i18n/numparse_scientific.cpp
+ icu/icu4c/source/i18n/numparse_scientific.h
+ icu/icu4c/source/i18n/numparse_symbols.cpp
+ icu/icu4c/source/i18n/numparse_symbols.h
+ icu/icu4c/source/i18n/numparse_types.h
+ icu/icu4c/source/i18n/numparse_utils.h
+ icu/icu4c/source/i18n/numparse_validators.cpp
+ icu/icu4c/source/i18n/numparse_validators.h
+ icu/icu4c/source/i18n/numrange_capi.cpp
+ icu/icu4c/source/i18n/numrange_fluent.cpp
+ icu/icu4c/source/i18n/numrange_impl.cpp
+ icu/icu4c/source/i18n/numrange_impl.h
+ icu/icu4c/source/i18n/numsys.cpp
+ icu/icu4c/source/i18n/numsys_impl.h
+ icu/icu4c/source/i18n/olsontz.cpp
+ icu/icu4c/source/i18n/olsontz.h
+ icu/icu4c/source/i18n/persncal.cpp
+ icu/icu4c/source/i18n/persncal.h
+ icu/icu4c/source/i18n/pluralranges.cpp
+ icu/icu4c/source/i18n/pluralranges.h
+ icu/icu4c/source/i18n/plurfmt.cpp
+ icu/icu4c/source/i18n/plurrule.cpp
+ icu/icu4c/source/i18n/plurrule_impl.h
+ icu/icu4c/source/i18n/quant.cpp
+ icu/icu4c/source/i18n/quant.h
+ icu/icu4c/source/i18n/quantityformatter.cpp
+ icu/icu4c/source/i18n/quantityformatter.h
+ icu/icu4c/source/i18n/rbnf.cpp
+ icu/icu4c/source/i18n/rbt.cpp
+ icu/icu4c/source/i18n/rbt.h
+ icu/icu4c/source/i18n/rbt_data.cpp
+ icu/icu4c/source/i18n/rbt_data.h
+ icu/icu4c/source/i18n/rbt_pars.cpp
+ icu/icu4c/source/i18n/rbt_pars.h
+ icu/icu4c/source/i18n/rbt_rule.cpp
+ icu/icu4c/source/i18n/rbt_rule.h
+ icu/icu4c/source/i18n/rbt_set.cpp
+ icu/icu4c/source/i18n/rbt_set.h
+ icu/icu4c/source/i18n/rbtz.cpp
+ icu/icu4c/source/i18n/regexcmp.cpp
+ icu/icu4c/source/i18n/regexcmp.h
+ icu/icu4c/source/i18n/regexcst.h
+ icu/icu4c/source/i18n/regeximp.cpp
+ icu/icu4c/source/i18n/regeximp.h
+ icu/icu4c/source/i18n/regexst.cpp
+ icu/icu4c/source/i18n/regexst.h
+ icu/icu4c/source/i18n/regextxt.cpp
+ icu/icu4c/source/i18n/regextxt.h
+ icu/icu4c/source/i18n/region.cpp
+ icu/icu4c/source/i18n/region_impl.h
+ icu/icu4c/source/i18n/reldatefmt.cpp
+ icu/icu4c/source/i18n/reldtfmt.cpp
+ icu/icu4c/source/i18n/reldtfmt.h
+ icu/icu4c/source/i18n/rematch.cpp
+ icu/icu4c/source/i18n/remtrans.cpp
+ icu/icu4c/source/i18n/remtrans.h
+ icu/icu4c/source/i18n/repattrn.cpp
+ icu/icu4c/source/i18n/rulebasedcollator.cpp
+ icu/icu4c/source/i18n/scientificnumberformatter.cpp
+ icu/icu4c/source/i18n/scriptset.cpp
+ icu/icu4c/source/i18n/scriptset.h
+ icu/icu4c/source/i18n/search.cpp
+ icu/icu4c/source/i18n/selfmt.cpp
+ icu/icu4c/source/i18n/selfmtimpl.h
+ icu/icu4c/source/i18n/sharedbreakiterator.cpp
+ icu/icu4c/source/i18n/sharedbreakiterator.h
+ icu/icu4c/source/i18n/sharedcalendar.h
+ icu/icu4c/source/i18n/shareddateformatsymbols.h
+ icu/icu4c/source/i18n/sharednumberformat.h
+ icu/icu4c/source/i18n/sharedpluralrules.h
+ icu/icu4c/source/i18n/simpletz.cpp
+ icu/icu4c/source/i18n/smpdtfmt.cpp
+ icu/icu4c/source/i18n/smpdtfst.cpp
+ icu/icu4c/source/i18n/smpdtfst.h
+ icu/icu4c/source/i18n/sortkey.cpp
+ icu/icu4c/source/i18n/sources.txt
+ icu/icu4c/source/i18n/standardplural.cpp
+ icu/icu4c/source/i18n/standardplural.h
+ icu/icu4c/source/i18n/string_segment.cpp
+ icu/icu4c/source/i18n/string_segment.h
+ icu/icu4c/source/i18n/strmatch.cpp
+ icu/icu4c/source/i18n/strmatch.h
+ icu/icu4c/source/i18n/strrepl.cpp
+ icu/icu4c/source/i18n/strrepl.h
+ icu/icu4c/source/i18n/stsearch.cpp
+ icu/icu4c/source/i18n/taiwncal.cpp
+ icu/icu4c/source/i18n/taiwncal.h
+ icu/icu4c/source/i18n/timezone.cpp
+ icu/icu4c/source/i18n/titletrn.cpp
+ icu/icu4c/source/i18n/titletrn.h
+ icu/icu4c/source/i18n/tmunit.cpp
+ icu/icu4c/source/i18n/tmutamt.cpp
+ icu/icu4c/source/i18n/tmutfmt.cpp
+ icu/icu4c/source/i18n/tolowtrn.cpp
+ icu/icu4c/source/i18n/tolowtrn.h
+ icu/icu4c/source/i18n/toupptrn.cpp
+ icu/icu4c/source/i18n/toupptrn.h
+ icu/icu4c/source/i18n/translit.cpp
+ icu/icu4c/source/i18n/transreg.cpp
+ icu/icu4c/source/i18n/transreg.h
+ icu/icu4c/source/i18n/tridpars.cpp
+ icu/icu4c/source/i18n/tridpars.h
+ icu/icu4c/source/i18n/tzfmt.cpp
+ icu/icu4c/source/i18n/tzgnames.cpp
+ icu/icu4c/source/i18n/tzgnames.h
+ icu/icu4c/source/i18n/tznames.cpp
+ icu/icu4c/source/i18n/tznames_impl.cpp
+ icu/icu4c/source/i18n/tznames_impl.h
+ icu/icu4c/source/i18n/tzrule.cpp
+ icu/icu4c/source/i18n/tztrans.cpp
+ icu/icu4c/source/i18n/uatimezone.cpp
+ icu/icu4c/source/i18n/ucal.cpp
+ icu/icu4c/source/i18n/ucln_in.cpp
+ icu/icu4c/source/i18n/ucln_in.h
+ icu/icu4c/source/i18n/ucol.cpp
+ icu/icu4c/source/i18n/ucol_imp.h
+ icu/icu4c/source/i18n/ucol_res.cpp
+ icu/icu4c/source/i18n/ucol_sit.cpp
+ icu/icu4c/source/i18n/ucoleitr.cpp
+ icu/icu4c/source/i18n/ucsdet.cpp
+ icu/icu4c/source/i18n/udat.cpp
+ icu/icu4c/source/i18n/udateintervalformat.cpp
+ icu/icu4c/source/i18n/udatpg.cpp
+ icu/icu4c/source/i18n/ufieldpositer.cpp
+ icu/icu4c/source/i18n/uitercollationiterator.cpp
+ icu/icu4c/source/i18n/uitercollationiterator.h
+ icu/icu4c/source/i18n/ulistformatter.cpp
+ icu/icu4c/source/i18n/umsg.cpp
+ icu/icu4c/source/i18n/unesctrn.cpp
+ icu/icu4c/source/i18n/unesctrn.h
+ icu/icu4c/source/i18n/uni2name.cpp
+ icu/icu4c/source/i18n/uni2name.h
+ icu/icu4c/source/i18n/unicode/alphaindex.h
+ icu/icu4c/source/i18n/unicode/basictz.h
+ icu/icu4c/source/i18n/unicode/calendar.h
+ icu/icu4c/source/i18n/unicode/choicfmt.h
+ icu/icu4c/source/i18n/unicode/coleitr.h
+ icu/icu4c/source/i18n/unicode/coll.h
+ icu/icu4c/source/i18n/unicode/compactdecimalformat.h
+ icu/icu4c/source/i18n/unicode/curramt.h
+ icu/icu4c/source/i18n/unicode/currpinf.h
+ icu/icu4c/source/i18n/unicode/currunit.h
+ icu/icu4c/source/i18n/unicode/datefmt.h
+ icu/icu4c/source/i18n/unicode/dcfmtsym.h
+ icu/icu4c/source/i18n/unicode/decimfmt.h
+ icu/icu4c/source/i18n/unicode/displayoptions.h
+ icu/icu4c/source/i18n/unicode/dtfmtsym.h
+ icu/icu4c/source/i18n/unicode/dtitvfmt.h
+ icu/icu4c/source/i18n/unicode/dtitvinf.h
+ icu/icu4c/source/i18n/unicode/dtptngen.h
+ icu/icu4c/source/i18n/unicode/dtrule.h
+ icu/icu4c/source/i18n/unicode/fieldpos.h
+ icu/icu4c/source/i18n/unicode/fmtable.h
+ icu/icu4c/source/i18n/unicode/format.h
+ icu/icu4c/source/i18n/unicode/formattednumber.h
+ icu/icu4c/source/i18n/unicode/formattedvalue.h
+ icu/icu4c/source/i18n/unicode/fpositer.h
+ icu/icu4c/source/i18n/unicode/gender.h
+ icu/icu4c/source/i18n/unicode/gregocal.h
+ icu/icu4c/source/i18n/unicode/listformatter.h
+ icu/icu4c/source/i18n/unicode/measfmt.h
+ icu/icu4c/source/i18n/unicode/measunit.h
+ icu/icu4c/source/i18n/unicode/measure.h
+ icu/icu4c/source/i18n/unicode/messageformat2.h
+ icu/icu4c/source/i18n/unicode/messageformat2_arguments.h
+ icu/icu4c/source/i18n/unicode/messageformat2_data_model.h
+ icu/icu4c/source/i18n/unicode/messageformat2_data_model_names.h
+ icu/icu4c/source/i18n/unicode/messageformat2_formattable.h
+ icu/icu4c/source/i18n/unicode/messageformat2_function_registry.h
+ icu/icu4c/source/i18n/unicode/msgfmt.h
+ icu/icu4c/source/i18n/unicode/nounit.h
+ icu/icu4c/source/i18n/unicode/numberformatter.h
+ icu/icu4c/source/i18n/unicode/numberrangeformatter.h
+ icu/icu4c/source/i18n/unicode/numfmt.h
+ icu/icu4c/source/i18n/unicode/numsys.h
+ icu/icu4c/source/i18n/unicode/plurfmt.h
+ icu/icu4c/source/i18n/unicode/plurrule.h
+ icu/icu4c/source/i18n/unicode/rbnf.h
+ icu/icu4c/source/i18n/unicode/rbtz.h
+ icu/icu4c/source/i18n/unicode/regex.h
+ icu/icu4c/source/i18n/unicode/region.h
+ icu/icu4c/source/i18n/unicode/reldatefmt.h
+ icu/icu4c/source/i18n/unicode/scientificnumberformatter.h
+ icu/icu4c/source/i18n/unicode/search.h
+ icu/icu4c/source/i18n/unicode/selfmt.h
+ icu/icu4c/source/i18n/unicode/simplenumberformatter.h
+ icu/icu4c/source/i18n/unicode/simpletz.h
+ icu/icu4c/source/i18n/unicode/smpdtfmt.h
+ icu/icu4c/source/i18n/unicode/sortkey.h
+ icu/icu4c/source/i18n/unicode/stsearch.h
+ icu/icu4c/source/i18n/unicode/tblcoll.h
+ icu/icu4c/source/i18n/unicode/timezone.h
+ icu/icu4c/source/i18n/unicode/tmunit.h
+ icu/icu4c/source/i18n/unicode/tmutamt.h
+ icu/icu4c/source/i18n/unicode/tmutfmt.h
+ icu/icu4c/source/i18n/unicode/translit.h
+ icu/icu4c/source/i18n/unicode/tzfmt.h
+ icu/icu4c/source/i18n/unicode/tznames.h
+ icu/icu4c/source/i18n/unicode/tzrule.h
+ icu/icu4c/source/i18n/unicode/tztrans.h
+ icu/icu4c/source/i18n/unicode/uatimezone.h
+ icu/icu4c/source/i18n/unicode/ucal.h
+ icu/icu4c/source/i18n/unicode/ucol.h
+ icu/icu4c/source/i18n/unicode/ucoleitr.h
+ icu/icu4c/source/i18n/unicode/ucsdet.h
+ icu/icu4c/source/i18n/unicode/udat.h
+ icu/icu4c/source/i18n/unicode/udateintervalformat.h
+ icu/icu4c/source/i18n/unicode/udatpg.h
+ icu/icu4c/source/i18n/unicode/udisplayoptions.h
+ icu/icu4c/source/i18n/unicode/ufieldpositer.h
+ icu/icu4c/source/i18n/unicode/uformattable.h
+ icu/icu4c/source/i18n/unicode/uformattednumber.h
+ icu/icu4c/source/i18n/unicode/uformattedvalue.h
+ icu/icu4c/source/i18n/unicode/ugender.h
+ icu/icu4c/source/i18n/unicode/ulistformatter.h
+ icu/icu4c/source/i18n/unicode/umsg.h
+ icu/icu4c/source/i18n/unicode/unirepl.h
+ icu/icu4c/source/i18n/unicode/unum.h
+ icu/icu4c/source/i18n/unicode/unumberformatter.h
+ icu/icu4c/source/i18n/unicode/unumberoptions.h
+ icu/icu4c/source/i18n/unicode/unumberrangeformatter.h
+ icu/icu4c/source/i18n/unicode/unumsys.h
+ icu/icu4c/source/i18n/unicode/upluralrules.h
+ icu/icu4c/source/i18n/unicode/uregex.h
+ icu/icu4c/source/i18n/unicode/uregion.h
+ icu/icu4c/source/i18n/unicode/ureldatefmt.h
+ icu/icu4c/source/i18n/unicode/usearch.h
+ icu/icu4c/source/i18n/unicode/usimplenumberformatter.h
+ icu/icu4c/source/i18n/unicode/uspoof.h
+ icu/icu4c/source/i18n/unicode/utmscale.h
+ icu/icu4c/source/i18n/unicode/utrans.h
+ icu/icu4c/source/i18n/unicode/vtzone.h
+ icu/icu4c/source/i18n/units_complexconverter.cpp
+ icu/icu4c/source/i18n/units_complexconverter.h
+ icu/icu4c/source/i18n/units_converter.cpp
+ icu/icu4c/source/i18n/units_converter.h
+ icu/icu4c/source/i18n/units_data.cpp
+ icu/icu4c/source/i18n/units_data.h
+ icu/icu4c/source/i18n/units_router.cpp
+ icu/icu4c/source/i18n/units_router.h
+ icu/icu4c/source/i18n/unum.cpp
+ icu/icu4c/source/i18n/unumsys.cpp
+ icu/icu4c/source/i18n/upluralrules.cpp
+ icu/icu4c/source/i18n/uregex.cpp
+ icu/icu4c/source/i18n/uregexc.cpp
+ icu/icu4c/source/i18n/uregion.cpp
+ icu/icu4c/source/i18n/usearch.cpp
+ icu/icu4c/source/i18n/uspoof.cpp
+ icu/icu4c/source/i18n/uspoof_build.cpp
+ icu/icu4c/source/i18n/uspoof_conf.cpp
+ icu/icu4c/source/i18n/uspoof_conf.h
+ icu/icu4c/source/i18n/uspoof_impl.cpp
+ icu/icu4c/source/i18n/uspoof_impl.h
+ icu/icu4c/source/i18n/usrchimp.h
+ icu/icu4c/source/i18n/utf16collationiterator.cpp
+ icu/icu4c/source/i18n/utf16collationiterator.h
+ icu/icu4c/source/i18n/utf8collationiterator.cpp
+ icu/icu4c/source/i18n/utf8collationiterator.h
+ icu/icu4c/source/i18n/utmscale.cpp
+ icu/icu4c/source/i18n/utrans.cpp
+ icu/icu4c/source/i18n/vtzone.cpp
+ icu/icu4c/source/i18n/vzone.cpp
+ icu/icu4c/source/i18n/vzone.h
+ icu/icu4c/source/i18n/windtfmt.cpp
+ icu/icu4c/source/i18n/windtfmt.h
+ icu/icu4c/source/i18n/winnmfmt.cpp
+ icu/icu4c/source/i18n/winnmfmt.h
+ icu/icu4c/source/i18n/wintzimpl.cpp
+ icu/icu4c/source/i18n/zonemeta.cpp
+ icu/icu4c/source/i18n/zonemeta.h
+ icu/icu4c/source/i18n/zrule.cpp
+ icu/icu4c/source/i18n/zrule.h
+ icu/icu4c/source/i18n/ztrans.cpp
+ icu/icu4c/source/i18n/ztrans.h
+ icu/icu4c/source/icudefs.mk.in
+ icu/icu4c/source/install-sh
+ icu/icu4c/source/io/Makefile.in
+ icu/icu4c/source/io/locbund.cpp
+ icu/icu4c/source/io/locbund.h
+ icu/icu4c/source/io/sources.txt
+ icu/icu4c/source/io/sprintf.cpp
+ icu/icu4c/source/io/sscanf.cpp
+ icu/icu4c/source/io/ucln_io.cpp
+ icu/icu4c/source/io/ucln_io.h
+ icu/icu4c/source/io/ufile.cpp
+ icu/icu4c/source/io/ufile.h
+ icu/icu4c/source/io/ufmt_cmn.cpp
+ icu/icu4c/source/io/ufmt_cmn.h
+ icu/icu4c/source/io/unicode/*
+ icu/icu4c/source/io/uprintf.cpp
+ icu/icu4c/source/io/uprintf.h
+ icu/icu4c/source/io/uprntf_p.cpp
+ icu/icu4c/source/io/uscanf.cpp
+ icu/icu4c/source/io/uscanf.h
+ icu/icu4c/source/io/uscanf_p.cpp
+ icu/icu4c/source/io/ustdio.cpp
+ icu/icu4c/source/io/ustream.cpp
+ icu/icu4c/source/layoutex/Makefile.in
+ icu/icu4c/source/mkinstalldirs
+ icu/icu4c/source/python/icutools/__init__.py
+ icu/icu4c/source/python/icutools/databuilder/__init__.py
+ icu/icu4c/source/python/icutools/databuilder/__main__.py
+ icu/icu4c/source/python/icutools/databuilder/comment_stripper.py
+ icu/icu4c/source/python/icutools/databuilder/filtration.py
+ icu/icu4c/source/python/icutools/databuilder/renderers/*
+ icu/icu4c/source/python/icutools/databuilder/request_types.py
+ icu/icu4c/source/python/icutools/databuilder/utils.py
+ icu/icu4c/source/samples/Makefile.in
+ icu/icu4c/source/stubdata/Makefile.in
+ icu/icu4c/source/stubdata/sources.txt
+ icu/icu4c/source/stubdata/stubdata.cpp
+ icu/icu4c/source/stubdata/stubdata.h
+ icu/icu4c/source/test/Makefile.in
+ icu/icu4c/source/test/cintltst/Makefile.in
+ icu/icu4c/source/test/compat/Makefile.in
+ icu/icu4c/source/test/fuzzer/Makefile.in
+ icu/icu4c/source/test/hdrtst/Makefile.in
+ icu/icu4c/source/test/intltest/Makefile.in
+ icu/icu4c/source/test/iotest/Makefile.in
+ icu/icu4c/source/test/letest/Makefile.in
+ icu/icu4c/source/test/perf/DateFmtPerf/Makefile.in
+ icu/icu4c/source/test/perf/Makefile.in
+ icu/icu4c/source/test/perf/charperf/Makefile.in
+ icu/icu4c/source/test/perf/collationperf/Makefile.in
+ icu/icu4c/source/test/perf/collperf/Makefile.in
+ icu/icu4c/source/test/perf/collperf2/Makefile.in
+ icu/icu4c/source/test/perf/convperf/Makefile.in
+ icu/icu4c/source/test/perf/dicttrieperf/Makefile.in
+ icu/icu4c/source/test/perf/howExpensiveIs/Makefile.in
+ icu/icu4c/source/test/perf/localecanperf/Makefile.in
+ icu/icu4c/source/test/perf/normperf/Makefile.in
+ icu/icu4c/source/test/perf/strsrchperf/Makefile.in
+ icu/icu4c/source/test/perf/ubrkperf/Makefile.in
+ icu/icu4c/source/test/perf/unisetperf/Makefile.in
+ icu/icu4c/source/test/perf/usetperf/Makefile.in
+ icu/icu4c/source/test/perf/ustrperf/Makefile.in
+ icu/icu4c/source/test/perf/utfperf/Makefile.in
+ icu/icu4c/source/test/perf/utrie2perf/Makefile.in
+ icu/icu4c/source/test/testdata/BUILDRULES.py
+ icu/icu4c/source/test/testdata/Makefile.in
+ icu/icu4c/source/test/testdata/pkgdataMakefile.in
+ icu/icu4c/source/tools/Makefile.in
+ icu/icu4c/source/tools/ctestfw/Makefile.in
+ icu/icu4c/source/tools/ctestfw/ctest.c
+ icu/icu4c/source/tools/ctestfw/datamap.cpp
+ icu/icu4c/source/tools/ctestfw/sources.txt
+ icu/icu4c/source/tools/ctestfw/testdata.cpp
+ icu/icu4c/source/tools/ctestfw/tstdtmod.cpp
+ icu/icu4c/source/tools/ctestfw/ucln_ct.c
+ icu/icu4c/source/tools/ctestfw/unicode/*
+ icu/icu4c/source/tools/ctestfw/uperf.cpp
+ icu/icu4c/source/tools/escapesrc/Makefile.in
+ icu/icu4c/source/tools/escapesrc/cptbl.h
+ icu/icu4c/source/tools/escapesrc/escapesrc.cpp
+ icu/icu4c/source/tools/genbrk/Makefile.in
+ icu/icu4c/source/tools/genbrk/genbrk.1.in
+ icu/icu4c/source/tools/genbrk/genbrk.cpp
+ icu/icu4c/source/tools/genbrk/sources.txt
+ icu/icu4c/source/tools/genccode/Makefile.in
+ icu/icu4c/source/tools/genccode/genccode.8.in
+ icu/icu4c/source/tools/genccode/genccode.c
+ icu/icu4c/source/tools/genccode/sources.txt
+ icu/icu4c/source/tools/gencfu/Makefile.in
+ icu/icu4c/source/tools/gencfu/gencfu.1.in
+ icu/icu4c/source/tools/gencfu/gencfu.cpp
+ icu/icu4c/source/tools/gencfu/sources.txt
+ icu/icu4c/source/tools/gencmn/Makefile.in
+ icu/icu4c/source/tools/gencmn/gencmn.8.in
+ icu/icu4c/source/tools/gencmn/gencmn.c
+ icu/icu4c/source/tools/gencmn/sources.txt
+ icu/icu4c/source/tools/gencnval/Makefile.in
+ icu/icu4c/source/tools/gencnval/gencnval.1.in
+ icu/icu4c/source/tools/gencnval/gencnval.c
+ icu/icu4c/source/tools/gencnval/sources.txt
+ icu/icu4c/source/tools/gendict/Makefile.in
+ icu/icu4c/source/tools/gendict/gendict.1.in
+ icu/icu4c/source/tools/gendict/gendict.cpp
+ icu/icu4c/source/tools/gendict/sources.txt
+ icu/icu4c/source/tools/gennorm2/Makefile.in
+ icu/icu4c/source/tools/gennorm2/extradata.cpp
+ icu/icu4c/source/tools/gennorm2/extradata.h
+ icu/icu4c/source/tools/gennorm2/gennorm2.cpp
+ icu/icu4c/source/tools/gennorm2/n2builder.cpp
+ icu/icu4c/source/tools/gennorm2/n2builder.h
+ icu/icu4c/source/tools/gennorm2/norms.cpp
+ icu/icu4c/source/tools/gennorm2/norms.h
+ icu/icu4c/source/tools/gennorm2/sources.txt
+ icu/icu4c/source/tools/genrb/Makefile.in
+ icu/icu4c/source/tools/genrb/derb.1.in
+ icu/icu4c/source/tools/genrb/derb.cpp
+ icu/icu4c/source/tools/genrb/errmsg.c
+ icu/icu4c/source/tools/genrb/errmsg.h
+ icu/icu4c/source/tools/genrb/filterrb.cpp
+ icu/icu4c/source/tools/genrb/filterrb.h
+ icu/icu4c/source/tools/genrb/genrb.1.in
+ icu/icu4c/source/tools/genrb/genrb.cpp
+ icu/icu4c/source/tools/genrb/genrb.h
+ icu/icu4c/source/tools/genrb/parse.cpp
+ icu/icu4c/source/tools/genrb/parse.h
+ icu/icu4c/source/tools/genrb/prscmnts.cpp
+ icu/icu4c/source/tools/genrb/prscmnts.h
+ icu/icu4c/source/tools/genrb/rbutil.c
+ icu/icu4c/source/tools/genrb/rbutil.h
+ icu/icu4c/source/tools/genrb/read.c
+ icu/icu4c/source/tools/genrb/read.h
+ icu/icu4c/source/tools/genrb/reslist.cpp
+ icu/icu4c/source/tools/genrb/reslist.h
+ icu/icu4c/source/tools/genrb/rle.c
+ icu/icu4c/source/tools/genrb/rle.h
+ icu/icu4c/source/tools/genrb/sources.txt
+ icu/icu4c/source/tools/genrb/ustr.c
+ icu/icu4c/source/tools/genrb/ustr.h
+ icu/icu4c/source/tools/genrb/wrtjava.cpp
+ icu/icu4c/source/tools/genrb/wrtxml.cpp
+ icu/icu4c/source/tools/gensprep/Makefile.in
+ icu/icu4c/source/tools/gensprep/gensprep.8.in
+ icu/icu4c/source/tools/gensprep/gensprep.c
+ icu/icu4c/source/tools/gensprep/gensprep.h
+ icu/icu4c/source/tools/gensprep/sources.txt
+ icu/icu4c/source/tools/gensprep/store.c
+ icu/icu4c/source/tools/gentest/Makefile.in
+ icu/icu4c/source/tools/gentest/genres32.c
+ icu/icu4c/source/tools/gentest/gentest.c
+ icu/icu4c/source/tools/gentest/gentest.h
+ icu/icu4c/source/tools/gentest/sources.txt
+ icu/icu4c/source/tools/icuexportdata/Makefile.in
+ icu/icu4c/source/tools/icuexportdata/icuexportdata.1.in
+ icu/icu4c/source/tools/icuexportdata/icuexportdata.cpp
+ icu/icu4c/source/tools/icuexportdata/sources.txt
+ icu/icu4c/source/tools/icuinfo/Makefile.in
+ icu/icu4c/source/tools/icuinfo/icuinfo.cpp
+ icu/icu4c/source/tools/icuinfo/sources.txt
+ icu/icu4c/source/tools/icupkg/Makefile.in
+ icu/icu4c/source/tools/icupkg/icupkg.8.in
+ icu/icu4c/source/tools/icupkg/icupkg.cpp
+ icu/icu4c/source/tools/icupkg/sources.txt
+ icu/icu4c/source/tools/icuswap/Makefile.in
+ icu/icu4c/source/tools/makeconv/Makefile.in
+ icu/icu4c/source/tools/makeconv/gencnvex.c
+ icu/icu4c/source/tools/makeconv/genmbcs.cpp
+ icu/icu4c/source/tools/makeconv/genmbcs.h
+ icu/icu4c/source/tools/makeconv/makeconv.1.in
+ icu/icu4c/source/tools/makeconv/makeconv.cpp
+ icu/icu4c/source/tools/makeconv/makeconv.h
+ icu/icu4c/source/tools/makeconv/sources.txt
+ icu/icu4c/source/tools/makeconv/ucnvstat.c
+ icu/icu4c/source/tools/pkgdata/Makefile.in
+ icu/icu4c/source/tools/pkgdata/pkgdata.1.in
+ icu/icu4c/source/tools/pkgdata/pkgdata.cpp
+ icu/icu4c/source/tools/pkgdata/pkgtypes.c
+ icu/icu4c/source/tools/pkgdata/pkgtypes.h
+ icu/icu4c/source/tools/pkgdata/sources.txt
+ icu/icu4c/source/tools/toolutil/Makefile.in
+ icu/icu4c/source/tools/toolutil/collationinfo.cpp
+ icu/icu4c/source/tools/toolutil/collationinfo.h
+ icu/icu4c/source/tools/toolutil/dbgutil.cpp
+ icu/icu4c/source/tools/toolutil/dbgutil.h
+ icu/icu4c/source/tools/toolutil/denseranges.cpp
+ icu/icu4c/source/tools/toolutil/denseranges.h
+ icu/icu4c/source/tools/toolutil/filestrm.cpp
+ icu/icu4c/source/tools/toolutil/filestrm.h
+ icu/icu4c/source/tools/toolutil/filetools.cpp
+ icu/icu4c/source/tools/toolutil/filetools.h
+ icu/icu4c/source/tools/toolutil/flagparser.cpp
+ icu/icu4c/source/tools/toolutil/flagparser.h
+ icu/icu4c/source/tools/toolutil/package.cpp
+ icu/icu4c/source/tools/toolutil/package.h
+ icu/icu4c/source/tools/toolutil/pkg_genc.cpp
+ icu/icu4c/source/tools/toolutil/pkg_genc.h
+ icu/icu4c/source/tools/toolutil/pkg_gencmn.cpp
+ icu/icu4c/source/tools/toolutil/pkg_gencmn.h
+ icu/icu4c/source/tools/toolutil/pkg_icu.cpp
+ icu/icu4c/source/tools/toolutil/pkg_icu.h
+ icu/icu4c/source/tools/toolutil/pkg_imp.h
+ icu/icu4c/source/tools/toolutil/pkgitems.cpp
+ icu/icu4c/source/tools/toolutil/ppucd.cpp
+ icu/icu4c/source/tools/toolutil/ppucd.h
+ icu/icu4c/source/tools/toolutil/sources.txt
+ icu/icu4c/source/tools/toolutil/swapimpl.cpp
+ icu/icu4c/source/tools/toolutil/swapimpl.h
+ icu/icu4c/source/tools/toolutil/toolutil.cpp
+ icu/icu4c/source/tools/toolutil/toolutil.h
+ icu/icu4c/source/tools/toolutil/ucbuf.cpp
+ icu/icu4c/source/tools/toolutil/ucbuf.h
+ icu/icu4c/source/tools/toolutil/ucln_tu.cpp
+ icu/icu4c/source/tools/toolutil/ucm.cpp
+ icu/icu4c/source/tools/toolutil/ucm.h
+ icu/icu4c/source/tools/toolutil/ucmstate.cpp
+ icu/icu4c/source/tools/toolutil/udbgutil.cpp
+ icu/icu4c/source/tools/toolutil/udbgutil.h
+ icu/icu4c/source/tools/toolutil/unewdata.cpp
+ icu/icu4c/source/tools/toolutil/unewdata.h
+ icu/icu4c/source/tools/toolutil/uoptions.cpp
+ icu/icu4c/source/tools/toolutil/uoptions.h
+ icu/icu4c/source/tools/toolutil/uparse.cpp
+ icu/icu4c/source/tools/toolutil/uparse.h
+ icu/icu4c/source/tools/toolutil/writesrc.cpp
+ icu/icu4c/source/tools/toolutil/writesrc.h
+ icu/icu4c/source/tools/toolutil/xmlparser.cpp
+ icu/icu4c/source/tools/toolutil/xmlparser.h
+ icu/icu4c/source/tools/tzcode/Makefile.in
+
+Files: *
+Copyright: 1995-2023 International Business Machines Corporation and others
+ 1999-2013 IBM Corp.
+ 2000-2015 IBM, Inc. and others
+ 2016-2025 Unicode, Inc. and others
+ 2005-2007, 2010 Apple Inc., Unicode Inc., and others
+ 2006-2015 International Business Machines Corporation, Apple Inc., and others
+ 2011-2013 Apple Inc.; Unicode, Inc.; and others
+ 2011-2013 Apple Inc. and others
+ Apple Inc.
+ 2001, 2004, 2007 Google Inc.
+ 2008-2017 Google, International Business Machines Corporation and others
+ 2010 Yahoo! Inc.
+License: Unicode-3.0
+
+Files: icu/icu4c/source/i18n/double-conversion-bignum-dtoa.cpp
+ icu/icu4c/source/i18n/double-conversion-bignum-dtoa.h
+ icu/icu4c/source/i18n/double-conversion-bignum.cpp
+ icu/icu4c/source/i18n/double-conversion-bignum.h
+ icu/icu4c/source/i18n/double-conversion-cached-powers.cpp
+ icu/icu4c/source/i18n/double-conversion-cached-powers.h
+ icu/icu4c/source/i18n/double-conversion-diy-fp.h
+ icu/icu4c/source/i18n/double-conversion-double-to-string.cpp
+ icu/icu4c/source/i18n/double-conversion-double-to-string.h
+ icu/icu4c/source/i18n/double-conversion-fast-dtoa.cpp
+ icu/icu4c/source/i18n/double-conversion-fast-dtoa.h
+ icu/icu4c/source/i18n/double-conversion-ieee.h
+ icu/icu4c/source/i18n/double-conversion-string-to-double.cpp
+ icu/icu4c/source/i18n/double-conversion-string-to-double.h
+ icu/icu4c/source/i18n/double-conversion-strtod.cpp
+ icu/icu4c/source/i18n/double-conversion-strtod.h
+ icu/icu4c/source/i18n/double-conversion-utils.h
+ icu/icu4c/source/i18n/double-conversion.h
 Copyright: 2006-2008, 2010, 2012 the V8 project authors
- 2015 International Business Machines Corporation
- 2013 LeRoy Benjamin Sharon
-License: BSD-3-Clause AND Unicode-3.0
+ 2018 and later Unicode, Inc. and others
+License: LicenseRef-BSD-3-Clause-Google AND Unicode-3.0
 
 Files: icu/icu4c/source/config.guess
  icu/icu4c/source/config.sub
 Copyright: 1992-2024 Free Software Foundation, Inc.
+ Apple Inc.
 License: GPL-3.0-or-later with Autoconf-generic-3.0 exception
 
 Files: icu/icu4c/source/mkinstalldirs
-Copyright: 2002-2004 International Business Machines Corporation and * others
+Copyright: 2002-2004 International Business Machines Corporation and others
+ 2016 and later Unicode, Inc. and others
 License: public-domain AND Unicode-3.0
 
 Files: icu/icu4c/source/install-sh
 Copyright: 1991 the Massachusetts Institute of Technology
-License: HPND-sell-variant
+License: LicenseRef-HPND-sell-variant-MIT
 
 Files: icu/icu4c/source/configure
-Copyright: 1992-1996, 1998-2017, 2020-2023 Free Software Foundation
+Copyright: 1992-1996, 1998-2017, 2020-2023 Free Software Foundation, Inc.
+ 2016 and later Unicode, Inc. and others
 License: FSFUL AND Unicode-3.0
 
-Files: icu/icu4c/source/data/brkitr/dictionaries/laodict.txt
-Copyright: 2013 Brian Eugene Wilson, Robert Martin Campbell
- 2015 International Business Machines Corporation
- 2016 Unicode, Inc. and others
-License: BSD-2-Clause AND Unicode-3.0
-
-Files: icu/icu4c/source/data/brkitr/dictionaries/cjdict.txt
-Copyright: 1996 Chih-Hao Tsai @ Beckman Institute, University of Illinois
- 1999 Computer Systems and Communication Lab, Institute of Information
- Science, Academia Sinica
- 2006-2008 Google Inc.
- 2012-2015 Google Inc, International Business Machines Corporation
- 2000-2003 Nara Institute of Science and Technology
- 1999 Pai-Hsiang Hsiao
- 1999 TaBE Project
- 2016 Unicode, Inc. and others
-License: BSD-3-Clause AND NAIST-2003 AND Unicode-3.0
-
-Files: icu/icu4c/source/i18n/decContext.cpp
- icu/icu4c/source/i18n/decContext.h
- icu/icu4c/source/i18n/decNumber.cpp
- icu/icu4c/source/i18n/decNumber.h
- icu/icu4c/source/i18n/decNumberLocal.h
-Copyright: 2000-2016 IBM Corporation
- 2016 and later Unicode, Inc. and others
-License: ICU AND Unicode-3.0
-
-Files: icu/icu4c/source/data/mappings/docomo-sjis.ucm
- icu/icu4c/source/data/mappings/kddi-sjis.ucm
- icu/icu4c/source/data/mappings/macos-2566-10.2.ucm
+Files: icu/icu4c/source/data/mappings/macos-2566-10.2.ucm
  icu/icu4c/source/data/mappings/macos-6-10.2.ucm
- icu/icu4c/source/data/mappings/softbank-sjis.ucm
-Copyright: 1995-2013 International Business Machines Corporation
+Copyright: 2001-2003 International Business Machines Corporation and others
 License: ICU
 
 Files: icu/icu4c/source/data/mappings/gsm-03.38-2000.ucm
@@ -124,83 +1560,739 @@ Files: icu/icu4c/source/data/mappings/gsm-03.38-2000.ucm
 Copyright: 1999-2001 Unicode, Inc.
 License: LicenseRef-Unicode-mapping-tables
 
-Files: icu/icu4c/source/common/localsvc.cpp
- icu/icu4c/source/common/rbtok.cpp
- icu/icu4c/source/common/rbtok.h
- icu/icu4c/source/common/ualoc.cpp
- icu/icu4c/source/common/unicode/ualoc.h
- icu/icu4c/source/common/unicode/urbtok.h
- icu/icu4c/source/common/urbtok.cpp
- icu/icu4c/source/i18n/uameasureformat.cpp
- icu/icu4c/source/i18n/uatimeunitformat.cpp
- icu/icu4c/source/i18n/udatintv.cpp
- icu/icu4c/source/i18n/unicode/uameasureformat.h
- icu/icu4c/source/i18n/unicode/uameasureunit.h
- icu/icu4c/source/i18n/unicode/uatimeunitformat.h
- icu/icu4c/source/i18n/unicode/udatintv.h
- icu/icu4c/source/i18n/unicode/uplrule.h
- icu/icu4c/source/i18n/uplrule.cpp
- icu/icu4c/source/i18n/vietnamesecal.cpp
- icu/icu4c/source/i18n/vietnamesecal.h
- icu/icu4c/source/common/Makefile.local
- icu/icu4c/source/i18n/Makefile.local
-Copyright: 2004-2025 Apple Inc.
-License: APSL-2.0
+Files: icu/icu4c/source/data/brkitr/dictionaries/laodict.txt
+Copyright: 2013 Brian Eugene Wilson, Robert Martin Campbell
+ 2015 International Business Machines Corporation and others
+ 2016 and later Unicode, Inc. and others
+License: LicenseRef-BSD-2-Clause-Lao AND Unicode-3.0
 
+Files: icu/icu4c/source/data/brkitr/dictionaries/cjdict.txt
+Copyright: 1996 Chih-Hao Tsai @ Beckman Institute, University of Illinois
+ 1999 Computer Systems and Communication Lab,
+ Institute of Information Science, Academia Sinica
+ 2006-2008 Google Inc.
+ 2012-2015 Google Inc, International Business Machines Corporation and others
+ 2000-2003 Nara Institute of Science and Technology
+ 1999 Pai-Hsiang Hsiao
+ 1999 TaBE Project
+ 2016 and later Unicode, Inc. and others
+ Apple Inc.
+License: LicenseRef-BSD-3-Clause-Google AND LicenseRef-BSD-3-Clause-TaBE AND LicenseRef-BSD-3-Clause-CSCL AND NAIST-2003 AND Unicode-3.0
+
+Files: icu/icu4c/source/i18n/decContext.*
+ icu/icu4c/source/i18n/decNumber.*
+ icu/icu4c/source/i18n/decNumberLocal.h
+Copyright: 2000-2016 IBM Corporation
+ 2016 and later Unicode, Inc. and others
+ Apple Inc.
+License: ICU AND Unicode-3.0
+
+Files: icu/icu4c/source/data/brkitr/dictionaries/burmesedict.txt
+Copyright: 2013 LeRoy Benjamin Sharon
+ 2015 International Business Machines Corporation and others
+ 2016 and later Unicode, Inc. and others
+License: LicenseRef-BSD-3-Clause-Myanmar-Karen-Word-Lists AND Unicode-3.0
+
+Files: icu/icu4c/source/common/punycode.cpp
+ icu/icu4c/source/common/punycode.h
+Copyright: Adam M. Costello
+ 2002-2011 International Business Machines Corporation and others
+ 2016 and later Unicode, Inc. and others
+License: LicenseRef-Punycode-Costello AND Unicode-3.0
+
+Files: icu/icu4c/source/data/sprep/*
+Copyright: 2009, 2015 International Business Machines Corporation and others
+ 2016 and later Unicode, Inc. and others
+ 2002 The Internet Society
+License: LicenseRef-ISOC-RFC AND Unicode-3.0
+
+Files: icu/icu4c/source/data/misc/zoneinfo64.txt
+Copyright: 2016 and later Unicode, Inc. and others
+License: LicenseRef-public-domain-tz AND Unicode-3.0
+
+Files: debian/*
+Copyright: 2026 The Blueberry Pie OS Authors
 License: BSD-2-Clause
- Redistribution and use in source and binary forms, with or without modification,
- are permitted provided that the following conditions are met:
- .
- Redistributions of source code must retain the above copyright notice, this
- list of conditions and the following disclaimer. Redistributions in binary
- form must reproduce the above copyright notice, this list of conditions and
- the following disclaimer in the documentation and/or other materials
- provided with the distribution.
- .
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
- ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
- ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-License: BSD-3-Clause
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions are
- met:
- .
-     * Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
-     * Redistributions in binary form must reproduce the above
-       copyright notice, this list of conditions and the following
-       disclaimer in the documentation and/or other materials provided
-       with the distribution.
-     * Neither the name of Google Inc. nor the names of its
-       contributors may be used to endorse or promote products derived
-       from this software without specific prior written permission.
- .
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: FSFUL
  This configure script is free software; the Free Software Foundation
  gives unlimited permission to copy, distribute and modify it.
 
 License: GPL-3.0-or-later with Autoconf-generic-3.0 exception
- The full text is in /usr/share/common-licenses/GPL-3.0-or-later.
+                     GNU GENERAL PUBLIC LICENSE
+                        Version 3, 29 June 2007
+ .
+  Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed.
+ .
+                             Preamble
+ .
+   The GNU General Public License is a free, copyleft license for
+ software and other kinds of works.
+ .
+   The licenses for most software and other practical works are designed
+ to take away your freedom to share and change the works.  By contrast,
+ the GNU General Public License is intended to guarantee your freedom to
+ share and change all versions of a program--to make sure it remains free
+ software for all its users.  We, the Free Software Foundation, use the
+ GNU General Public License for most of our software; it applies also to
+ any other work released this way by its authors.  You can apply it to
+ your programs, too.
+ .
+   When we speak of free software, we are referring to freedom, not
+ price.  Our General Public Licenses are designed to make sure that you
+ have the freedom to distribute copies of free software (and charge for
+ them if you wish), that you receive source code or can get it if you
+ want it, that you can change the software or use pieces of it in new
+ free programs, and that you know you can do these things.
+ .
+   To protect your rights, we need to prevent others from denying you
+ these rights or asking you to surrender the rights.  Therefore, you have
+ certain responsibilities if you distribute copies of the software, or if
+ you modify it: responsibilities to respect the freedom of others.
+ .
+   For example, if you distribute copies of such a program, whether
+ gratis or for a fee, you must pass on to the recipients the same
+ freedoms that you received.  You must make sure that they, too, receive
+ or can get the source code.  And you must show them these terms so they
+ know their rights.
+ .
+   Developers that use the GNU GPL protect your rights with two steps:
+ (1) assert copyright on the software, and (2) offer you this License
+ giving you legal permission to copy, distribute and/or modify it.
+ .
+   For the developers' and authors' protection, the GPL clearly explains
+ that there is no warranty for this free software.  For both users' and
+ authors' sake, the GPL requires that modified versions be marked as
+ changed, so that their problems will not be attributed erroneously to
+ authors of previous versions.
+ .
+   Some devices are designed to deny users access to install or run
+ modified versions of the software inside them, although the manufacturer
+ can do so.  This is fundamentally incompatible with the aim of
+ protecting users' freedom to change the software.  The systematic
+ pattern of such abuse occurs in the area of products for individuals to
+ use, which is precisely where it is most unacceptable.  Therefore, we
+ have designed this version of the GPL to prohibit the practice for those
+ products.  If such problems arise substantially in other domains, we
+ stand ready to extend this provision to those domains in future versions
+ of the GPL, as needed to protect the freedom of users.
+ .
+   Finally, every program is threatened constantly by software patents.
+ States should not allow patents to restrict development and use of
+ software on general-purpose computers, but in those that do, we wish to
+ avoid the special danger that patents applied to a free program could
+ make it effectively proprietary.  To prevent this, the GPL assures that
+ patents cannot be used to render the program non-free.
+ .
+   The precise terms and conditions for copying, distribution and
+ modification follow.
+ .
+                        TERMS AND CONDITIONS
+ .
+   0. Definitions.
+ .
+   "This License" refers to version 3 of the GNU General Public License.
+ .
+   "Copyright" also means copyright-like laws that apply to other kinds of
+ works, such as semiconductor masks.
+ .
+   "The Program" refers to any copyrightable work licensed under this
+ License.  Each licensee is addressed as "you".  "Licensees" and
+ "recipients" may be individuals or organizations.
+ .
+   To "modify" a work means to copy from or adapt all or part of the work
+ in a fashion requiring copyright permission, other than the making of an
+ exact copy.  The resulting work is called a "modified version" of the
+ earlier work or a work "based on" the earlier work.
+ .
+   A "covered work" means either the unmodified Program or a work based
+ on the Program.
+ .
+   To "propagate" a work means to do anything with it that, without
+ permission, would make you directly or secondarily liable for
+ infringement under applicable copyright law, except executing it on a
+ computer or modifying a private copy.  Propagation includes copying,
+ distribution (with or without modification), making available to the
+ public, and in some countries other activities as well.
+ .
+   To "convey" a work means any kind of propagation that enables other
+ parties to make or receive copies.  Mere interaction with a user through
+ a computer network, with no transfer of a copy, is not conveying.
+ .
+   An interactive user interface displays "Appropriate Legal Notices"
+ to the extent that it includes a convenient and prominently visible
+ feature that (1) displays an appropriate copyright notice, and (2)
+ tells the user that there is no warranty for the work (except to the
+ extent that warranties are provided), that licensees may convey the
+ work under this License, and how to view a copy of this License.  If
+ the interface presents a list of user commands or options, such as a
+ menu, a prominent item in the list meets this criterion.
+ .
+   1. Source Code.
+ .
+   The "source code" for a work means the preferred form of the work
+ for making modifications to it.  "Object code" means any non-source
+ form of a work.
+ .
+   A "Standard Interface" means an interface that either is an official
+ standard defined by a recognized standards body, or, in the case of
+ interfaces specified for a particular programming language, one that
+ is widely used among developers working in that language.
+ .
+   The "System Libraries" of an executable work include anything, other
+ than the work as a whole, that (a) is included in the normal form of
+ packaging a Major Component, but which is not part of that Major
+ Component, and (b) serves only to enable use of the work with that
+ Major Component, or to implement a Standard Interface for which an
+ implementation is available to the public in source code form.  A
+ "Major Component", in this context, means a major essential component
+ (kernel, window system, and so on) of the specific operating system
+ (if any) on which the executable work runs, or a compiler used to
+ produce the work, or an object code interpreter used to run it.
+ .
+   The "Corresponding Source" for a work in object code form means all
+ the source code needed to generate, install, and (for an executable
+ work) run the object code and to modify the work, including scripts to
+ control those activities.  However, it does not include the work's
+ System Libraries, or general-purpose tools or generally available free
+ programs which are used unmodified in performing those activities but
+ which are not part of the work.  For example, Corresponding Source
+ includes interface definition files associated with source files for
+ the work, and the source code for shared libraries and dynamically
+ linked subprograms that the work is specifically designed to require,
+ such as by intimate data communication or control flow between those
+ subprograms and other parts of the work.
+ .
+   The Corresponding Source need not include anything that users
+ can regenerate automatically from other parts of the Corresponding
+ Source.
+ .
+   The Corresponding Source for a work in source code form is that
+ same work.
+ .
+   2. Basic Permissions.
+ .
+   All rights granted under this License are granted for the term of
+ copyright on the Program, and are irrevocable provided the stated
+ conditions are met.  This License explicitly affirms your unlimited
+ permission to run the unmodified Program.  The output from running a
+ covered work is covered by this License only if the output, given its
+ content, constitutes a covered work.  This License acknowledges your
+ rights of fair use or other equivalent, as provided by copyright law.
+ .
+   You may make, run and propagate covered works that you do not
+ convey, without conditions so long as your license otherwise remains
+ in force.  You may convey covered works to others for the sole purpose
+ of having them make modifications exclusively for you, or provide you
+ with facilities for running those works, provided that you comply with
+ the terms of this License in conveying all material for which you do
+ not control copyright.  Those thus making or running the covered works
+ for you must do so exclusively on your behalf, under your direction
+ and control, on terms that prohibit them from making any copies of
+ your copyrighted material outside their relationship with you.
+ .
+   Conveying under any other circumstances is permitted solely under
+ the conditions stated below.  Sublicensing is not allowed; section 10
+ makes it unnecessary.
+ .
+   3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+ .
+   No covered work shall be deemed part of an effective technological
+ measure under any applicable law fulfilling obligations under article
+ 11 of the WIPO copyright treaty adopted on 20 December 1996, or
+ similar laws prohibiting or restricting circumvention of such
+ measures.
+ .
+   When you convey a covered work, you waive any legal power to forbid
+ circumvention of technological measures to the extent such circumvention
+ is effected by exercising rights under this License with respect to
+ the covered work, and you disclaim any intention to limit operation or
+ modification of the work as a means of enforcing, against the work's
+ users, your or third parties' legal rights to forbid circumvention of
+ technological measures.
+ .
+   4. Conveying Verbatim Copies.
+ .
+   You may convey verbatim copies of the Program's source code as you
+ receive it, in any medium, provided that you conspicuously and
+ appropriately publish on each copy an appropriate copyright notice;
+ keep intact all notices stating that this License and any
+ non-permissive terms added in accord with section 7 apply to the code;
+ keep intact all notices of the absence of any warranty; and give all
+ recipients a copy of this License along with the Program.
+ .
+   You may charge any price or no price for each copy that you convey,
+ and you may offer support or warranty protection for a fee.
+ .
+   5. Conveying Modified Source Versions.
+ .
+   You may convey a work based on the Program, or the modifications to
+ produce it from the Program, in the form of source code under the
+ terms of section 4, provided that you also meet all of these conditions:
+ .
+     a) The work must carry prominent notices stating that you modified
+     it, and giving a relevant date.
+ .
+     b) The work must carry prominent notices stating that it is
+     released under this License and any conditions added under section
+     7.  This requirement modifies the requirement in section 4 to
+     "keep intact all notices".
+ .
+     c) You must license the entire work, as a whole, under this
+     License to anyone who comes into possession of a copy.  This
+     License will therefore apply, along with any applicable section 7
+     additional terms, to the whole of the work, and all its parts,
+     regardless of how they are packaged.  This License gives no
+     permission to license the work in any other way, but it does not
+     invalidate such permission if you have separately received it.
+ .
+     d) If the work has interactive user interfaces, each must display
+     Appropriate Legal Notices; however, if the Program has interactive
+     interfaces that do not display Appropriate Legal Notices, your
+     work need not make them do so.
+ .
+   A compilation of a covered work with other separate and independent
+ works, which are not by their nature extensions of the covered work,
+ and which are not combined with it such as to form a larger program,
+ in or on a volume of a storage or distribution medium, is called an
+ "aggregate" if the compilation and its resulting copyright are not
+ used to limit the access or legal rights of the compilation's users
+ beyond what the individual works permit.  Inclusion of a covered work
+ in an aggregate does not cause this License to apply to the other
+ parts of the aggregate.
+ .
+   6. Conveying Non-Source Forms.
+ .
+   You may convey a covered work in object code form under the terms
+ of sections 4 and 5, provided that you also convey the
+ machine-readable Corresponding Source under the terms of this License,
+ in one of these ways:
+ .
+     a) Convey the object code in, or embodied in, a physical product
+     (including a physical distribution medium), accompanied by the
+     Corresponding Source fixed on a durable physical medium
+     customarily used for software interchange.
+ .
+     b) Convey the object code in, or embodied in, a physical product
+     (including a physical distribution medium), accompanied by a
+     written offer, valid for at least three years and valid for as
+     long as you offer spare parts or customer support for that product
+     model, to give anyone who possesses the object code either (1) a
+     copy of the Corresponding Source for all the software in the
+     product that is covered by this License, on a durable physical
+     medium customarily used for software interchange, for a price no
+     more than your reasonable cost of physically performing this
+     conveying of source, or (2) access to copy the
+     Corresponding Source from a network server at no charge.
+ .
+     c) Convey individual copies of the object code with a copy of the
+     written offer to provide the Corresponding Source.  This
+     alternative is allowed only occasionally and noncommercially, and
+     only if you received the object code with such an offer, in accord
+     with subsection 6b.
+ .
+     d) Convey the object code by offering access from a designated
+     place (gratis or for a charge), and offer equivalent access to the
+     Corresponding Source in the same way through the same place at no
+     further charge.  You need not require recipients to copy the
+     Corresponding Source along with the object code.  If the place to
+     copy the object code is a network server, the Corresponding Source
+     may be on a different server (operated by you or a third party)
+     that supports equivalent copying facilities, provided you maintain
+     clear directions next to the object code saying where to find the
+     Corresponding Source.  Regardless of what server hosts the
+     Corresponding Source, you remain obligated to ensure that it is
+     available for as long as needed to satisfy these requirements.
+ .
+     e) Convey the object code using peer-to-peer transmission, provided
+     you inform other peers where the object code and Corresponding
+     Source of the work are being offered to the general public at no
+     charge under subsection 6d.
+ .
+   A separable portion of the object code, whose source code is excluded
+ from the Corresponding Source as a System Library, need not be
+ included in conveying the object code work.
+ .
+   A "User Product" is either (1) a "consumer product", which means any
+ tangible personal property which is normally used for personal, family,
+ or household purposes, or (2) anything designed or sold for incorporation
+ into a dwelling.  In determining whether a product is a consumer product,
+ doubtful cases shall be resolved in favor of coverage.  For a particular
+ product received by a particular user, "normally used" refers to a
+ typical or common use of that class of product, regardless of the status
+ of the particular user or of the way in which the particular user
+ actually uses, or expects or is expected to use, the product.  A product
+ is a consumer product regardless of whether the product has substantial
+ commercial, industrial or non-consumer uses, unless such uses represent
+ the only significant mode of use of the product.
+ .
+   "Installation Information" for a User Product means any methods,
+ procedures, authorization keys, or other information required to install
+ and execute modified versions of a covered work in that User Product from
+ a modified version of its Corresponding Source.  The information must
+ suffice to ensure that the continued functioning of the modified object
+ code is in no case prevented or interfered with solely because
+ modification has been made.
+ .
+   If you convey an object code work under this section in, or with, or
+ specifically for use in, a User Product, and the conveying occurs as
+ part of a transaction in which the right of possession and use of the
+ User Product is transferred to the recipient in perpetuity or for a
+ fixed term (regardless of how the transaction is characterized), the
+ Corresponding Source conveyed under this section must be accompanied
+ by the Installation Information.  But this requirement does not apply
+ if neither you nor any third party retains the ability to install
+ modified object code on the User Product (for example, the work has
+ been installed in ROM).
+ .
+   The requirement to provide Installation Information does not include a
+ requirement to continue to provide support service, warranty, or updates
+ for a work that has been modified or installed by the recipient, or for
+ the User Product in which it has been modified or installed.  Access to a
+ network may be denied when the modification itself materially and
+ adversely affects the operation of the network or violates the rules and
+ protocols for communication across the network.
+ .
+   Corresponding Source conveyed, and Installation Information provided,
+ in accord with this section must be in a format that is publicly
+ documented (and with an implementation available to the public in
+ source code form), and must require no special password or key for
+ unpacking, reading or copying.
+ .
+   7. Additional Terms.
+ .
+   "Additional permissions" are terms that supplement the terms of this
+ License by making exceptions from one or more of its conditions.
+ Additional permissions that are applicable to the entire Program shall
+ be treated as though they were included in this License, to the extent
+ that they are valid under applicable law.  If additional permissions
+ apply only to part of the Program, that part may be used separately
+ under those permissions, but the entire Program remains governed by
+ this License without regard to the additional permissions.
+ .
+   When you convey a copy of a covered work, you may at your option
+ remove any additional permissions from that copy, or from any part of
+ it.  (Additional permissions may be written to require their own
+ removal in certain cases when you modify the work.)  You may place
+ additional permissions on material, added by you to a covered work,
+ for which you have or can give appropriate copyright permission.
+ .
+   Notwithstanding any other provision of this License, for material you
+ add to a covered work, you may (if authorized by the copyright holders of
+ that material) supplement the terms of this License with terms:
+ .
+     a) Disclaiming warranty or limiting liability differently from the
+     terms of sections 15 and 16 of this License; or
+ .
+     b) Requiring preservation of specified reasonable legal notices or
+     author attributions in that material or in the Appropriate Legal
+     Notices displayed by works containing it; or
+ .
+     c) Prohibiting misrepresentation of the origin of that material, or
+     requiring that modified versions of such material be marked in
+     reasonable ways as different from the original version; or
+ .
+     d) Limiting the use for publicity purposes of names of licensors or
+     authors of the material; or
+ .
+     e) Declining to grant rights under trademark law for use of some
+     trade names, trademarks, or service marks; or
+ .
+     f) Requiring indemnification of licensors and authors of that
+     material by anyone who conveys the material (or modified versions of
+     it) with contractual assumptions of liability to the recipient, for
+     any liability that these contractual assumptions directly impose on
+     those licensors and authors.
+ .
+   All other non-permissive additional terms are considered "further
+ restrictions" within the meaning of section 10.  If the Program as you
+ received it, or any part of it, contains a notice stating that it is
+ governed by this License along with a term that is a further
+ restriction, you may remove that term.  If a license document contains
+ a further restriction but permits relicensing or conveying under this
+ License, you may add to a covered work material governed by the terms
+ of that license document, provided that the further restriction does
+ not survive such relicensing or conveying.
+ .
+   If you add terms to a covered work in accord with this section, you
+ must place, in the relevant source files, a statement of the
+ additional terms that apply to those files, or a notice indicating
+ where to find the applicable terms.
+ .
+   Additional terms, permissive or non-permissive, may be stated in the
+ form of a separately written license, or stated as exceptions;
+ the above requirements apply either way.
+ .
+   8. Termination.
+ .
+   You may not propagate or modify a covered work except as expressly
+ provided under this License.  Any attempt otherwise to propagate or
+ modify it is void, and will automatically terminate your rights under
+ this License (including any patent licenses granted under the third
+ paragraph of section 11).
+ .
+   However, if you cease all violation of this License, then your
+ license from a particular copyright holder is reinstated (a)
+ provisionally, unless and until the copyright holder explicitly and
+ finally terminates your license, and (b) permanently, if the copyright
+ holder fails to notify you of the violation by some reasonable means
+ prior to 60 days after the cessation.
+ .
+   Moreover, your license from a particular copyright holder is
+ reinstated permanently if the copyright holder notifies you of the
+ violation by some reasonable means, this is the first time you have
+ received notice of violation of this License (for any work) from that
+ copyright holder, and you cure the violation prior to 30 days after
+ your receipt of the notice.
+ .
+   Termination of your rights under this section does not terminate the
+ licenses of parties who have received copies or rights from you under
+ this License.  If your rights have been terminated and not permanently
+ reinstated, you do not qualify to receive new licenses for the same
+ material under section 10.
+ .
+   9. Acceptance Not Required for Having Copies.
+ .
+   You are not required to accept this License in order to receive or
+ run a copy of the Program.  Ancillary propagation of a covered work
+ occurring solely as a consequence of using peer-to-peer transmission
+ to receive a copy likewise does not require acceptance.  However,
+ nothing other than this License grants you permission to propagate or
+ modify any covered work.  These actions infringe copyright if you do
+ not accept this License.  Therefore, by modifying or propagating a
+ covered work, you indicate your acceptance of this License to do so.
+ .
+   10. Automatic Licensing of Downstream Recipients.
+ .
+   Each time you convey a covered work, the recipient automatically
+ receives a license from the original licensors, to run, modify and
+ propagate that work, subject to this License.  You are not responsible
+ for enforcing compliance by third parties with this License.
+ .
+   An "entity transaction" is a transaction transferring control of an
+ organization, or substantially all assets of one, or subdividing an
+ organization, or merging organizations.  If propagation of a covered
+ work results from an entity transaction, each party to that
+ transaction who receives a copy of the work also receives whatever
+ licenses to the work the party's predecessor in interest had or could
+ give under the previous paragraph, plus a right to possession of the
+ Corresponding Source of the work from the predecessor in interest, if
+ the predecessor has it or can get it with reasonable efforts.
+ .
+   You may not impose any further restrictions on the exercise of the
+ rights granted or affirmed under this License.  For example, you may
+ not impose a license fee, royalty, or other charge for exercise of
+ rights granted under this License, and you may not initiate litigation
+ (including a cross-claim or counterclaim in a lawsuit) alleging that
+ any patent claim is infringed by making, using, selling, offering for
+ sale, or importing the Program or any portion of it.
+ .
+   11. Patents.
+ .
+   A "contributor" is a copyright holder who authorizes use under this
+ License of the Program or a work on which the Program is based.  The
+ work thus licensed is called the contributor's "contributor version".
+ .
+   A contributor's "essential patent claims" are all patent claims
+ owned or controlled by the contributor, whether already acquired or
+ hereafter acquired, that would be infringed by some manner, permitted
+ by this License, of making, using, or selling its contributor version,
+ but do not include claims that would be infringed only as a
+ consequence of further modification of the contributor version.  For
+ purposes of this definition, "control" includes the right to grant
+ patent sublicenses in a manner consistent with the requirements of
+ this License.
+ .
+   Each contributor grants you a non-exclusive, worldwide, royalty-free
+ patent license under the contributor's essential patent claims, to
+ make, use, sell, offer for sale, import and otherwise run, modify and
+ propagate the contents of its contributor version.
+ .
+   In the following three paragraphs, a "patent license" is any express
+ agreement or commitment, however denominated, not to enforce a patent
+ (such as an express permission to practice a patent or covenant not to
+ sue for patent infringement).  To "grant" such a patent license to a
+ party means to make such an agreement or commitment not to enforce a
+ patent against the party.
+ .
+   If you convey a covered work, knowingly relying on a patent license,
+ and the Corresponding Source of the work is not available for anyone
+ to copy, free of charge and under the terms of this License, through a
+ publicly available network server or other readily accessible means,
+ then you must either (1) cause the Corresponding Source to be so
+ available, or (2) arrange to deprive yourself of the benefit of the
+ patent license for this particular work, or (3) arrange, in a manner
+ consistent with the requirements of this License, to extend the patent
+ license to downstream recipients.  "Knowingly relying" means you have
+ actual knowledge that, but for the patent license, your conveying the
+ covered work in a country, or your recipient's use of the covered work
+ in a country, would infringe one or more identifiable patents in that
+ country that you have reason to believe are valid.
+ .
+   If, pursuant to or in connection with a single transaction or
+ arrangement, you convey, or propagate by procuring conveyance of, a
+ covered work, and grant a patent license to some of the parties
+ receiving the covered work authorizing them to use, propagate, modify
+ or convey a specific copy of the covered work, then the patent license
+ you grant is automatically extended to all recipients of the covered
+ work and works based on it.
+ .
+   A patent license is "discriminatory" if it does not include within
+ the scope of its coverage, prohibits the exercise of, or is
+ conditioned on the non-exercise of one or more of the rights that are
+ specifically granted under this License.  You may not convey a covered
+ work if you are a party to an arrangement with a third party that is
+ in the business of distributing software, under which you make payment
+ to the third party based on the extent of your activity of conveying
+ the work, and under which the third party grants, to any of the
+ parties who would receive the covered work from you, a discriminatory
+ patent license (a) in connection with copies of the covered work
+ conveyed by you (or copies made from those copies), or (b) primarily
+ for and in connection with specific products or compilations that
+ contain the covered work, unless you entered into that arrangement,
+ or that patent license was granted, prior to 28 March 2007.
+ .
+   Nothing in this License shall be construed as excluding or limiting
+ any implied license or other defenses to infringement that may
+ otherwise be available to you under applicable patent law.
+ .
+   12. No Surrender of Others' Freedom.
+ .
+   If conditions are imposed on you (whether by court order, agreement or
+ otherwise) that contradict the conditions of this License, they do not
+ excuse you from the conditions of this License.  If you cannot convey a
+ covered work so as to satisfy simultaneously your obligations under this
+ License and any other pertinent obligations, then as a consequence you may
+ not convey it at all.  For example, if you agree to terms that obligate you
+ to collect a royalty for further conveying from those to whom you convey
+ the Program, the only way you could satisfy both those terms and this
+ License would be to refrain entirely from conveying the Program.
+ .
+   13. Use with the GNU Affero General Public License.
+ .
+   Notwithstanding any other provision of this License, you have
+ permission to link or combine any covered work with a work licensed
+ under version 3 of the GNU Affero General Public License into a single
+ combined work, and to convey the resulting work.  The terms of this
+ License will continue to apply to the part which is the covered work,
+ but the special requirements of the GNU Affero General Public License,
+ section 13, concerning interaction through a network will apply to the
+ combination as such.
+ .
+   14. Revised Versions of this License.
+ .
+   The Free Software Foundation may publish revised and/or new versions of
+ the GNU General Public License from time to time.  Such new versions will
+ be similar in spirit to the present version, but may differ in detail to
+ address new problems or concerns.
+ .
+   Each version is given a distinguishing version number.  If the
+ Program specifies that a certain numbered version of the GNU General
+ Public License "or any later version" applies to it, you have the
+ option of following the terms and conditions either of that numbered
+ version or of any later version published by the Free Software
+ Foundation.  If the Program does not specify a version number of the
+ GNU General Public License, you may choose any version ever published
+ by the Free Software Foundation.
+ .
+   If the Program specifies that a proxy can decide which future
+ versions of the GNU General Public License can be used, that proxy's
+ public statement of acceptance of a version permanently authorizes you
+ to choose that version for the Program.
+ .
+   Later license versions may give you additional or different
+ permissions.  However, no additional obligations are imposed on any
+ author or copyright holder as a result of your choosing to follow a
+ later version.
+ .
+   15. Disclaimer of Warranty.
+ .
+   THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+ APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+ HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+ OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+ IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+ ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+ .
+   16. Limitation of Liability.
+ .
+   IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+ WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+ THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+ GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+ USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+ DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+ PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+ EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGES.
+ .
+   17. Interpretation of Sections 15 and 16.
+ .
+   If the disclaimer of warranty and limitation of liability provided
+ above cannot be given local legal effect according to their terms,
+ reviewing courts shall apply local law that most closely approximates
+ an absolute waiver of all civil liability in connection with the
+ Program, unless a warranty or assumption of liability accompanies a
+ copy of the Program in return for a fee.
+ .
+                      END OF TERMS AND CONDITIONS
+ .
+             How to Apply These Terms to Your New Programs
+ .
+   If you develop a new program, and you want it to be of the greatest
+ possible use to the public, the best way to achieve this is to make it
+ free software which everyone can redistribute and change under these terms.
+ .
+   To do so, attach the following notices to the program.  It is safest
+ to attach them to the start of each source file to most effectively
+ state the exclusion of warranty; and each file should have at least
+ the "copyright" line and a pointer to where the full notice is found.
+ .
+     <one line to give the program's name and a brief idea of what it does.>
+     Copyright (C) <year>  <name of author>
+ .
+     This program is free software: you can redistribute it and/or modify
+     it under the terms of the GNU General Public License as published by
+     the Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+ .
+     This program is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     GNU General Public License for more details.
+ .
+     You should have received a copy of the GNU General Public License
+     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ .
+ Also add information on how to contact you by electronic and paper mail.
+ .
+   If the program does terminal interaction, make it output a short
+ notice like this when it starts in an interactive mode:
+ .
+     <program>  Copyright (C) <year>  <name of author>
+     This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+     This is free software, and you are welcome to redistribute it
+     under certain conditions; type `show c' for details.
+ .
+ The hypothetical commands `show w' and `show c' should show the appropriate
+ parts of the General Public License.  Of course, your program's commands
+ might be different; for a GUI interface, you would use an "about box".
+ .
+   You should also get your employer (if you work as a programmer) or school,
+ if any, to sign a "copyright disclaimer" for the program, if necessary.
+ For more information on this, and how to apply and follow the GNU GPL, see
+ <https://www.gnu.org/licenses/>.
+ .
+   The GNU General Public License does not permit incorporating your program
+ into proprietary programs.  If your program is a subroutine library, you
+ may consider it more useful to permit linking proprietary applications with
+ the library.  If this is what you want to do, use the GNU Lesser General
+ Public License instead of this License.  But first, please read
+ <https://www.gnu.org/licenses/why-not-lgpl.html>.
  .
  As a special exception to the GNU General Public License, if you
  distribute this file as part of a program that contains a
@@ -209,7 +2301,7 @@ License: GPL-3.0-or-later with Autoconf-generic-3.0 exception
  program.  This Exception is an additional permission under section 7
  of the GNU General Public License, version 3 ("GPLv3").
 
-License: HPND-sell-variant
+License: LicenseRef-HPND-sell-variant-MIT
  Permission to use, copy, modify, distribute, and sell this software and its
  documentation for any purpose is hereby granted without fee, provided that
  the above copyright notice appear in all copies and that both that
@@ -219,55 +2311,6 @@ License: HPND-sell-variant
  written prior permission.  M.I.T. makes no representations about the
  suitability of this software for any purpose.  It is provided "as is"
  without express or implied warranty.
-
-License: ICU
- COPYRIGHT AND PERMISSION NOTICE
- .
- Copyright (c) 1995-2016 International Business Machines Corporation and others
- All rights reserved.
- .
- Permission is hereby granted, free of charge, to any person obtaining
- a copy of this software and associated documentation files (the
- "Software"), to deal in the Software without restriction, including
- without limitation the rights to use, copy, modify, merge, publish,
- distribute, and/or sell copies of the Software, and to permit persons
- to whom the Software is furnished to do so, provided that the above
- copyright notice(s) and this permission notice appear in all copies of
- the Software and that both the above copyright notice(s) and this
- permission notice appear in supporting documentation.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
- OF THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- HOLDERS INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY
- SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER
- RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
- CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
- CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- .
- Except as contained in this notice, the name of a copyright holder
- shall not be used in advertising or otherwise to promote the sale, use
- or other dealings in this Software without prior written authorization
- of the copyright holder.
- .
- All trademarks and registered trademarks mentioned herein are the
- property of their respective owners.
-
-License: LicenseRef-Unicode-mapping-tables
- This file is provided as-is by Unicode, Inc. (The Unicode Consortium).
- No claims are made as to fitness for any particular purpose.  No
- warranties of any kind are expressed or implied.  The recipient
- agrees to determine applicability of information provided.  If this
- file has been provided on optical media by Unicode, Inc., the sole
- remedy for any claim will be exchange of defective media within 90
- days of receipt.
- .
- Unicode, Inc. hereby grants the right to freely use the information
- supplied in this file in the creation of products supporting the
- Unicode Standard, and to make copies of this file in any form for
- internal or external distribution as long as this notice remains
- attached.
 
 License: NAIST-2003
  Copyright 2000, 2001, 2002, 2003 Nara Institute of Science
@@ -342,8 +2385,10 @@ License: NAIST-2003
  above as far as the program is concerned.
 
 License: public-domain
- This file is in the public domain, so clarified as of
- 2006-07-17 by Arthur David Olson.
+ mkinstalldirs --- make directory hierarchy
+ Author: Noah Friedman <friedman@prep.ai.mit.edu>
+ Created: 1993-05-16
+ Public domain
 
 License: Unicode-3.0
  UNICODE LICENSE V3
@@ -386,5 +2431,270 @@ License: Unicode-3.0
  dealings in these Data Files or Software without prior written
  authorization of the copyright holder.
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
+License: LicenseRef-Unicode-mapping-tables
+ This file is provided as-is by Unicode, Inc. (The Unicode Consortium).
+ No claims are made as to fitness for any particular purpose.  No
+ warranties of any kind are expressed or implied.  The recipient
+ agrees to determine applicability of information provided.  If this
+ file has been provided on optical media by Unicode, Inc., the sole
+ remedy for any claim will be exchange of defective media within 90
+ days of receipt.
+ .
+ Unicode, Inc. hereby grants the right to freely use the information
+ supplied in this file in the creation of products supporting the
+ Unicode Standard, and to make copies of this file in any form for
+ internal or external distribution as long as this notice remains
+ attached.
+
+License: ICU
+ COPYRIGHT AND PERMISSION NOTICE
+ .
+ Copyright (c) 1995-2016 International Business Machines Corporation and others
+ All rights reserved.
+ .
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, and/or sell copies of the Software, and to permit persons
+ to whom the Software is furnished to do so, provided that the above
+ copyright notice(s) and this permission notice appear in all copies of
+ the Software and that both the above copyright notice(s) and this
+ permission notice appear in supporting documentation.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+ OF THIRD PARTY RIGHTS. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ HOLDERS INCLUDED IN THIS NOTICE BE LIABLE FOR ANY CLAIM, OR ANY
+ SPECIAL INDIRECT OR CONSEQUENTIAL DAMAGES, OR ANY DAMAGES WHATSOEVER
+ RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF
+ CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
+ CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ .
+ Except as contained in this notice, the name of a copyright holder
+ shall not be used in advertising or otherwise to promote the sale, use
+ or other dealings in this Software without prior written authorization
+ of the copyright holder.
+ .
+ All trademarks and registered trademarks mentioned herein are the
+ property of their respective owners.
+
+License: BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-Google
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+     * Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+     * Redistributions in binary form must reproduce the above
+       copyright notice, this list of conditions and the following
+       disclaimer in the documentation and/or other materials provided
+       with the distribution.
+     * Neither the name of Google Inc. nor the names of its
+       contributors may be used to endorse or promote products derived
+       from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-TaBE
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ . Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ . Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in
+ the documentation and/or other materials provided with the
+ distribution.
+ . Neither the name of the TaBE Project nor the names of its
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-CSCL
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ . Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ . Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in
+ the documentation and/or other materials provided with the
+ distribution.
+ . Neither the name of the Computer Systems and Communication Lab
+ nor the names of its contributors may be used to endorse or
+ promote products derived from this software without specific
+ prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-Myanmar-Karen-Word-Lists
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met: Redistributions of source code must retain the above
+ copyright notice, this list of conditions and the following
+ disclaimer.  Redistributions in binary form must reproduce the
+ above copyright notice, this list of conditions and the following
+ disclaimer in the documentation and/or other materials provided
+ with the distribution.
+ .
+ Neither the name Myanmar Karen Word Lists, nor the names of its
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+ CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS
+ BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+ TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-2-Clause-Lao
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer. Redistributions in binary
+ form must reproduce the above copyright notice, this list of conditions and
+ the following disclaimer in the documentation and/or other materials
+ provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+ STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+ OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-public-domain-tz
+   ICU uses the public domain data and code derived from Time Zone
+ Database for its time zone support. The ownership of the TZ database
+ is explained in BCP 175: Procedure for Maintaining the Time Zone
+ Database section 7.
+ .
+ 7.  Database Ownership
+ .
+ The TZ database itself is not an IETF Contribution or an IETF
+ document.  Rather it is a pre-existing and regularly updated work
+ that is in the public domain, and is intended to remain in the
+ public domain.  Therefore, BCPs 78 [RFC5378] and 79 [RFC3979] do
+ not apply to the TZ Database or contributions that individuals make
+ to it.  Should any claims be made and substantiated against the TZ
+ Database, the organization that is providing the IANA
+ Considerations defined in this RFC, under the memorandum of
+ understanding with the IETF, currently ICANN, may act in accordance
+ with all competent court orders.  No ownership claims will be made
+ by ICANN or the IETF Trust on the database or the code.  Any person
+ making a contribution to the database or code waives all rights to
+ future claims in that contribution or in the TZ Database.
+
+License: LicenseRef-Punycode-Costello
+ Regarding this entire document or any portion of it (including
+ the pseudocode and C code), the author makes no guarantees and
+ is not responsible for any damage resulting from its use.  The
+ author grants irrevocable permission to anyone to use, modify,
+ and distribute it in any way that does not diminish the rights
+ of anyone else to use, modify, and distribute it, provided that
+ redistributed derivative works do not contain misleading author or
+ version information.  Derivative works need not be licensed under
+ similar terms.
+
+License: LicenseRef-ISOC-RFC
+ Copyright (C) The Internet Society (2002).  All Rights Reserved.
+ .
+ This document and translations of it may be copied and furnished to
+ others, and derivative works that comment on or otherwise explain it
+ or assist in its implementation may be prepared, copied, published
+ and distributed, in whole or in part, without restriction of any
+ kind, provided that the above copyright notice and this paragraph are
+ included on all such copies and derivative works.  However, this
+ document itself may not be modified in any way, such as by removing
+ the copyright notice or references to the Internet Society or other
+ Internet organizations, except as needed for the purpose of
+ developing Internet standards in which case the procedures for
+ copyrights defined in the Internet Standards process must be
+ followed, or as required to translate it into languages other than
+ English.
+ .
+ The limited permissions granted above are perpetual and will not be
+ revoked by the Internet Society or its successors or assigns.
+ .
+ This document and the information contained herein is provided on an
+ "AS IS" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING
+ TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING
+ BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION
+ HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF
+ MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.

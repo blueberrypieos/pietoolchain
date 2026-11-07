@@ -1,0 +1,9 @@
+usr/include/editline/readline.h
+usr/include/histedit.h
+usr/include/readline/history.h
+usr/include/readline/readline.h
+usr/lib/libedit.2.dylib
+usr/lib/libedit.3.0.dylib
+usr/lib/libedit.3.dylib
+usr/lib/libedit.dylib
+usr/lib/libreadline.dylib

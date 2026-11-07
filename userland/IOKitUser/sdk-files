@@ -1,0 +1,16 @@
+System/Library/Frameworks/IOKit.framework/IOKit
+System/Library/Frameworks/IOKit.framework/Resources
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOCFBundle.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOCFPlugIn.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOCFSerialize.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOCFURLAccess.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOCFUnserialize.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IODataQueueClient.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/IOKitLib.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/ps/IOPSKeys.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Headers/ps/IOPowerSources.h
+System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+System/Library/Frameworks/IOKit.framework/Versions/A/PrivateHeaders/IOKitLibPrivate.h
+System/Library/Frameworks/IOKit.framework/Versions/A/PrivateHeaders/IOMIGMachPort.h
+System/Library/Frameworks/IOKit.framework/Versions/A/Resources/Info.plist
+System/Library/Frameworks/IOKit.framework/Versions/Current

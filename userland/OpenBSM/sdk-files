@@ -1,0 +1,6 @@
+usr/include/bsm/audit_filter.h
+usr/include/bsm/audit_uevents.h
+usr/include/bsm/auditd_lib.h
+usr/include/bsm/libbsm.h
+usr/lib/libbsm.0.dylib
+usr/lib/libbsm.dylib

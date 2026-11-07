@@ -1,0 +1,4 @@
+usr/lib/libarchive.2.dylib
+usr/lib/libarchive.dylib
+usr/local/include/archive.h
+usr/local/include/archive_entry.h

@@ -26,6 +26,7 @@ Build-Depends: debhelper-compat (= 13),
  pkgconf:native,
  uuid-dev:native,
  python3:native,
+ ca-certificates,
  git,
  patch,
  ed
@@ -57,7 +58,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_kernel
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: system calls and Mach traps (libsystem_kernel)
  Part of libSystem, built by pietoolchain.
 
@@ -68,7 +69,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libplatform
-X-Pie-Version: 375.120.2-1
+X-Pie-Version: 375.120.2-2
 Description: string, atomics and context primitives (libsystem_platform)
  Part of libSystem, built by pietoolchain.
 
@@ -79,7 +80,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libpthread
-X-Pie-Version: 539.100.4-1
+X-Pie-Version: 539.100.4-2
 Description: POSIX threads (libsystem_pthread)
  Part of libSystem, built by pietoolchain.
 
@@ -90,7 +91,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libmalloc
-X-Pie-Version: 812.100.31-1
+X-Pie-Version: 812.100.31-2
 Description: memory allocator (libsystem_malloc)
  Part of libSystem, built by pietoolchain.
 
@@ -101,7 +102,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libclosure
-X-Pie-Version: 96-1
+X-Pie-Version: 96-2
 Description: blocks runtime (libsystem_blocks)
  Part of libSystem, built by pietoolchain.
 
@@ -112,7 +113,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_featureflags
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: feature flags with their defaults
  Part of libSystem, built by pietoolchain.
 
@@ -123,7 +124,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libcorecrypto
-X-Pie-Version: 1:0.2.0-1
+X-Pie-Version: 1:0.2.0-2
 Description: corecrypto (piecrypto): digests, ciphers, RSA, EC, DH and RNG
  Part of libSystem, built by pietoolchain.
 
@@ -134,7 +135,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: compiler-rt
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: compiler runtime builtins
  Part of libSystem, built by pietoolchain.
 
@@ -145,7 +146,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: Libc
-X-Pie-Version: 1752.120.2-1
+X-Pie-Version: 1752.120.2-2
 Description: C library (libsystem_c, libdarwin, collections)
  Part of libSystem, built by pietoolchain.
 
@@ -156,7 +157,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: openlibm
-X-Pie-Version: 0.8.8-1
+X-Pie-Version: 0.8.8-2
 Description: math library (OpenLibm)
  Part of libSystem, built by pietoolchain.
 
@@ -167,7 +168,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: cctools
-X-Pie-Version: 1035.1.102-1
+X-Pie-Version: 1035.1.102-2
 Description: Mach-O reading library (libmacho)
  Part of libSystem, built by pietoolchain.
 
@@ -178,7 +179,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: dyld
-X-Pie-Version: 1378-1
+X-Pie-Version: 1378-2
 Description: dynamic linker
  Part of libSystem, built by pietoolchain.
 
@@ -189,7 +190,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_trace
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: os_log and os_activity
  Part of libSystem, built by pietoolchain.
 
@@ -200,7 +201,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libdispatch
-X-Pie-Version: 1542.100.32-1
+X-Pie-Version: 1542.100.32-2
 Description: Grand Central Dispatch
  Part of libSystem, built by pietoolchain.
 
@@ -211,7 +212,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_sanitizers
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: sanitizer hooks for libSystem
  Part of libSystem, built by pietoolchain.
 
@@ -222,7 +223,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libxpc
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: XPC object model and bootstrap client
  Part of libSystem, built by pietoolchain.
 
@@ -233,7 +234,7 @@ Priority: required
 Section: admin
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: Libnotify
-X-Pie-Version: 348.120.4-1
+X-Pie-Version: 348.120.4-2
 Description: notification library, notifyd and notifyutil
  Part of libSystem, built by pietoolchain.
 
@@ -244,7 +245,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: syslog
-X-Pie-Version: 406-1
+X-Pie-Version: 406-2
 Description: ASL and syslog(3) (libsystem_asl)
  Part of libSystem, built by pietoolchain.
 
@@ -255,7 +256,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_configuration
-X-Pie-Version: 1405.120.5-1
+X-Pie-Version: 1405.120.5-2
 Description: DNS configuration and fork hooks
  Part of libSystem, built by pietoolchain.
 
@@ -266,7 +267,7 @@ Priority: required
 Section: net
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: mDNSResponder
-X-Pie-Version: 2881.120.11-1
+X-Pie-Version: 2881.120.11-2
 Description: DNS and Bonjour daemon and its client library
  Part of libSystem, built by pietoolchain.
 
@@ -277,7 +278,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: Libinfo
-X-Pie-Version: 600-1
+X-Pie-Version: 600-2
 Description: user, group, host and service lookups (libsystem_info)
  Part of libSystem, built by pietoolchain.
 
@@ -288,7 +289,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: removefile
-X-Pie-Version: 85.100.6-1
+X-Pie-Version: 85.100.6-2
 Description: recursive file removal library
  Part of libSystem, built by pietoolchain.
 
@@ -299,7 +300,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: copyfile
-X-Pie-Version: 240-1
+X-Pie-Version: 240-2
 Description: file copying library
  Part of libSystem, built by pietoolchain.
 
@@ -310,7 +311,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: CommonCrypto
-X-Pie-Version: 600035-1
+X-Pie-Version: 600035-2
 Description: CommonCrypto: digests, HMAC, ciphers, RSA, EC, DH, key derivation
  Part of libSystem, built by pietoolchain.
 
@@ -321,7 +322,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_sandbox
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: sandbox API
  Part of libSystem, built by pietoolchain.
 
@@ -332,7 +333,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libsystem_coreservices
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: per-user directories and standard paths
  Part of libSystem, built by pietoolchain.
 
@@ -343,7 +344,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: llvm-runtimes
-X-Pie-Version: 0-1
+X-Pie-Version: 0-2
 Description: C++ standard library, C++ ABI and unwinder
  Part of libSystem, built by pietoolchain.
 
@@ -354,7 +355,7 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: Libsystem
-X-Pie-Version: 1356-1
+X-Pie-Version: 1356-2
 Description: libSystem, the umbrella of the system libraries
  Part of libSystem, built by pietoolchain.
 
@@ -365,6 +366,6 @@ Priority: required
 Section: libs
 Depends: ${runtime:Depends}, ${misc:Depends}
 X-Pie-Project: libresolv
-X-Pie-Version: 96-1
+X-Pie-Version: 96-2
 Description: DNS resolver library
  Part of libSystem, built by pietoolchain.

@@ -1,0 +1,9 @@
+usr/include/security/openpam.h
+usr/include/security/openpam_attr.h
+usr/include/security/openpam_version.h
+usr/include/security/pam_appl.h
+usr/include/security/pam_constants.h
+usr/include/security/pam_modules.h
+usr/include/security/pam_types.h
+usr/lib/libpam.2.dylib
+usr/lib/libpam.dylib

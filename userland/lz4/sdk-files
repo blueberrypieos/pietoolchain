@@ -1,0 +1,6 @@
+usr/include/lz4.h
+usr/include/lz4frame.h
+usr/include/lz4hc.h
+usr/lib/liblz4.1.dylib
+usr/lib/liblz4.dylib
+usr/lib/pkgconfig/liblz4.pc
