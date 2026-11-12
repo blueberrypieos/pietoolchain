@@ -238,9 +238,15 @@ def arch(pie):
                     depends[pkg].add(dep)
     if unresolved:
         die("libraries in no package:\n  " + "\n  ".join(unresolved))
+    versions = {pkg: s["X-Pie-Version"] for pkg, (s, _, _) in staged.items()}
     for pkg, (s, dst, fields) in sorted(staged.items()):
         finish(pie, pkg, dst, s["X-Pie-Version"], fields,
-               [("runtime:Depends", ", ".join(sorted(depends[pkg])))])
+               [("runtime:Depends", runtime_depends(depends[pkg], versions))])
+
+
+def runtime_depends(deps, versions):
+    return ", ".join("%s (>= %s)" % (d, versions[d]) if d in versions else d
+                     for d in sorted(deps))
 
 
 def main():

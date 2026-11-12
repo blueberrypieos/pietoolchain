@@ -4,7 +4,7 @@
 PROJECT := libxpc
 include ../common.mk
 
-SOURCES := object.c plist.c connection.c bootstrap.c services.c
+SOURCES := object.c plist.c wire.c connection.c pipe.c bootstrap.c services.c
 OBJS    := $(patsubst %.c,$(OBJ)/%.o,$(SOURCES))
 DYLIB   := $(OBJ)/libxpc.dylib
 
@@ -18,7 +18,7 @@ $(DYLIB): $(OBJS)
 	$(CC) $(BASE_LDFLAGS) -dynamiclib -nostdlib -install_name /usr/lib/system/libxpc.dylib \
 		-compatibility_version 1 -current_version 1 -Wl,-umbrella,System \
 		$(OBJS) -L$(SDK)/usr/lib/system -lsystem_c -lsystem_malloc -lsystem_kernel \
-		-lsystem_platform -lsystem_blocks -ldispatch -o $@
+		-lsystem_platform -lsystem_blocks -ldispatch -lsystem_trace -o $@
 
 install: $(DYLIB) installhdrs
 	$(call install_both,$(DYLIB),usr/lib/system)

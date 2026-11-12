@@ -16,7 +16,7 @@ $(DYLIB): $(OBJ)/sandbox.o
 	$(CC) $(BASE_LDFLAGS) -dynamiclib -nostdlib \
 		-install_name /usr/lib/system/libsystem_sandbox.dylib \
 		-compatibility_version 1 -current_version 1 -Wl,-umbrella,System \
-		$< -L$(SDK)/usr/lib/system -lsystem_malloc -o $@
+		$< -L$(SDK)/usr/lib/system -lsystem_kernel -lsystem_malloc -lsystem_c -o $@
 
 install: $(DYLIB)
 	$(call install_both,$(DYLIB),usr/lib/system)

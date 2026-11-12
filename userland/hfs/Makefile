@@ -16,7 +16,7 @@ newfs_hfs_LIBS := -lutil
 FSCK_DFALIB := BlockCache BTree BTreeAllocate BTreeMiscOps BTreeNodeOps BTreeScanner \
 	BTreeTreeOps CatalogCheck dirhardlink HardLinkCheck hfs_endian SAllocate SBTree \
 	SCatalog SControl SDevice SExtents SKeyCompare SRebuildBTree SRepair SStubs SUtils \
-	SVerify1 SVerify2 uuid VolumeBitmapCheck
+	SVerify1 SVerify2 VolumeBitmapCheck
 fsck_hfs_SRCS := $(addprefix fsck_hfs/,fsck_hfs.c fsck_messages.c utilities.c) \
 	$(addprefix lib_fsck_hfs/,cache.c check.c lib_fsck_hfs.c fsck_debug.c fsck_strings.c \
 	fsck_hfs_strings.c fsck_journal.c) \

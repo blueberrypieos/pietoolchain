@@ -1,0 +1,30 @@
+diff --git a/gen.subproj/configuration_profile.c b/gen.subproj/configuration_profile.c
+index abdbd3e..29dc926 100644
+--- a/gen.subproj/configuration_profile.c
++++ b/gen.subproj/configuration_profile.c
+@@ -20,7 +20,9 @@
+  *
+  * @APPLE_LICENSE_HEADER_END@
+  */
++/* Modified 2026-11-11: configuration_profile_create_notification_key and configuration_profile_copy_property_list are exported (APSL 2.0 section 2.2(b)). */
+ 
++#include "libinfo_common.h"
+ #include <stdlib.h>
+ #include <string.h>
+ #include <xpc/private.h>
+@@ -31,6 +33,7 @@
+ #define NOTIFY_PATH_SERVICE "com.apple.system.notify.service.path:0x87:"
+ #define CPROF_PATH "/Library/Managed Preferences/mobile"
+ 
++LIBINFO_EXPORT
+ char *
+ configuration_profile_create_notification_key(const char *ident)
+ {
+@@ -52,6 +55,7 @@ configuration_profile_create_notification_key(const char *ident)
+ 	return out;
+ }
+ 
++LIBINFO_EXPORT
+ xpc_object_t
+ configuration_profile_copy_property_list(const char *ident)
+ {

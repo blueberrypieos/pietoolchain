@@ -47,6 +47,7 @@ XPC_EXPORT XPC_TYPE(_xpc_type_dictionary);
 XPC_EXPORT XPC_TYPE(_xpc_type_error);
 XPC_EXPORT XPC_TYPE(_xpc_type_connection);
 XPC_EXPORT XPC_TYPE(_xpc_type_endpoint);
+XPC_EXPORT XPC_TYPE(_xpc_type_fd);
 
 #define XPC_TYPE_NULL       (&_xpc_type_null)
 #define XPC_TYPE_BOOL       (&_xpc_type_bool)
@@ -62,6 +63,7 @@ XPC_EXPORT XPC_TYPE(_xpc_type_endpoint);
 #define XPC_TYPE_ERROR      (&_xpc_type_error)
 #define XPC_TYPE_CONNECTION (&_xpc_type_connection)
 #define XPC_TYPE_ENDPOINT   (&_xpc_type_endpoint)
+#define XPC_TYPE_FD         (&_xpc_type_fd)
 
 XPC_EXPORT const struct _xpc_bool_s _xpc_bool_true;
 XPC_EXPORT const struct _xpc_bool_s _xpc_bool_false;
@@ -101,6 +103,8 @@ XPC_EXPORT size_t xpc_string_get_length(xpc_object_t xstring);
 XPC_EXPORT const char *xpc_string_get_string_ptr(xpc_object_t xstring);
 XPC_EXPORT xpc_object_t xpc_uuid_create(const uuid_t uuid);
 XPC_EXPORT const uint8_t *xpc_uuid_get_bytes(xpc_object_t xuuid);
+XPC_EXPORT xpc_object_t xpc_fd_create(int fd);
+XPC_EXPORT int xpc_fd_dup(xpc_object_t xfd);
 
 XPC_EXPORT xpc_object_t xpc_array_create(xpc_object_t const *objects, size_t count);
 XPC_EXPORT xpc_object_t xpc_array_create_empty(void);
@@ -135,6 +139,7 @@ XPC_EXPORT double xpc_dictionary_get_double(xpc_object_t xdict, const char *key)
 XPC_EXPORT const char *xpc_dictionary_get_string(xpc_object_t xdict, const char *key);
 XPC_EXPORT const void *xpc_dictionary_get_data(xpc_object_t xdict, const char *key, size_t *length);
 XPC_EXPORT int xpc_dictionary_dup_fd(xpc_object_t xdict, const char *key);
+XPC_EXPORT const uint8_t *xpc_dictionary_get_uuid(xpc_object_t xdict, const char *key);
 XPC_EXPORT xpc_object_t xpc_dictionary_get_dictionary(xpc_object_t xdict, const char *key);
 XPC_EXPORT xpc_object_t xpc_dictionary_get_array(xpc_object_t xdict, const char *key);
 XPC_EXPORT void xpc_dictionary_set_bool(xpc_object_t xdict, const char *key, bool value);
@@ -143,6 +148,8 @@ XPC_EXPORT void xpc_dictionary_set_uint64(xpc_object_t xdict, const char *key, u
 XPC_EXPORT void xpc_dictionary_set_double(xpc_object_t xdict, const char *key, double value);
 XPC_EXPORT void xpc_dictionary_set_string(xpc_object_t xdict, const char *key, const char *string);
 XPC_EXPORT void xpc_dictionary_set_data(xpc_object_t xdict, const char *key, const void *bytes, size_t length);
+XPC_EXPORT void xpc_dictionary_set_fd(xpc_object_t xdict, const char *key, int fd);
+XPC_EXPORT void xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const uuid_t uuid);
 #ifdef __BLOCKS__
 typedef bool (^xpc_dictionary_applier_t)(const char *key, xpc_object_t value);
 XPC_EXPORT bool xpc_dictionary_apply(xpc_object_t xdict, xpc_dictionary_applier_t applier);

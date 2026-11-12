@@ -13,7 +13,7 @@ Copyright: 1993-1995, 1997-2026 Apple Inc.
  1994-1996 NeXT Software, Inc.
  1987 Avadis Tevanian, Jr.
  2005 SPARTA, Inc.
-License: APSL-2.0-OS-reference
+License: LicenseRef-APSL-2.0-OS-reference
 
 Files: xnu/APPLE_LICENSE
  xnu/EXTERNAL_HEADERS/*
@@ -471,7 +471,7 @@ Copyright: 1986-1992 Carnegie Mellon University
  1998 Apple Computer
  1987-1991 Carnegie Mellon University
  1986 Avadis Tevanian, Jr., Michael Wayne Young
-License: APSL-2.0-OS-reference AND CMU-Mach
+License: LicenseRef-APSL-2.0-OS-reference AND CMU-Mach
 
 Files: xnu/bsd/arm/endian.h
  xnu/bsd/arm/limits.h
@@ -625,7 +625,7 @@ Copyright: 2000-2025 Apple Inc.
  2008 Joerg Sonnenberger <joerg@NetBSD.org>
  1999 John D. Polstra
  2008 Swinburne University of Technology, Melbourne, Australia
-License: APSL-2.0-OS-reference AND BSD-2-Clause
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-2-Clause
 
 Files: xnu/bsd/man/man2/aio_return.2
  xnu/bsd/man/man2/kqueue.2
@@ -639,27 +639,27 @@ Files: xnu/bsd/sys/shm.h
 Copyright: 2000-2025 Apple Inc.
  2000-2005 Apple Computer, Inc.
  1994 Adam Glass
-License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Adam-Glass
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Adam-Glass
 
 Files: xnu/bsd/net/classq/classq.h
  xnu/bsd/net/pktsched/pktsched_rmclass.h
 Copyright: 2000-2025 Apple Inc.
  2000-2005 Apple Computer, Inc.
  1991-1997 Regents of the University of California
-License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-LBL-NRG
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-LBL-NRG
 
 Files: xnu/bsd/net/if_media.h
 Copyright: 2000-2025 Apple Inc.
  2000-2005 Apple Computer, Inc.
  1997 Jonathan Stone and Jason R. Thorpe
-License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Jonathan-Stone-Jason-Thorpe
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Jonathan-Stone-Jason-Thorpe
 
 Files: xnu/bsd/net/if_bridgevar.h
 Copyright: 2000-2025 Apple Inc.
  2000-2005 Apple Computer, Inc.
  2001 Wasabi Systems, Inc.
  1999-2000 Jason L. Wright (jason@thought.net)
-License: APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Wasabi-Systems
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Wasabi-Systems
 
 Files: xnu/bsd/man/man2/poll.2
 Copyright: 2008 Apple Inc.
@@ -677,7 +677,7 @@ Files: xnu/bsd/net/altq/altq_cbq.h
  xnu/bsd/net/pktsched/pktsched_cbq.h
 Copyright: 2011-2016 Apple Inc.
  1993-1998 Sun Microsystems, Inc.
-License: APSL-2.0-OS-reference AND LicenseRef-Sun-CBQ
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-Sun-CBQ
 
 Files: xnu/bsd/net/if_mib.h
  xnu/bsd/net/if_mib_private.h
@@ -685,24 +685,24 @@ Files: xnu/bsd/net/if_mib.h
 Copyright: 2000-2024 Apple Inc.
  1994-1996, 1998 Massachusetts Institute of Technology
  2003, 2017, 2024 Apple Computer, Inc.
-License: APSL-2.0-OS-reference AND LicenseRef-HPND-MIT
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-HPND-MIT
 
 Files: xnu/bsd/sys/timex.h
 Copyright: 2000-2024 Apple Inc.
  2003, 2017, 2024 Apple Computer, Inc.
-License: APSL-2.0-OS-reference AND LicenseRef-HPND-UDel
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-HPND-UDel
 
 Files: xnu/bsd/net/altq/altq_hfsc.h
  xnu/bsd/net/pktsched/pktsched_hfsc.h
 Copyright: 2011-2016 Apple Inc.
  1997-1999 Carnegie Mellon University
-License: APSL-2.0-OS-reference AND LicenseRef-CMU-HFSC
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-CMU-HFSC
 
 Files: xnu/bsd/net/ppp_comp.h
  xnu/bsd/net/ppp_defs.h
 Copyright: 2000 Apple Computer, Inc.
  1994 The Australian National University
-License: APSL-2.0-OS-reference AND LicenseRef-ANU-PPP
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-ANU-PPP
 
 Files: xnu/libsyscall/mach/err_ipc.sub
  xnu/libsyscall/mach/err_kern.sub
@@ -738,7 +738,7 @@ Copyright: 2000-2021 Apple Inc.
  1993 The University of Utah and the Computer Systems Laboratory (CSL)
  2005 SPARTA, Inc.
  1994 The University of Utah and the Computer Systems Laboratory at the University of Utah (CSL)
-License: APSL-2.0-OS-reference AND CMU-Mach AND LicenseRef-HPND-Utah-CSL
+License: LicenseRef-APSL-2.0-OS-reference AND CMU-Mach AND LicenseRef-HPND-Utah-CSL
 
 Files: xnu/EXTERNAL_HEADERS/ptrauth.h
  xnu/EXTERNAL_HEADERS/stdarg.h
@@ -753,13 +753,13 @@ Copyright: 2008-2020 Apple Inc.
  1995-2005 Mark Adler
  1995-2005 Jean-loup Gailly
  1995-2005 Jean-loup Gailly and Mark Adler
-License: APSL-2.0-OS-reference AND Zlib
+License: LicenseRef-APSL-2.0-OS-reference AND Zlib
 
 Files: xnu/iokit/System/OSUnserializeXMLSharedImplementation.h
 Copyright: 1984, 1989-1990, 2000-2006 Free Software Foundation, Inc.
  1999-2019 Apple Inc.
  2000 Apple Computer, Inc.
-License: APSL-2.0-OS-reference AND GPL-2.0-or-later with Bison-2.2 exception
+License: LicenseRef-APSL-2.0-OS-reference AND GPL-2.0-or-later with Bison-2.2 exception
 
 Files: xnu/bsd/machine/limits.h
  xnu/bsd/man/man2/ptrace.2
@@ -779,7 +779,7 @@ License: LicenseRef-HPND-MIT
 Files: xnu/bsd/net/if_ppp.h
 Copyright: 2000 Apple Computer, Inc.
  1989 Carnegie Mellon University
-License: APSL-2.0-OS-reference AND BSD-4.3TAHOE
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-4.3TAHOE
 
 Files: xnu/EXTERNAL_HEADERS/ptrcheck.h
 Copyright: The LLVM Project contributors
@@ -788,7 +788,7 @@ License: Apache-2.0 with LLVM exception
 Files: xnu/bsd/net/pfkeyv2.h
 Copyright: 2000-2011 Apple Computer, Inc.
  1995-1998 WIDE Project
-License: APSL-2.0-OS-reference AND BSD-3-Clause AND public-domain
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-3-Clause AND public-domain
 
 Files: xnu/bsd/man/man5/core.5
 Copyright: 2001-2020 Apple Inc.
@@ -964,7 +964,7 @@ Copyright: 1980-1995 The Regents of the University of California
  1994 Jan-Simon Pendry
  1982, 1986, 1988 Regents of the University of California
  UNIX System Laboratories, Inc.
-License: APSL-2.0-OS-reference AND BSD-4-Clause-UC
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-4-Clause-UC
 
 Files: xnu/EXTERNAL_HEADERS/mach-o/nlist.h
  xnu/bsd/man/man2/fcntl.2
@@ -991,7 +991,7 @@ Copyright: 2000-2010, 2020 Apple Inc.
  2000-2005 Apple Computer, Inc.
  1998 Apple Computer
  1995 NeXT Computer, Inc.
-License: APSL-2.0-OS-reference
+License: LicenseRef-APSL-2.0-OS-reference
 
 Files: xnu/SETUP/config/Makefile
  xnu/bsd/man/man4/Makefile
@@ -1068,7 +1068,7 @@ Copyright: 2000-2025 Apple Inc.
  2008 The DragonFly Project
  1995 NeXT Computer, Inc.
  1997 Peter Wemm <peter@freebsd.org>
-License: APSL-2.0-OS-reference AND BSD-3-Clause
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-3-Clause
 
 Files: xnu/EXTERNAL_HEADERS/mach-o/reloc.h
 Copyright: 1999 Apple Computer, Inc.
@@ -1079,7 +1079,7 @@ Files: xnu/bsd/net/etherdefs.h
 Copyright: 2000 Apple Computer, Inc.
  1987 Carnegie-Mellon University
  1982, 1986 Regents of the University of California
-License: APSL-2.0-OS-reference AND BSD-4.3RENO
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-4.3RENO
 
 Files: xnu/bsd/bsm/*
  xnu/bsd/man/man2/access.2
@@ -1129,7 +1129,7 @@ Files: xnu/bsd/netinet/icmp6.h
 Copyright: 2000-2026 Apple Inc.
  1982, 1985-1986, 1988-1995 The Regents of the University of California
  1999 WIDE Project
-License: APSL-2.0-OS-reference AND BSD-3-Clause AND BSD-4-Clause-UC
+License: LicenseRef-APSL-2.0-OS-reference AND BSD-3-Clause AND BSD-4-Clause-UC
 
 Files: xnu/libsyscall/wrappers/string/strings.h
 Copyright: 2000, 2007, 2010 Apple Inc.
@@ -1203,7 +1203,7 @@ License: APSL-2.0
 Files: xnu/bsd/netinet6/esp_chachapoly.h
  xnu/bsd/netkey/keysock_private.h
 Copyright: 2017, 2022-2023, 2025 Apple Inc.
-License: APSL-2.0-OS-reference
+License: LicenseRef-APSL-2.0-OS-reference
 
 Files: xnu/bsd/dev/dtrace/scripts/darwin.d
  xnu/bsd/dev/dtrace/scripts/errno.d
@@ -1224,17 +1224,17 @@ Files: xnu/bsd/sys/msg.h
 Copyright: 2000-2019 Apple Inc.
  1993 Daniel Boulet and RTMX Inc.
  2005 SPARTA, Inc.
-License: APSL-2.0-OS-reference AND LicenseRef-Boulet-RTMX
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-Boulet-RTMX
 
 Files: xnu/libkern/libkern/crypto/md5.h
 Copyright: 2000-2006 Apple Computer, Inc.
  1991-1992 RSA Data Security, Inc.
-License: APSL-2.0-OS-reference AND RSA-MD
+License: LicenseRef-APSL-2.0-OS-reference AND RSA-MD
 
 Files: xnu/bsd/netinet/ip_compat.h
 Copyright: 2000 Apple Computer, Inc.
  1993-1997 Darren Reed
-License: APSL-2.0-OS-reference AND LicenseRef-Reed-IPFilter
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-Reed-IPFilter
 
 Files: xnu/libkern/libkern/Block.h
  xnu/libkern/libkern/Block_private.h
@@ -1244,7 +1244,7 @@ License: APSL-2.0
 License: APSL-2.0
  The full text is in /usr/share/common-licenses/APSL-2.0.
 
-License: APSL-2.0-OS-reference
+License: LicenseRef-APSL-2.0-OS-reference
  The full text is in /usr/share/common-licenses/APSL-2.0.
  .
  The rights granted to you under the License may not be used to create,
@@ -1544,7 +1544,8 @@ License: Zlib
  3. This notice may not be removed or altered from any source distribution.
 
 License: public-domain
- The authors placed these files in the public domain.
+ The files, or the parts of files, that name this licence are in the public
+ domain. Each file's notice states how its authors dedicated or released it.
 
 License: LicenseRef-BSD-4-Clause-Adam-Glass
  Redistribution and use in source and binary forms, with or without
@@ -1751,6 +1752,19 @@ License: LicenseRef-HPND-MIT
  no representations about the suitability of this software for any
  purpose.  It is provided "as is" without express or implied
  warranty.
+ .
+ THIS SOFTWARE IS PROVIDED BY M.I.T. ``AS IS''.  M.I.T. DISCLAIMS
+ ALL EXPRESS OR IMPLIED WARRANTIES WITH REGARD TO THIS SOFTWARE,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT
+ SHALL M.I.T. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
 
 License: LicenseRef-HPND-UDel
  Permission to use, copy, modify, and distribute this software and

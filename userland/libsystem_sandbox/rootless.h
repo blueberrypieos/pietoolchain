@@ -10,6 +10,7 @@
 __BEGIN_DECLS
 
 int rootless_restricted_environment(void);
+int rootless_check_trusted_fd(int fd);
 
 __END_DECLS
 

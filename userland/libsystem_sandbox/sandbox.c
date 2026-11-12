@@ -3,6 +3,7 @@
  * Copyright (c) 2026 The Blueberry Pie OS Authors
  */
 #include <stdlib.h>
+#include <sys/stat.h>
 #include <sandbox.h>
 #include <sandbox/private.h>
 #include <rootless.h>
@@ -60,4 +61,15 @@ int
 rootless_restricted_environment(void)
 {
 	return 0;
+}
+
+int
+rootless_check_trusted_fd(int fd)
+{
+	struct stat sb;
+
+	if (fstat(fd, &sb) != 0) {
+		return -1;
+	}
+	return (sb.st_flags & SF_RESTRICTED) != 0 ? 0 : 1;
 }

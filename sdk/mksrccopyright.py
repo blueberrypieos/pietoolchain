@@ -36,10 +36,10 @@ OWN = [
     ("userland/libplatform/arm64/optimized-routines/*", "2012-2024 Arm Limited",
      "MIT OR Apache-2.0 with LLVM exception"),
     ("userland/CommonCrypto/patches/*\n"
-     " userland/Libinfo/patches/0001-* userland/Libinfo/patches/0003-*\n"
-     " userland/Libinfo/patches/0004-* userland/Libinfo/patches/0005-*\n"
-     " userland/Libinfo/patches/0006-* userland/Libm/patches/*\n"
-     " userland/Libsystem/patches/* userland/copyfile/patches/*\n"
+     " userland/Libinfo/patches/0003-* userland/Libinfo/patches/0004-*\n"
+     " userland/Libinfo/patches/0006-* userland/Libinfo/patches/0007-*\n"
+     " userland/Libm/patches/*\n"
+     " userland/copyfile/patches/*\n"
      " userland/dyld/patches/* userland/hfs/patches/* userland/libmalloc/patches/*\n"
      " userland/syslog/patches/* xnu-patches/*", OURS, "APSL-2.0"),
     ("userland/launchd/patches/* userland/libdispatch/patches/*\n"
@@ -205,6 +205,144 @@ def kept_files(pie, included, trees):
     return out
 
 
+def dep5_field(par, name):
+    m = re.search(r"^%s:[ \t]*(.*(?:\n[ \t]+.*)*)" % re.escape(name), par, re.M | re.I)
+    return m.group(1) if m else None
+
+
+def dep5_regex(pattern):
+    """DEP-5: * matches anything (including /), ? one character, and a
+    backslash makes the next *, ? or backslash literal."""
+    out, i = "", 0
+    while i < len(pattern):
+        ch = pattern[i]
+        if ch == "\\" and i + 1 < len(pattern) and pattern[i + 1] in "*?\\":
+            out += re.escape(pattern[i + 1])
+            i += 2
+            continue
+        out += ".*" if ch == "*" else "." if ch == "?" else re.escape(ch)
+        i += 1
+    return re.compile(out + r"\Z", re.S)
+
+
+def set_field(par, name, values):
+    """Replaces a field holding one value per continuation line."""
+    body = name + ": " + values[0] if len(values) == 1 else name + ":" + "".join("\n " + v for v in values)
+    return re.sub(r"^%s:[ \t]*.*(?:\n[ \t]+.*)*" % re.escape(name), lambda m: body, par, count=1,
+                  flags=re.M | re.I)
+
+
+def last_matches(pars, files):
+    """{file: (paragraph index, pattern)} for the last matching pattern."""
+    compiled = [(i, [(p, dep5_regex(p)) for p in dep5_field(par, "Files").split()])
+                for i, par in enumerate(pars) if dep5_field(par, "Files") is not None]
+    hit = {}
+    for name in files:
+        for i, pats in compiled:
+            for p, rx in pats:
+                if rx.match(name):
+                    hit[name] = (i, p)
+    return hit
+
+
+def rest_of(par):
+    """The paragraph without its Files field, for comparing paragraphs."""
+    body = re.sub(r"^Files:[ \t]*.*(?:\n[ \t]+.*)*\n?", "", par, count=1, flags=re.M | re.I)
+    return "\n".join(l.rstrip() for l in body.strip("\n").split("\n"))
+
+
+def joins(pars, files):
+    """{paragraph: place}: where each Files paragraph goes. Two paragraphs
+    with the same other fields join, at the place of either one, when every
+    file keeps the same fields."""
+    idx = [i for i, par in enumerate(pars) if i > 0 and dep5_field(par, "Files") is not None]
+    rx = {i: [dep5_regex(p) for p in dep5_field(pars[i], "Files").split()] for i in idx}
+    key = {i: rest_of(pars[i]) for i in idx}
+    matches = {}
+    for name in files:
+        m = tuple(i for i in idx if any(r.match(name) for r in rx[i]))
+        if m:
+            matches[m] = True
+    by_par = {}
+    for m in matches:
+        for i in m:
+            by_par.setdefault(i, []).append(m)
+    at = {i: i for i in idx}
+
+    def keeps(src, dst):
+        moving = {k for k in idx if at[k] in (src, dst)}
+        for i in moving:
+            for m in by_par.get(i, []):
+                old = max(m, key=lambda k: at[k])
+                new = max(m, key=lambda k: dst if k in moving else at[k])
+                if key[old] != key[new]:
+                    return False
+        return True
+
+    while True:
+        places = sorted(set(at.values()))
+        pair = next(((src, dst) for x, a in enumerate(places) for b in places[x + 1:] if key[a] == key[b]
+                     for src, dst in ((b, a), (a, b)) if keeps(src, dst)), None)
+        if pair is None:
+            return at
+        for k in idx:
+            if at[k] == pair[0]:
+                at[k] = pair[1]
+
+
+def covered(names, files):
+    """Drops each pattern whose files the paragraph's other patterns match."""
+    keep = list(names)
+    for p in sorted(names, key=lambda n: (n.count("*") + n.count("?"), n)):
+        own = [f for f in files if dep5_regex(p).match(f)]
+        others = [dep5_regex(q) for q in keep if q != p]
+        if own and all(any(r.match(f) for r in others) for f in own):
+            keep.remove(p)
+    return keep
+
+
+def join_once(pars, files):
+    at = joins(pars, files)
+    names = {}
+    for k, place in at.items():
+        names.setdefault(place, []).extend(dep5_field(pars[k], "Files").split())
+    newpars, joined = [], []
+    for k, par in enumerate(pars):
+        if k in at and at[k] != k:
+            continue
+        if k in at and len(names[k]) > len(dep5_field(par, "Files").split()):
+            par = set_field(par, "Files", covered(sorted(set(names[k])), files))
+            joined.append(len(newpars))
+        newpars.append(par)
+    effective = {(i, p) for i, p in last_matches(newpars, files).values()}
+    for k in joined:
+        keep = [p for p in dep5_field(newpars[k], "Files").split()
+                if (k, p) in effective or not any(dep5_regex(p).match(f) for f in files)]
+        par = set_field(newpars[k], "Files", keep)
+        newpars[k] = re.sub(r"^Files:\n ", "Files: ", par, count=1, flags=re.M)
+    return newpars, sum(1 for k in at if at[k] != k)
+
+
+def join_all(pars, files):
+    """Joins Files paragraphs with the same other fields, as pie-copyright
+    merge does, until nothing joins."""
+    while True:
+        pars, n = join_once(pars, files)
+        if n == 0:
+            return pars
+
+
+def package_files(pie, included, trees):
+    """The files the source package keeps, debian/ included."""
+    files = kept_files(pie, included, trees)
+    for tree in trees:
+        if not any(f.startswith(tree + "/") for f in files):
+            sys.exit("mksrccopyright.py: no files of %s (check out the submodules)" % tree)
+    for d, dirs, fs in os.walk(os.path.join(pie, "debian")):
+        files += [os.path.relpath(os.path.join(d, f), pie) for f in fs]
+    return files
+
+
 def check_files(pie, header_included, trees, tree_pars, all_pars):
     errors = []
     files = kept_files(pie, header_included, trees)
@@ -262,8 +400,9 @@ def main():
         trees.append((tree, [inline_own(par, own, texts) for par in pars]))
     header = ["Format: " + FORMAT, "Upstream-Name: pietoolchain",
               "Source: https://github.com/blueberrypieos/pietoolchain"]
+    files = package_files(pie, included, [t for t, p in trees])
     text, all_pars = render(pie, header + ["Files-Excluded: src/* xnu/*", "Files-Included:"] +
-                            [" " + p for p in included], OWN, trees, texts)
+                            [" " + p for p in included], OWN, trees, texts, files)
     binary, _ = render(pie, header, [], [(t, p) for t, p in trees if t in PIETOOLCHAIN_TREES], texts)
     outputs = [(os.path.join(pie, "debian", "copyright"), text),
                (os.path.join(pie, "debian", "pietoolchain.copyright"), binary)]
@@ -280,15 +419,14 @@ def main():
         open(path, "w").write(want)
 
 
-def render(pie, header, own_pars, trees, texts):
+def render(pie, header, own_pars, trees, texts, files=None):
     """A copyright file: HEADER, our files, the OWN_PARS and the TREES'
-    paragraphs, then the texts of the licences they name."""
-    out = header + ["", "Files: *", "Copyright: 2026 The Blueberry Pie OS Authors", "License: BSD-2-Clause"]
+    paragraphs, then the texts of the licences they name. With FILES, the
+    Files paragraphs are joined as join_all does."""
     used = {"BSD-2-Clause"}
     all_pars = ["Files: *\nCopyright: 2026 The Blueberry Pie OS Authors\nLicense: BSD-2-Clause"]
-    for files, copyright, licence in own_pars:
-        par = "Files: " + files + "\nCopyright: " + copyright + "\nLicense: " + licence
-        out += ["", par]
+    for names, copyright, licence in own_pars:
+        par = "Files: " + names + "\nCopyright: " + copyright + "\nLicense: " + licence
         all_pars.append(par)
         used.update(licence_names(licence))
     for tree, pars in trees:
@@ -298,8 +436,12 @@ def render(pie, header, own_pars, trees, texts):
                 par = with_texts(pie, par)
             else:
                 used.update(licence_names(lic))
-            out += ["", par]
             all_pars.append(par)
+    if files is not None:
+        all_pars = join_all(["\n".join(header)] + all_pars, files)[1:]
+    out = list(header)
+    for par in all_pars:
+        out += ["", par]
     names, missing = set(), []
     named = sorted(used & NAMED)
     if named:

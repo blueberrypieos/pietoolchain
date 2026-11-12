@@ -1,7 +1,24 @@
 pietoolchain (0.2.0) resolute; urgency=medium
 
-  * The SDK takes the libraries of PIE's released ports from their packages.
+  * The SDK takes the released ports' libraries, libsbuf and libsysmon
+    among them, from their packages.
   * The SDK no longer has libpcap. Ports build against libpcap-dev.
+  * The SDK has the headers login's audit code needs, and the opendirectoryd
+    service names and message keys.
+  * libsystem_sandbox has rootless_check_trusted_fd, which sudo uses.
+  * libxpc sends connection and pipe messages over Mach. Receivers get the
+    sender's audit token.
+  * A libxpc message may carry up to 16383 port rights, and its encoding may
+    fill a 32-bit size. A larger message stops the sender with a trap.
+  * libxpc values may nest 512 deep, and arrays may hold fewer than 2^24
+    elements. A dictionary entry past a limit, or on a cycle, is left out.
+  * Libinfo asks opendirectoryd for users, groups and membership. The files
+    still answer users and groups when it isn't running.
+  * libsystem_info exports the configuration_profile functions syslog uses.
+  * A runtime package depends on at least the version of each runtime
+    package built with it.
+  * Libinfo patches 0001 and 0005, Libsystem patch 0001 and the fsck_hfs
+    IOKit patch are gone.
 
  -- Maxwell <maxwell@blueberrypieos.com>  Fri, 06 Nov 2026 10:37:51 +0000
 

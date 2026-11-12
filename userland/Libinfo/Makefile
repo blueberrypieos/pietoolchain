@@ -15,7 +15,7 @@ INCLUDES := $(addprefix -I$(S)/,Libinfo lookup.subproj membership.subproj \
 	gen.subproj nis.subproj rpc.subproj dns.subproj util.subproj)
 FLAGS := $(BASE_CFLAGS) -std=gnu99 -fvisibility=hidden \
 	-DDEBUG=0 -D__DARWIN_NON_CANCELABLE=1 -D__MigTypeCheck=1 -DINET6=1 \
-	-DCONFIG_MAC -DSYNTH_ROOTFS -DMDNS_AVAILABLE \
+	-DCONFIG_MAC -DSYNTH_ROOTFS -DMDNS_AVAILABLE -DDS_AVAILABLE \
 	-I$(SDK)/usr/local/include -I$(SDK)/System/Library/Frameworks/System.framework/PrivateHeaders \
 	$(INCLUDES) -Wno-deprecated-declarations -Wno-deprecated-non-prototype
 

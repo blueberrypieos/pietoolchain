@@ -4,10 +4,12 @@
  */
 #include "internal.h"
 
+#include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/fileport.h>
 #include <time.h>
 
 #define TYPE(name) const struct _xpc_type_s _xpc_type_##name = { #name, NULL }
@@ -23,6 +25,17 @@ TYPE(uuid);
 TYPE(array);
 TYPE(dictionary);
 TYPE(error);
+
+static void
+port_dispose(struct xpc_obj *o)
+{
+	if (MACH_PORT_VALID(o->port)) {
+		mach_port_deallocate(mach_task_self(), o->port);
+	}
+}
+
+const struct _xpc_type_s _xpc_type_fd = { "fd", port_dispose };
+const struct _xpc_type_s _xpc_type_mach_send = { "mach_send", port_dispose };
 
 const struct _xpc_bool_s _xpc_bool_true = { { &_xpc_type_bool, -1, { .b = true } } };
 const struct _xpc_bool_s _xpc_bool_false = { { &_xpc_type_bool, -1, { .b = false } } };
@@ -84,6 +97,11 @@ xpc_release(xpc_object_t object)
 		}
 		free(o->dict.keys);
 		free(o->dict.vals);
+		if (o->dict.msg != NULL) {
+			_xpc_port_release(o->dict.msg->reply, MACH_MSG_TYPE_PORT_SEND_ONCE);
+			xpc_release(o->dict.msg->conn);
+			free(o->dict.msg);
+		}
 	} else if (o->type->dispose != NULL) {
 		o->type->dispose(o);
 	}
@@ -133,8 +151,8 @@ xpc_date_create_from_current(void)
 	return xpc_date_create((int64_t)ts.tv_sec * 1000000000 + ts.tv_nsec);
 }
 
-static xpc_object_t
-buf_create(xpc_type_t type, const void *bytes, size_t length)
+xpc_object_t
+_xpc_buf_create(xpc_type_t type, const void *bytes, size_t length)
 {
 	struct xpc_obj *o = _xpc_alloc(type);
 	o->buf.ptr = malloc(length + 1);
@@ -149,7 +167,7 @@ buf_create(xpc_type_t type, const void *bytes, size_t length)
 	return o;
 }
 
-xpc_object_t xpc_data_create(const void *bytes, size_t length) { return buf_create(XPC_TYPE_DATA, bytes, length); }
+xpc_object_t xpc_data_create(const void *bytes, size_t length) { return _xpc_buf_create(XPC_TYPE_DATA, bytes, length); }
 
 size_t
 xpc_data_get_length(xpc_object_t xdata)
@@ -180,7 +198,7 @@ xpc_data_get_bytes(xpc_object_t xdata, void *buffer, size_t off, size_t length)
 xpc_object_t
 xpc_string_create(const char *string)
 {
-	return buf_create(XPC_TYPE_STRING, string, strlen(string));
+	return _xpc_buf_create(XPC_TYPE_STRING, string, strlen(string));
 }
 
 xpc_object_t
@@ -196,7 +214,7 @@ xpc_string_create_with_format(const char *fmt, ...)
 	}
 	struct xpc_obj *o = _xpc_alloc(XPC_TYPE_STRING);
 	o->buf.ptr = s;
-	o->buf.len = (size_t)n;
+	o->buf.len = strlen(s);
 	return o;
 }
 
@@ -290,7 +308,13 @@ xpc_array_set_value(xpc_object_t xarray, size_t index, xpc_object_t value)
 bool xpc_array_get_bool(xpc_object_t a, size_t i) { return xpc_bool_get_value(xpc_array_get_value(a, i)); }
 int64_t xpc_array_get_int64(xpc_object_t a, size_t i) { return xpc_int64_get_value(xpc_array_get_value(a, i)); }
 uint64_t xpc_array_get_uint64(xpc_object_t a, size_t i) { return xpc_uint64_get_value(xpc_array_get_value(a, i)); }
-double xpc_array_get_double(xpc_object_t a, size_t i) { return xpc_double_get_value(xpc_array_get_value(a, i)); }
+static double
+double_or_nan(xpc_object_t x)
+{
+	return x != NULL && XO(x)->type == XPC_TYPE_DOUBLE ? XO(x)->d : NAN;
+}
+
+double xpc_array_get_double(xpc_object_t a, size_t i) { return double_or_nan(xpc_array_get_value(a, i)); }
 const char *xpc_array_get_string(xpc_object_t a, size_t i) { return xpc_string_get_string_ptr(xpc_array_get_value(a, i)); }
 
 #define ARRAY_SET(name, ctype, ctor) \
@@ -390,22 +414,56 @@ xpc_dictionary_set_value(xpc_object_t xdict, const char *key, xpc_object_t value
 		d->dict.vals[i] = value;
 		return;
 	}
+	_xpc_dictionary_append(d, strdup(key), value);
+}
+
+void
+_xpc_dictionary_append(xpc_object_t xdict, char *key, xpc_object_t value)
+{
+	struct xpc_obj *d = XO(xdict);
+	if (key == NULL) {
+		abort();
+	}
 	if (d->dict.n == d->dict.cap) {
 		d->dict.cap = d->dict.cap ? 2 * d->dict.cap : 8;
 		d->dict.keys = xrealloc(d->dict.keys, d->dict.cap * sizeof(char *));
 		d->dict.vals = xrealloc(d->dict.vals, d->dict.cap * sizeof(void *));
 	}
-	d->dict.keys[d->dict.n] = strdup(key);
+	d->dict.keys[d->dict.n] = key;
 	d->dict.vals[d->dict.n] = value;
 	d->dict.n++;
+}
+
+static int
+key_compare(const void *a, const void *b)
+{
+	return strcmp(*(char *const *)a, *(char *const *)b);
+}
+
+bool
+_xpc_dictionary_keys_unique(xpc_object_t xdict)
+{
+	struct xpc_obj *d = XO(xdict);
+	size_t n = d->dict.n;
+	if (n < 2) {
+		return true;
+	}
+	char **keys = xrealloc(NULL, n * sizeof(*keys));
+	memcpy(keys, d->dict.keys, n * sizeof(*keys));
+	heapsort(keys, n, sizeof(*keys), key_compare);
+	bool unique = true;
+	for (size_t i = 1; i < n && unique; i++) {
+		unique = strcmp(keys[i - 1], keys[i]) != 0;
+	}
+	free(keys);
+	return unique;
 }
 
 bool xpc_dictionary_get_bool(xpc_object_t d, const char *k) { return xpc_bool_get_value(xpc_dictionary_get_value(d, k)); }
 int64_t xpc_dictionary_get_int64(xpc_object_t d, const char *k) { return xpc_int64_get_value(xpc_dictionary_get_value(d, k)); }
 uint64_t xpc_dictionary_get_uint64(xpc_object_t d, const char *k) { return xpc_uint64_get_value(xpc_dictionary_get_value(d, k)); }
-double xpc_dictionary_get_double(xpc_object_t d, const char *k) { return xpc_double_get_value(xpc_dictionary_get_value(d, k)); }
+double xpc_dictionary_get_double(xpc_object_t d, const char *k) { return double_or_nan(xpc_dictionary_get_value(d, k)); }
 const char *xpc_dictionary_get_string(xpc_object_t d, const char *k) { return xpc_string_get_string_ptr(xpc_dictionary_get_value(d, k)); }
-int xpc_dictionary_dup_fd(xpc_object_t d, const char *k) { (void)d; (void)k; return -1; }
 
 const void *
 xpc_dictionary_get_data(xpc_object_t xdict, const char *key, size_t *length)
@@ -495,7 +553,13 @@ xpc_copy(xpc_object_t object)
 		return c;
 	}
 	if (o->type == XPC_TYPE_STRING || o->type == XPC_TYPE_DATA) {
-		return buf_create(o->type, o->buf.ptr, o->buf.len);
+		return _xpc_buf_create(o->type, o->buf.ptr, o->buf.len);
+	}
+	if (o->type == XPC_TYPE_FD) {
+		if (mach_port_mod_refs(mach_task_self(), o->port, MACH_PORT_RIGHT_SEND, 1) != KERN_SUCCESS) {
+			return NULL;
+		}
+		return _xpc_port_create(XPC_TYPE_FD, o->port);
 	}
 	return xpc_retain(object);
 }
@@ -507,7 +571,7 @@ xpc_equal(xpc_object_t object1, xpc_object_t object2)
 	if (a == b) {
 		return true;
 	}
-	if (a == NULL || b == NULL || a->type != b->type) {
+	if (a == NULL || b == NULL || a->type != b->type || a->type == XPC_TYPE_FD) {
 		return false;
 	}
 	if (a->type == XPC_TYPE_STRING || a->type == XPC_TYPE_DATA) {
@@ -558,7 +622,9 @@ xpc_hash(xpc_object_t object)
 		}
 	} else if (o->type == XPC_TYPE_ARRAY || o->type == XPC_TYPE_DICTIONARY) {
 		h ^= (o->type == XPC_TYPE_ARRAY ? o->arr.n : o->dict.n);
-	} else {
+	} else if (o->type == XPC_TYPE_FD) {
+		h ^= (size_t)(uintptr_t)o;
+	} else if (o->type != XPC_TYPE_DOUBLE || o->d != 0) {
 		h ^= (size_t)o->u;
 	}
 	return h;
@@ -643,4 +709,186 @@ xpc_copy_description(xpc_object_t object)
 	d.buf[0] = '\0';
 	describe(&d, XO(object), 0);
 	return d.buf;
+}
+
+void
+_xpc_port_release(mach_port_t port, mach_msg_type_name_t type)
+{
+	if (!MACH_PORT_VALID(port)) {
+		return;
+	}
+	if (type == MACH_MSG_TYPE_PORT_RECEIVE) {
+		mach_port_mod_refs(mach_task_self(), port, MACH_PORT_RIGHT_RECEIVE, -1);
+	} else {
+		mach_port_deallocate(mach_task_self(), port);
+	}
+}
+
+xpc_object_t
+_xpc_port_create(xpc_type_t type, mach_port_t port)
+{
+	struct xpc_obj *o = _xpc_alloc(type);
+	o->port = port;
+	return o;
+}
+
+xpc_object_t
+xpc_fd_create(int fd)
+{
+	mach_port_t port = MACH_PORT_NULL;
+	if (fileport_makeport(fd, &port) != 0 || !MACH_PORT_VALID(port)) {
+		return NULL;
+	}
+	return _xpc_port_create(XPC_TYPE_FD, port);
+}
+
+int
+xpc_fd_dup(xpc_object_t xfd)
+{
+	if (xfd == NULL || XO(xfd)->type != XPC_TYPE_FD) {
+		return -1;
+	}
+	return fileport_makefd(XO(xfd)->port);
+}
+
+xpc_object_t
+xpc_mach_send_create(mach_port_t send)
+{
+	if (!MACH_PORT_VALID(send) ||
+	    mach_port_mod_refs(mach_task_self(), send, MACH_PORT_RIGHT_SEND, 1) != KERN_SUCCESS) {
+		return NULL;
+	}
+	return _xpc_port_create(XPC_TYPE_MACH_SEND, send);
+}
+
+mach_port_t
+xpc_mach_send_copy_right(xpc_object_t xsend)
+{
+	if (xsend == NULL || XO(xsend)->type != XPC_TYPE_MACH_SEND) {
+		return MACH_PORT_NULL;
+	}
+	mach_port_t port = XO(xsend)->port;
+	if (mach_port_mod_refs(mach_task_self(), port, MACH_PORT_RIGHT_SEND, 1) != KERN_SUCCESS) {
+		return MACH_PORT_DEAD;
+	}
+	return port;
+}
+
+void
+xpc_dictionary_set_fd(xpc_object_t xdict, const char *key, int fd)
+{
+	xpc_object_t o = xpc_fd_create(fd);
+	if (o != NULL) {
+		xpc_dictionary_set_value(xdict, key, o);
+		xpc_release(o);
+	}
+}
+
+int
+xpc_dictionary_dup_fd(xpc_object_t xdict, const char *key)
+{
+	return xpc_fd_dup(xpc_dictionary_get_value(xdict, key));
+}
+
+void
+xpc_dictionary_set_mach_send(xpc_object_t xdict, const char *key, mach_port_t send)
+{
+	xpc_object_t o = xpc_mach_send_create(send);
+	if (o != NULL) {
+		xpc_dictionary_set_value(xdict, key, o);
+		xpc_release(o);
+	}
+}
+
+mach_port_t
+xpc_dictionary_copy_mach_send(xpc_object_t xdict, const char *key)
+{
+	return xpc_mach_send_copy_right(xpc_dictionary_get_value(xdict, key));
+}
+
+void
+xpc_dictionary_set_uuid(xpc_object_t xdict, const char *key, const uuid_t uuid)
+{
+	xpc_object_t o = xpc_uuid_create(uuid);
+	xpc_dictionary_set_value(xdict, key, o);
+	xpc_release(o);
+}
+
+const uint8_t *
+xpc_dictionary_get_uuid(xpc_object_t xdict, const char *key)
+{
+	return xpc_uuid_get_bytes(xpc_dictionary_get_value(xdict, key));
+}
+
+struct xpc_msginfo *
+_xpc_dictionary_msginfo(xpc_object_t xdict, bool create)
+{
+	struct xpc_obj *d = XO(xdict);
+	if (!is_dict(d)) {
+		return NULL;
+	}
+	if (d->dict.msg == NULL && create) {
+		d->dict.msg = calloc(1, sizeof(*d->dict.msg));
+		if (d->dict.msg == NULL) {
+			abort();
+		}
+	}
+	return d->dict.msg;
+}
+
+void
+_xpc_dictionary_set_connection(xpc_object_t xdict, xpc_connection_t conn)
+{
+	struct xpc_msginfo *m = _xpc_dictionary_msginfo(xdict, true);
+	xpc_retain(conn);
+	xpc_release(m->conn);
+	m->conn = conn;
+}
+
+mach_port_t
+_xpc_dictionary_take_reply(xpc_object_t xdict)
+{
+	struct xpc_msginfo *m = _xpc_dictionary_msginfo(xdict, false);
+	if (m == NULL || !m->is_reply) {
+		return MACH_PORT_NULL;
+	}
+	mach_port_t port = m->reply;
+	m->reply = MACH_PORT_NULL;
+	return port;
+}
+
+void
+xpc_dictionary_get_audit_token(xpc_object_t xdict, audit_token_t *token)
+{
+	struct xpc_msginfo *m = _xpc_dictionary_msginfo(xdict, false);
+	if (m != NULL && m->has_token) {
+		*token = m->token;
+	} else {
+		memset(token, 0xff, sizeof(*token));
+	}
+}
+
+xpc_connection_t
+xpc_dictionary_get_remote_connection(xpc_object_t xdict)
+{
+	struct xpc_msginfo *m = _xpc_dictionary_msginfo(xdict, false);
+	return m != NULL ? m->conn : NULL;
+}
+
+xpc_object_t
+xpc_dictionary_create_reply(xpc_object_t original)
+{
+	struct xpc_msginfo *m = _xpc_dictionary_msginfo(original, false);
+	if (m == NULL || m->is_reply || !MACH_PORT_VALID(m->reply)) {
+		return NULL;
+	}
+	xpc_object_t reply = xpc_dictionary_create(NULL, NULL, 0);
+	struct xpc_msginfo *r = _xpc_dictionary_msginfo(reply, true);
+	r->is_reply = true;
+	r->reply = m->reply;
+	m->reply = MACH_PORT_NULL;
+	if (m->conn != NULL) {
+		r->conn = xpc_retain(m->conn);
+	}
+	return reply;
 }

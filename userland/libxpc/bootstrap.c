@@ -14,6 +14,7 @@
 #include <stdatomic.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "internal.h"
 #include "pie_bootstrap.h"
 
 static void
@@ -27,7 +28,12 @@ get_bootstrap_port(void)
 void _libxpc_initializer(void) { get_bootstrap_port(); }
 void xpc_atfork_prepare(void) { }
 void xpc_atfork_parent(void) { }
-void xpc_atfork_child(void) { get_bootstrap_port(); }
+void
+xpc_atfork_child(void)
+{
+	atomic_fetch_add(&_xpc_fork_generation, 1);
+	get_bootstrap_port();
+}
 
 static kern_return_t
 bs_rpc(mach_port_t bp, mach_msg_id_t id, const char *name, mach_port_t send, uint64_t arg,
@@ -95,13 +101,19 @@ bootstrap_check_in(mach_port_t bp, const name_t service_name, mach_port_t *sp)
 	return bs_rpc(bp, PIE_BS_CHECK_IN, service_name, MACH_PORT_NULL, 0, sp);
 }
 
+#define SYSTEM_PREFIX "com.apple.system."
+
 kern_return_t
 bootstrap_look_up2(mach_port_t bp, const name_t service_name, mach_port_t *sp,
     pid_t target_pid, uint64_t flags)
 {
 	(void)target_pid;
-	(void)flags;
-	return bootstrap_look_up(bp, service_name, sp);
+	if ((flags & BOOTSTRAP_PRIVILEGED_SERVER) &&
+	    strncmp(service_name, SYSTEM_PREFIX, sizeof(SYSTEM_PREFIX) - 1) != 0) {
+		*sp = MACH_PORT_NULL;
+		return BOOTSTRAP_NOT_PRIVILEGED;
+	}
+	return bs_rpc(bp, PIE_BS_LOOK_UP, service_name, MACH_PORT_NULL, flags, sp);
 }
 
 kern_return_t

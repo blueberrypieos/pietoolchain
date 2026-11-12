@@ -17,6 +17,7 @@ typedef struct _xpc_pipe_s *xpc_pipe_t;
 
 #define XPC_PIPE_PRIVILEGED            (1 << 0)
 #define XPC_PIPE_USE_SYNC_IPC_OVERRIDE (1 << 1)
+#define XPC_PIPE_PROPAGATE_QOS         (1 << 2)
 
 XPC_EXPORT xpc_pipe_t xpc_pipe_create(const char *name, uint64_t flags);
 XPC_EXPORT xpc_pipe_t xpc_pipe_create_from_port(mach_port_t port, uint64_t flags);
@@ -25,6 +26,32 @@ XPC_EXPORT int xpc_pipe_routine_with_flags(xpc_pipe_t pipe, xpc_object_t message
     xpc_object_t *reply, uint64_t flags);
 XPC_EXPORT int xpc_pipe_simpleroutine(xpc_pipe_t pipe, xpc_object_t message);
 XPC_EXPORT void xpc_pipe_invalidate(xpc_pipe_t pipe);
+
+/*
+ * xpc_pipe_receive waits for a message on port. xpc_pipe_try_receive returns
+ * EAGAIN at once if none is queued. It passes other Mach messages to demux,
+ * sends demux's reply and returns 0 with *message NULL. A message that wants
+ * a reply takes one from xpc_dictionary_create_reply and xpc_pipe_routine_reply.
+ */
+XPC_EXPORT int xpc_pipe_receive(mach_port_t port, xpc_object_t *message);
+XPC_EXPORT int xpc_pipe_try_receive(mach_port_t port, xpc_object_t *message,
+    mach_port_t *recvp, boolean_t (*demux)(mach_msg_header_t *, mach_msg_header_t *),
+    mach_msg_size_t msgsize, uint64_t flags);
+XPC_EXPORT int xpc_pipe_routine_reply(xpc_object_t reply);
+
+XPC_EXPORT void xpc_dictionary_get_audit_token(xpc_object_t xdict, audit_token_t *token);
+XPC_EXPORT void xpc_connection_get_audit_token(xpc_connection_t connection,
+    audit_token_t *token);
+XPC_EXPORT void xpc_connection_set_legacy(xpc_connection_t connection);
+XPC_EXPORT void xpc_connection_set_privileged(xpc_connection_t connection);
+
+XPC_EXPORT XPC_TYPE(_xpc_type_mach_send);
+#define XPC_TYPE_MACH_SEND (&_xpc_type_mach_send)
+XPC_EXPORT xpc_object_t xpc_mach_send_create(mach_port_t send);
+XPC_EXPORT mach_port_t xpc_mach_send_copy_right(xpc_object_t xsend);
+XPC_EXPORT void xpc_dictionary_set_mach_send(xpc_object_t xdict, const char *key,
+    mach_port_t send);
+XPC_EXPORT mach_port_t xpc_dictionary_copy_mach_send(xpc_object_t xdict, const char *key);
 
 typedef struct _xpc_event_publisher_s *xpc_event_publisher_t;
 typedef char event_name_t[128];
