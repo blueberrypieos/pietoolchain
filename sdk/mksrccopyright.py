@@ -181,15 +181,14 @@ def source_files(f):
 
 
 def matcher(pattern):
-    body = "".join(".*" if c == "*" else "." if c == "?" else re.escape(c) for c in pattern)
-    return re.compile(body + r"\Z", re.S)
+    return dep5_regex(pattern)
 
 
 def kept_files(pie, included, trees):
     """The files of the source tree, without what Files-Included leaves out
     of the trees (a git checkout has them all; a source package does not)."""
-    rx = [matcher(p) for p in included if "*" in p or "?" in p]
-    exact = {p for p in included if "*" not in p and "?" not in p}
+    rx = [matcher(p) for p in included if "*" in p or "?" in p or "\\" in p]
+    exact = {p for p in included if "*" not in p and "?" not in p and "\\" not in p}
     out = []
     for d, dirs, files in os.walk(pie):
         rel = os.path.relpath(d, pie)
