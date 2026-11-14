@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+version = 1
+
+[[suites]]
+name = "toolchain"
+command = ["pytest-3", "tests/test_toolchain.py"]
+needs = "host"
+timeout = 120
+description = "Compiler wrapper reproducibility with the host clang-21 package."
+
+[[suites]]
+name = "sdk"
+command = ["pytest-3", "tests/test_sdk.py", "tests/test_sdk_packaging.py"]
+needs = "host"
+timeout = 120
+
+[[suites]]
+name = "libxpc"
+command = ["pytest-3", "tests/test_libxpc.py"]
+needs = "host"
+timeout = 300
+description = "Host stubs, including address and undefined behaviour sanitizers."

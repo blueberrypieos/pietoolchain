@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
 name: build
 
 on:
@@ -9,6 +11,27 @@ permissions:
   contents: read
 
 jobs:
+  host-tests:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test packages
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            python3-pytest dpkg-dev xz-utils clang-21 libclang-rt-21-dev
+      - name: Host suites
+        env:
+          LC_ALL: C.UTF-8
+          TZ: UTC
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: pytest-3 tests </dev/null
+
   source:
     runs-on: ubuntu-26.04
     timeout-minutes: 60
@@ -68,10 +91,8 @@ jobs:
     strategy:
       matrix:
         include:
-          # pietoolchain, for the Linux build machine.
           - build: amd64
             args: -B
-          # pietoolchain-sdk and the libSystem runtime packages.
           - build: darwin-arm64
             args: -a darwin-arm64 -b
     runs-on: ubuntu-26.04
@@ -119,7 +140,7 @@ jobs:
           if-no-files-found: error
 
   attest:
-    needs: package
+    needs: [package, host-tests]
     if: >-
       github.event_name == 'push' &&
       (github.ref_type == 'tag' ||

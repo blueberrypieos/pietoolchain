@@ -17,8 +17,12 @@ class Package(unittest.TestCase):
             pie = Path(temporary)
             scripts = pie / "sdk"
             scripts.mkdir()
-            for name in ("mksdk.sh", "providers.py", "mkcopyright.py"):
+            for name in ("mksdk.sh", "providers.py", "mkcopyright.py", "mkdebs.py"):
                 shutil.copy2(Path(__file__).with_name(name), scripts / name)
+            (pie / "debian").mkdir()
+            (pie / "debian/control").write_text(
+                "Source: pietoolchain\n\nPackage: libfixture\n"
+                "X-Pie-Project: fixture\nX-Pie-Version: 1\n")
             (scripts / "licenses").mkdir()
             provider = pie / "userland" / "fixture"
             provider.mkdir(parents=True)
@@ -43,6 +47,9 @@ class Package(unittest.TestCase):
                 package = output / "pietoolchain-sdk_0.1.0_all.deb"
                 packages.append(package.read_bytes())
                 control = subprocess.check_output(["dpkg-deb", "--ctrl-tarfile", str(package)])
+                self.assertEqual(subprocess.check_output(
+                    ["dpkg-deb", "-f", str(package), "Provides"], text=True).strip(),
+                    "libfixture (= 1)")
                 with tarfile.open(fileobj=io.BytesIO(control)) as archive:
                     self.assertEqual(archive.getmember(".").mode, 0o755)
                     self.assertEqual(archive.getmember("./control").mode, 0o644)
