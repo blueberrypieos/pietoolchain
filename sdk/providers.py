@@ -12,7 +12,7 @@ import sys
 
 def main():
     pie, files = sys.argv[1], sys.argv[2]
-    pdir = os.path.join(pie, "build", "providers")
+    pdir = os.path.join(pie, "debian", "build", "build", "providers")
     overlay = os.path.join(pie, "toolchain", "sdk-overlay")
     with open(os.path.join(pdir, "ORDER")) as f:
         order = [line.strip() for line in f if line.strip()]

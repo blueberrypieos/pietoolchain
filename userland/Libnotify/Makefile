@@ -34,6 +34,8 @@ DFLAGS := $(FLAGS) -fvisibility=default -DSINGLE_THREADED_NOTIFY_STATE=1 -I$(S)/
 
 all: $(DYLIB) $(NOTIFYD) $(NOTIFYUTIL)
 
+$(NOTIFYD) $(NOTIFYUTIL): | install-lib
+
 $(DDERIVED)/.mig: $(S)/.fetched
 	@mkdir -p $(DDERIVED)
 	cd $(DDERIVED) && $(MIG) $(MIGFLAGS) -header notify_ipc.h -user /dev/null \

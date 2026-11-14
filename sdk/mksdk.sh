@@ -5,9 +5,9 @@
 # usage: sdk/mksdk.sh [-s SDK] [-v VERSION] [-o DIR]
 #
 #   -s SDK      the build SDK (default
-#               toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk)
+#               debian/build/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk)
 #   -v VERSION  the package's version (default the date below, YYYYMMDD, UTC)
-#   -o DIR      the output directory (default build)
+#   -o DIR      the output directory (default debian/build/build)
 #   -r ROOT     only stage the package's files and copyright file in ROOT,
 #               for debian/rules (sdk/mkdebs.py makes the package)
 #
@@ -15,9 +15,10 @@
 # SDK's newest file).
 set -euo pipefail
 umask 022
+export PYTHONDONTWRITEBYTECODE=1
 PIE="$(cd "$(dirname "$0")/.." && pwd)"
-SDK="$PIE/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-OUT="$PIE/build"
+SDK="$PIE/debian/build/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+OUT="$PIE/debian/build/build"
 VERSION=
 ROOT=
 while getopts 's:v:o:r:' opt; do

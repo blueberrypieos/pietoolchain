@@ -9,6 +9,7 @@
 #
 #   PREFIX  the install directory (default toolchain/prefix)
 #   BUILD   the build directory (default toolchain/build)
+#   PIE_SOURCES  the upstream project directory (default src)
 set -euo pipefail
 
 TOOLCHAIN="$(cd "$(dirname "$0")" && pwd)"
@@ -16,7 +17,7 @@ PREFIX="${PREFIX:-$TOOLCHAIN/prefix}"
 BUILD="${BUILD:-$TOOLCHAIN/build}/mig"
 CC="${CC:-clang-21}"
 TOP="$(cd "$TOOLCHAIN/.." && pwd)"
-M="$TOP/src/bootstrap_cmds/migcom.tproj"
+M="${PIE_SOURCES:-$TOP/src}/bootstrap_cmds/migcom.tproj"
 VERSION=bootstrap_cmds-138
 
 [ -f "$M/parser.y" ] || { echo "build-mig.sh: no $M/parser.y (git submodule update --init)" >&2; exit 1; }

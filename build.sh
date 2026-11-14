@@ -8,28 +8,37 @@
 #   toolchain  cctools and ld64, mig, the SDK's base headers
 #              (AvailabilityVersions), xnu's headers and firehose
 #   userland   libSystem and the base libraries, each built into the SDK
-#              (toolchain/sdk), or installed there from the packages of PIE's
+#              (debian/build/toolchain/sdk), or installed there from PIE's
 #              ports (userland/*/debs), and into its staging root,
-#              build/pkgroot/<project>
-#   sdk        build/pietoolchain-sdk_VERSION_all.deb (sdk/mksdk.sh):
+#              debian/build/build/pkgroot/<project>
+#   sdk        debian/build/build/pietoolchain-sdk_VERSION_all.deb:
 #              VERSION is $PIE_SDK_PACKAGE_VERSION, else the date of the SDK's
 #              newest file
 set -euo pipefail
 
-PIE="$(cd "$(dirname "$0")" && pwd)"
+SOURCE="$(cd "$(dirname "$0")" && pwd)"
+PIE="$SOURCE/debian/build"
 T="$PIE/toolchain"
 [ $# -gt 0 ] && STAGES=("$@") || STAGES=(toolchain userland sdk)
 
 say() { printf '\n==== %s\n' "$*"; }
 
 if [ -z "${SOURCE_DATE_EPOCH:-}" ]; then
-	if [ -f "$PIE/debian/changelog" ]; then
-		SOURCE_DATE_EPOCH=$(dpkg-parsechangelog -l "$PIE/debian/changelog" -STimestamp)
+	if [ -f "$SOURCE/debian/changelog" ]; then
+		SOURCE_DATE_EPOCH=$(dpkg-parsechangelog -l "$SOURCE/debian/changelog" -STimestamp)
 	else
-		SOURCE_DATE_EPOCH=$(git -C "$PIE" log -1 --format=%ct)
+		SOURCE_DATE_EPOCH=$(git -C "$SOURCE" log -1 --format=%ct)
 	fi
 fi
 export SOURCE_DATE_EPOCH PIE_REPRODUCIBLE=1 PIE_REPRO_SOURCE="$PIE" ZERO_AR_DATE=1 TZ=UTC LC_ALL=C
+export PYTHONDONTWRITEBYTECODE=1 PIE_SOURCES="$SOURCE/src"
+mkdir -p "$PIE/debian" "$PIE/tmp"
+export TMPDIR="$PIE/tmp"
+(cd "$SOURCE" && tar -cf - --exclude=.git --exclude=__pycache__ \
+	--exclude=toolchain/build --exclude=toolchain/prefix --exclude=toolchain/sdk \
+	toolchain userland xnu sdk) | tar -xf - -C "$PIE"
+cp -a "$SOURCE/debian/control" "$SOURCE/debian/changelog" "$PIE/debian/"
+ln -sfn "$PIE_SOURCES/cctools-port/cctools/include" "$T/hostinc"
 
 SDK="$T/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
 provide() {
@@ -46,7 +55,7 @@ provide() {
 patch_xnu() {
 	local p
 	[ -f "$PIE/xnu/Makefile" ] || return 0
-	for p in "$PIE"/xnu-patches/*.patch; do
+	for p in "$SOURCE"/xnu-patches/*.patch; do
 		[ -e "$p" ] || continue
 		patch -d "$PIE/xnu" -p1 -R -s -f --dry-run < "$p" >/dev/null 2>&1 && continue
 		patch -d "$PIE/xnu" -p1 -s -f --no-backup-if-mismatch < "$p"
@@ -126,7 +135,7 @@ stage_userland() {
 
 stage_sdk() {
 	say "sdk: pietoolchain-sdk"
-	"$PIE/sdk/mksdk.sh" ${PIE_SDK_PACKAGE_VERSION:+-v "$PIE_SDK_PACKAGE_VERSION"}
+	"$SOURCE/sdk/mksdk.sh" ${PIE_SDK_PACKAGE_VERSION:+-v "$PIE_SDK_PACKAGE_VERSION"}
 }
 
 patch_xnu

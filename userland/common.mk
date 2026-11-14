@@ -3,10 +3,13 @@
 #   ROOT  the project's staging root, build/pkgroot/<project directory>:
 #         what it installs on the target.
 #   OBJ   per-project build directory.
+#   PIE_SOURCES  upstream project directory, read in place.
 
 .DEFAULT_GOAL := all
 
 PIE     := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..)
+PIE_SOURCES ?= $(PIE)/src
+SOURCE_CFLAGS := -ffile-prefix-map=$(PIE_SOURCES)=/usr/src/pie/src/src
 TOOLCHAIN := $(PIE)/toolchain
 SDK       := $(TOOLCHAIN)/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 ROOT      ?= $(PIE)/build/pkgroot/$(notdir $(CURDIR))
@@ -18,6 +21,7 @@ CXX       := $(TOOLCHAIN)/bin/clang++
 LIBTOOL   := $(TOOLCHAIN)/prefix/bin/aarch64-apple-darwin-libtool -D
 MIG       := $(TOOLCHAIN)/prefix/bin/mig
 STRIP     := $(TOOLCHAIN)/prefix/bin/aarch64-apple-darwin-strip
+INSTALL   ?= install
 NM        := $(TOOLCHAIN)/prefix/bin/aarch64-apple-darwin-nm
 export MIGCC := $(CC)
 export PATH := $(TOOLCHAIN)/bin:$(TOOLCHAIN)/prefix/bin:$(PATH)
@@ -28,7 +32,7 @@ MINVER    := -mmacosx-version-min=26.5
 
 TARGET_OS_DEFS := -DTARGET_OS_EXCLAVECORE=0 -DTARGET_OS_EXCLAVEKIT=0
 BASE_CFLAGS := $(ARCHFLAGS) -isysroot $(SDK) $(MINVER) $(TARGET_OS_DEFS) -Os -g \
-	-fno-common -fstack-protector-strong
+	-fno-common -fstack-protector-strong $(SOURCE_CFLAGS)
 BASE_LDFLAGS := $(ARCHFLAGS) -isysroot $(SDK) $(MINVER) -Wl,-adhoc_codesign \
 	-Wl,-oso_prefix,$(PIE)/
 
@@ -61,8 +65,11 @@ endif
 
 define install_both
 	install -d $(SDK)/$(2) $(ROOT)/$(2)
-	install -m 755 $(1) $(SDK)/$(2)/
-	install -m 755 $(1) $(ROOT)/$(2)/
+	set -e; $(foreach f,$(1),\
+		$(INSTALL) -m 755 "$(f)" "$(SDK)/$(2)/$(notdir $(f)).new"; \
+		mv -f "$(SDK)/$(2)/$(notdir $(f)).new" "$(SDK)/$(2)/$(notdir $(f))"; \
+		$(INSTALL) -m 755 "$(f)" "$(ROOT)/$(2)/$(notdir $(f)).new"; \
+		mv -f "$(ROOT)/$(2)/$(notdir $(f)).new" "$(ROOT)/$(2)/$(notdir $(f))";)
 	rm -f $(addprefix $(SDK)/$(2)/,$(addsuffix .stub,$(notdir $(1))))
 endef
 
@@ -70,7 +77,7 @@ include $(PIE)/userland/tools/man.mk
 
 REPO ?= $(PROJECT)
 REPO_URL ?= https://github.com/apple-oss-distributions/$(REPO)
-VENDOR := $(PIE)/src/$(notdir $(patsubst %.git,%,$(REPO_URL)))
+VENDOR := $(PIE_SOURCES)/$(notdir $(patsubst %.git,%,$(REPO_URL)))
 PATCHES := $(sort $(wildcard $(CURDIR)/patches/*.patch))
 FETCH_ID := $(TAG) $(notdir $(PATCHES))
 ifneq ($(TAG),)

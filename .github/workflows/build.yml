@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            python3-pytest dpkg-dev xz-utils clang-21 libclang-rt-21-dev
+            python3-pytest dpkg-dev xz-utils clang-21 libclang-rt-21-dev debhelper
       - name: Host suites
         env:
           LC_ALL: C.UTF-8

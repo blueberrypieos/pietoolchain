@@ -4,8 +4,10 @@
 PROJECT := llvm-runtimes
 include ../common.mk
 
-LLVM := $(PIE)/src/llvm-project
+LLVM := $(PIE_SOURCES)/llvm-project
 BINUTILS := $(TOOLCHAIN)/prefix/bin/aarch64-apple-darwin
+CMAKE ?= cmake
+NINJA ?= ninja
 
 CMAKE_FLAGS := -G Ninja -S $(LLVM)/runtimes -B $(OBJ) \
 	-C $(LLVM)/libcxx/cmake/caches/Apple.cmake \
@@ -13,7 +15,7 @@ CMAKE_FLAGS := -G Ninja -S $(LLVM)/runtimes -B $(OBJ) \
 	-DCMAKE_SYSTEM_NAME=Darwin -DCMAKE_OSX_SYSROOT=$(SDK) \
 	-DCMAKE_OSX_ARCHITECTURES=$(ARCH) -DCMAKE_OSX_DEPLOYMENT_TARGET=26.5 \
 	-DCMAKE_C_COMPILER=$(CC) -DCMAKE_CXX_COMPILER=$(CXX) \
-	-DCMAKE_C_FLAGS="-mcpu=generic" -DCMAKE_CXX_FLAGS="-mcpu=generic" \
+	-DCMAKE_C_FLAGS="-mcpu=generic $(SOURCE_CFLAGS)" -DCMAKE_CXX_FLAGS="-mcpu=generic $(SOURCE_CFLAGS)" \
 	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,-oso_prefix,$(PIE)/" \
 	-DCMAKE_AR=$(BINUTILS)-ar -DCMAKE_RANLIB=$(BINUTILS)-ranlib \
 	-DCMAKE_LIBTOOL=$(BINUTILS)-libtool -DCMAKE_INSTALL_NAME_TOOL=$(BINUTILS)-install_name_tool \
@@ -26,11 +28,11 @@ CMAKE_FLAGS := -G Ninja -S $(LLVM)/runtimes -B $(OBJ) \
 HEADER_FLAGS := -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
 
 $(OBJ)/hdrs.configured:
-	cmake $(CMAKE_FLAGS) $(HEADER_FLAGS)
+	$(CMAKE) $(CMAKE_FLAGS) $(HEADER_FLAGS)
 	touch $@
 
 installhdrs: $(OBJ)/hdrs.configured
-	ninja -C $(OBJ) install-cxx-headers install-cxxabi-headers install-unwind-headers
+	$(NINJA) -C $(OBJ) install-cxx-headers install-cxxabi-headers install-unwind-headers
 
 UNWIND := $(LLVM)/libunwind
 UNWIND_SRCS := libunwind.cpp Unwind-EHABI.cpp Unwind-seh.cpp UnwindLevel1.c \
@@ -57,14 +59,14 @@ $(UNWIND_DYLIB): $(UNWIND_OBJS)
 		-lsystem_platform -lcompiler_rt -ldyld -o $@
 
 LIBS_OBJ := $(OBJ)-libs
-$(LIBS_OBJ)/configured:
-	cmake $(subst -B $(OBJ),-B $(LIBS_OBJ),$(CMAKE_FLAGS)) -DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx" \
+$(LIBS_OBJ)/configured: | install-unwind
+	$(CMAKE) $(subst -B $(OBJ),-B $(LIBS_OBJ),$(CMAKE_FLAGS)) -DLLVM_ENABLE_RUNTIMES="libcxxabi;libcxx" \
 		-DCMAKE_CXX_COMPILER_WORKS=ON -DCMAKE_BUILD_WITH_INSTALL_NAME_DIR=ON
 	touch $@
 
 CXX_DYLIBS := $(LIBS_OBJ)/lib/libc++.1.0.dylib $(LIBS_OBJ)/lib/libc++abi.1.0.dylib
 $(CXX_DYLIBS) &: $(LIBS_OBJ)/configured
-	ninja -C $(LIBS_OBJ) cxxabi_shared cxx_shared
+	$(NINJA) -C $(LIBS_OBJ) cxxabi_shared cxx_shared
 
 install-unwind: $(UNWIND_DYLIB)
 	$(call install_both,$(UNWIND_DYLIB),usr/lib/system)

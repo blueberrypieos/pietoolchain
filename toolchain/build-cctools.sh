@@ -9,12 +9,13 @@
 #
 #   PREFIX  the install directory (default toolchain/prefix)
 #   BUILD   the build directory (default toolchain/build)
+#   PIE_SOURCES  the upstream project directory (default src)
 set -euo pipefail
 
 TOOLCHAIN="$(cd "$(dirname "$0")" && pwd)"
 PREFIX="${PREFIX:-$TOOLCHAIN/prefix}"
 BUILD="${BUILD:-$TOOLCHAIN/build}"
-SRC="$(cd "$TOOLCHAIN/.." && pwd)/src"
+SRC="${PIE_SOURCES:-$(cd "$TOOLCHAIN/.." && pwd)/src}"
 CC="${CC:-clang-21}"
 CXX="${CXX:-clang++-21}"
 LLVM_CONFIG="${LLVM_CONFIG:-llvm-config-21}"

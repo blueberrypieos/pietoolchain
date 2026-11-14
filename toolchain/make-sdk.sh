@@ -8,6 +8,8 @@
 #   toolchain/make-sdk.sh xnu-hdrs   install xnu's headers (run after
 #                                    `xnu-make ... installhdrs`, DSTROOT=$2)
 #   toolchain/make-sdk.sh firehose   libfirehose_kernel.a (needs xnu-hdrs)
+#
+# PIE_SOURCES is the upstream project directory, by default src.
 set -euo pipefail
 
 TOOLCHAIN="$(cd "$(dirname "$0")" && pwd)"
@@ -27,7 +29,7 @@ fix_framework_links() {
 
 base() {
 	local av
-	av="$(cd "$TOOLCHAIN/.." && pwd)/src/AvailabilityVersions"
+	av="${PIE_SOURCES:-$(cd "$TOOLCHAIN/.." && pwd)/src}/AvailabilityVersions"
 	[ -d "$av" ] || { echo "make-sdk.sh: no $av (git submodule update --init)" >&2; exit 1; }
 	mkdir -p "$SDK"
 	"$BUILD_MAKE" -C "$av" install DSTROOT="$SDK" \
@@ -53,7 +55,7 @@ xnu_hdrs() {
 case "${1:-}" in
 	base) base ;;
 	xnu-hdrs) xnu_hdrs "${2:-}" ;;
-	firehose) PIE_KERNEL_SOURCES="$(cd "$TOOLCHAIN/.." && pwd)/src" PIE_KERNEL_BUILD="$BUILD" PIE_SDKROOT="$SDK" \
+	firehose) PIE_KERNEL_SOURCES="${PIE_SOURCES:-$(cd "$TOOLCHAIN/.." && pwd)/src}" PIE_KERNEL_BUILD="$BUILD" PIE_SDKROOT="$SDK" \
 		"$TOOLCHAIN/kernel/build-firehose.sh" ;;
 	*) sed -n '7,10p' "$0"; exit 1 ;;
 esac

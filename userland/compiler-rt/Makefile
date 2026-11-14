@@ -4,7 +4,7 @@
 PROJECT := compiler-rt
 include ../common.mk
 
-SRC := $(PIE)/src/llvm-project/compiler-rt/lib/builtins
+SRC := $(PIE_SOURCES)/llvm-project/compiler-rt/lib/builtins
 
 GENERIC := absvdi2 absvsi2 absvti2 adddf3 addsf3 addvdi3 addvsi3 addvti3 ashldi3 ashlti3 \
 	ashrdi3 ashrti3 bswapdi2 bswapsi2 clzdi2 clzsi2 clzti2 cmpdi2 cmpti2 comparedf2 \

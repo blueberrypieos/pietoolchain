@@ -27,7 +27,7 @@ class Package(unittest.TestCase):
             provider = pie / "userland" / "fixture"
             provider.mkdir(parents=True)
             (provider / "copyright").write_text("Fixture copyright\nLicense: BSD-2-Clause\n")
-            manifests = pie / "build" / "providers"
+            manifests = pie / "debian/build/build/providers"
             manifests.mkdir(parents=True)
             (manifests / "ORDER").write_text("fixture\n")
             (manifests / "fixture").write_text("usr/lib/libfixture.a\n")

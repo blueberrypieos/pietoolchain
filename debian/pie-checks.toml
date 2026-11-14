@@ -16,6 +16,13 @@ needs = "host"
 timeout = 120
 
 [[suites]]
+name = "build-tree"
+command = ["pytest-3", "tests/test_build_tree.py", "tests/test_libnotify.py"]
+needs = "host"
+timeout = 120
+description = "Build paths, source preservation, cleanup and stable compiler output."
+
+[[suites]]
 name = "libxpc"
 command = ["pytest-3", "tests/test_libxpc.py"]
 needs = "host"

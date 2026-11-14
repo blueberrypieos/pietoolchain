@@ -13,6 +13,7 @@ include /usr/share/dpkg/architecture.mk
 include /usr/share/dpkg/buildopts.mk
 include /usr/share/dpkg/pkg-info.mk
 export SOURCE_DATE_EPOCH
+export PYTHONDONTWRITEBYTECODE := 1
 
 B := $(CURDIR)/debian/build
 L := debian/pietoolchain/usr/lib/pietoolchain/toolchain
@@ -23,31 +24,38 @@ NOFLAGS := env $(foreach f,$(FLAGS) $(addsuffix _FOR_BUILD,$(FLAGS)),-u $(f))
 build: build-arch build-indep
 binary: binary-arch binary-indep
 
-debian/stamp-check:
+$(B)/stamp-check:
+	mkdir -p $(B)
 ifeq ($(PIE_FULL_SOURCE),)
 	python3 sdk/pie-source-guard $(CURDIR)
 endif
 	python3 sdk/mksrccopyright.py $(CURDIR) --check
 	touch $@
 
-debian/stamp-sdk: debian/stamp-check
+$(B)/stamp-sdk: $(B)/stamp-check
 	$(NOFLAGS) ./build.sh toolchain userland
 	touch $@
 
-build-indep: debian/stamp-sdk
+build-indep: $(B)/stamp-sdk
 binary-indep: build-indep
 	python3 sdk/mkdebs.py $(CURDIR) indep
 
 ifeq ($(DEB_HOST_ARCH_OS),darwin)
-build-arch: debian/stamp-sdk
+build-arch: $(B)/stamp-sdk
 binary-arch: build-arch
 	python3 sdk/mkdebs.py $(CURDIR) arch
 else
-build-arch: debian/stamp-check
+build-arch: $(B)/stamp-host
+$(B)/stamp-host: $(B)/stamp-check
 	dh build-arch -ppietoolchain
+	$(MAKE) -f debian/rules clean-host
+	touch $@
 binary-arch: build-arch
 	dh binary-arch -ppietoolchain
+	$(MAKE) -f debian/rules clean-host
 endif
+
+override_dh_update_autotools_config:
 
 override_dh_auto_configure:
 
@@ -81,13 +89,13 @@ override_dh_auto_install:
 # dwz cannot read clang's DWARF 5 debug info (.debug_addr), so skip it.
 override_dh_dwz:
 
-clean:
-	set -e; for p in $$(ls -r xnu-patches/*.patch); do \
-		if patch -d xnu -p1 -R -s -f --dry-run < $$p >/dev/null 2>&1; then \
-			patch -d xnu -p1 -R -s -f --no-backup-if-mismatch < $$p; fi; done
-	dh_clean
-	rm -rf build toolchain/build toolchain/prefix toolchain/sdk $(B) debian/stamp-check debian/stamp-sdk \
+clean-host:
+	rm -rf debian/.debhelper
+	rm -f debian/debhelper-build-stamp debian/*.debhelper.log debian/*.debhelper
+
+clean: clean-host
+	rm -rf $(B) \
 		debian/files debian/*.substvars \
 		$(foreach p,$(shell sed -n 's/^Package: *//p' debian/control),debian/$(p))
 
-.PHONY: build build-arch build-indep binary binary-arch binary-indep clean
+.PHONY: build build-arch build-indep binary binary-arch binary-indep clean clean-host

@@ -50,8 +50,10 @@ $(DYLIB): $(OBJS) $(OBJ)/exports.txt
 		-lsystem_malloc -lsystem_c -lsystem_blocks -ldispatch -lsystem_asl -lcorecrypto \
 		-lsystem_trace -o $@
 
-install: $(DYLIB) installhdrs
+install-lib: $(DYLIB) installhdrs
 	$(call install_both,$(DYLIB),usr/lib/system)
+
+install: install-lib
 	install -d $(ROOT)/usr/lib/blueberry-pie-os
 	sha256sum $(DYLIB) | cut -d' ' -f1 > $(ROOT)/usr/lib/blueberry-pie-os/commoncrypto-ckg-stubs.sha256
 	$(call install_xcode_man,$(SRCROOT)/CommonCrypto.xcodeproj)
@@ -98,7 +100,7 @@ REG_FLAGS = $(BASE_CFLAGS) -w -I$(REG)/test -I$(REG)/util -I$(REG)/CommonCrypto 
 	-I$(S)/lib -I$(S)/libcn -I$(REG)/shim \
 	-isystem $(SDK)/usr/local/include
 
-$(OBJ)/ccregression: $(REG)/.copied $(DYLIB)
+$(OBJ)/ccregression: $(REG)/.copied $(DYLIB) | install-lib
 	$(if $(filter %.cpp,$(REG_SRCS)),$(CXX) $(REG_FLAGS) -std=c++17 -c $(filter %.cpp,$(REG_SRCS)) -o $(REG)/cpp.o)
 	$(CC) $(REG_FLAGS) $(BASE_LDFLAGS) $(filter %.c,$(REG_SRCS)) $(if $(filter %.cpp,$(REG_SRCS)),$(REG)/cpp.o -lc++) \
 		-L$(SDK)/usr/lib -lSystem -o $@
@@ -108,4 +110,4 @@ regression: $(OBJ)/ccregression
 clean:
 	rm -rf $(OBJ)
 
-.PHONY: all install installhdrs regression clean
+.PHONY: all install install-lib installhdrs regression clean

@@ -17,7 +17,7 @@ DAEMON := $(OBJ)/mdnsd/mdnsd
 
 all: $(DYLIB) $(DAEMON)
 
-$(DAEMON): $(SRCROOT)/.fetched
+$(DAEMON): $(SRCROOT)/.fetched | install-lib
 	$(MAKE) -C $(SRCROOT)/mDNSPosix os=x Daemon CC=$(CC) LD=$(CC) STRIP=true \
 		OBJDIR=$(OBJ)/mdnsd/obj BUILDDIR=$(OBJ)/mdnsd \
 		"CFLAGS=$(BASE_CFLAGS) -isystem $(SDK)/usr/local/include" \

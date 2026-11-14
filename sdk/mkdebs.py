@@ -8,7 +8,7 @@ usage: mkdebs.py PIE arch|indep
 
 indep: pietoolchain-sdk, from the SDK.
 arch: each package with an X-Pie-Project field, from that project's staging
-root, build/pkgroot/<project>.
+root, debian/build/build/pkgroot/<project>.
 """
 import hashlib
 import os
@@ -169,12 +169,12 @@ def indep(pie):
 
 
 def arch(pie):
-    otool = os.path.join(pie, "toolchain", "prefix", "bin", "aarch64-apple-darwin-otool")
+    otool = os.path.join(pie, "debian", "build", "toolchain", "prefix", "bin", "aarch64-apple-darwin-otool")
     pkgs = [s for s in stanzas(os.path.join(pie, "debian", "control")) if "X-Pie-Project" in s]
     staged = {}
     for s in pkgs:
         pkg, project = s["Package"], s["X-Pie-Project"]
-        root = os.path.join(pie, "build", "pkgroot", project)
+        root = os.path.join(pie, "debian", "build", "build", "pkgroot", project)
         if not os.path.isdir(root) or not os.listdir(root):
             die("%s: no staging root %s (./build.sh toolchain userland)" % (pkg, root))
         dst = os.path.join(pie, "debian", pkg)
@@ -208,7 +208,7 @@ def arch(pie):
                 die("%s is in both %s and %s" % (p, owner[p], pkg))
             owner[p] = pkg
     for project, pkg in OTHERS.items():
-        root = os.path.join(pie, "build", "pkgroot", project)
+        root = os.path.join(pie, "debian", "build", "build", "pkgroot", project)
         for p in files_of(root):
             if p.startswith("/usr/lib/") and p.endswith(".dylib"):
                 owner.setdefault(p, pkg)
