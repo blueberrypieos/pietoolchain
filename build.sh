@@ -5,7 +5,7 @@
 #   ./build.sh [STAGE...]
 #
 # Stages, in order (default: toolchain userland sdk):
-#   toolchain  cctools and ld64, mig, the SDK's base headers
+#   toolchain  installed host tools, the SDK's base headers
 #              (AvailabilityVersions), xnu's headers and firehose
 #   userland   libSystem and the base libraries, each built into the SDK
 #              (debian/build/toolchain/sdk), or installed there from PIE's
@@ -38,7 +38,13 @@ export TMPDIR="$PIE/tmp"
 	--exclude=toolchain/build --exclude=toolchain/prefix --exclude=toolchain/sdk \
 	toolchain userland xnu sdk) | tar -xf - -C "$PIE"
 cp -a "$SOURCE/debian/control" "$SOURCE/debian/changelog" "$PIE/debian/"
-ln -sfn "$PIE_SOURCES/cctools-port/cctools/include" "$T/hostinc"
+HOST_TOOLCHAIN="${PIE_HOST_TOOLCHAIN:-/usr/lib/pietoolchain/toolchain}"
+for path in prefix/bin/aarch64-apple-darwin-ld prefix/bin/mig prefix/libexec/migcom \
+	prefix/lib/cctools-host/libstuff.a prefix/lib/cctools-host/libmacho.a hostinc; do
+	[ -e "$HOST_TOOLCHAIN/$path" ] || { echo "build.sh: missing host toolchain input: $HOST_TOOLCHAIN/$path" >&2; exit 1; }
+done
+ln -sfnT "$HOST_TOOLCHAIN/prefix" "$T/prefix"
+ln -sfnT "$HOST_TOOLCHAIN/hostinc" "$T/hostinc"
 
 SDK="$T/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
 provide() {
@@ -67,10 +73,8 @@ xnu_make() {
 }
 
 stage_toolchain() {
-	say "toolchain: cctools, mig, SDK"
+	say "toolchain: installed host tools, SDK"
 	[ -f "$PIE/xnu/Makefile" ] || { echo "build.sh: no xnu (git submodule update --init)" >&2; exit 1; }
-	"$T/build-cctools.sh"
-	"$T/build-mig.sh"
 	provide AvailabilityVersions "$T/make-sdk.sh" base
 	xnu_make KERNEL_CONFIGS=RELEASE MACHINE_CONFIGS=VMAPPLE \
 		ARCH_STRING_FOR_CURRENT_MACHINE_CONFIG=arm64 \

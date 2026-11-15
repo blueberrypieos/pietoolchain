@@ -11,6 +11,7 @@
 # Every SDK name means PIE_SDKROOT (default: pietoolchain-sdk's SDK); an
 # argument that is a directory is used as it is.
 TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
+HOST_TOOLCHAIN="${PIE_HOST_TOOLCHAIN:-/usr/lib/pietoolchain/toolchain}"
 PREFIX="$TOOLCHAIN/prefix"
 PLATFORM_DIR="$TOOLCHAIN/sdk/MacOSX.platform"
 DEFAULT_SDK="$PLATFORM_DIR/Developer/SDKs/MacOSX.sdk"
@@ -30,9 +31,12 @@ resolve_sdk() {
 find_tool() {
 	local t="$1"
 	case "$t" in
+		c++|host-c++|plutil|ld-repro)
+			[ -x "$HOST_TOOLCHAIN/bin/$t" ] && [ ! -d "$HOST_TOOLCHAIN/bin/$t" ] || return 1
+			echo "$HOST_TOOLCHAIN/bin/$t"; return 0 ;;
 		ld) echo "${PIE_TARGET_LD:-$PREFIX/bin/aarch64-apple-darwin-ld}"; return 0 ;;
 		ctfconvert|ctfmerge|ctfdump|docc|scan-build) return 1 ;;
-		gm4) t=m4 ;;
+		gm4) t="m4" ;;
 		objdump) t=llvm-objdump ;;
 	esac
 	local c

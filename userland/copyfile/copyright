@@ -5,7 +5,7 @@ Source: https://github.com/apple-oss-distributions/copyfile
 
 Files: *
 Copyright: 2004-2024 Apple Inc.
-License: APSL-2.0
+License: LicenseRef-APSL-2.0-2007-copyfile
 
-License: APSL-2.0
- The full text is in /usr/share/common-licenses/APSL-2.0.
+License: LicenseRef-APSL-2.0-2007-copyfile
+ The full text is in /usr/share/common-licenses/LicenseRef-APSL-2.0-2007-copyfile.

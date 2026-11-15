@@ -1,3 +1,10 @@
+pietoolchain (0.3.0) resolute; urgency=medium
+
+  * The host tools move to pietoolchain-host.
+  * The SDK and runtimes build with the installed host tools.
+
+ -- Maxwell <maxwell@blueberrypieos.com>  Sat, 14 Nov 2026 12:00:00 +0000
+
 pietoolchain (0.2.0) resolute; urgency=medium
 
   * The SDK takes the released ports' libraries, libsbuf and libsysmon

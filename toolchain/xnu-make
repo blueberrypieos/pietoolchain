@@ -12,6 +12,7 @@
 # kernel's build date.
 set -euo pipefail
 TOOLCHAIN="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+HOST_TOOLCHAIN="${PIE_HOST_TOOLCHAIN:-/usr/lib/pietoolchain/toolchain}"
 export PATH="$TOOLCHAIN/bin:$TOOLCHAIN/prefix/bin:$PATH"
 if [ "${PIE_REPRODUCIBLE:-0}" = 1 ]; then
 	: "${SOURCE_DATE_EPOCH:?reproducible kernel builds require SOURCE_DATE_EPOCH}"
@@ -24,7 +25,7 @@ NCPU="$(getconf _NPROCESSORS_ONLN)"
 MEMSIZE="$(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE) ))"
 if [ "${PIE_REPRODUCIBLE:-0}" = 1 ] && [ -n "${PIE_REPRO_OBJROOT:-}" ]; then
 	export PIE_REAL_TARGET_LD="${PIE_TARGET_LD:-$TOOLCHAIN/prefix/bin/aarch64-apple-darwin-ld}"
-	export PIE_TARGET_LD="$TOOLCHAIN/bin/ld-repro"
+	export PIE_TARGET_LD="$HOST_TOOLCHAIN/bin/ld-repro"
 fi
 JOBS_ARG=()
 if [ -n "${JOBS:-}" ]; then
@@ -39,7 +40,7 @@ exec make "${JOBS_ARG[@]}" \
 	HOST_CODESIGN=/bin/true \
 	DOCONF_SHELL="${PIE_TCSH:-$(command -v tcsh)}" \
 	AWK="$TOOLCHAIN/bin/awk" \
-	PLUTIL="$TOOLCHAIN/bin/plutil" \
+	PLUTIL="$HOST_TOOLCHAIN/bin/plutil" \
 	SYSCTL_HW_PHYSICALCPU="$NCPU" SYSCTL_HW_LOGICALCPU="$NCPU" \
 	MEMORY_SIZE="$MEMSIZE" \
 	"$@"

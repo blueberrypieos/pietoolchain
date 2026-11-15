@@ -12,12 +12,20 @@ under `debian/build`. The xnu patches apply to its copy.
 Python bytecode writes are disabled.
 
 The SDK is in `debian/build/toolchain/sdk`.
-The toolchain prefix and objects sit beside it.
+The toolchain prefix is a link to the installed host package.
+`toolchain/hostinc` links to that package's host headers.
+The installed tree is read only during the build.
 Runtime staging roots, userland objects and provider records are in
 `debian/build/build`. Standalone SDK packages go there too.
 Debian binary packages are written beside the source directory.
-The copied `toolchain/hostinc` link resolves through `PIE_SOURCES`
-to the cctools headers used by xnu's SETUP tools.
+The copied wrappers still resolve the generated SDK beside them.
+They use the installed tools through the prefix link.
+`xcrun` resolves host helpers from the installed package.
+The SDK compiler wrappers and SDK lookup stay local.
+The xnu make wrapper takes `plutil` and its optional linker path wrapper
+from the installed host package.
+This keeps generated files under `debian/build` and preserves the
+compiler maps without writing to the installed tree.
 
 The compiler maps the build root to `/usr/src/pie/src`.
 A separate map records `PIE_SOURCES` as `/usr/src/pie/src/src`.
@@ -31,19 +39,10 @@ paths. Neither records the physical build directory.
 Trace maps pair copied helper directories with their source directories.
 Project copy maps name the original directories under `src`.
 
-Native targets build under `debian/build`.
-They disable the source-wide autotools configuration update.
-The cctools build runs `autogen.sh` in its copy.
-After each successful native target, `clean-host` removes
-`debian/.debhelper`, `debian/debhelper-build-stamp`,
-`debian/*.debhelper.log` and `debian/*.debhelper`.
-It preserves build outputs, package staging roots, substitution variables
-and `debian/files`.
-The cleanup uses explicit paths because `dh_clean` deletes backup-like
-files across the source tree. Upstream files with those names must survive.
-
+The native architecture targets do no work. `-A` builds the SDK, and
+`-a darwin-arm64 -b` builds the SDK and runtimes.
 `debian/rules clean` removes `debian/build`, package staging directories,
-`debian/files`, `debian/*.substvars` and the helper state above.
+`debian/files` and `debian/*.substvars`.
 
 The shared `install_both` helper installs SDK and runtime libraries
 atomically. It copies each library to a temporary name beside each

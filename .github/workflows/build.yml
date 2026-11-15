@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+env:
+  PIETOOLCHAIN_HOST_VERSION: '0.3.0'
+  PIETOOLCHAIN_HOST_SHA256: 8d65a1bc7ef483a033af0f7657007a0d38f61f1480b418858dca32380a3e9095
+
 jobs:
   host-tests:
     runs-on: ubuntu-26.04
@@ -24,7 +28,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            python3-pytest dpkg-dev xz-utils clang-21 libclang-rt-21-dev debhelper
+            python3-pytest dpkg-dev xz-utils clang-21 libclang-rt-21-dev
       - name: Host suites
         env:
           LC_ALL: C.UTF-8
@@ -88,13 +92,6 @@ jobs:
 
   package:
     needs: source
-    strategy:
-      matrix:
-        include:
-          - build: amd64
-            args: -B
-          - build: darwin-arm64
-            args: -a darwin-arm64 -b
     runs-on: ubuntu-26.04
     timeout-minutes: 360
     container: ubuntu:26.04
@@ -109,20 +106,29 @@ jobs:
       - name: Extract the source package
         run: |
           apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends dpkg-dev devscripts
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends dpkg-dev devscripts ca-certificates curl
           dpkg-source -x "/build/source/${{ needs.source.outputs.name }}.dsc" /build/src
+
+      - name: pietoolchain-host
+        run: |
+          github=https://github.com/blueberrypieos
+          tc="pietoolchain-host_${PIETOOLCHAIN_HOST_VERSION}_amd64.deb"
+          curl -fsSL --retry 3 -o "/tmp/$tc" \
+            "$github/pietoolchain-host/releases/download/$PIETOOLCHAIN_HOST_VERSION/$tc"
+          printf '%s  %s\n' "$PIETOOLCHAIN_HOST_SHA256" "/tmp/$tc" | sha256sum -c -
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "/tmp/$tc"
 
       - name: Build dependencies
         run: DEBIAN_FRONTEND=noninteractive apt-get build-dep -y --no-install-recommends /build/src
 
       - name: Binary packages
         working-directory: /build/src
-        run: dpkg-buildpackage ${{ matrix.args }} -us -uc -j$(nproc)
+        run: dpkg-buildpackage -a darwin-arm64 -b -us -uc -j$(nproc)
 
       - name: Packages
         run: |
           name='${{ needs.source.outputs.name }}'
-          build='${{ matrix.build }}'
+          build='darwin-arm64'
           cd /build
           cp source/* .
           mergechanges -f "${name}_source.changes" "${name}_${build}.changes"
@@ -135,7 +141,7 @@ jobs:
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
-          name: pietoolchain-${{ matrix.build }}
+          name: pietoolchain-darwin-arm64
           path: dist/
           if-no-files-found: error
 

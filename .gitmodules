@@ -85,15 +85,6 @@
 [submodule "src/AvailabilityVersions"]
 	path = src/AvailabilityVersions
 	url = https://github.com/apple-oss-distributions/AvailabilityVersions
-[submodule "src/bootstrap_cmds"]
-	path = src/bootstrap_cmds
-	url = https://github.com/apple-oss-distributions/bootstrap_cmds
-[submodule "src/cctools-port"]
-	path = src/cctools-port
-	url = https://github.com/blueberrypieos/cctools-port.git
-[submodule "src/apple-libdispatch"]
-	path = src/apple-libdispatch
-	url = https://github.com/blueberrypieos/apple-libdispatch.git
 [submodule "src/llvm-project"]
 	path = src/llvm-project
 	url = https://github.com/llvm/llvm-project.git

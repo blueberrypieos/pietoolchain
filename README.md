@@ -1,16 +1,16 @@
 # pietoolchain
 
-An LLVM/Clang cross-compiler toolchain for darwin-arm64, packaged for
-Ubuntu 26.04, and the darwin-arm64 SDK it builds against. One source
-package builds:
+The darwin-arm64 SDK and libSystem runtimes, built on Ubuntu 26.04.
+This source package builds:
 
-- `pietoolchain`: a clang-21 wrapper, cctools and the ld64 linker,
-  `mig`, and make rules for building Debian packages of darwin-arm64 ports.
-  It runs on the Linux build machine.
-- `pietoolchain-sdk`: the darwin-arm64 headers, libraries and frameworks
-  that ports build against. `pietoolchain` depends on it.
-- The libSystem runtime packages (`libsystem-c`, `dyld`, `libcxx` and the
-  others), darwin-arm64 packages built with the SDK.
+- `pietoolchain-sdk`: headers, libraries and frameworks for building ports.
+- The 29 libSystem runtime packages for darwin-arm64.
+
+The host tools move to
+[pietoolchain-host](https://github.com/blueberrypieos/pietoolchain-host).
+It provides the compiler wrappers, cctools, the linker, `mig` and
+`/usr/share/pietoolchain`. Its temporary `pietoolchain` compatibility
+package depends on the host tools and SDK.
 
 ## Packaging a port
 
@@ -22,7 +22,7 @@ when `debian/control` names more than one package, each package after the
 first takes the files that `debian/PACKAGE.files` lists (one glob per
 line, such as `usr/include/*`), and the first gets the rest. The reusable GitHub workflow in
 [blueberrypieos/workflows](https://github.com/blueberrypieos/workflows)
-installs `pietoolchain` and `pietoolchain-sdk` and runs that build.
+installs the host tools and SDK and runs that build.
 
 A port that builds against another port's `-dev` package names it in
 Build-Depends. The build machine needs the darwin-arm64 architecture
@@ -44,18 +44,12 @@ the target.
 
 | Path | Contents |
 |---|---|
-| `toolchain/bin/clang` (`cc`, `c++`, `clang++`) | A wrapper that runs Ubuntu's clang-21 for arm64 Darwin and links with ld64. With `PIE_REPRODUCIBLE=1`, it maps source paths to `/usr/src/pie`. |
-| `toolchain/build-cctools.sh` | Builds cctools and ld64 from `src/cctools-port`, with `src/apple-libdispatch` linked in statically. `otool` is llvm-21's `llvm-otool`. |
-| `toolchain/build-mig.sh`, `toolchain/mig/hostinc` | Builds `mig` and `migcom` (the Mach interface generator) from `src/bootstrap_cmds`, with the few Mach headers migcom needs on the host. `mig` preprocesses with pietoolchain's `cc`. |
-| `toolchain/xnu-make`, `toolchain/bin/{xcrun,host-cc,host-c++,plutil,awk,install,ld-repro,iig}`, `toolchain/hostcompat`, `toolchain/iig` | Run xnu's make on Linux: the values and tools the xnu makefiles expect. `iig` generates DriverKit interfaces. |
-| `toolchain/kernel` | Build a kernel's SDK and libraries and its kexts: `make-sdk.sh`, `build-*-kext.sh`, `build-cckext.sh`, `build-firehose.sh`, `kext.mk` and the kext tools. The kernel package passes the sources in. |
+| `toolchain/bin/clang` (`cc`, `clang++`) | A wrapper that runs Ubuntu's clang-21 for arm64 Darwin and links with ld64. With `PIE_REPRODUCIBLE=1`, it maps source paths to `/usr/src/pie`. |
+| `toolchain/xnu-make`, `toolchain/bin/{xcrun,host-cc,awk,install}`, `toolchain/hostcompat`, the host headers | Run xnu's make on Linux: the values and tools the xnu makefiles expect. |
 | `toolchain/make-sdk.sh`, `toolchain/sdk-overlay` | Make the SDK that `pietoolchain-sdk` packages: AvailabilityVersions, the overlay headers, xnu's headers and libfirehose_kernel. |
-| `share/rules.mk` | The compiler flags, the dpkg build targets, reproducible-build settings and the `.deb` layout. |
-| `share/tools.mk`, `share/pbxproj-*.py` | Rules for building tools from project files. |
-| `share/pie-source-guard` | Checks that a port's source package holds only the files `debian/copyright` keeps. |
 | `src/`, `xnu/` | The upstream sources, as git submodules. |
 | `userland/`, `xnu-patches/` | How each libSystem project is built, and our patches to it. A project with a `debs` file installs its files from the pinned packages of a PIE port instead (`userland/debs.mk`). |
-| `build.sh` | Builds the toolchain, then libSystem and the base libraries into the SDK, and installs the libraries of PIE's ports from their packages. |
+| `build.sh` | Uses the installed host tools, then builds libSystem and the base libraries into the SDK, and installs the libraries of PIE's ports from their packages. |
 | `sdk/` | The SDK packages (`mkdebs.py`), the copyright files of the upstream sources, and the lists of the files the source package keeps. |
 | `debian/` | The packaging. |
 
@@ -67,9 +61,22 @@ On Ubuntu 26.04:
 git submodule update --init --recursive
 sudo apt-get install dpkg-dev build-essential
 sudo apt-get build-dep ./
-PIE_FULL_SOURCE=1 dpkg-buildpackage -B -us -uc                  # ../pietoolchain_0.2.0_amd64.deb
-PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.2.0_all.deb and the runtime packages
+PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.0_all.deb and the runtime packages
 ```
+
+Install `pietoolchain-host` 0.3.0 or newer from the resolute archive before
+building. `dpkg-buildpackage -A` builds only the SDK. The darwin-arm64 build
+also produces the runtimes. Runtime Debian revisions are set by
+`X-Pie-Version` in `debian/control`.
+
+`build.sh` links `debian/build/toolchain/prefix` and `hostinc` to the
+installed `/usr/lib/pietoolchain/toolchain`. `PIE_HOST_TOOLCHAIN` may select
+another installed tree. SDK helpers and wrappers run from `debian/build`.
+The generated SDK stays beside those links at `debian/build/toolchain/sdk`.
+The `c++`, `host-c++`, `plutil` and `ld-repro` helpers resolve through
+the installed host package.
+Compiler path maps and embedded source paths keep their existing values.
+See [docs/build-tree.md](docs/build-tree.md).
 
 The darwin-arm64 build takes the pinned packages of PIE's ports
 (`userland/*/debs`) from `/var/cache/pietoolchain/debs` (`PIE_DEB_CACHE`),

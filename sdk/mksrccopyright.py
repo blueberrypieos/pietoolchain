@@ -11,10 +11,6 @@ sdk/copyright/T and sdk/source-files/T):
   the files of each tree that the source package keeps;
 - each tree's paragraphs follow, with their paths under the tree.
 
-It also writes debian/pietoolchain.copyright, the copyright of the
-pietoolchain package: our files and the trees pietoolchain is built from
-(PIETOOLCHAIN_TREES).
-
 --check compares with the files there and fails if they differ. It also
 checks the files the source package keeps: every file of a tree must have a
 paragraph of that tree, and every pattern of debian/copyright must apply to
@@ -25,13 +21,9 @@ import re
 import sys
 
 FORMAT = "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/"
-TOOLCHAIN = {"AvailabilityVersions": "AvailabilityVersions", "apple-libdispatch": "apple-libdispatch",
-             "bootstrap_cmds": "bootstrap_cmds", "cctools-port": "cctools-port",
-             "llvm-project": "llvm-project"}
+TOOLCHAIN = {"AvailabilityVersions": "AvailabilityVersions", "llvm-project": "llvm-project"}
 
 OURS = "2026 The Blueberry Pie OS Authors"
-# The trees the pietoolchain package's programs and headers come from.
-PIETOOLCHAIN_TREES = ("src/cctools-port", "src/apple-libdispatch", "src/bootstrap_cmds")
 OWN = [
     ("userland/libplatform/arm64/optimized-routines/*", "2012-2024 Arm Limited",
      "MIT OR Apache-2.0 with LLVM exception"),
@@ -67,7 +59,7 @@ def with_texts(pie, par):
         f = os.path.join(pie, "sdk", "licenses", lid)
         if not os.path.exists(f):
             sys.exit("mksrccopyright.py: no sdk/licenses text for %s" % lid)
-        return "\n".join(" " + l if l.strip() else " ." for l in open(f).read().strip("\n").split("\n"))
+        return "\n".join(" " + l.expandtabs() if l.strip() else " ." for l in open(f).read().strip("\n").split("\n"))
 
     def full(m):
         return m.group(0) if ubuntu(m.group(1)) else text(m.group(1))
@@ -126,7 +118,7 @@ APSL1 = {"APSL-1.0", "APSL-1.1", "APSL-1.1+", "APSL-1.2"}
 
 def generic(pie, name):
     text = open(os.path.join(pie, "sdk", "licenses", name)).read().strip("\n")
-    return "License: " + name + "\n" + "\n".join(" " + l if l.strip() else " ." for l in text.split("\n"))
+    return "License: " + name + "\n" + "\n".join(" " + l.expandtabs() if l.strip() else " ." for l in text.split("\n"))
 
 
 def upper_operators(par):
@@ -397,14 +389,14 @@ def main():
             pars.append(upper_operators(re.sub(r"^Files:[ \t]*.*(?:\n[ \t]+.*)*", lambda m: body, par, count=1,
                                                flags=re.M)))
         trees.append((tree, [inline_own(par, own, texts) for par in pars]))
+    for name in ("APSL-2.0", "LicenseRef-APSL-2.0-2007", "LicenseRef-APSL-2.0-2007-copyfile"):
+        texts[name] = generic(pie, name)
     header = ["Format: " + FORMAT, "Upstream-Name: pietoolchain",
               "Source: https://github.com/blueberrypieos/pietoolchain"]
     files = package_files(pie, included, [t for t, p in trees])
     text, all_pars = render(pie, header + ["Files-Excluded: src/* xnu/*", "Files-Included:"] +
                             [" " + p for p in included], OWN, trees, texts, files)
-    binary, _ = render(pie, header, [], [(t, p) for t, p in trees if t in PIETOOLCHAIN_TREES], texts)
-    outputs = [(os.path.join(pie, "debian", "copyright"), text),
-               (os.path.join(pie, "debian", "pietoolchain.copyright"), binary)]
+    outputs = [(os.path.join(pie, "debian", "copyright"), text)]
     if check:
         for path, want in outputs:
             if not os.path.exists(path) or open(path).read() != want:

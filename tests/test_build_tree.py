@@ -46,9 +46,10 @@ def fixture_tree(tree):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / name, target)
     shutil.copytree(ROOT / "sdk", tree / "sdk", ignore=shutil.ignore_patterns("__pycache__"))
+    write(tree / "debian/changelog", "pietoolchain (0.2.0) unstable; urgency=medium\n\n"
+          "  * Fixture SDK.\n\n -- Example <maintainer@example.org>  Tue, 14 Nov 2023 22:13:20 +0000\n")
     write(tree / "debian/control", "Source: pietoolchain\nSection: devel\nPriority: optional\n"
           "Maintainer: Example <maintainer@example.org>\n\n"
-          "Package: pietoolchain\nArchitecture: linux-any\nDescription: fixture toolchain\n\n"
           "Package: pietoolchain-sdk\nArchitecture: all\nProvides: ${sdk:Provides}\n"
           "Description: fixture SDK\n\n"
           "Package: libfixture\nArchitecture: darwin-arm64\nX-Pie-Project: Libc\n"
@@ -57,26 +58,22 @@ def fixture_tree(tree):
     write(tree / "xnu/EXTERNAL_HEADERS/ptrcheck.h", "fixture header\n")
     write(tree / "xnu-patches/fixture.patch", "--- a/Makefile\n+++ b/Makefile\n@@ -1 +1 @@\n"
           "-fixture=original\n+fixture=patched\n")
-    write(tree / "toolchain/build-cctools.sh", '#!/bin/bash\nset -eu\n'
-          't=$(cd "$(dirname "$0")" && pwd)\n'
-          'build=${BUILD:-$t/build}; prefix=${PREFIX:-$t/prefix}\n'
-          'mkdir -p "$build" "$prefix/bin" "$prefix/lib/cctools-host"\n'
-          'touch "$build/cctools-built"\n'
-          'printf "#!/bin/sh\\nexit 0\\n" > "$prefix/bin/aarch64-apple-darwin-otool"\n'
-          'chmod 755 "$prefix/bin/aarch64-apple-darwin-otool"\n'
-          'touch "$prefix/lib/cctools-host/libstuff.a" "$prefix/lib/cctools-host/libmacho.a"\n',
-          executable=True)
-    write(tree / "toolchain/build-mig.sh", '#!/bin/bash\nset -eu\n'
-          't=$(cd "$(dirname "$0")" && pwd)\n'
-          'build=${BUILD:-$t/build}; prefix=${PREFIX:-$t/prefix}\n'
-          'mkdir -p "$build/mig" "$prefix/bin" "$prefix/libexec"\n'
-          'printf "#!/bin/sh\\nexit 0\\n" > "$prefix/bin/mig"\n'
-          'cp "$prefix/bin/mig" "$prefix/libexec/migcom"\n'
-          'chmod 755 "$prefix/bin/mig" "$prefix/libexec/migcom"\n', executable=True)
+    installed = tree.parent / "installed/toolchain"
+    for name in ("aarch64-apple-darwin-ld", "mig"):
+        write(installed / "prefix/bin" / name, '#!/bin/sh\nprintf "installed tool\\n"\n', executable=True)
+    write(installed / "prefix/bin/aarch64-apple-darwin-otool", '#!/bin/sh\nexit 0\n', executable=True)
+    write(installed / "prefix/libexec/migcom", '#!/bin/sh\nexit 0\n', executable=True)
+    for name in ("libstuff.a", "libmacho.a"):
+        write(installed / "prefix/lib/cctools-host" / name, "installed library\n")
+    for header in ("mach-o/arch.h", "mach-o/swap.h"):
+        write(installed / "hostinc" / header, "installed header\n")
     write(tree / "toolchain/xnu-make", '#!/bin/bash\nset -eu\n'
           't=$(cd "$(dirname "$0")" && pwd)\n'
           'for header in mach-o/arch.h mach-o/swap.h; do '
-          'cmp "$t/hostinc/$header" "$PIE_SOURCES/cctools-port/cctools/include/$header"; done\n'
+          'cmp "$t/hostinc/$header" "$PIE_HOST_TOOLCHAIN/hostinc/$header"; done\n'
+          'test "$("$t/prefix/bin/mig")" = "installed tool"\n'
+          'test "$("$t/prefix/bin/aarch64-apple-darwin-ld")" = "installed tool"\n'
+          'cmp "$t/prefix/lib/cctools-host/libstuff.a" "$PIE_HOST_TOOLCHAIN/prefix/lib/cctools-host/libstuff.a"\n'
           'test "$(cat Makefile)" = fixture=patched\n'
           'for arg; do case "$arg" in OBJROOT=*|SYMROOT=*|DSTROOT=*) '
           'mkdir -p "${arg#*=}";; esac; done\n'
@@ -91,9 +88,6 @@ def fixture_tree(tree):
           'mkdir -p "$BUILD" "$SDK/usr/local/lib/kernel"\n'
           'echo fixture > "$SDK/usr/local/lib/kernel/libfirehose_kernel.a"\n', executable=True)
     (tree / "src/libdispatch").mkdir(parents=True)
-    (tree / "toolchain/hostinc").symlink_to("../src/cctools-port/cctools/include")
-    for header in ("mach-o/arch.h", "mach-o/swap.h"):
-        write(tree / "src/cctools-port/cctools/include" / header, "fixture header\n")
     write(tree / "src/AvailabilityVersions/Makefile", "install:\n"
           "\tmkdir -p $(OBJROOT) $(SYMROOT) $(DSTROOT)/usr/include\n"
           "\tpython3 -c 'import fixture'\n"
@@ -134,8 +128,10 @@ def test_build_and_packages_leave_source_unchanged(tmp_path):
     tree = tmp_path / "source"
     fixture_tree(tree)
     before = snapshot(tree)
+    installed_before = snapshot(tmp_path / "installed")
     environment = dict(os.environ, SOURCE_DATE_EPOCH="1700000000", PIE_SDK_PACKAGE_VERSION="0.2.0",
-                       DEB_HOST_ARCH="darwin-arm64")
+                       DEB_HOST_ARCH="darwin-arm64",
+                       PIE_HOST_TOOLCHAIN=str(tmp_path / "installed/toolchain"))
     environment.pop("PYTHONDONTWRITEBYTECODE", None)
     subprocess.run([tree / "build.sh"], cwd=tmp_path, env=environment,
                    check=True, capture_output=True, timeout=60)
@@ -143,13 +139,15 @@ def test_build_and_packages_leave_source_unchanged(tmp_path):
     work = tree / "debian/build"
     assert (work / "xnu/Makefile").read_text() == "fixture=patched\n"
     assert (work / "build/hdrs/obj").is_dir()
-    assert (work / "toolchain/build/mig").is_dir()
+    assert not (work / "toolchain/build/mig").exists()
     assert (work / "build/userland/Libc/built").exists()
     assert (work / "build/src/Libc").is_dir()
     assert not (work / "src").exists()
     assert not (work / "src").is_symlink()
-    assert (work / "toolchain/hostinc").resolve(strict=True) == tree / "src/cctools-port/cctools/include"
-    assert os.readlink(tree / "toolchain/hostinc") == "../src/cctools-port/cctools/include"
+    assert (work / "toolchain/hostinc").resolve(strict=True) == tmp_path / "installed/toolchain/hostinc"
+    assert (work / "toolchain/prefix").resolve(strict=True) == tmp_path / "installed/toolchain/prefix"
+    assert not (tree / "toolchain/hostinc").exists()
+    assert snapshot(tmp_path / "installed") == installed_before
     assert (work / "build/src/copyfile/fixture.h").read_text() == "fixture header\n"
     assert (work / "build/notices/Libc").is_file()
     assert (work / "build/providers/ORDER").is_file()
@@ -161,6 +159,7 @@ def test_build_and_packages_leave_source_unchanged(tmp_path):
                    check=True, capture_output=True, timeout=30)
     assert package.read_bytes() == first
     assert snapshot(tree) == before
+    assert snapshot(tmp_path / "installed") == installed_before
     for kind in ("arch", "indep"):
         subprocess.run(["python3", tree / "sdk/mkdebs.py", tree, kind], cwd=tree,
                        env=environment, check=True, capture_output=True, timeout=30)
@@ -172,52 +171,96 @@ def test_build_and_packages_leave_source_unchanged(tmp_path):
     assert snapshot(tree) == before
 
 
-def test_native_targets_remove_debhelper_state(tmp_path):
+def test_toolchain_stage_reuses_installed_inputs(tmp_path):
     tree = tmp_path / "source"
     fixture_tree(tree)
-    shutil.copytree(ROOT / "toolchain/bin", tree / "toolchain/bin")
-    shutil.copytree(ROOT / "share", tree / "share")
-    (tree / "toolchain/iig").mkdir()
-    write(tree / "debian/hostinc", "")
-    write(tree / "src/llvm-project/llvm/cmake/config.guess", "#!/bin/sh\ntimestamp='2000-01-01'\n")
-    for name in ("comparison.ll.bak", "comparison.ll~", "#comparison.ll#"):
-        write(tree / "src/llvm-project/llvm/test/fixture" / name, "upstream fixture\n")
-    write(tree / "debian/build/stamp-check", "")
+    installed = tmp_path / "installed/toolchain"
+    environment = dict(os.environ, PIE_HOST_TOOLCHAIN=str(installed))
+    before = snapshot(installed)
+    for _ in range(2):
+        subprocess.run([tree / "build.sh", "toolchain"], env=environment,
+                       check=True, capture_output=True, timeout=30)
+        work = tree / "debian/build"
+        assert (work / "toolchain/prefix").is_symlink()
+        assert not (installed / "prefix/prefix").exists()
+        assert (work / "toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/kernel.h").exists()
+        assert (work / "toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/lib/kernel/libfirehose_kernel.a").exists()
+    assert snapshot(installed) == before
+    (installed / "prefix/bin/mig").unlink()
+    result = subprocess.run([tree / "build.sh", "toolchain"], env=environment, capture_output=True)
+    assert result.returncode != 0
+    assert b"missing host toolchain input:" in result.stderr
+
+
+def test_native_arch_targets_do_not_build_host_tools(tmp_path):
+    tree = tmp_path / "source"
+    fixture_tree(tree)
     before = snapshot(tree)
-    environment = dict(os.environ, DEB_BUILD_OPTIONS="nocheck nostrip", DH_COMPAT="13")
-    for target in ("build-arch", "binary-arch", "binary"):
+    for target in ("build-arch", "binary-arch"):
         subprocess.run([tree / "debian/rules", target, "DEB_HOST_ARCH_OS=linux"], cwd=tree,
-                       env=environment, check=True, capture_output=True, timeout=30)
-        assert snapshot(tree, ("pietoolchain", "pietoolchain-sdk")) == before
-        assert not (tree / "debian/.debhelper").exists()
-        assert (tree / "debian/build/stamp-host").exists()
-    assert (tmp_path / "pietoolchain_0.2.0_amd64.deb").is_file()
-    assert (tmp_path / "pietoolchain-sdk_0.2.0_all.deb").is_file()
-    assert (tree / "debian/files").is_file()
-    subprocess.run([tree / "debian/rules", "clean"], cwd=tree, check=True, capture_output=True)
+                       check=True, capture_output=True, timeout=30)
+    assert snapshot(tree) == before
     assert not (tree / "debian/build").exists()
-    assert snapshot(tree) == before
 
 
-def test_host_cleanup_preserves_sources_and_package_outputs(tmp_path):
-    tree = tmp_path / "source"
-    fixture_tree(tree)
-    for name in ("comparison.ll.bak", "comparison.ll~", "#comparison.ll#", "data.debhelper"):
-        write(tree / "src/llvm-project/llvm/test/fixture" / name, "upstream fixture\n")
-    preserved = ("debian/build/object.o", "debian/pietoolchain/usr/bin/tool",
-                 "debian/pietoolchain.substvars", "debian/files", "debian/source.bak")
-    for name in preserved:
-        write(tree / name, "build output\n")
-    before = snapshot(tree)
-    state = ("debian/.debhelper/state", "debian/debhelper-build-stamp",
-             "debian/pietoolchain.debhelper.log", "debian/pietoolchain.postinst.debhelper")
-    for name in state:
-        write(tree / name, "helper state\n")
-    subprocess.run([tree / "debian/rules", "clean-host"], cwd=tree, check=True, capture_output=True)
-    assert snapshot(tree) == before
-    assert not (tree / "debian/.debhelper").exists()
-    assert all(not (tree / name).exists() for name in state)
-    assert all((tree / name).read_text() == "build output\n" for name in preserved)
+def test_xcrun_resolves_installed_helpers_and_keeps_local_compilers(tmp_path):
+    local = tmp_path / "toolchain"
+    installed = tmp_path / "installed/toolchain"
+    (local / "bin").mkdir(parents=True)
+    shutil.copy2(ROOT / "toolchain/bin/xcrun", local / "bin/xcrun")
+    names = ("host-c++", "plutil", "ld-repro", "c++")
+    for name in names:
+        write(installed / "bin" / name, '#!/bin/sh\nprintf "installed helper\\n"\n', executable=True)
+    write(local / "bin/clang++", '#!/bin/sh\nprintf "local compiler\\n"\n', executable=True)
+    environment = dict(os.environ, PIE_HOST_TOOLCHAIN=str(installed))
+    before = snapshot(installed)
+    for name in names:
+        found = subprocess.check_output([local / "bin/xcrun", "-find", name],
+                                        env=environment, text=True).strip()
+        assert found == str(installed / "bin" / name)
+        assert Path(found).is_file()
+        result = subprocess.check_output([local / "bin/xcrun", name], env=environment, text=True)
+        assert result == "installed helper\n"
+        assert not (local / "bin" / name).exists()
+    found = subprocess.check_output([local / "bin/xcrun", "-find", "clang++"],
+                                    env=environment, text=True).strip()
+    assert found == str(local / "bin/clang++")
+    sdk = subprocess.check_output([local / "bin/xcrun", "-show-sdk-path"],
+                                  env=environment, text=True).strip()
+    assert sdk == str(local / "sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk")
+    assert snapshot(installed) == before
+    (installed / "bin/c++").unlink()
+    result = subprocess.run([local / "bin/xcrun", "-find", "c++"],
+                            env=environment, capture_output=True)
+    assert result.returncode != 0
+
+
+def test_xnu_make_uses_installed_helpers(tmp_path):
+    local = tmp_path / "toolchain"
+    installed = tmp_path / "installed/toolchain"
+    local.mkdir()
+    shutil.copy2(ROOT / "toolchain/xnu-make", local / "xnu-make")
+    for name in ("plutil", "ld-repro"):
+        write(installed / "bin" / name, '#!/bin/sh\nexit 0\n', executable=True)
+    write(local / "bin/make", '#!/bin/sh\nprintf "%s\\n" "${PIE_TARGET_LD:-}" '
+          '"${PIE_REAL_TARGET_LD:-}" "$@"\n', executable=True)
+    before = snapshot(installed)
+    for objroot in ("", str(tmp_path / "obj")):
+        environment = dict(os.environ, PIE_HOST_TOOLCHAIN=str(installed), PIE_TCSH="/bin/true",
+                           PIE_REPRODUCIBLE="1", SOURCE_DATE_EPOCH="1700000000",
+                           PIE_REPRO_OBJROOT=objroot)
+        for name in ("PIE_TARGET_LD", "PIE_REAL_TARGET_LD"):
+            environment.pop(name, None)
+        result = subprocess.check_output([local / "xnu-make", "installhdrs"],
+                                         env=environment, text=True).splitlines()
+        assert "PLUTIL=" + str(installed / "bin/plutil") in result[2:]
+        assert "XCRUN=" + str(local / "bin/xcrun") in result[2:]
+        assert "HOST_CC=" + str(local / "bin/host-cc") in result[2:]
+        assert result[0] == (str(installed / "bin/ld-repro") if objroot else "")
+        assert result[1] == (str(local / "prefix/bin/aarch64-apple-darwin-ld") if objroot else "")
+        assert not (local / "bin/plutil").exists()
+        assert not (local / "bin/ld-repro").exists()
+    assert snapshot(installed) == before
 
 
 def test_userland_uses_original_sources_and_stable_prefixes(tmp_path):
