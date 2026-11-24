@@ -5,9 +5,12 @@ Source: https://github.com/apple-oss-distributions/mDNSResponder
 
 Files: *
 Copyright: 1997-2026 Apple Inc.
- 1997-2025 Apple Computer, Inc.
- 2009 Microsoft
+ 1997-2023 Apple Computer, Inc.
 License: Apache-2.0
+
+Files: LICENSE
+Copyright: Apple Inc.
+License: Apache-2.0 AND BSD-3-Clause
 
 Files: mDNSShared/dns_sd.h
  mDNSShared/dnssd_clientlib.c
@@ -16,7 +19,6 @@ Files: mDNSShared/dns_sd.h
  mDNSShared/dnssd_ipc.c
  mDNSShared/dnssd_ipc.h
 Copyright: 2003-2026 Apple Inc.
- 2009 Apple Computer, Inc.
 License: BSD-3-Clause
 
 Files: mDNSShared/utilities/bsd_queue.h
@@ -28,7 +30,7 @@ Files: mDNSCore/DNSDigest.c
 Copyright: 2002-2022 Apple Inc.
  1999-2002 The OpenSSL Project
  1995-1998 Eric Young (eay@cryptsoft.com)
-License: Apache-2.0 AND OpenSSL
+License: Apache-2.0 AND LicenseRef-OpenSSL-standalone-licensing AND SSLeay-standalone
 
 License: Apache-2.0
  The full text is in /usr/share/common-licenses/Apache-2.0.
@@ -86,11 +88,7 @@ License: BSD-3-Clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-License: OpenSSL
- md32_Common.h
- ====================================================================
- Copyright (c) 1999-2002 The OpenSSL Project.  All rights reserved.
- .
+License: LicenseRef-OpenSSL-standalone-licensing
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:
@@ -134,17 +132,8 @@ License: OpenSSL
  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  OF THE POSSIBILITY OF SUCH DAMAGE.
- .
- md5_dgst.c, md5_locl.h
- ====================================================================
- .
- This product includes cryptographic software written by Eric Young
- (eay@cryptsoft.com).  This product includes software written by Tim
- Hudson (tjh@cryptsoft.com).
- .
- Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
- All rights reserved.
- .
+
+License: SSLeay-standalone
  This package is an SSL implementation written
  by Eric Young (eay@cryptsoft.com).
  The implementation was written so as to conform with Netscapes SSL.

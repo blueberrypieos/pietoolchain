@@ -25,8 +25,12 @@ TOOLCHAIN = {"AvailabilityVersions": "AvailabilityVersions", "llvm-project": "ll
 
 OURS = "2026 The Blueberry Pie OS Authors"
 OWN = [
-    ("userland/libplatform/arm64/optimized-routines/*", "2012-2024 Arm Limited",
+    ("userland/libplatform/arm64/optimized-routines/*", "1999-2024 Arm Limited",
      "MIT OR Apache-2.0 with LLVM exception"),
+    ("userland/libplatform/arm64/optimized-routines/VENDOR.md", OURS, "BSD-2-Clause"),
+    ("userland/Libc/freebsd/qsort_r.c", "none; Garrett A. Wollman placed it in the public domain",
+     "public-domain"),
+    ("userland/Libc/freebsd/block_abi.h", "2014 David T Chisnall", "BSD-2-Clause"),
     ("userland/CommonCrypto/patches/*\n"
      " userland/Libinfo/patches/0003-* userland/Libinfo/patches/0004-*\n"
      " userland/Libinfo/patches/0006-* userland/Libinfo/patches/0007-*\n"

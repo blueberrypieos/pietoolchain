@@ -37,7 +37,9 @@ With the workflows tools, run `pie check /path/to/pietoolchain`.
   byte-identical debs and their versioned Provides field.
 * `build-tree` checks the build and packaging paths with small source trees,
   source metadata snapshots and the host compiler. It also checks
-  parallel SDK install and link ordering.
+  parallel SDK install and link ordering. The man cases check the pages a
+  project's man phase installs when pages are left out or a file is
+  replaced, and the man lists' copies, symlinks and modes.
 * `libxpc` calls `userland/libxpc/tests/run.sh` with `CC=clang-21`.
   It builds wire, object, connection and pipe cases with host stubs. The
   wire suite also runs with address and undefined behaviour sanitizers.

@@ -9,7 +9,7 @@ License: BSD-2-Clause
 
 Files: src/compat/tomcrypt_private.h
 Copyright: 2026 The piecrypto authors
- Tom St Denis and the LibTom Projects contributors
+ Tom St Denis
 License: BSD-2-Clause AND Unlicense
 
 Files: userland/libcorecrypto/* userland/common.mk userland/tools/*
@@ -45,11 +45,11 @@ Copyright: 2013-2018 Frank Denis <j at pureftpd dot org>
 License: ISC
 
 Files: third_party/libtomcrypt/*
-Copyright: Tom St Denis and the LibTom contributors
+Copyright: Tom St Denis
 License: Unlicense
 
 Files: third_party/libtommath/*
-Copyright: Tom St Denis and the LibTom contributors
+Copyright: Tom St Denis
  2016 Thomas R. Nicely <http://www.trnicely.net>
 License: Unlicense
 
@@ -113,7 +113,7 @@ License: BSD-3-Clause
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 License: ISC
- Permission to use, copy, modify, and/or distribute this software for any
+ Permission to use, copy, modify, and distribute this software for any
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
  .

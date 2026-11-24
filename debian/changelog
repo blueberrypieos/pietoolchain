@@ -1,3 +1,14 @@
+pietoolchain (0.3.1) resolute; urgency=medium
+
+  * The SDK takes the ICU, libarchive and libutil headers from /usr/include,
+    as their released packages install them.
+  * libsystem-c's qsort_b no longer calls qsort_r, so interposing qsort_r no
+    longer changes it.
+  * libsystem-kernel's .so man pages become symlinks. xnu patch 0005 is
+    gone.
+
+ -- Maxwell <maxwell@blueberrypieos.com>  Wed, 18 Nov 2026 08:58:29 +0000
+
 pietoolchain (0.3.0) resolute; urgency=medium
 
   * The host tools move to pietoolchain-host.

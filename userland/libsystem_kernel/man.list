@@ -1,0 +1,244 @@
+# SPDX-License-Identifier: BSD-2-Clause
+# Copyright (c) 2026 The Blueberry Pie OS Authors
+man2/_exit.2 _exit.2
+man2/accept.2 accept.2
+man2/access.2 access.2 faccessat.2
+man2/acct.2 acct.2
+man2/adjtime.2 adjtime.2
+man2/aio_cancel.2 aio_cancel.2
+man2/aio_error.2 aio_error.2
+man2/aio_read.2 aio_read.2
+man2/aio_return.2 aio_return.2
+man2/aio_suspend.2 aio_suspend.2
+man2/aio_write.2 aio_write.2
+man2/audit.2 audit.2
+man2/auditctl.2 auditctl.2
+man2/auditon.2 auditon.2
+man2/bind.2 bind.2
+man2/chdir.2 chdir.2 fchdir.2
+man2/chflags.2 chflags.2 fchflags.2
+man2/chmod.2 chmod.2 fchmod.2 fchmodat.2
+man2/chown.2 chown.2 fchown.2 fchownat.2 lchown.2
+man2/chroot.2 chroot.2
+man2/clonefile.2 clonefile.2 clonefileat.2 fclonefileat.2
+man2/close.2 close.2
+man2/connect.2 connect.2
+man2/connectx.2 connectx.2
+man2/disconnectx.2 disconnectx.2
+man2/dup.2 dup.2 dup2.2
+man2/exchangedata.2 exchangedata.2
+man2/execve.2 execve.2
+man2/fcntl.2 fcntl.2
+man2/fhopen.2 fhopen.2
+man2/fileport_makeport.2 fileport_makeport.2 fileport_makefd.2
+man2/flock.2 flock.2
+man2/fork.2 fork.2
+man2/fs_snapshot_create.2 fs_snapshot_create.2 fs_snapshot_delete.2 fs_snapshot_list.2 fs_snapshot_mount.2 fs_snapshot_rename.2 fs_snapshot_revert.2
+man2/fsgetpath.2 fsgetpath.2
+man2/fsync.2 fsync.2
+man2/getattrlist.2 getattrlist.2 fgetattrlist.2 getattrlistat.2
+man2/getattrlistbulk.2 getattrlistbulk.2
+man2/getaudit_addr.2 getaudit_addr.2 getaudit.2
+man2/getauid.2 getauid.2
+man2/getdirentries.2 getdirentries.2
+man2/getdirentriesattr.2 getdirentriesattr.2
+man2/getdtablesize.2 getdtablesize.2
+man2/getentropy.2 getentropy.2
+man2/getfh.2 getfh.2
+man2/getfsstat.2 getfsstat.2
+man2/getgid.2 getgid.2 getegid.2
+man2/getgroups.2 getgroups.2
+man2/getitimer.2 getitimer.2 setitimer.2
+man2/getlogin.2 getlogin.2 setlogin.2
+man2/getpeername.2 getpeername.2
+man2/getpgrp.2 getpgrp.2 getpgid.2
+man2/getpid.2 getpid.2 getppid.2
+man2/getpriority.2 getpriority.2 setpriority.2
+man2/getrlimit.2 getrlimit.2 setrlimit.2
+man2/getrusage.2 getrusage.2
+man2/getsid.2 getsid.2
+man2/getsockname.2 getsockname.2
+man2/getsockopt.2 getsockopt.2 setsockopt.2
+man2/gettimeofday.2 gettimeofday.2 settimeofday.2
+man2/getuid.2 getuid.2 geteuid.2
+man2/getxattr.2 getxattr.2 fgetxattr.2
+man2/intro.2 intro.2 errno.2
+man2/ioctl.2 ioctl.2
+man2/issetugid.2 issetugid.2
+man2/kill.2 kill.2
+man2/kqueue.2 kqueue.2 EV_SET.2 kevent.2 kevent64.2 kevent_qos.2
+man2/link.2 link.2 linkat.2
+man2/lio_listio.2 lio_listio.2
+man2/listen.2 listen.2
+man2/listxattr.2 listxattr.2 flistxattr.2
+man2/lseek.2 lseek.2
+man2/madvise.2 madvise.2 posix_madvise.2
+man2/mincore.2 mincore.2
+man2/minherit.2 minherit.2
+man2/mkdir.2 mkdir.2 mkdirat.2
+man2/mkfifo.2 mkfifo.2 mkfifoat.2
+man2/mknod.2 mknod.2 mknodat.2
+man2/mlock.2 mlock.2 munlock.2
+man2/mmap.2 mmap.2
+man2/mount.2 mount.2 unmount.2
+man2/mprotect.2 mprotect.2
+man2/msync.2 msync.2
+man2/munmap.2 munmap.2
+man2/nfsclnt.2 nfsclnt.2
+man2/nfssvc.2 nfssvc.2
+man2/open.2 open.2 openat.2
+man2/openat_authenticated_np.2 openat_authenticated_np.2
+man2/pathconf.2 pathconf.2 fpathconf.2
+man2/pipe.2 pipe.2
+man2/poll.2 poll.2
+man2/posix_spawn.2 posix_spawn.2
+man2/posix_spawn.2 posix_spawnp.2
+man2/pselect.2 pselect.2
+man2/pthread_setugid_np.2 pthread_setugid_np.2
+man2/ptrace.2 ptrace.2
+man2/quotactl.2 quotactl.2
+man2/read.2 read.2 pread.2 preadv.2 readv.2
+man2/readlink.2 readlink.2 freadlink.2 readlinkat.2
+man2/reboot.2 reboot.2
+man2/recv.2 recv.2 recvfrom.2 recvmsg.2
+man2/removexattr.2 removexattr.2 fremovexattr.2
+man2/rename.2 rename.2 renameat.2 renameatx_np.2 renamex_np.2
+man2/revoke.2 revoke.2
+man2/rmdir.2 rmdir.2
+man2/searchfs.2 searchfs.2
+man2/select.2 select.2 FD_CLR.2 FD_COPY.2 FD_ISSET.2 FD_SET.2 FD_ZERO.2
+man2/sem_close.2 sem_close.2
+man2/sem_open.2 sem_open.2
+man2/sem_post.2 sem_post.2
+man2/sem_unlink.2 sem_unlink.2
+man2/sem_wait.2 sem_wait.2
+man2/sem_wait.2 sem_trywait.2
+man2/semctl.2 semctl.2
+man2/semget.2 semget.2
+man2/semop.2 semop.2
+man2/send.2 send.2 sendmsg.2 sendto.2
+man2/sendfile.2 sendfile.2
+man2/setattrlist.2 setattrlist.2 fsetattrlist.2 setattrlistat.2
+man2/setaudit_addr.2 setaudit_addr.2 setaudit.2
+man2/setauid.2 setauid.2
+man2/setgroups.2 setgroups.2
+man2/setpgid.2 setpgid.2 setpgrp.2
+man2/setregid.2 setregid.2
+man2/setreuid.2 setreuid.2
+man2/setsid.2 setsid.2
+man2/setuid.2 setuid.2 setegid.2 seteuid.2 setgid.2
+man2/setxattr.2 setxattr.2 fsetxattr.2
+man2/shm_open.2 shm_open.2
+man2/shm_unlink.2 shm_unlink.2
+man2/shmat.2 shmat.2 shmdt.2
+man2/shmctl.2 shmctl.2
+man2/shmget.2 shmget.2
+man2/shutdown.2 shutdown.2
+man2/sigaction.2 sigaction.2
+man2/sigaltstack.2 sigaltstack.2
+man2/sigpending.2 sigpending.2
+man2/sigprocmask.2 sigprocmask.2
+man2/sigstack.2 sigstack.2
+man2/sigsuspend.2 sigsuspend.2
+man2/socket.2 socket.2
+man2/socketpair.2 socketpair.2
+man2/stat.2 stat.2 fstat.2 fstat64.2 fstatat.2 lstat.2 lstat64.2 stat64.2
+man2/statfs.2 statfs.2 fstatfs.2 fstatfs64.2 statfs64.2
+man2/symlink.2 symlink.2 symlinkat.2
+man2/sync.2 sync.2
+man2/truncate.2 truncate.2 ftruncate.2
+man2/umask.2 umask.2
+man2/undelete.2 undelete.2
+man2/unlink.2 unlink.2 unlinkat.2
+man2/utimensat.2 utimensat.2 futimens.2
+man2/utimes.2 utimes.2 futimes.2
+man2/wait.2 wait.2 wait3.2 wait4.2 waitpid.2
+man2/write.2 write.2 pwrite.2 pwritev.2 writev.2
+man3/getiopolicy_np.3 getiopolicy_np.3
+man3/getiopolicy_np.3 setiopolicy_np.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_addclose.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_addchdir.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_adddup2.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_addfchdir.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_addinherit_np.3
+man3/posix_spawn_file_actions_addclose.3 posix_spawn_file_actions_addopen.3
+man3/posix_spawn_file_actions_init.3 posix_spawn_file_actions_init.3
+man3/posix_spawn_file_actions_init.3 posix_spawn_file_actions_destroy.3
+man3/posix_spawnattr_init.3 posix_spawnattr_init.3
+man3/posix_spawnattr_init.3 posix_spawnattr_destroy.3
+man3/posix_spawnattr_setarchpref_np.3 posix_spawnattr_setarchpref_np.3
+man3/posix_spawnattr_setarchpref_np.3 posix_spawnattr_getarchpref_np.3
+man3/posix_spawnattr_setbinpref_np.3 posix_spawnattr_setbinpref_np.3
+man3/posix_spawnattr_setbinpref_np.3 posix_spawnattr_getbinpref_np.3
+man3/posix_spawnattr_setflags.3 posix_spawnattr_setflags.3
+man3/posix_spawnattr_setflags.3 posix_spawnattr_getflags.3
+man3/posix_spawnattr_setpgroup.3 posix_spawnattr_setpgroup.3
+man3/posix_spawnattr_setpgroup.3 posix_spawnattr_getpgroup.3
+man3/posix_spawnattr_setsigdefault.3 posix_spawnattr_setsigdefault.3
+man3/posix_spawnattr_setsigdefault.3 posix_spawnattr_getsigdefault.3
+man3/posix_spawnattr_setsigmask.3 posix_spawnattr_setsigmask.3
+man3/posix_spawnattr_setsigmask.3 posix_spawnattr_getsigmask.3
+man3/posix_spawnattr_setspecialport_np.3 posix_spawnattr_setspecialport_np.3
+man3/posix_spawnattr_setspecialport_np.3 posix_spawnattr_setexceptionports_np.3
+man3/queue.3 queue.3
+man3/queue.3 CIRCLEQ_ENTRY.3
+man3/queue.3 CIRCLEQ_HEAD.3
+man3/queue.3 CIRCLEQ_INIT.3
+man3/queue.3 CIRCLEQ_INSERT_AFTER.3
+man3/queue.3 CIRCLEQ_INSERT_BEFORE.3
+man3/queue.3 CIRCLEQ_INSERT_HEAD.3
+man3/queue.3 CIRCLEQ_INSERT_TAIL.3
+man3/queue.3 CIRCLEQ_REMOVE.3
+man3/queue.3 LIST_ENTRY.3
+man3/queue.3 LIST_HEAD.3
+man3/queue.3 LIST_INIT.3
+man3/queue.3 LIST_INSERT_AFTER.3
+man3/queue.3 LIST_INSERT_BEFORE.3
+man3/queue.3 LIST_INSERT_HEAD.3
+man3/queue.3 LIST_REMOVE.3
+man3/queue.3 TAILQ_ENTRY.3
+man3/queue.3 TAILQ_HEAD.3
+man3/queue.3 TAILQ_INIT.3
+man3/queue.3 TAILQ_INSERT_AFTER.3
+man3/queue.3 TAILQ_INSERT_BEFORE.3
+man3/queue.3 TAILQ_INSERT_HEAD.3
+man3/queue.3 TAILQ_INSERT_TAIL.3
+man3/queue.3 TAILQ_REMOVE.3
+man4/aio.4 aio.4
+man4/arp.4 arp.4
+man4/audit.4 audit.4
+man4/auditpipe.4 auditpipe.4
+man4/bpf.4 bpf.4
+man4/fd.4 fd.4 stderr.4 stdin.4 stdout.4
+man4/gif.4 gif.4
+man4/icmp.4 icmp.4
+man4/icmp6.4 icmp6.4
+man4/ifmib.4 ifmib.4
+man4/inet.4 inet.4
+man4/inet6.4 inet6.4
+man4/ip.4 ip.4
+man4/ip6.4 ip6.4
+man4/ipsec.4 ipsec.4
+man4/lo.4 lo.4
+man4/netintro.4 netintro.4 networking.4
+man4/null.4 null.4
+man4/pty.4 pty.4
+man4/route.4 route.4
+man4/stf.4 stf.4
+man4/tcp.4 tcp.4
+man4/termios.4 termios.4
+man4/tty.4 tty.4
+man4/udp.4 udp.4
+man4/unix.4 unix.4
+man4/vsock.4 vsock.4
+man5/acct.5 acct.5
+man5/core.5 core.5
+man5/dir.5 dir.5 dirent.5
+man5/types.5 types.5
+man7/sticky.7 sticky.7
+man9/byteorder.9 byteorder.9
+man9/copy.9 copy.9 copyin.9 copyinstr.9 copyout.9 copystr.9
+man9/fetch.9 fetch.9 fubyte.9 fuibyte.9 fuiword.9 fulong.9 fuulong.9 fuword.9
+man9/intro.9 intro.9
+man9/store.9 store.9 subyte.9 suibyte.9 suiword.9 sulong.9 suulong.9 suword.9
+man9/style.9 style.9

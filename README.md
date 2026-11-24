@@ -61,7 +61,7 @@ On Ubuntu 26.04:
 git submodule update --init --recursive
 sudo apt-get install dpkg-dev build-essential
 sudo apt-get build-dep ./
-PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.0_all.deb and the runtime packages
+PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.1_all.deb and the runtime packages
 ```
 
 Install `pietoolchain-host` 0.3.0 or newer from the resolute archive before

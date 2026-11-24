@@ -2,8 +2,15 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # Copyright (c) 2026 The Blueberry Pie OS Authors
 """
-usage: pbxproj-man.py [-d DSTROOT] PROJECT.xcodeproj [TARGET...]
+usage: pbxproj-man.py [-d DSTROOT] [--man-list FILE] [--omit PAGE]... [--replace FILE=OURS]...
+                      PROJECT.xcodeproj [TARGET...]
   Without TARGETs, every native and aggregate target's.
+  --man-list FILE   the project's list of man pages, "source dest links..." a line
+  --omit PAGE       leave out PAGE: the man phase sees FILE without PAGE's line
+  --replace FILE=OURS
+                    the man phase reads OURS as FILE, whether or not the
+                    project has FILE or its directory
+  FILE is a path under the project directory.
 """
 import getpass
 import grp
@@ -74,7 +81,26 @@ def installs_man(name, script, inputs, projdir):
     return False
 
 
-def shadow(projdir, out):
+def overlay(projdir, out, rel, data):
+    parts = rel.split("/")
+    src, dst = projdir, out
+    for part in parts[:-1]:
+        src, dst = os.path.join(src, part), os.path.join(dst, part)
+        if os.path.islink(dst):
+            os.unlink(dst)
+            os.makedirs(dst)
+            for e in os.listdir(src):
+                os.symlink(os.path.join(src, e), os.path.join(dst, e))
+        elif not os.path.isdir(dst):
+            os.makedirs(dst)
+    dst = os.path.join(dst, parts[-1])
+    if os.path.lexists(dst):
+        os.unlink(dst)
+    with open(dst, "wb") as f:
+        f.write(data)
+
+
+def shadow(projdir, out, files=None):
     os.makedirs(out)
     for e in os.listdir(projdir):
         if e != "xcodescripts":
@@ -94,7 +120,19 @@ def shadow(projdir, out):
             with open(dst, "wb") as f:
                 f.write(data)
             shutil.copymode(src, dst)
+    for rel, data in sorted((files or {}).items()):
+        overlay(projdir, out, rel, data)
     return out
+
+
+def omitted(path, pages):
+    out = []
+    for line in open(path, "rb").read().split(b"\n"):
+        words = line.split()
+        if words and not line.startswith(b"#") and words[0].decode() in pages:
+            continue
+        out.append(line)
+    return b"\n".join(out)
 
 
 def copy_pages(proj, target):
@@ -106,12 +144,34 @@ def copy_pages(proj, target):
 
 def main():
     args = sys.argv[1:]
-    dst = None
-    if args[:1] == ["-d"]:
-        dst = os.path.abspath(args[1])
-        args = args[2:]
+    dst, man_list, omit, replace = None, None, set(), {}
+    while args and args[0].startswith("-"):
+        if len(args) < 2 or args[0] not in ("-d", "--man-list", "--omit", "--replace"):
+            sys.exit(__doc__.strip())
+        opt, val, args = args[0], args[1], args[2:]
+        if opt == "-d":
+            dst = os.path.abspath(val)
+        elif opt == "--man-list":
+            man_list = val
+        elif opt == "--omit":
+            omit.add(val)
+        else:
+            rel, eq, ours = val.partition("=")
+            if not eq:
+                sys.exit(__doc__.strip())
+            replace[rel] = open(ours, "rb").read()
+    if omit and not man_list:
+        sys.exit("pbxproj-man: --omit needs --man-list")
     proj, targets = args[0], args[1:]
     projdir = os.path.dirname(os.path.abspath(proj))
+    files = dict(replace)
+    if man_list:
+        listed = {w.split()[0] for w in open(os.path.join(projdir, man_list)).read().split("\n")
+                  if w.split() and not w.startswith("#")}
+        missing = sorted(omit - listed)
+        if missing:
+            sys.exit("pbxproj-man: %s lists no %s" % (man_list, ", ".join(missing)))
+        files[man_list] = omitted(os.path.join(projdir, man_list), omit)
     text = open(os.path.join(proj, "project.pbxproj"), encoding="utf-8").read()
     if not targets:
         targets = sorted(set(re.findall(r'PBX(?:Native|Aggregate)Target "([^"]+)"', text)))
@@ -139,7 +199,7 @@ def main():
     user, group = getpass.getuser(), grp.getgrgid(os.getgid()).gr_name
     scratch = tempfile.mkdtemp(prefix="pbxproj-man.")
     try:
-        projdir = shadow(projdir, os.path.join(scratch, "src"))
+        projdir = shadow(projdir, os.path.join(scratch, "src"), files)
         for d in ("usr/lib", "usr/bin", "usr/sbin", "usr/libexec", "usr/include", "usr/local/lib",
                   "usr/local/include", "usr/share/man"):
             os.makedirs(os.path.join(dst, d), exist_ok=True)

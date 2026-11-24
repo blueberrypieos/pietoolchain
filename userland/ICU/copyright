@@ -1614,6 +1614,22 @@ Files: debian/*
 Copyright: 2026 The Blueberry Pie OS Authors
 License: BSD-2-Clause
 
+Files: debian/patches/0001-own-headers.patch
+Copyright: 1995-2023 International Business Machines Corporation and others
+ 1999-2013 IBM Corp.
+ 2000-2015 IBM, Inc. and others
+ 2016-2025 Unicode, Inc. and others
+ 2005-2007, 2010 Apple Inc., Unicode Inc., and others
+ 2006-2015 International Business Machines Corporation, Apple Inc., and others
+ 2011-2013 Apple Inc.; Unicode, Inc.; and others
+ 2011-2013 Apple Inc. and others
+ Apple Inc.
+ 2001, 2004, 2007 Google Inc.
+ 2008-2017 Google, International Business Machines Corporation and others
+ 2010 Yahoo! Inc.
+ 2026 The Blueberry Pie OS Authors
+License: Unicode-3.0
+
 License: FSFUL
  This configure script is free software; the Free Software Foundation
  gives unlimited permission to copy, distribute and modify it.

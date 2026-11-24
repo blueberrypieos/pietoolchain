@@ -32,7 +32,7 @@ License: Apache-2.0
 Files: man/*
 Copyright: 1997 Brian Cully <shmit@kublai.com>
  2001 Apple Computer, Inc.
-License: BSD-3-Clause
+License: LicenseRef-BSD-3-Clause-John-Birrell
 
 Files: man/pthread.3
  man/pthread_create.3
@@ -141,7 +141,7 @@ License: BSD-2-Clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-License: BSD-3-Clause
+License: LicenseRef-BSD-3-Clause-John-Birrell
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
  are met:

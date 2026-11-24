@@ -111,20 +111,11 @@ $(OBJ)/dyld/libsystem_kernel.a: $(OBJ)/libsystem_kernel.a $(OBJ)/syscalls.a $(SO
 	rm -f $@
 	$(LIBTOOL) -static -no_warning_for_no_symbols -o $@ $^
 
-XNU_MAN := $(OBJ)/xnu-man
-$(XNU_MAN)/.done:
-	rm -rf $(XNU_MAN)
-	cd $(PIE)/xnu && $(TOOLCHAIN)/xnu-make ARCH_CONFIGS=ARM64 BUILD_LTO=0 KERNEL_CONFIGS=RELEASE \
-		MACHINE_CONFIGS=VMAPPLE ARCH_STRING_FOR_CURRENT_MACHINE_CONFIG=arm64 OBJROOT=$(XNU_MAN)/obj \
-		SYMROOT=$(XNU_MAN)/sym DSTROOT=$(XNU_MAN)/dst install_textfiles > $(XNU_MAN).log
-	touch $@
-
-install: $(DYLIB) $(OBJ)/dyld/libsystem_kernel.a installhdrs $(XNU_MAN)/.done
+install: $(DYLIB) $(OBJ)/dyld/libsystem_kernel.a installhdrs
 	$(call install_both,$(DYLIB),usr/lib/system)
 	install -d $(SDK)/usr/local/lib/dyld
 	install -m 644 $(OBJ)/dyld/libsystem_kernel.a $(SDK)/usr/local/lib/dyld/
-	install -d $(ROOT)/usr/share/man
-	cp -R $(XNU_MAN)/dst/usr/share/man/. $(ROOT)/usr/share/man/
+	$(call install_man_list,man.list,$(PIE)/xnu/bsd/man,444)
 
 clean:
 	rm -rf $(OBJ)

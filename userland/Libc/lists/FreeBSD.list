@@ -53,7 +53,7 @@ gen/FreeBSD/arc4random.c
 gen/FreeBSD/assert.c
 gen/FreeBSD/basename.c
 gen/FreeBSD/clock.c
-gen/FreeBSD/closedir.c	-include gen/__dirent.h
+gen/FreeBSD/closedir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/ctermid.c
 gen/FreeBSD/daemon.c
 gen/FreeBSD/dirname.c
@@ -84,17 +84,17 @@ gen/FreeBSD/lrand48.c
 gen/FreeBSD/mrand48.c
 gen/FreeBSD/nice.c
 gen/FreeBSD/nrand48.c
-gen/FreeBSD/opendir.c	-include gen/__dirent.h
+gen/FreeBSD/opendir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/pause.c
 gen/FreeBSD/popen.c
 gen/FreeBSD/psignal.c
-gen/FreeBSD/readdir.c	-include gen/__dirent.h
+gen/FreeBSD/readdir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/readpassphrase.c
-gen/FreeBSD/rewinddir.c	-include gen/__dirent.h
-gen/FreeBSD/scandir.c	-include gen/__dirent.h
+gen/FreeBSD/rewinddir.c	$(DIRENT_RENAMES)
+gen/FreeBSD/scandir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/scandir_b.c
 gen/FreeBSD/seed48.c
-gen/FreeBSD/seekdir.c	-include gen/__dirent.h
+gen/FreeBSD/seekdir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/sethostname.c
 gen/FreeBSD/setmode.c
 gen/FreeBSD/setprogname.c
@@ -108,7 +108,7 @@ gen/FreeBSD/sysconf.c
 gen/FreeBSD/sysctl.c
 gen/FreeBSD/sysctlbyname.c
 gen/FreeBSD/sysctlnametomib.c
-gen/FreeBSD/telldir.c	-include gen/__dirent.h
+gen/FreeBSD/telldir.c	$(DIRENT_RENAMES)
 gen/FreeBSD/termios.c
 gen/FreeBSD/time.c
 gen/FreeBSD/times.c
@@ -344,7 +344,6 @@ stdlib/FreeBSD/psort_b.c	-DI_AM_PSORT_B
 stdlib/FreeBSD/psort_r.c	-DI_AM_PSORT_R
 stdlib/FreeBSD/putenv.c
 stdlib/FreeBSD/qsort.c
-stdlib/FreeBSD/qsort_r.c
 stdlib/FreeBSD/quick_exit.c
 stdlib/FreeBSD/radixsort.c
 stdlib/FreeBSD/rand.c
@@ -372,7 +371,6 @@ stdlib/OpenBSD/gcvt.c
 stdlib/a64l.c
 stdlib/grantpt.c
 stdlib/l64a.c
-stdlib/qsort_b.c
 stdtime/FreeBSD/asctime.c
 stdtime/FreeBSD/difftime.c
 stdtime/FreeBSD/ftime.c

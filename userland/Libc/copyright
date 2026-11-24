@@ -5,16 +5,10 @@ Source: https://github.com/apple-oss-distributions/Libc
 
 Files: *
 Copyright: 1980, 1983, 1985, 1987-1988, 1990-1994 The Regents of the University of California
- 1996-1999 Theodore Ts'o
- 1999 Andreas Dilger (adilger@enel.ucalgary.ca)
  1992-1994 Henry Spencer
- 2002 Robert Drehmel
  1997 Todd C. Miller <Todd.Miller@courtesan.com>
- 2003 Constantin S. Svintsoff <kostik@iclub.nsu.ru>
- 2011 None
  2002 The FreeBSD Project, Inc.
  1997 The NetBSD Foundation, Inc.
- 1999 Tim Singletary
 License: BSD-3-Clause
 
 Files: APPLE_LICENSE
@@ -26,12 +20,17 @@ Copyright: 2001-2009 Ville Laurikari <vl@iki.fi>
  Apple Inc.
 License: BSD-2-Clause
 
+Files: uuid/uuidsrc/*
+Copyright: 1996-1999 Theodore Ts'o
+ 1999 Andreas Dilger (adilger@enel.ucalgary.ca)
+License: BSD-3-Clause-Tso
+
 Files: net/FreeBSD/inet_addr.c
 Copyright: 1993 Digital Equipment Corporation
  1996-1999 Internet Software Consortium
  2004 Internet Systems Consortium, Inc. ("ISC")
  1983, 1990, 1993 The Regents of the University of California
-License: BSD-3-Clause AND ISC
+License: BSD-3-Clause AND LicenseRef-DEC-resolver AND ISC
 
 Files: stdlib/FreeBSD/strtod.3
 Copyright: 1998 Lucent Technologies
@@ -75,6 +74,7 @@ Copyright: 1999-2014, 2016-2024 Apple Inc.
  1988 NeXT, Inc.
  1994 University Corporation for Atmospheric Research
  1995-2002 University Corporation for Atmospheric Research/Unidata
+ 2011, 2013 Apple, Inc.
 License: APSL-2.0
 
 Files: libdarwin/h/dirstat.h
@@ -100,12 +100,12 @@ Copyright: 1999 Citrus Project
 License: BSD-2-Clause AND LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
 Files: fbsdcompat/spinlock.h
-Copyright: 2003-2006 Apple Computer, Inc.
+Copyright: 2003 Apple Computer, Inc.
  1998 John Birrell <jb@cimlogic.com.au>
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-John-Birrell
 
 Files: include/NetBSD/utmpx.h
-Copyright: 2003-2006 Apple Computer, Inc.
+Copyright: 2004-2006 Apple Computer, Inc.
  2002 The NetBSD Foundation, Inc.
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
@@ -161,8 +161,8 @@ Files: compat-43/*
  stdlib/strtol_l.3
  sys/nanosleep.2
 Copyright: 1980, 1983, 1985-1995 The Regents of the University of California
- 2017 Apple Inc.
  1992-1994 Henry Spencer
+ UNIX System Laboratories, Inc.
 License: BSD-4-Clause-UC
 
 Files: compat-43/sigcompat.c
@@ -209,10 +209,11 @@ Files: compat-43/sigcompat.c
  libdarwin/dirstat_collection.c
  util/*
 Copyright: 1982-1983, 1985-1995 The Regents of the University of California
- 1999-2023 Apple Inc.
+ 1999-2013, 2017, 2023 Apple Inc.
  1998-2025 Apple Computer, Inc.
  1995 NeXT Computer, Inc.
  1998 Apple Compter, Inc.
+ UNIX System Laboratories, Inc.
 License: APSL-2.0 AND BSD-4-Clause-UC
 
 Files: gen/thread_stack_pcs.h
@@ -271,14 +272,13 @@ Files: fbsdcompat/fpmath.h
  stdlib/NetBSD/*
  string/NetBSD/*
  sys/OpenBSD/stack_protector.c
- sys/sigwait.2
  util/opendev.3
  util/opendev.c
 Copyright: 2002-2004 Tim J. Robbins
- 1998-1999, 2001-2003, 2008, 2010-2012 The NetBSD Foundation, Inc.
+ 1999, 2001-2003, 2010, 2012 The NetBSD Foundation, Inc.
  2001 Chris D. Faulhaber
  2000-2001, 2003 Alexey Zelkin <phantom@FreeBSD.org>
- 2023, 2025 Klara, Inc.
+ 2023 Klara, Inc.
  2001-2003 Mike Barcroft <mike@FreeBSD.org>
  2000-2002 Robert N. M. Watson
  2012 Apple Inc.
@@ -291,11 +291,9 @@ Copyright: 2002-2004 Tim J. Robbins
  2000 Todd C. Miller
  2002 William C. Fenner
  1998 Alex Nash
- 2011 David Schultz
  2002 David Schultz <dschultz@uclink.Berkeley.EDU>
  2003 David Xu <davidxu@freebsd.org>
  2002 Hiroaki Etoh, Federico G. Schwindt, and Miodrag Vallat
- 2000 Jason Evans <jasone@FreeBSD.org>
  2001 Jeroen Ruigrok van der Werven <asmodai@FreeBSD.org>
  1996 Joerg Wunsch
  2002 Kyle Martin <mkm@ieee.org>
@@ -331,13 +329,13 @@ Files: compat-43/sigaltstk.c
  posix1e/acl_translate.c
  util/mkpath_np.3
  util/mkpath_np.c
-Copyright: 1999-2020, 2023-2025 Apple Inc.
- 1999-2000, 2004-2006, 2020 Apple Computer, Inc.
+Copyright: 1999-2018 Apple Inc.
+ 1999, 2004-2006 Apple Computer, Inc.
+ 2004-2010, 2016 Apple, Inc.
 License: APSL-2.0
 
 Files: include/search.h
  stdlib/FreeBSD/_Exit_.c
- stdlib/FreeBSD/qsort_r.c
  stdlib/FreeBSD/tdelete.c
  stdlib/FreeBSD/tfind.c
  stdlib/FreeBSD/tsearch.c
@@ -349,11 +347,27 @@ Copyright: none; their authors (Arthur David Olson and the tz project for
  stdtime/FreeBSD, J.T. Conklin and others) placed them in the public domain
 License: public-domain
 
+Files: db/man/FreeBSD/dbm.3
+Copyright: 1999 Tim Singletary
+License: public-domain
+ No copyright is claimed.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
 Files: compat-43/FreeBSD/*
  gen/FreeBSD/*
  gen/backtrace.3
  gen/clock_gettime.3
- gen/crypt.3
  include/arpa/*
  include/glob.h
  include/libgen.h
@@ -412,12 +426,10 @@ Files: compat-43/FreeBSD/*
  stdtime/FreeBSD/strftime.3
  string/FreeBSD/*
 Copyright: 1980, 1983, 1985-1995 The Regents of the University of California
- 1993 Martin Birgmeier
  2002-2004 Tim J. Robbins
  2005 Poul-Henning Kamp
  2011 The FreeBSD Foundation
  1997-1998 Todd C. Miller <Todd.Miller@courtesan.com>
- 1998 Softweyr LLC
  2013 Garrett D'Amore <garrett@damore.org>
  2001 Mike Barcroft <mike@FreeBSD.org>
  2010-2011 Nexenta Systems, Inc.
@@ -426,12 +438,11 @@ Copyright: 1980, 1983, 1985-1995 The Regents of the University of California
  2007 Apple Inc.
  1994 Christos Zoulas
  2000 Daniel Eischen
- 1994 David Burren
  1999 David E. O'Brien
  1996-2002 FreeBSD Project
- 1998 John Birrell <jb@cimlogic.com.au>
  1983, 1993 Regents of the University of California
  1994 SigmaSoft, Th. Lockert <tholo@sigmasoft.com>
+ UNIX System Laboratories, Inc.
 License: BSD-3-Clause
 
 Files: gen/FreeBSD/arc4random.c
@@ -447,7 +458,6 @@ Files: gen/FreeBSD/arc4random.c
  net/FreeBSD/inet_net_pton.c
  net/FreeBSD/inet_neta.c
  net/FreeBSD/nsap_addr.c
- net/inet_pton.c
  stdlib/FreeBSD/strtonum.3
  stdlib/FreeBSD/strtonum.c
  stdlib/OpenBSD/*
@@ -465,11 +475,30 @@ Copyright: 1997-1998, 2000-2003, 2006-2007, 2010 Todd C. Miller <Todd.Miller@cou
  2004 Ted Unangst and Todd Miller
 License: ISC
 
+Files: net/inet_pton.c
+Copyright: 1996, 1999 Internet Software Consortium
+License: LicenseRef-ISC-Internet-Software-Consortium
+
+Files: gen/FreeBSD/_rand48.c
+ gen/FreeBSD/drand48.c
+ gen/FreeBSD/erand48.c
+ gen/FreeBSD/jrand48.c
+ gen/FreeBSD/lcong48.c
+ gen/FreeBSD/lrand48.c
+ gen/FreeBSD/mrand48.c
+ gen/FreeBSD/nrand48.c
+ gen/FreeBSD/rand48.3
+ gen/FreeBSD/rand48.h
+ gen/FreeBSD/seed48.c
+ gen/FreeBSD/srand48.c
+Copyright: 1993 Martin Birgmeier
+License: Martin-Birgmeier
+
 Files: fbsdcompat/reentrant.h
  gen/FreeBSD/fmtcheck.3
  include/FreeBSD/nl_types.h
  include/getopt.h
-Copyright: 1996-2000 The NetBSD Foundation, Inc.
+Copyright: 1996-1998, 2000 The NetBSD Foundation, Inc.
 License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
 Files: include/stringlist.h
@@ -484,21 +513,44 @@ Files: nls/FreeBSD/catclose.3
 Copyright: 1994 Winning Strategies, Inc.
 License: LicenseRef-BSD-4-Clause-Winning-Strategies
 
+Files: string/FreeBSD/strtok.c
+ string/FreeBSD/wcstok.c
+Copyright: 1998 Softweyr LLC
+ 1988, 1993 The Regents of the University of California
+License: LicenseRef-BSD-3-Clause-Softweyr
+
 Files: gen/FreeBSD/getprogname.3
  stdlib/FreeBSD/hcreate.c
-Copyright: 1994, 2001 Christopher G. Demetriou
+Copyright: 2001 Christopher G. Demetriou
 License: LicenseRef-BSD-4-Clause-NetBSD-Project
+
+Files: gen/crypt.3
+Copyright: 1994 David Burren
+License: LicenseRef-BSD-3-Clause-David-Burren
+
+Files: stdio/FreeBSD/_flock_stub.c
+Copyright: 1998 John Birrell <jb@cimlogic.com.au>
+License: LicenseRef-BSD-3-Clause-John-Birrell
+
+Files: stdlib/FreeBSD/realpath.c
+Copyright: 2003 Constantin S. Svintsoff <kostik@iclub.nsu.ru>
+License: LicenseRef-BSD-3-Clause-Constantin-Svintsoff
+
+Files: string/FreeBSD/strtok.3
+Copyright: 1998 Softweyr LLC
+ 1988, 1991, 1993 The Regents of the University of California
+License: LicenseRef-BSD-3-Clause-Softweyr-2
 
 Files: net/ethers.3
 Copyright: 1995 Bill Paul <wpaul@ctr.columbia.edu>
 License: LicenseRef-BSD-4-Clause-Bill-Paul
 
 Files: stdtime/FreeBSD/ftime.c
-Copyright: 1994, 2001 Christopher G. Demetriou
+Copyright: 1994 Christopher G. Demetriou
 License: LicenseRef-BSD-4-Clause-Christopher-Demetriou
 
 Files: gen/FreeBSD/stringlist.3
-Copyright: 1996-2000 The NetBSD Foundation, Inc.
+Copyright: 1997, 1999 The NetBSD Foundation, Inc.
 License: LicenseRef-BSD-4-Clause-NetBSD-Foundation-2
 
 Files: gen/FreeBSD/arc4random.3
@@ -510,6 +562,15 @@ Copyright: 2002-2004 Tim J. Robbins
  Sin'ichiro MIYATANI / Phase One, Inc
 License: LicenseRef-BSD-4-Clause-Phase-One
 
+Files: string/FreeBSD/wcstok.3
+Copyright: 1998 Softweyr LLC
+ 1988, 1991, 1993 The Regents of the University of California
+License: LicenseRef-BSD-4-Clause-Softweyr
+
+Files: sys/sigwait.2
+Copyright: 2000 Jason Evans <jasone@FreeBSD.org>
+License: LicenseRef-BSD-Evans
+
 Files: gen/FreeBSD/popen.3
  gen/FreeBSD/times.c
  gen/FreeBSD/ttyname.c
@@ -520,12 +581,10 @@ Files: gen/FreeBSD/popen.3
  locale/FreeBSD/rune.c
  stdtime/FreeBSD/ftime.3
  string/FreeBSD/rindex.3
- string/FreeBSD/wcstok.3
  util/login.3
  util/login_tty.c
  util/openpty.3
 Copyright: 1980, 1983, 1988-1991, 1993, 1995 The Regents of the University of California
- 1998 Softweyr LLC
  2002-2004 Tim J. Robbins
 License: BSD-4-Clause-UC
 
@@ -546,11 +605,23 @@ Files: include/strhash.h
 Copyright: 1990 Terry Jones & Jordan Hubbard
 License: LicenseRef-HPND-Terry-Jones-Jordan-Hubbard
 
+Files: stdlib/FreeBSD/insque.3
+ stdlib/FreeBSD/insque.c
+ stdlib/FreeBSD/lsearch.3
+ stdlib/FreeBSD/lsearch.c
+ stdlib/FreeBSD/remque.c
+Copyright: 2002 Robert Drehmel
+License: LicenseRef-Robert-Drehmel
+
 Files: gdtoa/FreeBSD/*
 Copyright: 1998-2000 Lucent Technologies
 License: SMLNJ
 
 Files: gdtoa/FreeBSD/glue.c
+ gen/FreeBSD/getprogname.c
+ gen/FreeBSD/setprogname.c
+ locale/FreeBSD/nomacros.c
+ string/FreeBSD/strrchr.c
 Copyright: The FreeBSD Project
 License: BSD-2-Clause
 
@@ -561,7 +632,6 @@ Files: gdtoa/FreeBSD/_hdtoa.c
  gen/FreeBSD/fmtcheck.c
  gen/FreeBSD/fmtmsg.3
  gen/FreeBSD/fmtmsg.c
- gen/FreeBSD/ftok.c
  gen/FreeBSD/getpeereid.3
  gen/FreeBSD/getpeereid.c
  gen/FreeBSD/lockf.3
@@ -643,7 +713,8 @@ Files: gdtoa/FreeBSD/_hdtoa.c
  string/FreeBSD/wmemset.c
 Copyright: 2002-2005 Tim J. Robbins
  1999, 2001 Citrus Project
- 2003-2005, 2009 David Schultz <das@FreeBSD.org>
+ 2009 David Schultz <das@FreeBSD.org>
+ 2003-2005 David Schultz <das@FreeBSD.ORG>
  2005 Poul-Henning Kamp
  1997, 2000, 2016 The NetBSD Foundation, Inc.
  2010-2011, 2017 Nexenta Systems, Inc.
@@ -663,7 +734,6 @@ Copyright: 2002-2005 Tim J. Robbins
  2002 Kyle Martin
  2002 Kyle Martin <mkm@ieee.org>
  2013 Pietro Cerutti <gahr@FreeBSD.org>
- 1994 SigmaSoft, Th. Lockert <tholo@sigmasoft.com>
  2001 The FreeBSD Project
 License: BSD-2-Clause
 
@@ -689,7 +759,7 @@ License: MIT
 
 Files: gen/FreeBSD/sysctlbyname.c
 Copyright: Poul-Henning Kamp <phk@FreeBSD.org>
-License: Beerware
+License: LicenseRef-Beerware-2
 
 Files: stdtime/FreeBSD/strftime.c
 Copyright: 1989 The Regents of the University of California
@@ -698,7 +768,12 @@ License: BSD-4.3TAHOE
 Files: include/arpa/inet.h
 Copyright: 1993 Digital Equipment Corporation
  1983, 1993 The Regents of the University of California
-License: BSD-4-Clause-UC AND ISC
+License: BSD-4-Clause-UC AND LicenseRef-DEC-resolver
+
+Files: regex/FreeBSD/COPYRIGHT
+Copyright: 1992-1994 Henry Spencer
+ 1994 The Regents of the University of California
+License: Spencer-94 AND BSD-4-Clause-UC
 
 Files: gen/FreeBSD/vis.c
 Copyright: 1999, 2005 The NetBSD Foundation, Inc.
@@ -706,8 +781,7 @@ Copyright: 1999, 2005 The NetBSD Foundation, Inc.
 License: BSD-2-Clause AND BSD-3-Clause
 
 Files: Libc.xcodeproj/project.pbxproj
- regex/TRE/config.h
- regex/TRE/tre-config.h
+ man/manpages.lst
  xcodescripts/abort_unsupported.sh
  xcodescripts/alias.list
  xcodescripts/build_linklists.sh
@@ -730,17 +804,19 @@ Files: Libc.xcodeproj/project.pbxproj
 Copyright: Apple Inc.
 License: APSL-2.0
 
+Files: userland/Libc/freebsd/qsort_r.c
+Copyright: none; Garrett A. Wollman placed it in the public domain
+License: public-domain
+
+Files: userland/Libc/freebsd/block_abi.h
+Copyright: 2014 David T Chisnall
+License: BSD-2-Clause
+
 License: Apache-2.0
  The full text is in /usr/share/common-licenses/Apache-2.0.
 
 License: APSL-2.0
  The full text is in /usr/share/common-licenses/APSL-2.0.
-
-License: Beerware
- "THE BEER-WARE LICENSE" (Revision 42):
- <phk@FreeBSD.org> wrote this file.  As long as you retain this notice you
- can do whatever you want with this stuff. If we meet some day, and you think
- this stuff is worth it, you can buy me a beer in return.
 
 License: BSD-2-Clause
  Redistribution and use in source and binary forms, with or without
@@ -789,6 +865,33 @@ License: BSD-3-Clause
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
+License: BSD-3-Clause-Tso
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, and the entire permission notice in its entirety,
+    including the disclaimer of warranties.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The name of the author may not be used to endorse or promote
+    products derived from this software without specific prior
+    written permission.
+ .
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, ALL OF
+ WHICH ARE HEREBY DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+ OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ USE OF THIS SOFTWARE, EVEN IF NOT ADVISED OF THE POSSIBILITY OF SUCH
+ DAMAGE.
+
 License: BSD-4-Clause-UC
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
@@ -824,12 +927,12 @@ License: BSD-4.3TAHOE
  duplicated in all such forms and that any documentation,
  advertising materials, and other materials related to such
  distribution and use acknowledge that the software was developed
- by the University of California, Berkeley. The name of the
+ by the University of California, Berkeley.  The name of the
  University may not be used to endorse or promote products derived
  from this software without specific prior written permission.
-
-License: LicenseRef-no-notice
- No licence notice is present in these files.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
+ WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 License: ISC
  Permission to use, copy, modify, and distribute this software for any
@@ -843,6 +946,15 @@ License: ISC
  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: Martin-Birgmeier
+ You may redistribute unmodified or modified versions of this source
+ code provided that the above copyright notice and this and the
+ following conditions are retained.
+ .
+ This software is provided ``as is'', and comes with no warranties
+ of any kind. I shall in no event be liable for anything that happens
+ to anyone/anything when using this software.
 
 License: MIT
  Permission is hereby granted, free of charge, to any person obtaining
@@ -887,6 +999,165 @@ License: SMLNJ
  IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF
  THIS SOFTWARE.
+
+License: Spencer-94
+ This software is not subject to any license of the American Telephone
+ and Telegraph Company or of the Regents of the University of California.
+ .
+ Permission is granted to anyone to use this software for any purpose on
+ any computer system, and to alter it and redistribute it, subject
+ to the following restrictions:
+ .
+ 1. The author is not responsible for the consequences of use of this
+    software, no matter how awful, even if they arise from flaws in it.
+ .
+ 2. The origin of this software must not be misrepresented, either by
+    explicit claim or by omission.  Since few users ever read sources,
+    credits must appear in the documentation.
+ .
+ 3. Altered versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.  Since few users
+    ever read sources, credits must appear in the documentation.
+ .
+ 4. This notice may not be removed or altered.
+
+License: LicenseRef-Beerware-2
+ "THE BEER-WARE LICENSE" (Revision 42):
+ <phk@FreeBSD.org> wrote this file.  As long as you retain this notice you
+ can do whatever you want with this stuff. If we meet some day, and you think
+ this stuff is worth it, you can buy me a beer in return.   Poul-Henning Kamp
+
+License: LicenseRef-BSD-3-Clause-Constantin-Svintsoff
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. The names of the authors may not be used to endorse or promote
+    products derived from this software without specific prior written
+    permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-David-Burren
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 4. Neither the name of the author nor the names of other contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-John-Birrell
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the author nor the names of any co-contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY JOHN BIRRELL AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-Softweyr
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notices, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notices, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY SOFTWEYR LLC, THE REGENTS AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL SOFTWEYR LLC, THE
+ REGENTS, OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-3-Clause-Softweyr-2
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notices, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above
+    copyright notices, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+ .
+ 3. Neither the name of Softweyr LLC, the University nor the names
+    of its contributors may be used to endorse or promote products
+    derived from this software without specific prior written
+    permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY SOFTWEYR LLC, THE REGENTS AND
+ CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.  IN NO EVENT SHALL SOFTWEYR LLC, THE REGENTS, OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
 
 License: LicenseRef-BSD-4-Clause-Bill-Paul
  Redistribution and use in source and binary forms, with or without
@@ -1136,6 +1407,44 @@ License: LicenseRef-BSD-4-Clause-Phase-One
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
+License: LicenseRef-BSD-4-Clause-Softweyr
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notices, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above
+    copyright notices, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+ .
+ 3. All advertising materials mentioning features or use of this
+    software must display the following acknowledgement:
+ .
+     This product includes software developed by Softweyr LLC, the
+      University of California, Berkeley, and its contributors.
+ .
+ 4. Neither the name of Softweyr LLC, the University nor the names
+    of its contributors may be used to endorse or promote products
+    derived from this software without specific prior written
+    permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY SOFTWEYR LLC, THE REGENTS AND
+ CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.  IN NO EVENT SHALL SOFTWEYR LLC, THE REGENTS, OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
 License: LicenseRef-BSD-4-Clause-Winning-Strategies
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions
@@ -1161,6 +1470,48 @@ License: LicenseRef-BSD-4-Clause-Winning-Strategies
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-BSD-Evans
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice(s), this list of conditions and the following disclaimer as
+    the first lines of this file unmodified other than the possible
+    addition of one or more copyright notices.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice(s), this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the
+    distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) ``AS IS'' AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDER(S) BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-DEC-resolver
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies, and that
+ the name of Digital Equipment Corporation not be used in advertising or
+ publicity pertaining to distribution of the document or software without
+ specific, written prior permission.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
+ WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS.   IN NO EVENT SHALL DIGITAL EQUIPMENT
+ CORPORATION BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
 
 License: LicenseRef-HPND-Alfalfa
  Permission to use, copy, modify, and distribute this software and its
@@ -1218,3 +1569,21 @@ License: LicenseRef-HPND-Terry-Jones-Jordan-Hubbard
  documentation, and that the name of the author not be used in
  advertising or publicity pertaining to distribution of the software
  without specific, written prior permission.
+
+License: LicenseRef-ISC-Internet-Software-Consortium
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
+ ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
+ CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.
+
+License: LicenseRef-Robert-Drehmel
+ As long as the above copyright statement and this notice remain
+ unchanged, you can do what ever you want with this file.

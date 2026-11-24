@@ -11,6 +11,14 @@ VARIANT_SYSHDRS := $(DERIVED)/System.framework/Versions/B/PrivateHeaders
 SYSHDRS  := $(SDK)/System/Library/Frameworks/System.framework/Versions/B/PrivateHeaders
 DYLIB    := $(OBJ)/libsystem_c.dylib
 
+MAN_OMIT := compat.5 duplocale.3 freelocale.3 newlocale.3 querylocale.3 uselocale.3 xlocale.3 \
+	gethostuuid.2 style.3 acl_copy_ext.3 acl_get_permset_mask_np.3
+PBXPROJ_MAN_FLAGS := --man-list man/manpages.lst $(addprefix --omit ,$(MAN_OMIT)) \
+	--replace Platforms/macosx/Makefile.inc=$(CURDIR)/features.inc \
+	--replace uuid/uuidman.sed=$(CURDIR)/uuidman.sed
+DIRENT_RENAMES := -Ddd_fd=__dd_fd -Ddd_loc=__dd_loc -Ddd_size=__dd_size -Ddd_buf=__dd_buf \
+	-Ddd_len=__dd_len -Ddd_seek=__dd_seek -Ddd_flags=__dd_flags -Ddd_lock=__dd_lock -Ddd_td=__dd_td
+
 EXCLUDE := darwin/kvm.c gen/nlist.c sys/OSMemoryNotification.c
 lst = $(filter-out $(EXCLUDE),$(shell cut -f1 lists/$(1).list))
 
@@ -86,9 +94,17 @@ COLLECTIONS_DYLIB := $(OBJ)/libsystem_collections.dylib
 
 all: $(DYLIB) $(OBJ)/libc_dyld.a $(OBJ)/libsystem_darwin.dylib $(COLLECTIONS_DYLIB)
 
-$(FEATURES): $(SRCROOT)/.fetched
+FEATURES_SRCROOT := $(OBJ)/srcroot
+$(FEATURES_SRCROOT)/.done: $(SRCROOT)/.fetched features.inc
+	rm -rf $(FEATURES_SRCROOT)
+	mkdir -p $(FEATURES_SRCROOT)/Platforms/macosx
+	cd $(SRCROOT) && for e in *; do [ "$$e" = Platforms ] || ln -s $(SRCROOT)/$$e $(FEATURES_SRCROOT)/$$e || exit 1; done
+	cp features.inc $(FEATURES_SRCROOT)/Platforms/macosx/Makefile.inc
+	touch $@
+
+$(FEATURES): $(FEATURES_SRCROOT)/.done
 	mkdir -p $(DERIVED)
-	cd $(SRCROOT) && env ARCHS=$(ARCH) VARIANT_PLATFORM_NAME=macosx SRCROOT=$(SRCROOT) \
+	cd $(SRCROOT) && env ARCHS=$(ARCH) VARIANT_PLATFORM_NAME=macosx SRCROOT=$(FEATURES_SRCROOT) \
 		DERIVED_FILES_DIR=$(DERIVED) perl xcodescripts/generate_features.pl > /dev/null
 
 $(VARIANT_SYSHDRS)/.done: $(SRCROOT)/.fetched
@@ -108,6 +124,12 @@ endef
 dylib_SRCS := darwin/forceLibcToBuild.c darwin/compatibility_hacks.c
 $(foreach a,$(ARCHIVES) dylib c_dyld darwin,$(eval $(call archive_rules,$(a))))
 $(OBJ)/libc_dyld.a: $(SOURCE_NOTICE_OBJ)
+
+$(OBJ)/FreeBSD/pie/qsort_r.o: freebsd/qsort_r.c freebsd/block_abi.h $(FEATURES) $(VARIANT_SYSHDRS)/.done
+	@mkdir -p $(dir $@)
+	cd $(SRCROOT) && $(CC) $(call cflags,FreeBSD) -iquote $(SRCROOT)/stdlib/FreeBSD \
+		-c $(CURDIR)/freebsd/qsort_r.c -o $@
+$(OBJ)/libFreeBSD.a: $(OBJ)/FreeBSD/pie/qsort_r.o
 
 ARCHIVE_FILES := $(patsubst %,$(OBJ)/lib%.a,$(ARCHIVES))
 
@@ -166,10 +188,10 @@ install: install-libc $(DARWIN_DYLIB) $(COLLECTIONS_DYLIB)
 	$(call install_both,$(COLLECTIONS_DYLIB),usr/lib/system)
 	$(call install_xcode_man,$(SRCROOT)/Libc.xcodeproj)
 
-installhdrs: $(SRCROOT)/.fetched
+installhdrs: $(SRCROOT)/.fetched $(FEATURES_SRCROOT)/.done
 	rm -rf $(OBJ)/hdrs
 	mkdir -p $(OBJ)/hdrs
-	cd $(SRCROOT) && env SRCROOT=$(SRCROOT) DSTROOT=$(OBJ)/hdrs SDK_INSTALL_HEADERS_ROOT= \
+	cd $(SRCROOT) && env SRCROOT=$(FEATURES_SRCROOT) DSTROOT=$(OBJ)/hdrs SDK_INSTALL_HEADERS_ROOT= \
 		DEPLOYMENT_LOCATION=YES PLATFORM_NAME=macosx VARIANT_PLATFORM_NAME=macosx \
 		SDKROOT=$(SDK) ARCHS=$(ARCH) CURRENT_ARCH=$(ARCH) \
 		bash -e xcodescripts/headers.sh > $(OBJ)/headers.log 2>&1

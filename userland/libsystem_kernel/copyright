@@ -14,32 +14,39 @@ Copyright: 1999-2025 Apple Inc.
  1995 NeXT
 License: APSL-2.0
 
-Files: libsyscall/mach/error_codes.c libsyscall/mach/errorlib.h
- libsyscall/mach/mach/errorlib.h libsyscall/mach/mach/mach.h
- libsyscall/mach/mach/mach_error.h libsyscall/mach/mach/mach_init.h
- libsyscall/mach/mach/mach_sync_ipc.h libsyscall/mach/mach_error.c
- libsyscall/mach/mach_error_string.c libsyscall/mach/mach_init.c
- libsyscall/mach/mach_msg.c libsyscall/mach/mach_traps.s
- libsyscall/mach/mig_allocate.c libsyscall/mach/mig_deallocate.c
- libsyscall/mach/mig_reply_setup.c libsyscall/mach/mig_strncpy.c
- libsyscall/mach/ms_thread_switch.c libsyscall/mach/panic.c osfmk/mach/exc.defs
- osfmk/mach/host_priv.defs osfmk/mach/host_security.defs
- osfmk/mach/mach_exc.defs osfmk/mach/mach_host.defs osfmk/mach/mach_port.defs
- osfmk/mach/mach_types.defs osfmk/mach/mach_vm.defs osfmk/mach/notify.defs
- osfmk/mach/processor.defs osfmk/mach/processor_set.defs osfmk/mach/prof.defs
- osfmk/mach/std_types.defs osfmk/mach/task.defs osfmk/mach/thread_act.defs
- osfmk/mach/upl.defs osfmk/mach/vm32_map.defs osfmk/mach/vm_map.defs
+Files: libsyscall/mach/mach/mach.h
+ libsyscall/mach/mach/mach_init.h libsyscall/mach/mach/mach_sync_ipc.h
+ libsyscall/mach/mach_error.c libsyscall/mach/mach_error_string.c
+ libsyscall/mach/mach_init.c libsyscall/mach/mach_msg.c
+ libsyscall/mach/mach_traps.s libsyscall/mach/mig_allocate.c
+ libsyscall/mach/mig_deallocate.c libsyscall/mach/mig_reply_setup.c
+ libsyscall/mach/mig_strncpy.c libsyscall/mach/ms_thread_switch.c
+ libsyscall/mach/panic.c osfmk/mach/exc.defs osfmk/mach/host_priv.defs
+ osfmk/mach/host_security.defs osfmk/mach/mach_exc.defs
+ osfmk/mach/mach_host.defs osfmk/mach/mach_port.defs osfmk/mach/mach_types.defs
+ osfmk/mach/mach_vm.defs osfmk/mach/notify.defs osfmk/mach/processor.defs
+ osfmk/mach/processor_set.defs osfmk/mach/std_types.defs
+ osfmk/mach/task.defs osfmk/mach/thread_act.defs osfmk/mach/upl.defs
+ osfmk/mach/vm_map.defs
  osfmk/mach_debug/mach_debug_types.defs
 Copyright: 1986-1991 Carnegie Mellon University
- 1999-2016, 2018 Apple Computer, Inc.
- 1999-2019 Apple Inc.
-License: APSL-2.0 AND CMU-Mach
+ 1999-2014, 2018 Apple Computer, Inc.
+ 1999-2016 Apple Inc.
+License: LicenseRef-APSL-2.0-OS-reference AND CMU-Mach
+
+Files: libsyscall/mach/error_codes.c
+ libsyscall/mach/errorlib.h
+ libsyscall/mach/mach/mach_error.h
+Copyright: 1999 Apple Computer, Inc.
+ 2003-2019 Apple Inc.
+ 1989-1991 Carnegie Mellon University
+License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-CMU-Mach-memory-object
 
 Files: libsyscall/mach/err_ipc.sub libsyscall/mach/err_kern.sub
  libsyscall/mach/err_mach_ipc.sub libsyscall/mach/err_server.sub
  libsyscall/mach/err_us.sub
 Copyright: 1987-1991 Carnegie Mellon University
-License: CMU-Mach
+License: LicenseRef-CMU-Mach-memory-object
 
 Files: libsyscall/wrappers/string/* osfmk/mach/audit_triggers.defs
 Copyright: 1990, 1993 The Regents of the University of California
@@ -59,25 +66,43 @@ Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
 
 Files: bsd/man/*
 Copyright: 1980, 1983, 1985-1986, 1988-1994 The Regents of the University of California
- 2017, 2021 Apple Inc.
  1994 Jan-Simon Pendry
- 1980, 1991 Regents of the University of California
 License: BSD-4-Clause-UC
 
+Files: bsd/man/man4/bpf.4
+Copyright: 1990 The Regents of the University of California
+License: BSD-4-Clause-Shortened
+
 Files: bsd/man/man2/audit.2 bsd/man/man2/auditctl.2 bsd/man/man2/auditon.2
- bsd/man/man2/connectx.2 bsd/man/man2/disconnectx.2 bsd/man/man2/fhopen.2
- bsd/man/man2/fileport_makeport.2 bsd/man/man2/getaudit_addr.2
- bsd/man/man2/getauid.2 bsd/man/man2/getxattr.2 bsd/man/man2/listxattr.2
- bsd/man/man2/nfsclnt.2 bsd/man/man2/openat_authenticated_np.2
- bsd/man/man2/posix_spawn.2 bsd/man/man2/pthread_setugid_np.2
+ bsd/man/man2/fhopen.2 bsd/man/man2/fileport_makeport.2 bsd/man/man2/getauid.2
+ bsd/man/man2/getxattr.2 bsd/man/man2/listxattr.2 bsd/man/man2/nfsclnt.2
+ bsd/man/man2/openat_authenticated_np.2 bsd/man/man2/pthread_setugid_np.2
  bsd/man/man2/removexattr.2 bsd/man/man2/setaudit_addr.2 bsd/man/man2/setauid.2
- bsd/man/man2/setxattr.2 bsd/man/man3/* bsd/man/man4/vsock.4
-Copyright: 2000-2016, 2020, 2024-2025 Apple Inc.
+ bsd/man/man2/setxattr.2 bsd/man/man3/*
+Copyright: 2007-2011, 2024-2025 Apple Inc.
  2004 Apple Computer, Inc.
 License: APSL-2.0
 
+Files: bsd/man/man2/connectx.2
+ bsd/man/man2/disconnectx.2
+ bsd/man/man2/getaudit_addr.2
+ bsd/man/man2/posix_spawn.2
+ bsd/man/man3/posix_spawn_file_actions_addclose.3
+ bsd/man/man3/posix_spawn_file_actions_init.3
+ bsd/man/man3/posix_spawnattr_init.3
+ bsd/man/man3/posix_spawnattr_setarchpref_np.3
+ bsd/man/man3/posix_spawnattr_setbinpref_np.3
+ bsd/man/man3/posix_spawnattr_setflags.3
+ bsd/man/man3/posix_spawnattr_setpgroup.3
+ bsd/man/man3/posix_spawnattr_setsigdefault.3
+ bsd/man/man3/posix_spawnattr_setsigmask.3
+ bsd/man/man3/posix_spawnattr_setspecialport_np.3
+ bsd/man/man4/vsock.4
+Copyright: 2000-2016, 2020 Apple Inc.
+License: LicenseRef-APSL-2.0-OS-reference
+
 Files: bsd/man/man2/clonefile.2 bsd/man/man2/exchangedata.2
- bsd/man/man2/fs_snapshot_create.2 bsd/man/man2/fsctl.2
+ bsd/man/man2/fs_snapshot_create.2
  bsd/man/man2/fsgetpath.2 bsd/man/man2/getattrlist.2
  bsd/man/man2/getattrlistbulk.2 bsd/man/man2/getdirentriesattr.2
  bsd/man/man2/searchfs.2 bsd/man/man2/sem_close.2 bsd/man/man2/sem_open.2
@@ -91,14 +116,13 @@ Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
 Files: bsd/man/man2/aio_cancel.2 bsd/man/man2/aio_error.2
  bsd/man/man2/aio_read.2 bsd/man/man2/aio_suspend.2 bsd/man/man2/aio_write.2
  bsd/man/man2/getsid.2 bsd/man/man2/lio_listio.2 bsd/man/man2/semctl.2
- bsd/man/man2/semget.2 bsd/man/man2/semop.2 bsd/man/man2/sendfile.2
- bsd/man/man4/audit.4 bsd/man/man4/auditpipe.4 bsd/man/man9/byteorder.9
- bsd/man/man9/style.9 libsyscall/wrappers/string/strlen.c
+ bsd/man/man2/semget.2 bsd/man/man2/semop.2 bsd/man/man4/audit.4
+ bsd/man/man4/auditpipe.4 bsd/man/man9/byteorder.9 bsd/man/man9/style.9
+ libsyscall/wrappers/string/strlen.c
 Copyright: 1999 Softweyr LLC
  1995 David Hovemeyer <daveho@infocom.com>
  2006 Robert N. M. Watson
  2009 Apple, Inc.
- 2003 David G. Lawrence
  1995-2001 FreeBSD Inc.
  2002 Mike Barcroft <mike@FreeBSD.org>
  1997 Peter Wemm <peter@FreeBSD.org>
@@ -107,13 +131,18 @@ Copyright: 1999 Softweyr LLC
  2009 Xin LI <delphij@FreeBSD.org>
 License: BSD-2-Clause
 
+Files: bsd/man/man2/sendfile.2
+Copyright: 2003 David G. Lawrence
+License: LicenseRef-BSD-2-Clause-de-Raadt
+
 Files: bsd/man/man2/access.2 bsd/man/man2/mmap.2 bsd/man/man2/utimensat.2
- bsd/man/man4/aio.4 bsd/man/man4/faith.4 bsd/man/man4/gif.4
+ bsd/man/man4/aio.4 bsd/man/man4/gif.4
  bsd/man/man4/icmp6.4 bsd/man/man4/inet6.4 bsd/man/man4/ip6.4
  bsd/man/man4/ipsec.4 bsd/man/man4/stf.4 bsd/man/man7/sticky.7
 Copyright: 1980, 1983, 1986, 1990-1991, 1993 The Regents of the University of California
  2002 Dag-Erling Coïdan Smørgrav
  2012 Jilles Tjoelker
+ 1995-1998 WIDE Project
 License: BSD-3-Clause
 
 Files: bsd/man/man2/fcntl.2 bsd/man/man2/getfh.2 bsd/man/man2/getgroups.2
@@ -140,21 +169,23 @@ License: LicenseRef-HPND-MIT
 
 Files: bsd/man/man2/poll.2
 Copyright: 2005 Apple Computer, Inc.
- 2008 Apple Inc.
  1996 Charles M. Hannum
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Charles-Hannum
 
 Files: bsd/man/man9/copy.9
-Copyright: 2005 Apple Computer, Inc.
- 2008 Apple Inc.
+Copyright: 2008 Apple Inc.
  1996 Jason R. Thorpe
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Jason-Thorpe
 
-Files: bsd/man/man2/aio_return.2 bsd/man/man2/kqueue.2
-Copyright: 2008-2024 Apple Inc.
- 2000 Jonathan Lemon
+Files: bsd/man/man2/aio_return.2
+Copyright: 2008 Apple Inc.
  1999 Softweyr LLC
 License: APSL-2.0 AND BSD-2-Clause
+
+Files: bsd/man/man2/kqueue.2
+Copyright: 2008-2024 Apple Inc.
+ 2000 Jonathan Lemon
+License: APSL-2.0 AND LicenseRef-BSD-2-Clause-Jonathan-Lemon
 
 Files: bsd/man/man2/ptrace.2
 Copyright: none; the file says it is in the public domain
@@ -177,6 +208,15 @@ Comment: Originally distributed under APSL-1.2. Used here under APSL-2.0, as
 
 License: APSL-2.0
  The full text is in /usr/share/common-licenses/APSL-2.0.
+
+License: LicenseRef-APSL-2.0-OS-reference
+ The full text is in /usr/share/common-licenses/APSL-2.0.
+ .
+ The rights granted to you under the License may not be used to create,
+ or enable the creation or redistribution of, unlawful or unlicensed
+ copies of an Apple operating system, or to circumvent, violate, or
+ enable the circumvention or violation of, any terms of an Apple
+ operating system software license agreement.
 
 License: BSD-2-Clause
  Redistribution and use in source and binary forms, with or without
@@ -224,6 +264,23 @@ License: BSD-3-Clause
  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
+
+License: BSD-4-Clause-Shortened
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that: (1) source code distributions
+ retain the above copyright notice and this paragraph in its entirety, (2)
+ distributions including binary code include the above copyright notice and
+ this paragraph in its entirety in the documentation or other materials
+ provided with the distribution, and (3) all advertising materials mentioning
+ features or use of this software display the following acknowledgement:
+ ``This product includes software developed by the University of California,
+ Lawrence Berkeley Laboratory and its contributors.'' Neither the name of
+ the University nor the names of its contributors may be used to endorse
+ or promote products derived from this software without specific prior
+ written permission.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 License: BSD-4-Clause-UC
  Redistribution and use in source and binary forms, with or without
@@ -290,6 +347,51 @@ License: ISC
 
 License: public-domain
  This file is in the public domain.
+
+License: LicenseRef-BSD-2-Clause-Jonathan-Lemon
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-BSD-2-Clause-de-Raadt
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice unmodified, this list of conditions, and the following
+    disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
 
 License: LicenseRef-BSD-4-Clause-Charles-Hannum
  Redistribution and use in source and binary forms, with or without
@@ -371,6 +473,27 @@ License: LicenseRef-BSD-4-Clause-Jason-Thorpe
  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
+
+License: LicenseRef-CMU-Mach-memory-object
+ Permission to use, copy, modify and distribute this software and its
+ documentation is hereby granted, provided that both the copyright
+ notice and this permission notice appear in all copies of the
+ software, derivative works or modified versions, and any portions
+ thereof, and that both notices appear in supporting documentation.
+ .
+ CARNEGIE MELLON ALLOWS FREE USE OF THIS SOFTWARE IN ITS
+ CONDITION.  CARNEGIE MELLON DISCLAIMS ANY LIABILITY OF ANY KIND FOR
+ ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.
+ .
+ Carnegie Mellon requests users of this software to return to
+ .
+  Software Distribution Coordinator  or  Software.Distribution@CS.CMU.EDU
+  School of Computer Science
+  Carnegie Mellon University
+  Pittsburgh PA 15213-3890
+ .
+ any improvements or extensions that they make and grant Carnegie the
+ rights to redistribute these changes.
 
 License: LicenseRef-HPND-MIT
  Permission to use, copy, modify, and distribute this software and

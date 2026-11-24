@@ -4,8 +4,8 @@ Source: https://github.com/apple-oss-distributions/Libinfo
  tag Libinfo-600 (commit 39b70c515baee5b609e7e91693edbd934b6845a1)
 
 Files: *
-Copyright: 1999-2023 Apple Inc.
- 1999-2004 Apple Computer, Inc.
+Copyright: 1999, 2004-2022 Apple Inc.
+ 1999, 2003-2004 Apple Computer, Inc.
  1989 NeXT, Inc.
 License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
@@ -38,12 +38,14 @@ Files: gen.subproj/configuration_profile.c
 Copyright: 1999-2025 Apple Inc.
  1989 NeXT, Inc.
  1994 NeXT Computer, Inc.
+ 1997 Apple Computer Inc.
 License: APSL-2.0
 
 Files: rpc.subproj/*
 Copyright: 1999-2025 Apple Inc.
- 1999 Apple Computer, Inc.
+ 1999-2015 Apple Computer, Inc.
  1984-1987, 1990 Sun Microsystems, Inc.
+ 1987 SMI
  1996 Jason Downs
 License: APSL-2.0 AND LicenseRef-Sun-RPC
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
@@ -60,34 +62,36 @@ License: LicenseRef-Sun-RPC
 Files: nis.subproj/*
 Copyright: 1999-2018 Apple Inc.
  1999 Apple Computer, Inc.
- 1992-1993, 1996 Theo de Raadt
+ 1992-1993 Theo de Raadt <deraadt@fsa.ca>
+ 1992-1993, 1996 Theo de Raadt <deraadt@theos.com>
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Theo-de-Raadt
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.1.
 
 Files: nis.subproj/*.3
-Copyright: 1996-1997 The NetBSD Foundation, Inc.
+Copyright: 1996 The NetBSD Foundation, Inc.
 License: LicenseRef-BSD-4-Clause-NetBSD-Foundation-2
 
 Files: util.subproj/hosts.equiv.5
-Copyright: 1996-1997 The NetBSD Foundation, Inc.
+Copyright: 1997 The NetBSD Foundation, Inc.
  1997 Todd Vierling
 License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
 Files: nis.subproj/yppasswdd_xdr.c
 Copyright: 1999-2018 Apple Inc.
- 1994 Mats O Jansson
+ 1994 Mats O Jansson <moj@stacken.kth.se>
+ 1999 Apple Computer, Inc.
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Mats-Jansson
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.1.
 
 Files: nis.subproj/yp_prot.h
-Copyright: 1992-1993 Theo de Raadt
+Copyright: 1992-1993 Theo de Raadt <deraadt@fsa.ca>
  2018 Apple Inc.
 License: BSD-3-Clause
 
 Files: nis.subproj/yp.8
-Copyright: 1992-1993 Theo de Raadt
+Copyright: 1992-1993 Theo de Raadt <deraadt@fsa.ca>
  2003-2013 Apple Inc.
 License: APSL-2.0 AND BSD-3-Clause
 
@@ -95,6 +99,7 @@ Files: nis.subproj/getdomainname.c
  nis.subproj/setdomainname.c
 Copyright: 1999-2018 Apple Inc.
  1995 NeXT Computer, Inc.
+ 1999 Apple Computer, Inc.
 License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
@@ -190,7 +195,7 @@ Copyright: 2008-2025 Apple Inc.
  1996-1999 Internet Software Consortium
  1988, 1993 The Regents of the University of California
  1993 Digital Equipment Corporation
-License: APSL-2.0 AND BSD-3-Clause AND ISC AND LicenseRef-DEC-resolver
+License: APSL-2.0 AND BSD-3-Clause AND LicenseRef-ISC-Internet-Software-Consortium AND LicenseRef-DEC-resolver
 
 Files: lookup.subproj/gai_strerror.3
  lookup.subproj/getaddrinfo.3
@@ -203,14 +208,15 @@ Files: lookup.subproj/bootparams.5
  membership.subproj/mbr_check_membership.3
  membership.subproj/mbr_uid_to_uuid.3
 Copyright: 2005-2011 Apple Inc.
- 2006 Apple Computer, Inc.
+ 2006 Apple Computer
 License: BSD-3-Clause
 
 Files: util.subproj/rcmd.c
 Copyright: 1999-2018 Apple Inc.
+ 1999 Apple Computer, Inc.
  1983, 1993-1994 The Regents of the University of California
  1995-1996, 1998 Theo de Raadt
-License: APSL-2.0 AND BSD-4-Clause-UC
+License: APSL-2.0 AND LicenseRef-BSD-4-Clause-UC-Theo-de-Raadt
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.1.
 
@@ -226,7 +232,7 @@ Files: Libinfo.xcodeproj/project.pbxproj
  rpc.subproj/pmap_wakeup.h
  xcodescripts/Libinfo.xcconfig
  xcodescripts/install_files.sh
-Copyright: Apple Inc.
+Copyright: 2011-2023 Apple Inc.
 License: APSL-2.0
 
 License: APSL-2.0
@@ -409,28 +415,13 @@ License: ISC
  purpose with or without fee is hereby granted, provided that the above
  copyright notice and this permission notice appear in all copies.
  .
- THE SOFTWARE IS PROVIDED "AS IS" AND ISC DISCLAIMS ALL WARRANTIES WITH
- REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
- AND FITNESS.  IN NO EVENT SHALL ISC BE LIABLE FOR ANY SPECIAL, DIRECT,
- INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
- LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
- OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
- PERFORMANCE OF THIS SOFTWARE.
- .
- The Internet Software Consortium's, in lookup.subproj/mdns_module.c:
- .
- Permission to use, copy, modify, and distribute this software for any
- purpose with or without fee is hereby granted, provided that the above
- copyright notice and this permission notice appear in all copies.
- .
- THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
- ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
- OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
- CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
- DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
- PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
- ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
- SOFTWARE.
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 License: LicenseRef-DEC-resolver
  Permission to use, copy, modify, and distribute this software for any
@@ -649,3 +640,47 @@ License: LicenseRef-BSD-4-Clause-Theo-de-Raadt
  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
+
+License: LicenseRef-BSD-4-Clause-UC-Theo-de-Raadt
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+    must display the following acknowledgement:
+      This product includes software developed by the University of
+      California, Berkeley and its contributors.
+      This product includes software developed by Theo de Raadt.
+ 4. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+License: LicenseRef-ISC-Internet-Software-Consortium
+ Permission to use, copy, modify, and distribute this software for any
+ purpose with or without fee is hereby granted, provided that the above
+ copyright notice and this permission notice appear in all copies.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS
+ ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE
+ CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL
+ DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR
+ PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+ SOFTWARE.

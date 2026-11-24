@@ -10,7 +10,7 @@ timeout = 120
 
 [[suites]]
 name = "build-tree"
-command = ["pytest-3", "tests/test_build_tree.py", "tests/test_libnotify.py"]
+command = ["pytest-3", "tests/test_build_tree.py", "tests/test_libnotify.py", "tests/test_man.py"]
 needs = "host"
 timeout = 120
 description = "Build paths, source preservation, cleanup and stable compiler output."

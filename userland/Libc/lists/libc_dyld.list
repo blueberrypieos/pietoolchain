@@ -68,7 +68,7 @@ gen/FreeBSD/arc4random.c	$(FreeBSD_CFLAGS)
 gen/FreeBSD/assert.c
 gen/FreeBSD/basename.c
 gen/FreeBSD/clock.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CLOCK
-gen/FreeBSD/closedir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CLOSEDIR -include gen/__dirent.h
+gen/FreeBSD/closedir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_CLOSEDIR $(DIRENT_RENAMES)
 gen/FreeBSD/ctermid.c
 gen/FreeBSD/daemon.c	$(FreeBSD_CFLAGS)
 gen/FreeBSD/dirname.c	$(FreeBSD_CFLAGS)
@@ -98,17 +98,17 @@ gen/FreeBSD/lrand48.c
 gen/FreeBSD/mrand48.c
 gen/FreeBSD/nice.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_NICE
 gen/FreeBSD/nrand48.c
-gen/FreeBSD/opendir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS___OPENDIR2 -DLIBC_ALIAS_OPENDIR -include gen/__dirent.h
+gen/FreeBSD/opendir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS___OPENDIR2 -DLIBC_ALIAS_OPENDIR $(DIRENT_RENAMES)
 gen/FreeBSD/pause.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_PAUSE
 gen/FreeBSD/popen.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_POPEN
 gen/FreeBSD/psignal.c
-gen/FreeBSD/readdir.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
+gen/FreeBSD/readdir.c	$(FreeBSD_CFLAGS) $(DIRENT_RENAMES)
 gen/FreeBSD/readpassphrase.c
-gen/FreeBSD/rewinddir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_REWINDDIR -include gen/__dirent.h
-gen/FreeBSD/scandir.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
-gen/FreeBSD/scandir_b.c	$(FreeBSD_CFLAGS) -include gen/__dirent.h
+gen/FreeBSD/rewinddir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_REWINDDIR $(DIRENT_RENAMES)
+gen/FreeBSD/scandir.c	$(FreeBSD_CFLAGS) $(DIRENT_RENAMES)
+gen/FreeBSD/scandir_b.c	$(FreeBSD_CFLAGS) $(DIRENT_RENAMES)
 gen/FreeBSD/seed48.c
-gen/FreeBSD/seekdir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SEEKDIR -include gen/__dirent.h
+gen/FreeBSD/seekdir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SEEKDIR $(DIRENT_RENAMES)
 gen/FreeBSD/sethostname.c
 gen/FreeBSD/setmode.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_SETMODE
 gen/FreeBSD/setprogname.c
@@ -122,7 +122,7 @@ gen/FreeBSD/sysconf.c
 gen/FreeBSD/sysctl.c	$(FreeBSD_CFLAGS)
 gen/FreeBSD/sysctlbyname.c	$(FreeBSD_CFLAGS)
 gen/FreeBSD/sysctlnametomib.c
-gen/FreeBSD/telldir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS__SEEKDIR -DLIBC_ALIAS_TELLDIR -include gen/__dirent.h
+gen/FreeBSD/telldir.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS__SEEKDIR -DLIBC_ALIAS_TELLDIR $(DIRENT_RENAMES)
 gen/FreeBSD/termios.c	$(FreeBSD_CFLAGS) -DLIBC_ALIAS_TCDRAIN
 gen/FreeBSD/time.c
 gen/FreeBSD/times.c

@@ -5,15 +5,15 @@ Source: https://github.com/JuliaMath/openlibm
  tag v0.8.8 (commit 5fe399749f9276eaa0b8403e507470da05cbbb3f)
 
 Files: *
-Copyright: 1993, 2004 Sun Microsystems, Inc.
- 2008 Steven G. Kargl, David Schultz, Bruce D. Evans
- 2013 Elliot Saba
- 2009-2011 Bruce D. Evans, Steven G. Kargl, David Schultz
- 1997, 1999 Free Software Foundation, Inc.
+Copyright: 1993 Sun Microsystems, Inc.
+License: SunPro
+
+Files: LICENSE.md
+Copyright: 2011-2014 The Julia Project
  2008 Stephen L. Moshier <steve@moshier.net>
  1992-2011 The FreeBSD Project
- 2011-2014 The Julia Project
-License: SunPro
+ 1993 Sun Microsystems, Inc.
+License: MIT AND ISC AND BSD-2-Clause-Views AND SunPro
 
 Files: include/*
  src/aarch64_fpmath.h
@@ -22,8 +22,6 @@ Files: include/*
  src/k_expf.c
  src/s_carg.c
  src/s_cargf.c
- src/s_ccosh.c
- src/s_ccoshf.c
  src/s_cexp.c
  src/s_cexpf.c
  src/s_cimag.c
@@ -34,12 +32,8 @@ Files: include/*
  src/s_cprojf.c
  src/s_creal.c
  src/s_crealf.c
- src/s_csinh.c
- src/s_csinhf.c
  src/s_csqrt.c
  src/s_csqrtf.c
- src/s_ctanh.c
- src/s_ctanhf.c
  src/s_exp2.c
  src/s_exp2f.c
  src/s_fdim.c
@@ -57,19 +51,28 @@ Files: include/*
  src/s_lround.c
  src/s_nan.c
  src/s_nearbyint.c
- src/s_round.c
- src/s_roundf.c
  src/s_scalbln.c
  src/s_signbit.c
  src/s_tgammaf.c
 Copyright: 2002-2011 David Schultz <das@FreeBSD.ORG>
  2004 Stefan Farfeleder
- 2003, 2007 Steven G. Kargl
- 2007, 2011 David Schultz
- 2005 Bruce D. Evans and Steven G. Kargl
+ 2007 David Schultz
  2003 Mike Barcroft <mike@FreeBSD.org>
  2014 The FreeBSD Foundation
 License: BSD-2-Clause
+
+Files: src/s_ccosh.c
+ src/s_ccoshf.c
+ src/s_csinh.c
+ src/s_csinhf.c
+ src/s_ctanh.c
+ src/s_ctanhf.c
+ src/s_round.c
+ src/s_roundf.c
+Copyright: 2005 Bruce D. Evans and Steven G. Kargl
+ 2011 David Schultz
+ 2003 Steven G. Kargl
+License: LicenseRef-BSD-2-Clause-Silbersack
 
 Files: include/openlibm_complex.h
  src/s_cacos.c
@@ -89,7 +92,7 @@ Files: include/openlibm_complex.h
  src/s_cpow.c
  src/s_cpowf.c
 Copyright: 2008 Stephen L. Moshier <steve@moshier.net>
- 2008, 2011 Martynas Venckus <martynas@openbsd.org>
+ 2008 Martynas Venckus <martynas@openbsd.org>
 License: ISC
 
 Files: src/w_cabs.c
@@ -98,12 +101,29 @@ Copyright: none; written by J.T. Conklin and others, who placed them in the publ
 License: public-domain
 
 Files: bsdsrc/*
-Copyright: 1985, 1988, 1990-1993 The Regents of the University of California
+Copyright: 1985, 1988, 1992-1993 The Regents of the University of California
 License: BSD-3-Clause
 
 Files: include/openlibm_math.h
 Copyright: 1993 Sun Microsystems, Inc.
 License: SunPro
+
+Files: src/e_exp.c
+ src/e_pow.c
+ src/k_tan.c
+ src/k_tanf.c
+Copyright: 2004 Sun Microsystems, Inc.
+License: LicenseRef-SunPro-2
+
+Files: src/s_sincos.c
+Copyright: 1993 Sun Microsystems, Inc.
+ 2013 Elliot Saba
+License: SunPro AND LicenseRef-Elliot-Saba
+
+Files: src/s_sincosf.c
+Copyright: 1993 Sun Microsystems, Inc.
+ 2013 Elliot Saba
+License: SunPro AND LicenseRef-Elliot-Saba-2
 
 Files: include/openlibm_defs.h
  include/openlibm_fenv.h
@@ -121,7 +141,7 @@ Files: src/s_llrint.c
  src/s_llroundf.c
  src/s_lrintf.c
  src/s_lroundf.c
-Copyright: 2005 David Schultz <das@FreeBSD.ORG>
+Copyright: The FreeBSD Project
 License: BSD-2-Clause
 
 License: BSD-2-Clause
@@ -145,6 +165,34 @@ License: BSD-2-Clause
  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
+
+License: BSD-2-Clause-Views
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ .
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ THIS SOFTWARE IS PROVIDED BY THE FREEBSD PROJECT ``AS IS'' AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE FREEBSD PROJECT OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+ The views and conclusions contained in the software and documentation
+ are those of the authors and should not be interpreted as representing
+ official policies, either expressed or implied, of the FreeBSD
+ Project.
 
 License: BSD-3-Clause
  Redistribution and use in source and binary forms, with or without
@@ -209,6 +257,47 @@ License: public-domain
  domain. Each file's notice states how its authors dedicated or released it.
 
 License: SunPro
+ Developed at SunPro, a Sun Microsystems, Inc. business.
+ Permission to use, copy, modify, and distribute this
+ software is freely granted, provided that this notice
+ is preserved.
+
+License: LicenseRef-BSD-2-Clause-Silbersack
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice unmodified, this list of conditions, and the following
+    disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+ INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: LicenseRef-Elliot-Saba
+ Developed at the University of Washington.
+ Permission to use, copy, modify, and distribute this
+ software is freely granted, provided that this notice
+ is preserved.
+
+License: LicenseRef-Elliot-Saba-2
+ Developed at the University of Washington
+ .
+ Permission to use, copy, modify, and distribute this
+ software is freely granted, provided that this notice
+ is preserved.
+
+License: LicenseRef-SunPro-2
  Permission to use, copy, modify, and distribute this
  software is freely granted, provided that this notice
  is preserved.
