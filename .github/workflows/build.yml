@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: blueberrypieos/workflows
-          ref: 3f27927ffe3ea042973ddef035e4ad0164b73ae8 # v5
+          ref: dd7eae65af433bb38342a14d72d8e39ab060cb08 # v6
           path: .workflows
           persist-credentials: false
 
