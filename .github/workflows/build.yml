@@ -11,8 +11,8 @@ permissions:
   contents: read
 
 env:
-  PIETOOLCHAIN_HOST_VERSION: '0.3.0'
-  PIETOOLCHAIN_HOST_SHA256: 8d65a1bc7ef483a033af0f7657007a0d38f61f1480b418858dca32380a3e9095
+  PIETOOLCHAIN_HOST_VERSION: '0.3.2'
+  PIETOOLCHAIN_HOST_SHA256: 1ad4021ce3d0299d1dfc988a262f1b28a8d9df1bd4e72c4b46a848eacd39df3d
 
 jobs:
   host-tests:
@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: blueberrypieos/workflows
-          ref: f87a98ea145aed8e3d116e85f12885249a054b4d # v1
+          ref: 3f27927ffe3ea042973ddef035e4ad0164b73ae8 # v5
           path: .workflows
           persist-credentials: false
 
