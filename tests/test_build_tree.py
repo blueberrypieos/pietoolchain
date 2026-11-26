@@ -53,7 +53,7 @@ def fixture_tree(tree):
           "Package: pietoolchain-sdk\nArchitecture: all\nProvides: ${sdk:Provides}\n"
           "Description: fixture SDK\n\n"
           "Package: libfixture\nArchitecture: darwin-arm64\nX-Pie-Project: Libc\n"
-          "X-Pie-Version: 1\nDepends: ${runtime:Depends}\nDescription: fixture library\n")
+          "X-Pie-Version: 1\nX-Pie-ABI-Minimum: 1\nDepends: ${runtime:Depends}\nDescription: fixture library\n")
     write(tree / "xnu/Makefile", "fixture=original\n")
     write(tree / "xnu/EXTERNAL_HEADERS/ptrcheck.h", "fixture header\n")
     write(tree / "xnu-patches/fixture.patch", "--- a/Makefile\n+++ b/Makefile\n@@ -1 +1 @@\n"

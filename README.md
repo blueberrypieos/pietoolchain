@@ -61,13 +61,20 @@ On Ubuntu 26.04:
 git submodule update --init --recursive
 sudo apt-get install dpkg-dev build-essential
 sudo apt-get build-dep ./
-PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.1_all.deb and the runtime packages
+PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.2_all.deb and the runtime packages
 ```
 
 Install `pietoolchain-host` 0.3.0 or newer from the resolute archive before
 building. `dpkg-buildpackage -A` builds only the SDK. The darwin-arm64 build
 also produces the runtimes. Runtime Debian revisions are set by
 `X-Pie-Version` in `debian/control`.
+
+`X-Pie-ABI-Minimum` records each runtime's minimum compatible package version.
+Runtime dependencies use this minimum. Packaging rebuilds keep it unchanged.
+Raise it when runtime libraries start using an interface absent from that version.
+Verify the exported interfaces before selecting a minimum.
+pietoolchain-sdk keeps exact pins to the current `X-Pie-Version` values.
+Applications that need a specific fix declare that newer runtime requirement.
 
 `build.sh` links `debian/build/toolchain/prefix` and `hostinc` to the
 installed `/usr/lib/pietoolchain/toolchain`. `PIE_HOST_TOOLCHAIN` may select

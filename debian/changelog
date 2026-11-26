@@ -1,3 +1,11 @@
+pietoolchain (0.3.2) resolute; urgency=medium
+
+  * Runtime packages depend on runtime revision 3 or newer, so systems
+    with revision 3 can upgrade.
+  * Move each runtime package to revision 5.
+
+ -- Maxwell <maxwell@blueberrypieos.com>  Thu, 26 Nov 2026 21:00:00 +0000
+
 pietoolchain (0.3.1) resolute; urgency=medium
 
   * The SDK takes the ICU, libarchive and libutil headers from /usr/include,

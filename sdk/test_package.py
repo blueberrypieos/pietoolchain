@@ -22,7 +22,7 @@ class Package(unittest.TestCase):
             (pie / "debian").mkdir()
             (pie / "debian/control").write_text(
                 "Source: pietoolchain\n\nPackage: libfixture\n"
-                "X-Pie-Project: fixture\nX-Pie-Version: 1\n")
+                "X-Pie-Project: fixture\nX-Pie-Version: 1\nX-Pie-ABI-Minimum: 1\n")
             (scripts / "licenses").mkdir()
             provider = pie / "userland" / "fixture"
             provider.mkdir(parents=True)

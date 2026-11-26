@@ -171,6 +171,7 @@ def indep(pie):
 def arch(pie):
     otool = os.path.join(pie, "debian", "build", "toolchain", "prefix", "bin", "aarch64-apple-darwin-otool")
     pkgs = [s for s in stanzas(os.path.join(pie, "debian", "control")) if "X-Pie-Project" in s]
+    minimums = runtime_minimums(pkgs)
     staged = {}
     for s in pkgs:
         pkg, project = s["Package"], s["X-Pie-Project"]
@@ -238,14 +239,31 @@ def arch(pie):
                     depends[pkg].add(dep)
     if unresolved:
         die("libraries in no package:\n  " + "\n  ".join(unresolved))
-    versions = {pkg: s["X-Pie-Version"] for pkg, (s, _, _) in staged.items()}
     for pkg, (s, dst, fields) in sorted(staged.items()):
         finish(pie, pkg, dst, s["X-Pie-Version"], fields,
-               [("runtime:Depends", runtime_depends(depends[pkg], versions))])
+               [("runtime:Depends", runtime_depends(depends[pkg], minimums))])
 
 
-def runtime_depends(deps, versions):
-    return ", ".join("%s (>= %s)" % (d, versions[d]) if d in versions else d
+def runtime_minimums(packages):
+    minimums = {}
+    for package in packages:
+        name = package["Package"]
+        minimum = package.get("X-Pie-ABI-Minimum")
+        version = package["X-Pie-Version"]
+        if not minimum:
+            die("%s: missing X-Pie-ABI-Minimum" % name)
+        for value in (minimum, version):
+            if subprocess.run(["dpkg", "--validate-version", value],
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode:
+                die("%s: invalid runtime version %s" % (name, value))
+        if subprocess.run(["dpkg", "--compare-versions", minimum, "le", version]).returncode:
+            die("%s: X-Pie-ABI-Minimum exceeds X-Pie-Version" % name)
+        minimums[name] = minimum
+    return minimums
+
+
+def runtime_depends(deps, minimums):
+    return ", ".join("%s (>= %s)" % (d, minimums[d]) if d in minimums else d
                      for d in sorted(deps))
 
 
