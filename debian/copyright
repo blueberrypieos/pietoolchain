@@ -1,8 +1,148 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: pietoolchain
 Source: https://github.com/blueberrypieos/pietoolchain
-Files-Excluded: src/* xnu/*
+Files-Excluded: *
 Files-Included:
+ LICENSE
+ build.sh
+ sdk/README.source
+ sdk/README.source.ports
+ sdk/copyright/*
+ sdk/licenses/APSL-1.0
+ sdk/licenses/APSL-1.1
+ sdk/licenses/APSL-1.2
+ sdk/licenses/APSL-2.0
+ sdk/licenses/Apache-2.0
+ sdk/licenses/BSD-1-Clause
+ sdk/licenses/BSD-2-Clause
+ sdk/licenses/BSD-3-Clause
+ sdk/licenses/CDDL-1.0
+ sdk/licenses/GPL-2.0-or-later
+ sdk/licenses/LicenseRef-APSL-2.0-2007
+ sdk/licenses/LicenseRef-APSL-2.0-2007-copyfile
+ sdk/licenses/public-domain
+ sdk/mkcopyright.py
+ sdk/mkdebs.py
+ sdk/mksdk.sh
+ sdk/mksrccopyright.py
+ sdk/pie-source-guard
+ sdk/providers.py
+ sdk/record-provider.py
+ sdk/source-files/*
+ toolchain/*
+ userland/CF/*
+ userland/CarbonHeaders/*
+ userland/CommonCrypto/*
+ userland/CrashReporterClient/*
+ userland/ICU/*
+ userland/IOKitUser/*
+ userland/IOStorageFamily/*
+ userland/Libc/Makefile
+ userland/Libc/copyright
+ userland/Libc/features.inc
+ userland/Libc/freebsd/VENDOR.md
+ userland/Libc/freebsd/block_abi.h
+ userland/Libc/freebsd/qsort_r.c
+ userland/Libc/lists/*
+ userland/Libc/source-files
+ userland/Libc/uuidman.sed
+ userland/Libinfo/*
+ userland/Libm/*
+ userland/Libnotify/*
+ userland/Librpcsvc/*
+ userland/Libsystem/*
+ userland/OpenBSM/*
+ userland/OpenPAM/*
+ userland/architecture/*
+ userland/bzip2/*
+ userland/cctools/*
+ userland/common.mk
+ userland/compat/*
+ userland/compiler-rt/*
+ userland/copyfile/*
+ userland/debs.mk
+ userland/dyld/*
+ userland/dyld_policy/*
+ userland/hfs/*
+ userland/launchd/*
+ userland/libarchive/*
+ userland/libclosure/*
+ userland/libcorecrypto/*
+ userland/libdispatch/*
+ userland/libedit/*
+ userland/libiconv/*
+ userland/libipsec/*
+ userland/libmalloc/*
+ userland/libmd/*
+ userland/libplatform/Makefile
+ userland/libplatform/arm64/asmdefs.h
+ userland/libplatform/arm64/bzero.S
+ userland/libplatform/arm64/memcmp_zero.S
+ userland/libplatform/arm64/memset_pattern.S
+ userland/libplatform/arm64/optimized-routines/LICENSE
+ userland/libplatform/arm64/optimized-routines/VENDOR.md
+ userland/libplatform/arm64/optimized-routines/memchr.S
+ userland/libplatform/arm64/optimized-routines/memcmp.S
+ userland/libplatform/arm64/optimized-routines/memcpy-advsimd.S
+ userland/libplatform/arm64/optimized-routines/memset.S
+ userland/libplatform/arm64/optimized-routines/strchr.S
+ userland/libplatform/arm64/optimized-routines/strcmp.S
+ userland/libplatform/arm64/optimized-routines/strcpy.S
+ userland/libplatform/arm64/optimized-routines/strlen.S
+ userland/libplatform/arm64/optimized-routines/strncmp.S
+ userland/libplatform/arm64/optimized-routines/strnlen.S
+ userland/libplatform/copyright
+ userland/libplatform/patches/*
+ userland/libplatform/source-files
+ userland/libplatform/sources.list
+ userland/libpthread/*
+ userland/libresolv/*
+ userland/libsbuf/*
+ userland/libsysmon/*
+ userland/libsystem_configuration/*
+ userland/libsystem_coreservices/*
+ userland/libsystem_featureflags/*
+ userland/libsystem_kernel/*
+ userland/libsystem_sandbox/*
+ userland/libsystem_sanitizers/*
+ userland/libsystem_trace/*
+ userland/libutil/*
+ userland/libxml2/*
+ userland/libxo/*
+ userland/libxpc/Makefile
+ userland/libxpc/bootstrap.c
+ userland/libxpc/connection.c
+ userland/libxpc/copyright
+ userland/libxpc/internal.h
+ userland/libxpc/object.c
+ userland/libxpc/pie_bootstrap.h
+ userland/libxpc/pipe.c
+ userland/libxpc/plist.c
+ userland/libxpc/services.c
+ userland/libxpc/wire.c
+ userland/llvm-runtimes/*
+ userland/lz4/*
+ userland/mDNSResponder/*
+ userland/ncurses/*
+ userland/openlibm/*
+ userland/openssl/*
+ userland/removefile/*
+ userland/stubs/*
+ userland/syslog/*
+ userland/tools/bsd/*
+ userland/tools/dtrace-h.py
+ userland/tools/dyld-version-defines.py
+ userland/tools/man.mk
+ userland/tools/mkstub.py
+ userland/tools/pbxproj-man.py
+ userland/tools/pbxproj-sources.py
+ userland/tools/pbxproj-tools.py
+ userland/tools/tools.mk
+ userland/tools/unifdef-notice.py
+ userland/xxhash/*
+ userland/xz/*
+ userland/zlib/*
+ xnu-patches/*
  src/CarbonHeaders/AssertMacros.h
  src/CarbonHeaders/ConditionalMacros.h
  src/CarbonHeaders/MacTypes.h
@@ -427,8 +567,8 @@ Files-Included:
  src/Libc/include/_string.h
  src/Libc/include/_strings.h
  src/Libc/include/_time.h
- src/Libc/include/_types/*
  src/Libc/include/_types.h
+ src/Libc/include/_types/*
  src/Libc/include/_wchar.h
  src/Libc/include/_wctype.h
  src/Libc/include/_xlocale.h
@@ -514,8 +654,8 @@ Files-Included:
  src/Libc/include/wchar.h
  src/Libc/include/wctype.h
  src/Libc/include/wordexp.h
- src/Libc/include/xlocale/*
  src/Libc/include/xlocale.h
+ src/Libc/include/xlocale/*
  src/Libc/libdarwin/bsd.c
  src/Libc/libdarwin/ctl.c
  src/Libc/libdarwin/dirstat.c
@@ -826,11 +966,11 @@ Files-Included:
  src/Libc/uuid/uuid-config.h
  src/Libc/uuid/uuidsrc/*
  src/Libc/xcodescripts/*
+ src/Libinfo/Libinfo.xcodeproj/*
  src/Libinfo/Libinfo/darwin_directory_enabled.h
  src/Libinfo/Libinfo/libinfo_common.h
  src/Libinfo/Libinfo/od_debug.c
  src/Libinfo/Libinfo/od_debug.h
- src/Libinfo/Libinfo.xcodeproj/*
  src/Libinfo/dns.subproj/*
  src/Libinfo/gen.subproj/*
  src/Libinfo/lookup.subproj/aliasdb.h
@@ -1250,9 +1390,6 @@ Files-Included:
  src/architecture/byte_order.h
  src/cctools/APPLE_LICENSE
  src/cctools/include/i386/*
- src/cctools/include/mach/arm/*
- src/cctools/include/mach/i386/*
- src/cctools/include/mach/machine-cctools.h
  src/cctools/include/mach-o/arch.h
  src/cctools/include/mach-o/arm/*
  src/cctools/include/mach-o/arm64/*
@@ -1268,6 +1405,9 @@ Files-Included:
  src/cctools/include/mach-o/stab.h
  src/cctools/include/mach-o/swap.h
  src/cctools/include/mach-o/x86_64/*
+ src/cctools/include/mach/arm/*
+ src/cctools/include/mach/i386/*
+ src/cctools/include/mach/machine-cctools.h
  src/cctools/include/stuff/openstep_mach.h
  src/cctools/libmacho/arch.c
  src/cctools/libmacho/get_end.c
@@ -1355,6 +1495,7 @@ Files-Included:
  src/dyld/configs/libdyld.dirty
  src/dyld/doc/man/man1/ld-layout-file.1
  src/dyld/doc/man/man1/ld.1
+ src/dyld/dyld.xcodeproj/project.pbxproj
  src/dyld/dyld/BumpAllocator.h
  src/dyld/dyld/DyldAPIs.cpp
  src/dyld/dyld/DyldAPIs.h
@@ -1390,7 +1531,6 @@ Files-Included:
  src/dyld/dyld/dyldStartup.s
  src/dyld/dyld/dyldSyscallInterface.h
  src/dyld/dyld/glue.c
- src/dyld/dyld.xcodeproj/project.pbxproj
  src/dyld/include/*
  src/dyld/libdyld/*
  src/dyld/libdyld_introspection/*
@@ -1721,6 +1861,7 @@ Files-Included:
  src/libdispatch/src/queue_internal.h
  src/libdispatch/src/semaphore.c
  src/libdispatch/src/semaphore_internal.h
+ src/libdispatch/src/shims.h
  src/libdispatch/src/shims/atomic.h
  src/libdispatch/src/shims/atomic_sfb.h
  src/libdispatch/src/shims/getprogname.h
@@ -1734,7 +1875,6 @@ Files-Included:
  src/libdispatch/src/shims/tsd.h
  src/libdispatch/src/shims/yield.c
  src/libdispatch/src/shims/yield.h
- src/libdispatch/src/shims.h
  src/libdispatch/src/source.c
  src/libdispatch/src/source_internal.h
  src/libdispatch/src/time.c
@@ -2253,9 +2393,9 @@ Files-Included:
  src/llvm-project/compiler-rt/lib/builtins/comparedf2.c
  src/llvm-project/compiler-rt/lib/builtins/comparesf2.c
  src/llvm-project/compiler-rt/lib/builtins/cpu_model/AArch64CPUFeatures.inc
- src/llvm-project/compiler-rt/lib/builtins/cpu_model/aarch64/fmv/apple.inc
  src/llvm-project/compiler-rt/lib/builtins/cpu_model/aarch64.c
  src/llvm-project/compiler-rt/lib/builtins/cpu_model/aarch64.h
+ src/llvm-project/compiler-rt/lib/builtins/cpu_model/aarch64/fmv/apple.inc
  src/llvm-project/compiler-rt/lib/builtins/cpu_model/cpu_model.h
  src/llvm-project/compiler-rt/lib/builtins/ctzdi2.c
  src/llvm-project/compiler-rt/lib/builtins/ctzsi2.c
@@ -2398,10 +2538,10 @@ Files-Included:
  src/llvm-project/libc/src/__support/CPP/limits.h
  src/llvm-project/libc/src/__support/CPP/optional.h
  src/llvm-project/libc/src/__support/CPP/string_view.h
- src/llvm-project/libc/src/__support/CPP/type_traits/*
  src/llvm-project/libc/src/__support/CPP/type_traits.h
- src/llvm-project/libc/src/__support/CPP/utility/*
+ src/llvm-project/libc/src/__support/CPP/type_traits/*
  src/llvm-project/libc/src/__support/CPP/utility.h
+ src/llvm-project/libc/src/__support/CPP/utility/*
  src/llvm-project/libc/src/__support/FPUtil/FPBits.h
  src/llvm-project/libc/src/__support/FPUtil/rounding_mode.h
  src/llvm-project/libc/src/__support/big_int.h
@@ -2786,10 +2926,10 @@ Files-Included:
  src/llvm-project/libcxx/modules/CMakeLists.txt
  src/llvm-project/libcxx/modules/CMakeLists.txt.in
  src/llvm-project/libcxx/modules/modules.json.in
- src/llvm-project/libcxx/modules/std/*
- src/llvm-project/libcxx/modules/std.compat/*
  src/llvm-project/libcxx/modules/std.compat.cppm.in
+ src/llvm-project/libcxx/modules/std.compat/*
  src/llvm-project/libcxx/modules/std.cppm.in
+ src/llvm-project/libcxx/modules/std/*
  src/llvm-project/libcxx/src/CMakeLists.txt
  src/llvm-project/libcxx/src/algorithm.cpp
  src/llvm-project/libcxx/src/any.cpp
@@ -3490,8 +3630,8 @@ Files-Included:
  xnu/bsd/sys/_endian.h
  xnu/bsd/sys/_select.h
  xnu/bsd/sys/_structs.h
- xnu/bsd/sys/_types/*
  xnu/bsd/sys/_types.h
+ xnu/bsd/sys/_types/*
  xnu/bsd/sys/acct.h
  xnu/bsd/sys/aio.h
  xnu/bsd/sys/appleapiopts.h
@@ -4381,8 +4521,8 @@ Files-Included:
  xnu/osfmk/mach/mach_voucher.defs
  xnu/osfmk/mach/mach_voucher_attr_control.defs
  xnu/osfmk/mach/mach_voucher_types.h
- xnu/osfmk/mach/machine/*
  xnu/osfmk/mach/machine.h
+ xnu/osfmk/mach/machine/*
  xnu/osfmk/mach/memory_entry.defs
  xnu/osfmk/mach/memory_error_notification.defs
  xnu/osfmk/mach/memory_object_control.h
@@ -4594,17 +4734,25 @@ Files: userland/Libc/freebsd/block_abi.h
 Copyright: 2014 David T Chisnall
 License: BSD-2-Clause
 
-Files: userland/CommonCrypto/patches/*
- userland/Libinfo/patches/0003-* userland/Libinfo/patches/0004-*
- userland/Libinfo/patches/0006-* userland/Libinfo/patches/0007-*
+Files:
+ userland/CommonCrypto/patches/*
+ userland/Libinfo/patches/0003-*
+ userland/Libinfo/patches/0004-*
+ userland/Libinfo/patches/0006-*
+ userland/Libinfo/patches/0007-*
  userland/Libm/patches/*
  userland/copyfile/patches/*
- userland/dyld/patches/* userland/hfs/patches/* userland/libmalloc/patches/*
- userland/syslog/patches/* xnu-patches/*
+ userland/dyld/patches/*
+ userland/hfs/patches/*
+ userland/libmalloc/patches/*
+ userland/syslog/patches/*
+ xnu-patches/*
 Copyright: 2026 The Blueberry Pie OS Authors
 License: APSL-2.0
 
-Files: userland/launchd/patches/* userland/libdispatch/patches/*
+Files:
+ userland/launchd/patches/*
+ userland/libdispatch/patches/*
  userland/mDNSResponder/patches/*
 Copyright: 2026 The Blueberry Pie OS Authors
 License: Apache-2.0
@@ -4679,7 +4827,8 @@ Copyright: 2003, 2005-2006, 2011-2012 Apple, Inc.
  2004 Internet Systems Consortium, Inc. ("ISC")
 License: APSL-2.0 AND ISC
 
-Files: src/Libc/collections/*
+Files:
+ src/Libc/collections/*
  src/Libc/darwin/*
  src/Libc/emulated/*
  src/Libc/fbsdcompat/*
@@ -4708,14 +4857,16 @@ Copyright: 1999-2014, 2016-2024 Apple Inc.
  2011, 2013 Apple, Inc.
 License: APSL-2.0
 
-Files: src/Libc/libdarwin/h/dirstat.h
+Files:
+ src/Libc/libdarwin/h/dirstat.h
  src/Libc/os/boot_mode_private.h
  src/Libc/os/variant_private.h
  src/Libc/xcodescripts/sanitise_headers.sh
 Copyright: 2010-2011, 2017, 2020 Apple Inc.
 License: Apache-2.0
 
-Files: src/Libc/fbsdcompat/_fpmath.h
+Files:
+ src/Libc/fbsdcompat/_fpmath.h
  src/Libc/include/___wctype.h
  src/Libc/os/linker_set.h
 Copyright: 2003, 2006-2008, 2017 Apple Inc.
@@ -4724,7 +4875,8 @@ Copyright: 2003, 2006-2008, 2017 Apple Inc.
  1999 John D. Polstra
 License: APSL-2.0 AND BSD-2-Clause
 
-Files: src/Libc/include/_wchar.h
+Files:
+ src/Libc/include/_wchar.h
  src/Libc/include/wchar.h
 Copyright: 1999 Citrus Project
  1999-2000 The NetBSD Foundation, Inc.
@@ -4740,7 +4892,8 @@ Copyright: 2004-2006 Apple Computer, Inc.
  2002 The NetBSD Foundation, Inc.
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
-Files: src/Libc/include/_regex.h
+Files:
+ src/Libc/include/_regex.h
  src/Libc/include/regex.h
 Copyright: 2000, 2011 Apple Inc.
  1992 Henry Spencer
@@ -4752,7 +4905,8 @@ Files: src/Libc/libdarwin/stdlib.c
 Copyright: 2018 Apple Inc.
 License: APSL-2.0 AND public-domain
 
-Files: src/Libc/compat-43/*
+Files:
+ src/Libc/compat-43/*
  src/Libc/db/db/FreeBSD/db.c
  src/Libc/emulated/brk.2
  src/Libc/fbsdcompat/sys/cdefs.h
@@ -4796,7 +4950,8 @@ Copyright: 1980, 1983, 1985-1995 The Regents of the University of California
  UNIX System Laboratories, Inc.
 License: BSD-4-Clause-UC
 
-Files: src/Libc/compat-43/sigcompat.c
+Files:
+ src/Libc/compat-43/sigcompat.c
  src/Libc/gen/confstr.c
  src/Libc/gen/crypt.c
  src/Libc/gen/devname.c
@@ -4847,7 +5002,8 @@ Copyright: 1982-1983, 1985-1995 The Regents of the University of California
  UNIX System Laboratories, Inc.
 License: APSL-2.0 AND BSD-4-Clause-UC
 
-Files: src/Libc/gen/thread_stack_pcs.h
+Files:
+ src/Libc/gen/thread_stack_pcs.h
  src/Libc/gen/utmpx-darwin.c
  src/Libc/gen/utmpx-darwin.h
  src/Libc/gen/utmpx_thread.h
@@ -4857,14 +5013,16 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.0. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.0.
 
-Files: src/Libc/gen/fts.c
+Files:
+ src/Libc/gen/fts.c
  src/Libc/include/vis.h
 Copyright: 1990, 1993-1994 The Regents of the University of California
  2000 Apple Computer, Inc.
  1999-2000, 2003, 2005, 2008, 2012, 2016 Apple Inc.
 License: APSL-2.0 AND BSD-3-Clause
 
-Files: src/Libc/fbsdcompat/fpmath.h
+Files:
+ src/Libc/fbsdcompat/fpmath.h
  src/Libc/gen/NetBSD/*
  src/Libc/include/__wctype.h
  src/Libc/include/_langinfo.h
@@ -4933,7 +5091,8 @@ Copyright: 2002-2004 Tim J. Robbins
  2011 The FreeBSD Foundation
 License: BSD-2-Clause
 
-Files: src/Libc/compat-43/sigaltstk.c
+Files:
+ src/Libc/compat-43/sigaltstk.c
  src/Libc/gen/backtrace.c
  src/Libc/gen/clock_gettime.c
  src/Libc/gen/dirfd.c
@@ -4965,7 +5124,8 @@ Copyright: 1999-2018 Apple Inc.
  2004-2010, 2016 Apple, Inc.
 License: APSL-2.0
 
-Files: src/Libc/include/search.h
+Files:
+ src/Libc/include/search.h
  src/Libc/stdlib/FreeBSD/_Exit_.c
  src/Libc/stdlib/FreeBSD/tdelete.c
  src/Libc/stdlib/FreeBSD/tfind.c
@@ -4995,7 +5155,8 @@ License: public-domain
  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
-Files: src/Libc/compat-43/FreeBSD/*
+Files:
+ src/Libc/compat-43/FreeBSD/*
  src/Libc/gen/FreeBSD/*
  src/Libc/gen/backtrace.3
  src/Libc/gen/clock_gettime.3
@@ -5076,7 +5237,8 @@ Copyright: 1980, 1983, 1985-1995 The Regents of the University of California
  UNIX System Laboratories, Inc.
 License: BSD-3-Clause
 
-Files: src/Libc/gen/FreeBSD/arc4random.c
+Files:
+ src/Libc/gen/FreeBSD/arc4random.c
  src/Libc/gen/FreeBSD/basename.3
  src/Libc/gen/FreeBSD/dirname.3
  src/Libc/gen/FreeBSD/readpassphrase.3
@@ -5110,7 +5272,8 @@ Files: src/Libc/net/inet_pton.c
 Copyright: 1996, 1999 Internet Software Consortium
 License: LicenseRef-ISC-Internet-Software-Consortium
 
-Files: src/Libc/gen/FreeBSD/_rand48.c
+Files:
+ src/Libc/gen/FreeBSD/_rand48.c
  src/Libc/gen/FreeBSD/drand48.c
  src/Libc/gen/FreeBSD/erand48.c
  src/Libc/gen/FreeBSD/jrand48.c
@@ -5125,32 +5288,37 @@ Files: src/Libc/gen/FreeBSD/_rand48.c
 Copyright: 1993 Martin Birgmeier
 License: Martin-Birgmeier
 
-Files: src/Libc/fbsdcompat/reentrant.h
+Files:
+ src/Libc/fbsdcompat/reentrant.h
  src/Libc/gen/FreeBSD/fmtcheck.3
  src/Libc/include/FreeBSD/nl_types.h
  src/Libc/include/getopt.h
 Copyright: 1996-1998, 2000 The NetBSD Foundation, Inc.
 License: LicenseRef-BSD-4-Clause-NetBSD-Foundation
 
-Files: src/Libc/include/stringlist.h
+Files:
+ src/Libc/include/stringlist.h
  src/Libc/util/fparseln.3
  src/Libc/util/fparseln.c
 Copyright: 1994, 1997 Christos Zoulas
 License: LicenseRef-BSD-4-Clause-Christos-Zoulas
 
-Files: src/Libc/nls/FreeBSD/catclose.3
+Files:
+ src/Libc/nls/FreeBSD/catclose.3
  src/Libc/nls/FreeBSD/catgets.3
  src/Libc/nls/FreeBSD/catopen.3
 Copyright: 1994 Winning Strategies, Inc.
 License: LicenseRef-BSD-4-Clause-Winning-Strategies
 
-Files: src/Libc/string/FreeBSD/strtok.c
+Files:
+ src/Libc/string/FreeBSD/strtok.c
  src/Libc/string/FreeBSD/wcstok.c
 Copyright: 1998 Softweyr LLC
  1988, 1993 The Regents of the University of California
 License: LicenseRef-BSD-3-Clause-Softweyr
 
-Files: src/Libc/gen/FreeBSD/getprogname.3
+Files:
+ src/Libc/gen/FreeBSD/getprogname.3
  src/Libc/stdlib/FreeBSD/hcreate.c
 Copyright: 2001 Christopher G. Demetriou
 License: LicenseRef-BSD-4-Clause-NetBSD-Project
@@ -5198,7 +5366,8 @@ Copyright: 1998 Softweyr LLC
  1988, 1991, 1993 The Regents of the University of California
 License: LicenseRef-BSD-4-Clause-Softweyr
 
-Files: src/Libc/gen/FreeBSD/popen.3
+Files:
+ src/Libc/gen/FreeBSD/popen.3
  src/Libc/gen/FreeBSD/times.c
  src/Libc/gen/FreeBSD/ttyname.c
  src/Libc/include/arpa/ftp.h
@@ -5215,17 +5384,20 @@ Copyright: 1980, 1983, 1988-1991, 1993, 1995 The Regents of the University of Ca
  2002-2004 Tim J. Robbins
 License: BSD-4-Clause-UC
 
-Files: src/Libc/nls/FreeBSD/msgcat.c
+Files:
+ src/Libc/nls/FreeBSD/msgcat.c
  src/Libc/nls/FreeBSD/msgcat.h
 Copyright: 1990 Alfalfa Software Incorporated, Cambridge, Massachusetts
 License: LicenseRef-HPND-Alfalfa
 
-Files: src/Libc/include/strhash.h
+Files:
+ src/Libc/include/strhash.h
  src/Libc/stdlib/FreeBSD/strhash.c
 Copyright: 1990 Terry Jones & Jordan Hubbard
 License: LicenseRef-HPND-Terry-Jones-Jordan-Hubbard
 
-Files: src/Libc/stdlib/FreeBSD/insque.3
+Files:
+ src/Libc/stdlib/FreeBSD/insque.3
  src/Libc/stdlib/FreeBSD/insque.c
  src/Libc/stdlib/FreeBSD/lsearch.3
  src/Libc/stdlib/FreeBSD/lsearch.c
@@ -5237,7 +5409,8 @@ Files: src/Libc/gdtoa/FreeBSD/*
 Copyright: 1998-2000 Lucent Technologies
 License: SMLNJ
 
-Files: src/Libc/gdtoa/FreeBSD/_hdtoa.c
+Files:
+ src/Libc/gdtoa/FreeBSD/_hdtoa.c
  src/Libc/gdtoa/FreeBSD/_ldtoa.c
  src/Libc/gen/FreeBSD/basename.c
  src/Libc/gen/FreeBSD/dirname.c
@@ -5349,7 +5522,8 @@ Copyright: 2002-2005 Tim J. Robbins
  2001 The FreeBSD Project
 License: BSD-2-Clause
 
-Files: src/Libc/emulated/bsd_signal.3
+Files:
+ src/Libc/emulated/bsd_signal.3
  src/Libc/emulated/tcgetsid.3
  src/Libc/gen/posix_memalign.3
  src/Libc/gen/sync_volume_np.3
@@ -5400,7 +5574,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
 
-Files: src/Libinfo/gen.subproj/configuration_profile.c
+Files:
+ src/Libinfo/gen.subproj/configuration_profile.c
  src/Libinfo/gen.subproj/configuration_profile.h
  src/Libinfo/lookup.subproj/aliasdb.h
  src/Libinfo/lookup.subproj/bootparams.h
@@ -5440,7 +5615,8 @@ License: APSL-2.0 AND LicenseRef-Sun-RPC
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.1.
 
-Files: src/Libinfo/rpc.subproj/bindresvport.3
+Files:
+ src/Libinfo/rpc.subproj/bindresvport.3
  src/Libinfo/rpc.subproj/getrpcent.3
  src/Libinfo/rpc.subproj/getrpcport.3
  src/Libinfo/rpc.subproj/rpc.3
@@ -5484,7 +5660,8 @@ Copyright: 1992-1993 Theo de Raadt <deraadt@fsa.ca>
  2003-2013 Apple Inc.
 License: APSL-2.0 AND BSD-3-Clause
 
-Files: src/Libinfo/nis.subproj/getdomainname.c
+Files:
+ src/Libinfo/nis.subproj/getdomainname.c
  src/Libinfo/nis.subproj/setdomainname.c
 Copyright: 1999-2018 Apple Inc.
  1995 NeXT Computer, Inc.
@@ -5493,7 +5670,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
 
-Files: src/Libinfo/gen.subproj/ether_addr.c
+Files:
+ src/Libinfo/gen.subproj/ether_addr.c
  src/Libinfo/nis.subproj/innetgr.c
 Copyright: 1999-2018 Apple Inc.
  1999 Apple Computer, Inc.
@@ -5502,7 +5680,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
 
-Files: src/Libinfo/dns.subproj/herror.c
+Files:
+ src/Libinfo/dns.subproj/herror.c
  src/Libinfo/dns.subproj/res_comp.c
  src/Libinfo/gen.subproj/map_v4v6.c
 Copyright: 1985, 1987-1988, 1993 The Regents of the University of California
@@ -5510,7 +5689,8 @@ Copyright: 1985, 1987-1988, 1993 The Regents of the University of California
  2018 Apple Inc.
 License: BSD-4-Clause-UC AND LicenseRef-DEC-resolver
 
-Files: src/Libinfo/gen.subproj/getifaddrs.3
+Files:
+ src/Libinfo/gen.subproj/getifaddrs.3
  src/Libinfo/gen.subproj/getifaddrs.c
  src/Libinfo/gen.subproj/if_indextoname.3
  src/Libinfo/gen.subproj/if_indextoname.c
@@ -5529,7 +5709,8 @@ Files: src/Libinfo/gen.subproj/getifmaddrs.c
 Copyright: 2003 Bruce M. Simpson
 License: LicenseRef-BSD-4-Clause-Bruce-Simpson
 
-Files: src/Libinfo/gen.subproj/inet6_opt_init.3
+Files:
+ src/Libinfo/gen.subproj/inet6_opt_init.3
  src/Libinfo/gen.subproj/inet6_rth_space.3
  src/Libinfo/gen.subproj/ip6opt.c
  src/Libinfo/gen.subproj/rthdr.c
@@ -5540,7 +5721,8 @@ Copyright: 1995-1998, 2004 WIDE Project
  2018 Apple Inc.
 License: BSD-3-Clause
 
-Files: src/Libinfo/gen.subproj/inet6_option_space.3
+Files:
+ src/Libinfo/gen.subproj/inet6_option_space.3
  src/Libinfo/gen.subproj/inet6_rthdr_space.3
  src/Libinfo/lookup.subproj/grp.h
  src/Libinfo/lookup.subproj/pwd.h
@@ -5551,7 +5733,8 @@ Copyright: 1983, 1987, 1989, 1991, 1993 The Regents of the University of Califor
  2000-2018 Apple Inc.
 License: BSD-4-Clause-UC
 
-Files: src/Libinfo/gen.subproj/gethostbyname.3
+Files:
+ src/Libinfo/gen.subproj/gethostbyname.3
  src/Libinfo/gen.subproj/getipnodebyname.3
  src/Libinfo/gen.subproj/getnetent.3
  src/Libinfo/gen.subproj/getprotoent.3
@@ -5560,7 +5743,8 @@ Files: src/Libinfo/gen.subproj/gethostbyname.3
 Copyright: 1983, 1987, 1991-1993 The Regents of the University of California
 License: BSD-3-Clause
 
-Files: src/Libinfo/lookup.subproj/getfsent.3
+Files:
+ src/Libinfo/lookup.subproj/getfsent.3
  src/Libinfo/lookup.subproj/getgrent.3
  src/Libinfo/lookup.subproj/getgrouplist.3
  src/Libinfo/lookup.subproj/getpwent.3
@@ -5586,14 +5770,16 @@ Copyright: 2008-2025 Apple Inc.
  1993 Digital Equipment Corporation
 License: APSL-2.0 AND BSD-3-Clause AND LicenseRef-ISC-Internet-Software-Consortium AND LicenseRef-DEC-resolver
 
-Files: src/Libinfo/lookup.subproj/gai_strerror.3
+Files:
+ src/Libinfo/lookup.subproj/gai_strerror.3
  src/Libinfo/lookup.subproj/getaddrinfo.3
  src/Libinfo/lookup.subproj/getnameinfo.3
 Copyright: 2004 Internet Systems Consortium, Inc. ("ISC")
  2000-2001 Internet Software Consortium
 License: ISC
 
-Files: src/Libinfo/lookup.subproj/bootparams.5
+Files:
+ src/Libinfo/lookup.subproj/bootparams.5
  src/Libinfo/membership.subproj/mbr_check_membership.3
  src/Libinfo/membership.subproj/mbr_uid_to_uuid.3
 Copyright: 2005-2011 Apple Inc.
@@ -5609,7 +5795,8 @@ License: APSL-2.0 AND LicenseRef-BSD-4-Clause-UC-Theo-de-Raadt
 Comment: The Apple code was originally distributed under APSL-1.1. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.1.
 
-Files: src/Libinfo/Libinfo.xcodeproj/project.pbxproj
+Files:
+ src/Libinfo/Libinfo.xcodeproj/project.pbxproj
  src/Libinfo/Libinfo/darwin_directory_enabled.h
  src/Libinfo/Libinfo/libinfo_common.h
  src/Libinfo/Libinfo/od_debug.c
@@ -5630,7 +5817,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
 
-Files: src/Libm/man3/acos.3
+Files:
+ src/Libm/man3/acos.3
  src/Libm/man3/acosh.3
  src/Libm/man3/asin.3
  src/Libm/man3/asinh.3
@@ -5682,7 +5870,8 @@ Files: src/Libm/man3/acos.3
 Copyright: 1985, 1989, 1991 The Regents of the University of California
 License: BSD-4-Clause-UC
 
-Files: src/Libm/man3/fpclassify.3
+Files:
+ src/Libm/man3/fpclassify.3
  src/Libm/man3/isgreater.3
 Copyright: 2003 Mike Barcroft <mike@FreeBSD.org>
  2003 David Schultz <dschultz@uclink.Berkeley.EDU>
@@ -5724,21 +5913,24 @@ Files: src/cctools/include/stuff/openstep_mach.h
 Copyright: 2004 Apple Computer, Inc.
 License: BSD-3-Clause
 
-Files: src/cctools/include/mach-o/nlist.h
+Files:
+ src/cctools/include/mach-o/nlist.h
  src/cctools/include/mach-o/stab.h
 Copyright: 1991, 1993 The Regents of the University of California
  1999-2003 Apple Computer, Inc.
  UNIX System Laboratories, Inc.
 License: APSL-2.0 AND BSD-4-Clause-UC
 
-Files: src/cctools/include/mach/i386/*
+Files:
+ src/cctools/include/mach/i386/*
  src/cctools/include/mach/machine-cctools.h
 Copyright: 1999-2006 Apple Computer, Inc.
  1987-1989 Carnegie-Mellon University
  1986 Avadis Tevanian, Jr.
 License: APSL-2.0
 
-Files: src/cctools/include/i386/eflags.h
+Files:
+ src/cctools/include/i386/eflags.h
  src/cctools/include/mach/i386/fp_reg.h
  src/cctools/include/mach/i386/thread_status.h
 Copyright: 2000-2006 Apple Computer, Inc.
@@ -5758,7 +5950,8 @@ Copyright: 1999-2026 Apple Inc.
  2004-2008 Apple Computer, Inc.
 License: APSL-2.0
 
-Files: src/dyld/common/Defines.h
+Files:
+ src/dyld/common/Defines.h
  src/dyld/common/TargetPolicy.cpp
  src/dyld/common/TargetPolicy.h
  src/dyld/lsl/UUID.h
@@ -5769,7 +5962,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.0. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.0.
 
-Files: src/dyld/common/MurmurHash.cpp
+Files:
+ src/dyld/common/MurmurHash.cpp
  src/dyld/common/PerfectHash.cpp
 Copyright: 2019, 2022 Apple Inc.
 License: APSL-2.0 AND public-domain
@@ -5796,7 +5990,8 @@ Files: src/piecrypto/third_party/bearssl/*
 Copyright: 2016-2018 Thomas Pornin <pornin@bolet.org>
 License: MIT
 
-Files: src/piecrypto/third_party/freebsd/sys/crypto/armv8/*
+Files:
+ src/piecrypto/third_party/freebsd/sys/crypto/armv8/*
  src/piecrypto/third_party/freebsd/sys/crypto/sha2/*
 Copyright: 2005 Colin Percival
  2014, 2016, 2021 The FreeBSD Foundation
@@ -5829,7 +6024,8 @@ Copyright: Tom St Denis
  2016 Thomas R. Nicely <http://www.trnicely.net>
 License: Unlicense
 
-Files: src/piecrypto/third_party/openbsd/include/*
+Files:
+ src/piecrypto/third_party/openbsd/include/*
  src/piecrypto/third_party/openbsd/lib/*
 Copyright: 1997 Niels Provos <provos@physnet.uni-hamburg.de>
 License: BSD-3-Clause
@@ -5853,7 +6049,8 @@ Copyright: 1999-2023, 2025 Apple Inc.
  1999-2023 Apple Computer, Inc.
 License: APSL-2.0
 
-Files: src/libmalloc/resolver/*
+Files:
+ src/libmalloc/resolver/*
  src/libmalloc/xcodescripts/sanitise_headers.sh
 Copyright: 2010-2011, 2018 Apple Inc.
 License: Apache-2.0
@@ -5864,7 +6061,8 @@ Copyright: 2018-2022 Microsoft Corporation, Daan Leijen
  2025 Apple Inc.
 License: MIT
 
-Files: src/libmalloc/man/malloc.3
+Files:
+ src/libmalloc/man/malloc.3
  src/libmalloc/man/malloc_size.3
  src/libmalloc/man/malloc_zone_malloc.3
 Copyright: 2006 Apple Computer, Inc.
@@ -5879,7 +6077,8 @@ Copyright: 1998-2023 Apple Inc.
  1995 NeXT Computer, Inc.
 License: APSL-2.0
 
-Files: src/Libc/Libc.xcodeproj/project.pbxproj
+Files:
+ src/Libc/Libc.xcodeproj/project.pbxproj
  src/Libc/man/manpages.lst
  src/Libc/xcodescripts/abort_unsupported.sh
  src/Libc/xcodescripts/alias.list
@@ -5922,7 +6121,8 @@ Files: src/Libc/Libc.xcodeproj/project.pbxproj
 Copyright: Apple Inc.
 License: APSL-2.0
 
-Files: src/libplatform/LICENSE
+Files:
+ src/libplatform/LICENSE
  src/libplatform/include/os/*
  src/libplatform/internal/os/internal.h
  src/libplatform/internal/os/yield.h
@@ -5931,14 +6131,16 @@ Files: src/libplatform/LICENSE
 Copyright: 2008-2017, 2022-2025 Apple Inc.
 License: Apache-2.0
 
-Files: src/libplatform/private/os/alloc_once_impl.h
+Files:
+ src/libplatform/private/os/alloc_once_impl.h
  src/libplatform/private/os/log_simple_private.h
  src/libplatform/private/os/log_simple_private_impl.h
  src/libplatform/src/os/alloc_once.c
 Copyright: 2012-2013, 2020 Apple Inc.
 License: APSL-2.0
 
-Files: src/libplatform/man/ffs.3
+Files:
+ src/libplatform/man/ffs.3
  src/libplatform/src/string/generic/ffsll.c
  src/libplatform/src/string/generic/flsll.c
  src/libplatform/src/string/generic/strstr.c
@@ -5953,13 +6155,15 @@ Files: src/libplatform/man/setjmp.3
 Copyright: 1990-1991, 1993 The Regents of the University of California
 License: BSD-4-Clause-UC
 
-Files: src/libplatform/man/getcontext.3
+Files:
+ src/libplatform/man/getcontext.3
  src/libplatform/man/makecontext.3
  src/libplatform/man/ucontext.3
 Copyright: 2002 Packet Design, LLC
 License: LicenseRef-Packet-Design
 
-Files: src/libplatform/src/ucontext/generic/makecontext.c
+Files:
+ src/libplatform/src/ucontext/generic/makecontext.c
  src/libplatform/src/ucontext/generic/swapcontext.c
 Copyright: 2007, 2009 Apple Inc.
  2001 Daniel M. Eischen <deischen@freebsd.org>
@@ -5975,7 +6179,8 @@ Copyright: 1999-2019, 2021 Apple Inc.
  1995-2005, 2012 Apple Computer, Inc.
 License: APSL-2.0
 
-Files: src/libpthread/include/pthread/pthread.h
+Files:
+ src/libpthread/include/pthread/pthread.h
  src/libpthread/include/pthread/pthread_spis.h
  src/libpthread/private/pthread/posix_sched.h
  src/libpthread/private/pthread/spinlock_private.h
@@ -5991,7 +6196,8 @@ Copyright: 2000-2013 Apple Inc.
  1991-1997 Open Software Foundation, Inc.
 License: APSL-2.0 AND LicenseRef-HPND-OSF
 
-Files: src/libpthread/include/pthread/stack_np.h
+Files:
+ src/libpthread/include/pthread/stack_np.h
  src/libpthread/src/resolver/*
 Copyright: 2015, 2018 Apple Inc.
 License: Apache-2.0
@@ -6001,7 +6207,8 @@ Copyright: 1997 Brian Cully <shmit@kublai.com>
  2001 Apple Computer, Inc.
 License: LicenseRef-BSD-3-Clause-John-Birrell
 
-Files: src/libpthread/man/pthread.3
+Files:
+ src/libpthread/man/pthread.3
  src/libpthread/man/pthread_create.3
  src/libpthread/man/pthread_detach.3
  src/libpthread/man/pthread_equal.3
@@ -6017,7 +6224,8 @@ Copyright: 1996-1998 John Birrell <jb@cimlogic.com.au>
  2001 Apple Computer, Inc.
 License: LicenseRef-BSD-4-Clause-John-Birrell
 
-Files: src/libpthread/man/pthread_main_np.3
+Files:
+ src/libpthread/man/pthread_main_np.3
  src/libpthread/man/pthread_rwlock_destroy.3
  src/libpthread/man/pthread_rwlock_init.3
  src/libpthread/man/pthread_rwlock_rdlock.3
@@ -6032,7 +6240,8 @@ Copyright: 1998 Alex Nash
  2003 Alexey Zelkin <phantom@FreeBSD.org>
 License: BSD-2-Clause
 
-Files: src/libpthread/man/pthread_attr_init_destroy.3
+Files:
+ src/libpthread/man/pthread_attr_init_destroy.3
  src/libpthread/man/pthread_attr_set_getdetachstate.3
  src/libpthread/man/pthread_attr_set_getinheritsched.3
  src/libpthread/man/pthread_attr_set_getschedparam.3
@@ -6045,7 +6254,8 @@ Files: src/libpthread/man/pthread_attr_init_destroy.3
 Copyright: 2004-2007, 2016, 2020 Apple Inc.
 License: APSL-2.0
 
-Files: src/Libc/sys/sigwait.2
+Files:
+ src/Libc/sys/sigwait.2
  src/libpthread/man/pthread_attr.3
  src/libpthread/man/pthread_condattr.3
  src/libpthread/man/pthread_getschedparam.3
@@ -6054,7 +6264,8 @@ Files: src/Libc/sys/sigwait.2
 Copyright: 2000 Jason Evans <jasone@FreeBSD.org>
 License: LicenseRef-BSD-Evans
 
-Files: src/libpthread/man/pthread_cancel.3
+Files:
+ src/libpthread/man/pthread_cancel.3
  src/libpthread/man/pthread_setcancelstate.3
 Copyright: FreeBSD's contributors (the files name none)
 License: APSL-2.0
@@ -6084,7 +6295,8 @@ Copyright: 2004 Internet Systems Consortium, Inc. ("ISC")
  1999 Internet Software Consortium, Inc.
 License: ISC
 
-Files: src/libresolv/APPLE_LICENSE
+Files:
+ src/libresolv/APPLE_LICENSE
  src/libresolv/dns.c
  src/libresolv/dns.h
  src/libresolv/dns_async.c
@@ -6098,7 +6310,8 @@ Copyright: 1999-2007 Apple Inc.
  2003-2008 Apple, Inc.
 License: APSL-2.0
 
-Files: src/libresolv/arpa/nameser.h
+Files:
+ src/libresolv/arpa/nameser.h
  src/libresolv/nameser.h
  src/libresolv/resolv.h
 Copyright: 1983, 1987, 1989, 1993 The Regents of the University of California
@@ -6106,7 +6319,8 @@ Copyright: 1983, 1987, 1989, 1993 The Regents of the University of California
  1995-2003 Internet Software Consortium
 License: BSD-3-Clause AND ISC
 
-Files: src/libresolv/res_comp.c
+Files:
+ src/libresolv/res_comp.c
  src/libresolv/res_init.c
  src/libresolv/res_mkquery.c
  src/libresolv/res_query.c
@@ -6130,14 +6344,16 @@ Copyright: 1996, 1998 Internet Software Consortium
  1995 International Business Machines, Inc.
 License: LicenseRef-ISC-Internet-Software-Consortium AND LicenseRef-IBM
 
-Files: src/libresolv/dst_api.c
+Files:
+ src/libresolv/dst_api.c
  src/libresolv/dst_internal.h
  src/libresolv/hmac_link.c
  src/libresolv/support.c
 Copyright: 1995-1998 Trusted Information Systems, Inc.
 License: LicenseRef-ISC-Trusted-Information-Systems
 
-Files: src/libresolv/resolver.3
+Files:
+ src/libresolv/resolver.3
  src/libresolv/resolver.5
 Copyright: 1985-1986, 1991, 1993 The Regents of the University of California
  2003 Apple Computer, Inc.
@@ -6161,7 +6377,8 @@ Files: src/mDNSResponder/LICENSE
 Copyright: Apple Inc.
 License: Apache-2.0 AND BSD-3-Clause
 
-Files: src/mDNSResponder/mDNSShared/dns_sd.h
+Files:
+ src/mDNSResponder/mDNSShared/dns_sd.h
  src/mDNSResponder/mDNSShared/dnssd_clientlib.c
  src/mDNSResponder/mDNSShared/dnssd_clientstub.c
  src/mDNSResponder/mDNSShared/dnssd_clientstub.h
@@ -6192,7 +6409,8 @@ Copyright: 2011-2014 The Julia Project
  1993 Sun Microsystems, Inc.
 License: MIT AND ISC AND BSD-2-Clause-Views AND SunPro
 
-Files: src/openlibm/include/*
+Files:
+ src/openlibm/include/*
  src/openlibm/src/aarch64_fpmath.h
  src/openlibm/src/fpmath.h
  src/openlibm/src/k_exp.c
@@ -6238,7 +6456,8 @@ Copyright: 2002-2011 David Schultz <das@FreeBSD.ORG>
  2014 The FreeBSD Foundation
 License: BSD-2-Clause
 
-Files: src/openlibm/src/s_ccosh.c
+Files:
+ src/openlibm/src/s_ccosh.c
  src/openlibm/src/s_ccoshf.c
  src/openlibm/src/s_csinh.c
  src/openlibm/src/s_csinhf.c
@@ -6251,7 +6470,8 @@ Copyright: 2005 Bruce D. Evans and Steven G. Kargl
  2003 Steven G. Kargl
 License: LicenseRef-BSD-2-Clause-Silbersack
 
-Files: src/openlibm/include/openlibm_complex.h
+Files:
+ src/openlibm/include/openlibm_complex.h
  src/openlibm/src/s_cacos.c
  src/openlibm/src/s_cacosf.c
  src/openlibm/src/s_cacosh.c
@@ -6272,7 +6492,8 @@ Copyright: 2008 Stephen L. Moshier <steve@moshier.net>
  2008 Martynas Venckus <martynas@openbsd.org>
 License: ISC
 
-Files: src/openlibm/src/w_cabs.c
+Files:
+ src/openlibm/src/w_cabs.c
  src/openlibm/src/w_cabsf.c
 Copyright: none; written by J.T. Conklin and others, who placed them in the public domain
 License: public-domain
@@ -6285,7 +6506,8 @@ Files: src/openlibm/include/openlibm_math.h
 Copyright: 1993 Sun Microsystems, Inc.
 License: SunPro
 
-Files: src/openlibm/src/e_exp.c
+Files:
+ src/openlibm/src/e_exp.c
  src/openlibm/src/e_pow.c
  src/openlibm/src/k_tan.c
  src/openlibm/src/k_tanf.c
@@ -6302,7 +6524,8 @@ Copyright: 1993 Sun Microsystems, Inc.
  2013 Elliot Saba
 License: SunPro AND LicenseRef-Elliot-Saba-2
 
-Files: src/openlibm/include/openlibm_defs.h
+Files:
+ src/openlibm/include/openlibm_defs.h
  src/openlibm/include/openlibm_fenv.h
  src/openlibm/src/cdefs-compat.h
  src/openlibm/src/common.c
@@ -6312,7 +6535,8 @@ Copyright: 2011-2014 The Julia Project
  the OpenLibm contributors (https://github.com/JuliaMath/openlibm/graphs/contributors)
 License: MIT
 
-Files: src/Libc/gdtoa/FreeBSD/glue.c
+Files:
+ src/Libc/gdtoa/FreeBSD/glue.c
  src/Libc/gen/FreeBSD/getprogname.c
  src/Libc/gen/FreeBSD/setprogname.c
  src/Libc/locale/FreeBSD/nomacros.c
@@ -6326,7 +6550,8 @@ Files: src/Libc/gdtoa/FreeBSD/glue.c
 Copyright: The FreeBSD Project
 License: BSD-2-Clause
 
-Files: src/removefile/LICENSE
+Files:
+ src/removefile/LICENSE
  src/removefile/removefile_random.c
  src/removefile/removefile_rename_unlink.c
  src/removefile/removefile_sunlink.c
@@ -6352,7 +6577,8 @@ Copyright: 1999-2015 Apple Inc.
  1993 The Regents of the University of California
 License: APSL-2.0 AND BSD-4-Clause-UC
 
-Files: src/syslog/libsystem_asl.tproj/man/syslog.3
+Files:
+ src/syslog/libsystem_asl.tproj/man/syslog.3
  src/syslog/syslogd.tproj/syslog.conf.5
 Copyright: 1985, 1990-1991, 1993 The Regents of the University of California
 License: BSD-4-Clause-UC
@@ -6373,7 +6599,8 @@ Files: src/llvm-project/*
 Copyright: 2009-2025 The LLVM Project contributors
 License: Apache-2.0 with LLVM exception
 
-Files: src/llvm-project/libcxx/src/include/ryu/common.h
+Files:
+ src/llvm-project/libcxx/src/include/ryu/common.h
  src/llvm-project/libcxx/src/include/ryu/d2fixed.h
  src/llvm-project/libcxx/src/include/ryu/d2fixed_full_table.h
  src/llvm-project/libcxx/src/include/ryu/d2s.h
@@ -6389,7 +6616,8 @@ Copyright: 2018 Ulf Adams
  Microsoft Corporation
 License: Apache-2.0 with LLVM exception AND BSL-1.0
 
-Files: src/llvm-project/libcxx/include/__format/escaped_output_table.h
+Files:
+ src/llvm-project/libcxx/include/__format/escaped_output_table.h
  src/llvm-project/libcxx/include/__format/extended_grapheme_cluster_table.h
  src/llvm-project/libcxx/include/__format/indic_conjunct_break_table.h
  src/llvm-project/libcxx/include/__format/width_estimation_table.h
@@ -6422,7 +6650,8 @@ Copyright: 1993-1995, 1997-2026 Apple Inc.
  2012 apple computer, inc
 License: LicenseRef-APSL-2.0-OS-reference
 
-Files: xnu/APPLE_LICENSE
+Files:
+ xnu/APPLE_LICENSE
  xnu/EXTERNAL_HEADERS/*
  xnu/Makefile
  xnu/SETUP/*
@@ -6669,7 +6898,8 @@ Copyright: 1999-2025 Apple Inc.
  2006, 2008, 2025 Apple,Inc.
 License: APSL-2.0
 
-Files: xnu/libsyscall/mach/mach/mach.h
+Files:
+ xnu/libsyscall/mach/mach/mach.h
  xnu/libsyscall/mach/mach/mach_init.h
  xnu/libsyscall/mach/mach/mach_sync_ipc.h
  xnu/libsyscall/mach/mach_error.c
@@ -6776,7 +7006,8 @@ Copyright: 1986-1991 Carnegie Mellon University
  2007-2016 Apple, Inc.
 License: LicenseRef-APSL-2.0-OS-reference AND CMU-Mach
 
-Files: xnu/libsyscall/mach/error_codes.c
+Files:
+ xnu/libsyscall/mach/error_codes.c
  xnu/libsyscall/mach/errorlib.h
  xnu/libsyscall/mach/mach/mach_error.h
 Copyright: 1999 Apple Computer, Inc.
@@ -6784,7 +7015,8 @@ Copyright: 1999 Apple Computer, Inc.
  1989-1991 Carnegie Mellon University
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-CMU-Mach-memory-object
 
-Files: xnu/bsd/arm/endian.h
+Files:
+ xnu/bsd/arm/endian.h
  xnu/bsd/arm/limits.h
  xnu/bsd/arm/param.h
  xnu/bsd/arm/types.h
@@ -6892,7 +7124,8 @@ Files: xnu/bsd/man/man4/bpf.4
 Copyright: 1990 The Regents of the University of California
 License: BSD-4-Clause-Shortened
 
-Files: xnu/bsd/miscfs/devfs/*
+Files:
+ xnu/bsd/miscfs/devfs/*
  xnu/bsd/net/altq/altq.h
  xnu/bsd/net/altq/altq_priq.h
  xnu/bsd/net/classq/classq_blue.h
@@ -6957,13 +7190,15 @@ Copyright: 2008-2024 Apple Inc.
  2000 Jonathan Lemon
 License: APSL-2.0 AND LicenseRef-BSD-2-Clause-Jonathan-Lemon
 
-Files: xnu/bsd/sys/shm.h
+Files:
+ xnu/bsd/sys/shm.h
  xnu/bsd/sys/shm_internal.h
 Copyright: 2000-2005 Apple Computer, Inc.
  1994 Adam Glass
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-Adam-Glass
 
-Files: xnu/bsd/net/classq/classq.h
+Files:
+ xnu/bsd/net/classq/classq.h
  xnu/bsd/net/pktsched/pktsched_rmclass.h
 Copyright: 2007-2021 Apple Inc.
  1991-1997 Regents of the University of California
@@ -6990,13 +7225,15 @@ Copyright: 2008 Apple Inc.
  1996 Jason R. Thorpe
 License: APSL-2.0 AND LicenseRef-BSD-4-Clause-Jason-Thorpe
 
-Files: xnu/bsd/net/altq/altq_cbq.h
+Files:
+ xnu/bsd/net/altq/altq_cbq.h
  xnu/bsd/net/pktsched/pktsched_cbq.h
 Copyright: 2011-2016 Apple Inc.
  1993-1998 Sun Microsystems, Inc.
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-Sun-CBQ
 
-Files: xnu/bsd/net/if_mib.h
+Files:
+ xnu/bsd/net/if_mib.h
  xnu/bsd/net/if_mib_private.h
  xnu/bsd/net/if_vlan_var.h
 Copyright: 2000-2019, 2023 Apple Inc.
@@ -7010,19 +7247,22 @@ Copyright: 2017 Apple Computer, Inc.
  2000-2001 Poul-Henning Kamp
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-HPND-UDel
 
-Files: xnu/bsd/net/altq/altq_hfsc.h
+Files:
+ xnu/bsd/net/altq/altq_hfsc.h
  xnu/bsd/net/pktsched/pktsched_hfsc.h
 Copyright: 2011-2016 Apple Inc.
  1997-1999 Carnegie Mellon University
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-CMU-HFSC
 
-Files: xnu/bsd/net/ppp_comp.h
+Files:
+ xnu/bsd/net/ppp_comp.h
  xnu/bsd/net/ppp_defs.h
 Copyright: 2000 Apple Computer, Inc.
  1994 The Australian National University
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-ANU-PPP
 
-Files: xnu/libsyscall/mach/err_ipc.sub
+Files:
+ xnu/libsyscall/mach/err_ipc.sub
  xnu/libsyscall/mach/err_kern.sub
  xnu/libsyscall/mach/err_mach_ipc.sub
  xnu/libsyscall/mach/err_server.sub
@@ -7030,25 +7270,29 @@ Files: xnu/libsyscall/mach/err_ipc.sub
 Copyright: 1987-1991 Carnegie Mellon University
 License: LicenseRef-CMU-Mach-memory-object
 
-Files: xnu/libkern/firehose/*
+Files:
+ xnu/libkern/firehose/*
  xnu/libkern/os/base.h
  xnu/libkern/os/base_private.h
  xnu/libkern/os/object.h
 Copyright: 2008-2024 Apple Inc.
 License: Apache-2.0
 
-Files: xnu/bsd/man/man2/shmat.2
+Files:
+ xnu/bsd/man/man2/shmat.2
  xnu/bsd/man/man2/shmctl.2
  xnu/bsd/man/man2/shmget.2
 Copyright: 1995 Frank van der Linden
 License: LicenseRef-BSD-4-Clause-Frank-van-der-Linden
 
-Files: xnu/bsd/man/man9/fetch.9
+Files:
+ xnu/bsd/man/man9/fetch.9
  xnu/bsd/man/man9/store.9
 Copyright: 1996 Jason R. Thorpe
 License: LicenseRef-BSD-4-Clause-Jason-Thorpe
 
-Files: xnu/osfmk/kern/task.h
+Files:
+ xnu/osfmk/kern/task.h
  xnu/osfmk/kern/thread.h
 Copyright: 2000-2019 Apple Inc.
  1987-1991 Carnegie Mellon University
@@ -7056,14 +7300,16 @@ Copyright: 2000-2019 Apple Inc.
  2005 SPARTA, Inc.
 License: LicenseRef-APSL-2.0-OS-reference AND CMU-Mach AND LicenseRef-HPND-Utah-CSL
 
-Files: xnu/EXTERNAL_HEADERS/ptrauth.h
+Files:
+ xnu/EXTERNAL_HEADERS/ptrauth.h
  xnu/EXTERNAL_HEADERS/stdarg.h
  xnu/EXTERNAL_HEADERS/stdatomic.h
  xnu/EXTERNAL_HEADERS/stddef.h
 Copyright: 2008 Eli Friedman
 License: MIT
 
-Files: xnu/libkern/libkern/zconf.h
+Files:
+ xnu/libkern/libkern/zconf.h
  xnu/libkern/libkern/zlib.h
 Copyright: 2008 Apple Inc.
  1995-2005 Jean-loup Gailly
@@ -7075,7 +7321,8 @@ Copyright: 1984, 1989-1990, 2000-2006 Free Software Foundation, Inc.
  1999-2019 Apple Inc.
 License: LicenseRef-APSL-2.0-OS-reference AND GPL-2.0-or-later with Bison-2.2 exception
 
-Files: xnu/bsd/machine/limits.h
+Files:
+ xnu/bsd/machine/limits.h
  xnu/bsd/man/man2/ptrace.2
 Copyright: none: placed in the public domain by its authors
 License: public-domain
@@ -7085,7 +7332,8 @@ Copyright: 2015 Apple Inc.
  2014 Theo de Raadt
 License: ISC
 
-Files: src/Libc/emulated/statvfs.3
+Files:
+ src/Libc/emulated/statvfs.3
  src/Libc/net/FreeBSD/addr2ascii.3
  src/Libc/net/FreeBSD/addr2ascii.c
  src/Libc/net/FreeBSD/ascii2addr.c
@@ -7123,7 +7371,8 @@ License: APSL-2.0 AND BSD-4.3TAHOE
 Comment: The Apple code was originally distributed under APSL-1.0. It is used
  here under APSL-2.0, as permitted by section 7 of APSL-1.0.
 
-Files: xnu/EXTERNAL_HEADERS/architecture/byte_order.h
+Files:
+ xnu/EXTERNAL_HEADERS/architecture/byte_order.h
  xnu/SETUP/config/externs.c
  xnu/SETUP/config/openp.c
  xnu/SETUP/config/searchp.c
@@ -7134,13 +7383,15 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.0. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.0.
 
-Files: xnu/SETUP/config/lexer.l
+Files:
+ xnu/SETUP/config/lexer.l
  xnu/SETUP/config/parser.y
 Copyright: 1987-1990 Carnegie-Mellon University
  1980, 1988 Regents of the University of California
 License: BSD-4.3TAHOE
 
-Files: xnu/bsd/arm/_endian.h
+Files:
+ xnu/bsd/arm/_endian.h
  xnu/bsd/libkern/libkern.h
  xnu/bsd/miscfs/devfs/fdesc.h
  xnu/bsd/miscfs/fifofs/fifo.h
@@ -7294,7 +7545,8 @@ Copyright: 2004-2005, 2011 Apple Computer, Inc.
  1993 David Greenman
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-4-Clause-UC-imgact
 
-Files: xnu/EXTERNAL_HEADERS/mach-o/nlist.h
+Files:
+ xnu/EXTERNAL_HEADERS/mach-o/nlist.h
  xnu/bsd/man/man2/fcntl.2
  xnu/bsd/man/man2/getfh.2
  xnu/bsd/man/man2/getgroups.2
@@ -7308,7 +7560,8 @@ Copyright: 1980, 1983, 1989, 1991, 1993 The Regents of the University of Califor
  UNIX System Laboratories, Inc.
 License: APSL-2.0 AND BSD-4-Clause-UC
 
-Files: xnu/bsd/man/man4/vsock.4
+Files:
+ xnu/bsd/man/man4/vsock.4
  xnu/bsd/miscfs/devfs/devfs_proto.h
  xnu/bsd/nfs/krpc.h
  xnu/osfmk/ipc/ipc_types.h
@@ -7321,7 +7574,8 @@ Copyright: 2000-2010, 2020 Apple Inc.
  1995 NeXT Computer, Inc.
 License: LicenseRef-APSL-2.0-OS-reference
 
-Files: xnu/SETUP/config/Makefile
+Files:
+ xnu/SETUP/config/Makefile
  xnu/bsd/miscfs/devfs/Makefile
  xnu/bsd/nfs/Makefile
  xnu/libkern/firehose/Makefile
@@ -7335,7 +7589,8 @@ Files: xnu/SETUP/config/Makefile
 Copyright: Apple Inc.
 License: APSL-2.0
 
-Files: xnu/bsd/man/man2/clonefile.2
+Files:
+ xnu/bsd/man/man2/clonefile.2
  xnu/bsd/man/man2/exchangedata.2
  xnu/bsd/man/man2/fs_snapshot_create.2
  xnu/bsd/man/man2/fsgetpath.2
@@ -7367,7 +7622,8 @@ License: APSL-2.0
 Comment: Originally distributed under APSL-1.1. Used here under APSL-2.0, as
  permitted by section 7 of APSL-1.1.
 
-Files: xnu/bsd/net/if_llc.h
+Files:
+ xnu/bsd/net/if_llc.h
  xnu/bsd/net/net_osdep.h
  xnu/bsd/netinet/in_gif.h
  xnu/bsd/netinet/ip_ecn.h
@@ -7386,13 +7642,15 @@ Copyright: 2000-2025 Apple Inc.
  1997 Peter Wemm <peter@freebsd.org>
 License: LicenseRef-APSL-2.0-OS-reference AND BSD-3-Clause
 
-Files: xnu/bsd/net/altq/altq_fairq.h
+Files:
+ xnu/bsd/net/altq/altq_fairq.h
  xnu/bsd/net/pktsched/pktsched_fairq.h
 Copyright: 2011-2016 Apple Inc.
  2008 The DragonFly Project
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-BSD-3-Clause-DragonFly
 
-Files: src/cctools/include/mach-o/reloc.h
+Files:
+ src/cctools/include/mach-o/reloc.h
  xnu/EXTERNAL_HEADERS/mach-o/reloc.h
 Copyright: 1999 Apple Computer, Inc.
  1993 Christopher G. Demetriou
@@ -7404,7 +7662,8 @@ Copyright: 2000 Apple Computer, Inc.
  1982, 1986 Regents of the University of California
 License: LicenseRef-APSL-2.0-OS-reference AND BSD-4.3RENO
 
-Files: xnu/bsd/bsm/*
+Files:
+ xnu/bsd/bsm/*
  xnu/bsd/man/man2/access.2
  xnu/bsd/man/man2/mmap.2
  xnu/bsd/man/man2/utimensat.2
@@ -7442,7 +7701,8 @@ Files: xnu/bsd/sys/sbuf.h
 Copyright: 2000 Poul-Henning Kamp and Dag-Erling Coïdan Smørgrav
 License: LicenseRef-BSD-3-Clause-envlist
 
-Files: xnu/bsd/netinet/icmp6.h
+Files:
+ xnu/bsd/netinet/icmp6.h
  xnu/bsd/netinet/ip6.h
  xnu/bsd/netinet6/in6.h
  xnu/bsd/netinet6/in6_pcb.h
@@ -7462,7 +7722,8 @@ Copyright: 2000, 2007, 2010 Apple Inc.
  1990, 1993 The Regents of the University of California
 License: APSL-2.0 AND BSD-4-Clause-UC
 
-Files: xnu/EXTERNAL_HEADERS/stdbool.h
+Files:
+ xnu/EXTERNAL_HEADERS/stdbool.h
  xnu/bsd/man/man2/aio_cancel.2
  xnu/bsd/man/man2/aio_error.2
  xnu/bsd/man/man2/aio_read.2
@@ -7496,7 +7757,8 @@ Files: xnu/bsd/man/man2/sendfile.2
 Copyright: 2003 David G. Lawrence
 License: LicenseRef-BSD-2-Clause-de-Raadt
 
-Files: xnu/bsd/arm/fasttrap_isa.h
+Files:
+ xnu/bsd/arm/fasttrap_isa.h
  xnu/bsd/sys/dtrace.h
  xnu/bsd/sys/dtrace_impl.h
  xnu/bsd/sys/fasttrap.h
@@ -7511,7 +7773,8 @@ Copyright: 1997-2004, 2006-2007 Sun Microsystems, Inc.
  2013, 2016 Joyent, Inc.
 License: CDDL-1.0
 
-Files: xnu/bsd/bsm/Makefile
+Files:
+ xnu/bsd/bsm/Makefile
  xnu/bsd/miscfs/bindfs/Makefile
  xnu/bsd/miscfs/nullfs/Makefile
  xnu/bsd/netinet6/Makefile
@@ -7524,7 +7787,8 @@ Copyright: Apple Inc.
  2011 Apple, Inc.
 License: APSL-2.0
 
-Files: xnu/bsd/netinet6/esp_chachapoly.h
+Files:
+ xnu/bsd/netinet6/esp_chachapoly.h
  xnu/bsd/netkey/keysock_private.h
 Copyright: 2017, 2022-2023, 2025 Apple Inc.
 License: LicenseRef-APSL-2.0-OS-reference
@@ -7545,7 +7809,8 @@ Copyright: 2000 Apple Computer, Inc.
  1993-1997 Darren Reed
 License: LicenseRef-APSL-2.0-OS-reference AND LicenseRef-Reed-IPFilter
 
-Files: xnu/libkern/libkern/Block.h
+Files:
+ xnu/libkern/libkern/Block.h
  xnu/libkern/libkern/Block_private.h
 Copyright: 2008-2010 Apple Inc.
 License: APSL-2.0

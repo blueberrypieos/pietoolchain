@@ -3,3 +3,5 @@ foreign-arch usr/lib/pietoolchain/toolchain/sdk/.*/arm64/x86_64_compat\.h The in
 foreign-arch src/cctools(-port/cctools)?/(include|libstuff|libmacho)/.* cctools reads Mach-O files of every architecture. These files are compiled into it.
 foreign-arch usr/lib/pietoolchain/toolchain/sdk/.*/usr/include/mach-o/x86_64/reloc\.h dyld includes this header. dyld reads x86_64 relocations.
 foreign-arch usr/lib/pietoolchain/toolchain/hostinc/.* The cctools headers xnu's host tools read, for its i386 and Mach-O host code.
+foreign-arch usr/lib/pie/sdk/.*/arm64/x86_64_compat\.h pie-sdk's copy of that arm64 header.
+foreign-arch usr/lib/pie/sdk/usr/include/mach-o/x86_64/reloc\.h pie-sdk's copy of the header dyld includes.

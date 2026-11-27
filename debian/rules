@@ -21,9 +21,7 @@ binary: binary-arch binary-indep
 
 $(B)/stamp-check:
 	mkdir -p $(B)
-ifeq ($(PIE_FULL_SOURCE),)
-	python3 sdk/pie-source-guard $(CURDIR)
-endif
+	./sdk/pie-source-guard $(CURDIR)
 	python3 sdk/mksrccopyright.py $(CURDIR) --check
 	touch $@
 

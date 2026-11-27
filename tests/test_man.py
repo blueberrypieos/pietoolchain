@@ -119,3 +119,60 @@ def test_install_man_list_copies_pages_and_links_to_their_page(tmp_path):
     assert os.readlink(man2 / "a-link.2") == "a.2"
     assert not (man2 / "a-copy.2").is_symlink() and (man2 / "a-copy.2").read_text() == "page a\n"
     assert (man2 / "b.2").stat().st_mode & 0o777 == 0o444
+
+
+def copy_project(tmp_path):
+    proj = tmp_path / "proj"
+    write(proj / "Test.xcodeproj/project.pbxproj", """// !$*UTF8*$!
+{
+	objects = {
+		AAAAAAAAAAAAAAAAAAAAAAA1 = {
+			isa = PBXNativeTarget;
+			buildPhases = (AAAAAAAAAAAAAAAAAAAAAAA2,);
+			name = Test;
+		};
+		AAAAAAAAAAAAAAAAAAAAAAA2 = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = /usr/share/man/man1;
+			files = (AAAAAAAAAAAAAAAAAAAAAAA5, AAAAAAAAAAAAAAAAAAAAAAA6,);
+		};
+		AAAAAAAAAAAAAAAAAAAAAAA3 = {isa = PBXFileReference; path = man/a.1; sourceTree = SOURCE_ROOT; };
+		AAAAAAAAAAAAAAAAAAAAAAA4 = {isa = PBXFileReference; path = man/b.1; sourceTree = SOURCE_ROOT; };
+		AAAAAAAAAAAAAAAAAAAAAAA5 = {isa = PBXBuildFile; fileRef = AAAAAAAAAAAAAAAAAAAAAAA3; };
+		AAAAAAAAAAAAAAAAAAAAAAA6 = {isa = PBXBuildFile; fileRef = AAAAAAAAAAAAAAAAAAAAAAA4; };
+	};
+}
+""")
+    write(proj / "man/a.1", "page a\n")
+    write(proj / "man/b.1", "page b\n")
+    return proj
+
+
+def test_copy_phase_omissions_match_full_and_reduced_trees(tmp_path):
+    proj = copy_project(tmp_path)
+    original = (proj / "Test.xcodeproj/project.pbxproj").read_bytes()
+    outputs = []
+    for name in ("full", "reduced"):
+        if name == "reduced":
+            (proj / "man/b.1").unlink()
+        dst = tmp_path / name
+        result = subprocess.run([sys.executable, str(PBXPROJ_MAN), "-d", str(dst), "--omit", "b.1",
+                                 str(proj / "Test.xcodeproj"), "Test"], capture_output=True, text=True)
+        assert result.returncode == 0, result.stderr
+        assert "no man/b.1" not in result.stderr
+        output = dst / "usr/share/man/man1"
+        outputs.append({f.name: f.read_bytes() for f in output.iterdir()})
+        assert (proj / "Test.xcodeproj/project.pbxproj").read_bytes() == original
+    assert outputs == [{"a.1": b"page a\n"}] * 2
+
+
+def test_copy_phase_listing_and_unknown_omission(tmp_path):
+    proj = copy_project(tmp_path)
+    command = [sys.executable, str(PBXPROJ_MAN), "--omit"]
+    project_args = [str(proj / "Test.xcodeproj"), "Test"]
+    result = subprocess.run(command + ["man/b.1"] + project_args, capture_output=True, text=True)
+    assert result.returncode == 0, result.stderr
+    assert result.stdout == "man/a.1:man1\n"
+    result = subprocess.run(command + ["c.1"] + project_args, capture_output=True, text=True)
+    assert result.returncode != 0
+    assert "copy phases lists no c.1" in result.stderr

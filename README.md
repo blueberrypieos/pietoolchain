@@ -4,6 +4,8 @@ The darwin-arm64 SDK and libSystem runtimes, built on Ubuntu 26.04.
 This source package builds:
 
 - `pietoolchain-sdk`: headers, libraries and frameworks for building ports.
+- `pie-sdk`: the same SDK on the device, in `/usr/lib/pie/sdk`, for a compiler
+  that runs there.
 - The 29 libSystem runtime packages for darwin-arm64.
 
 The host tools move to
@@ -61,7 +63,7 @@ On Ubuntu 26.04:
 git submodule update --init --recursive
 sudo apt-get install dpkg-dev build-essential
 sudo apt-get build-dep ./
-PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.2_all.deb and the runtime packages
+PIE_FULL_SOURCE=1 dpkg-buildpackage -a darwin-arm64 -b -us -uc  # ../pietoolchain-sdk_0.3.2_all.deb, pie-sdk and the runtime packages
 ```
 
 Install `pietoolchain-host` 0.3.0 or newer from the resolute archive before
@@ -73,7 +75,7 @@ also produces the runtimes. Runtime Debian revisions are set by
 Runtime dependencies use this minimum. Packaging rebuilds keep it unchanged.
 Raise it when runtime libraries start using an interface absent from that version.
 Verify the exported interfaces before selecting a minimum.
-pietoolchain-sdk keeps exact pins to the current `X-Pie-Version` values.
+pietoolchain-sdk and pie-sdk keep exact pins to the current `X-Pie-Version` values.
 Applications that need a specific fix declare that newer runtime requirement.
 
 `build.sh` links `debian/build/toolchain/prefix` and `hostinc` to the
@@ -91,10 +93,11 @@ or downloads them from https://blueberrypieos.com/apt (`PIE_APT`), and
 checks their SHA-256.
 
 `PIE_FULL_SOURCE=1` builds from the full checkout. The source package
-keeps only the files of `src/` and `xnu/` that the build reads, and a
+keeps the files the build reads and the records of the vendored code. A
 build from it runs without that variable. The release workflow makes the
-source package with [workflows](https://github.com/blueberrypieos/workflows)'
-`tools/pie-source` and builds each set of packages from its `.dsc`.
+source package with
+[workflows](https://github.com/blueberrypieos/workflows)' `tools/pie-source`
+and builds each set of packages from its `.dsc`.
 
 ## Verifying a release
 

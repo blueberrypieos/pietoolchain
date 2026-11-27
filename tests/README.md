@@ -56,3 +56,14 @@ The committed `.gitattributes` files keep this test directory and
 `debian/pie-checks.toml` out of source archives made by `pie source`.
 The exclusion applies to both full and reduced archives. The attribute
 files also exclude themselves. CI runs the suites from a checkout.
+
+For a source-package proof, declare the source copies and renamed projects:
+
+```sh
+PIE_TRACE_ARGS="--cross-deps --map src/configd=debian/build/build/src/libsystem_configuration --map src/piecrypto=debian/build/build/src/libcorecrypto --map src=debian/build/build/src" \
+    pie-prove /path/to/pietoolchain proof-name - 8
+```
+
+The maps preserve each file's source identity after the tar pipeline copies
+it into the project's build directory. Use the same maps for both builds
+and any later trace analysis.

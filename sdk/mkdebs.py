@@ -8,7 +8,8 @@ usage: mkdebs.py PIE arch|indep
 
 indep: pietoolchain-sdk, from the SDK.
 arch: each package with an X-Pie-Project field, from that project's staging
-root, debian/build/build/pkgroot/<project>.
+root, debian/build/build/pkgroot/<project>, and pie-sdk, the SDK at
+/usr/lib/pie/sdk.
 """
 import hashlib
 import os
@@ -23,6 +24,8 @@ LINKED = {"etc", "tmp", "var"}
 SCRIPTS = {"preinst", "postinst", "prerm", "postrm", "config"}
 MACHO_MAGICS = (b"\xcf\xfa\xed\xfe", b"\xca\xfe\xba\xbe", b"\xbe\xba\xfe\xca")
 OTHERS = {"OpenBSM": "libbsm"}
+BUILD_SDK = "usr/lib/pietoolchain/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+DEVICE_SDK = "usr/lib/pie/sdk"
 
 
 LICENCE_PATH = re.compile(r"/usr/share/common-licenses/([A-Za-z0-9+-]+(?:\.[A-Za-z0-9+-]+)*)\.?$")
@@ -156,6 +159,35 @@ def sdk_provides(pie):
                      for s in stanzas(os.path.join(pie, "debian", "control")) if "X-Pie-Project" in s)
 
 
+def is_elf(path):
+    if os.path.islink(path) or not os.path.isfile(path):
+        return False
+    with open(path, "rb") as f:
+        return f.read(4) == b"\x7fELF"
+
+
+def device_sdk(pie):
+    dst = os.path.join(pie, "debian", "pie-sdk")
+    work = os.path.join(pie, "debian", "build", "pie-sdk")
+    shutil.rmtree(dst, ignore_errors=True)
+    shutil.rmtree(work, ignore_errors=True)
+    subprocess.run([os.path.join(pie, "sdk", "mksdk.sh"), "-d", "-r", work], check=True)
+    os.makedirs(os.path.dirname(os.path.join(dst, DEVICE_SDK)))
+    os.rename(os.path.join(work, BUILD_SDK), os.path.join(dst, DEVICE_SDK))
+    doc = os.path.join(dst, "usr", "share", "doc", "pie-sdk")
+    os.makedirs(doc)
+    os.rename(os.path.join(work, "usr", "share", "doc", "pietoolchain-sdk", "copyright"),
+              os.path.join(doc, "copyright"))
+    shutil.rmtree(work)
+    with open(os.path.join(doc, "README.source"), "w") as f:
+        f.write(open(os.path.join(pie, "sdk", "README.source")).read())
+        f.write(open(os.path.join(pie, "sdk", "README.source.ports")).read())
+    elf = [p for p in files_of(dst) if is_elf(dst + p)]
+    if elf:
+        die("pie-sdk: host files in the SDK:\n  " + "\n  ".join(elf))
+    finish(pie, "pie-sdk", dst, substvars=[("sdk:Depends", sdk_provides(pie))])
+
+
 def indep(pie):
     dst = os.path.join(pie, "debian", "pietoolchain-sdk")
     shutil.rmtree(dst, ignore_errors=True)
@@ -242,6 +274,8 @@ def arch(pie):
     for pkg, (s, dst, fields) in sorted(staged.items()):
         finish(pie, pkg, dst, s["X-Pie-Version"], fields,
                [("runtime:Depends", runtime_depends(depends[pkg], minimums))])
+    if any(s.get("Package") == "pie-sdk" for s in stanzas(os.path.join(pie, "debian", "control"))):
+        device_sdk(pie)
 
 
 def runtime_minimums(packages):
@@ -271,6 +305,7 @@ def main():
     if len(sys.argv) != 3 or sys.argv[2] not in ("arch", "indep"):
         sys.exit(__doc__.strip().split("\n\n")[1])
     pie = os.path.abspath(sys.argv[1])
+    os.umask(0o022)
     if "SOURCE_DATE_EPOCH" not in os.environ:
         die("SOURCE_DATE_EPOCH is not set")
     (arch if sys.argv[2] == "arch" else indep)(pie)

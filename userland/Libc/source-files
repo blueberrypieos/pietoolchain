@@ -264,8 +264,8 @@ include/_stdlib.h
 include/_string.h
 include/_strings.h
 include/_time.h
-include/_types/*
 include/_types.h
+include/_types/*
 include/_wchar.h
 include/_wctype.h
 include/_xlocale.h
@@ -351,8 +351,8 @@ include/vis.h
 include/wchar.h
 include/wctype.h
 include/wordexp.h
-include/xlocale/*
 include/xlocale.h
+include/xlocale/*
 libdarwin/bsd.c
 libdarwin/ctl.c
 libdarwin/dirstat.c

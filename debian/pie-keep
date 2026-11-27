@@ -1,0 +1,4 @@
+# The records of the vendored FreeBSD and optimized-routines files. The
+# build doesn't read them.
+userland/Libc/freebsd/VENDOR.md
+userland/libplatform/arm64/optimized-routines/VENDOR.md

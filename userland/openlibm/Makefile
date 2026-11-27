@@ -11,6 +11,7 @@ SOURCES := $(shell cat sources.list)
 OLM_OBJS := $(patsubst %,$(OBJ)/olm/%.o,$(basename $(SOURCES)))
 OBJS  := $(OLM_OBJS) $(OBJ)/fenv.o $(OBJ)/darwin.o
 DYLIB := $(OBJ)/libsystem_m.dylib
+PBXPROJ_MAN_FLAGS := $(foreach page,$(shell cat man-omit.list),--omit $(page))
 
 OLM_CFLAGS := $(filter-out -Os,$(BASE_CFLAGS)) -O2 -fno-builtin -fno-strict-aliasing \
 	-std=c99 -I$(SRCROOT) -I$(SRCROOT)/include -I$(SRCROOT)/aarch64 -I$(SRCROOT)/src \

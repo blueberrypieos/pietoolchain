@@ -1979,8 +1979,8 @@ License: LicenseRef-HPND-Utah-CSL
  improvements that they make and grant CSL redistribution rights.
 
 License: Apache-2.0 with LLVM exception
- On Debian and Ubuntu systems, the full text of the Apache License 2.0 is
- in /usr/share/common-licenses/Apache-2.0. The LLVM exception:
+ The full text of the Apache License 2.0 is in
+ /usr/share/common-licenses/Apache-2.0. The LLVM exception:
  .
  ---- LLVM Exceptions to the Apache 2.0 License ----
  .

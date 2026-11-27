@@ -537,8 +537,8 @@ bsd/sys/__endian.h
 bsd/sys/_endian.h
 bsd/sys/_select.h
 bsd/sys/_structs.h
-bsd/sys/_types/*
 bsd/sys/_types.h
+bsd/sys/_types/*
 bsd/sys/acct.h
 bsd/sys/aio.h
 bsd/sys/appleapiopts.h
@@ -1428,8 +1428,8 @@ osfmk/mach/mach_vm.defs
 osfmk/mach/mach_voucher.defs
 osfmk/mach/mach_voucher_attr_control.defs
 osfmk/mach/mach_voucher_types.h
-osfmk/mach/machine/*
 osfmk/mach/machine.h
+osfmk/mach/machine/*
 osfmk/mach/memory_entry.defs
 osfmk/mach/memory_error_notification.defs
 osfmk/mach/memory_object_control.h

@@ -38,9 +38,9 @@ compiler-rt/lib/builtins/cmpti2.c
 compiler-rt/lib/builtins/comparedf2.c
 compiler-rt/lib/builtins/comparesf2.c
 compiler-rt/lib/builtins/cpu_model/AArch64CPUFeatures.inc
-compiler-rt/lib/builtins/cpu_model/aarch64/fmv/apple.inc
 compiler-rt/lib/builtins/cpu_model/aarch64.c
 compiler-rt/lib/builtins/cpu_model/aarch64.h
+compiler-rt/lib/builtins/cpu_model/aarch64/fmv/apple.inc
 compiler-rt/lib/builtins/cpu_model/cpu_model.h
 compiler-rt/lib/builtins/ctzdi2.c
 compiler-rt/lib/builtins/ctzsi2.c
@@ -183,10 +183,10 @@ libc/src/__support/CPP/iterator.h
 libc/src/__support/CPP/limits.h
 libc/src/__support/CPP/optional.h
 libc/src/__support/CPP/string_view.h
-libc/src/__support/CPP/type_traits/*
 libc/src/__support/CPP/type_traits.h
-libc/src/__support/CPP/utility/*
+libc/src/__support/CPP/type_traits/*
 libc/src/__support/CPP/utility.h
+libc/src/__support/CPP/utility/*
 libc/src/__support/FPUtil/FPBits.h
 libc/src/__support/FPUtil/rounding_mode.h
 libc/src/__support/big_int.h
@@ -571,10 +571,10 @@ libcxx/lib/weak.exp
 libcxx/modules/CMakeLists.txt
 libcxx/modules/CMakeLists.txt.in
 libcxx/modules/modules.json.in
-libcxx/modules/std/*
-libcxx/modules/std.compat/*
 libcxx/modules/std.compat.cppm.in
+libcxx/modules/std.compat/*
 libcxx/modules/std.cppm.in
+libcxx/modules/std/*
 libcxx/src/CMakeLists.txt
 libcxx/src/algorithm.cpp
 libcxx/src/any.cpp

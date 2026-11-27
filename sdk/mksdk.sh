@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # Copyright (c) 2026 The Blueberry Pie OS Authors
 #
-# usage: sdk/mksdk.sh [-s SDK] [-v VERSION] [-o DIR]
+# usage: sdk/mksdk.sh [-s SDK] [-v VERSION] [-o DIR] [-r ROOT [-d]]
 #
 #   -s SDK      the build SDK (default
 #               debian/build/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk)
@@ -10,6 +10,8 @@
 #   -o DIR      the output directory (default debian/build/build)
 #   -r ROOT     only stage the package's files and copyright file in ROOT,
 #               for debian/rules (sdk/mkdebs.py makes the package)
+#   -d          write the copyright file for the device: it bundles the text
+#               of every licence it names
 #
 # Files are sorted, owned by root and dated SOURCE_DATE_EPOCH (else by the
 # SDK's newest file).
@@ -21,13 +23,15 @@ SDK="$PIE/debian/build/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
 OUT="$PIE/debian/build/build"
 VERSION=
 ROOT=
-while getopts 's:v:o:r:' opt; do
+DEVICE=
+while getopts 's:v:o:r:d' opt; do
 	case "$opt" in
 		s) SDK="$OPTARG" ;;
 		v) VERSION="$OPTARG" ;;
 		o) OUT="$OPTARG" ;;
 		r) ROOT="$OPTARG" ;;
-		*) sed -n 5,15p "$0"; exit 2 ;;
+		d) DEVICE=--device ;;
+		*) sed -n 5,17p "$0"; exit 2 ;;
 	esac
 done
 [ -d "$SDK/usr/lib" ] || { echo "mksdk.sh: $SDK is no SDK" >&2; exit 1; }
@@ -52,7 +56,7 @@ S="$D/usr/lib/pietoolchain/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.s
 DOC="$D/usr/share/doc/pietoolchain-sdk"
 mkdir -p "$S" "$DOC"
 (cd "$SDK" && tar -cf - --no-recursion -T "$W/files") | (cd "$S" && tar -xf -)
-python3 "$PIE/sdk/mkcopyright.py" "$PIE" "$W/providers" > "$DOC/copyright"
+python3 "$PIE/sdk/mkcopyright.py" $DEVICE "$PIE" "$W/providers" > "$DOC/copyright"
 [ -z "$ROOT" ] || exit 0
 mkdir -p "$D/DEBIAN"
 

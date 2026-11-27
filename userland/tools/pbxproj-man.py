@@ -6,7 +6,7 @@ usage: pbxproj-man.py [-d DSTROOT] [--man-list FILE] [--omit PAGE]... [--replace
                       PROJECT.xcodeproj [TARGET...]
   Without TARGETs, every native and aggregate target's.
   --man-list FILE   the project's list of man pages, "source dest links..." a line
-  --omit PAGE       leave out PAGE: the man phase sees FILE without PAGE's line
+  --omit PAGE       omit PAGE from copy phases and from a source list, when given
   --replace FILE=OURS
                     the man phase reads OURS as FILE, whether or not the
                     project has FILE or its directory
@@ -160,32 +160,36 @@ def main():
             if not eq:
                 sys.exit(__doc__.strip())
             replace[rel] = open(ours, "rb").read()
-    if omit and not man_list:
-        sys.exit("pbxproj-man: --omit needs --man-list")
     proj, targets = args[0], args[1:]
     projdir = os.path.dirname(os.path.abspath(proj))
     files = dict(replace)
-    if man_list:
-        listed = {w.split()[0] for w in open(os.path.join(projdir, man_list)).read().split("\n")
-                  if w.split() and not w.startswith("#")}
-        missing = sorted(omit - listed)
-        if missing:
-            sys.exit("pbxproj-man: %s lists no %s" % (man_list, ", ".join(missing)))
-        files[man_list] = omitted(os.path.join(projdir, man_list), omit)
     text = open(os.path.join(proj, "project.pbxproj"), encoding="utf-8").read()
     if not targets:
         targets = sorted(set(re.findall(r'PBX(?:Native|Aggregate)Target "([^"]+)"', text)))
+    copies = {target: list(copy_pages(proj, target)) for target in targets}
+    available = {name for pages in copies.values() for path, _ in pages
+                 for name in (path, os.path.basename(path))}
+    if man_list:
+        available.update(w.split()[0] for w in open(os.path.join(projdir, man_list)).read().split("\n")
+                         if w.split() and not w.startswith("#"))
+        files[man_list] = omitted(os.path.join(projdir, man_list), omit)
+    missing = sorted(omit - available)
+    if missing:
+        sys.exit("pbxproj-man: %s lists no %s" % (man_list or "copy phases", ", ".join(missing)))
+    selected = {target: [(path, sect) for path, sect in pages
+                         if path not in omit and os.path.basename(path) not in omit]
+                for target, pages in copies.items()}
     seen = set()
     if dst is None:
         for t in targets:
-            for path, sect in copy_pages(proj, t):
+            for path, sect in selected[t]:
                 if (path, sect) not in seen:
                     seen.add((path, sect))
                     print("%s:%s" % (path, sect))
         return
 
     for t in targets:
-        for path, sect in copy_pages(proj, t):
+        for path, sect in selected[t]:
             src = os.path.join(projdir, path)
             if not os.path.exists(src):
                 print("pbxproj-man: %s: no %s" % (t, path), file=sys.stderr)

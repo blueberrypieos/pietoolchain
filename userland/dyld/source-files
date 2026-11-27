@@ -66,6 +66,7 @@ common/va_list_wrap.h
 configs/libdyld.dirty
 doc/man/man1/ld-layout-file.1
 doc/man/man1/ld.1
+dyld.xcodeproj/project.pbxproj
 dyld/BumpAllocator.h
 dyld/DyldAPIs.cpp
 dyld/DyldAPIs.h
@@ -101,7 +102,6 @@ dyld/dyldMain.cpp
 dyld/dyldStartup.s
 dyld/dyldSyscallInterface.h
 dyld/glue.c
-dyld.xcodeproj/project.pbxproj
 include/*
 libdyld/*
 libdyld_introspection/*

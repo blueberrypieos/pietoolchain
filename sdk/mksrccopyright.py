@@ -7,8 +7,9 @@ usage: mksrccopyright.py PIE [--check]
 Writes PIE's debian/copyright from the copyright file and source-files list
 of each source tree (userland/P/copyright and userland/P/source-files, or
 sdk/copyright/T and sdk/source-files/T):
-- its first paragraph has Files-Excluded: src/* xnu/*, and Files-Included:
-  the files of each tree that the source package keeps;
+- sdk/source-files/pietoolchain lists this project's own inputs;
+- its first paragraph has Files-Excluded: *, and Files-Included:
+  every input the source package keeps;
 - each tree's paragraphs follow, with their paths under the tree.
 
 --check compares with the files there and fails if they differ. It also
@@ -180,21 +181,23 @@ def matcher(pattern):
     return dep5_regex(pattern)
 
 
-def kept_files(pie, included, trees):
-    """The files of the source tree, without what Files-Included leaves out
-    of the trees (a git checkout has them all; a source package does not)."""
+def kept_files(pie, included):
+    """The source files selected by Files-Included, outside debian/."""
     rx = [matcher(p) for p in included if "*" in p or "?" in p or "\\" in p]
     exact = {p for p in included if "*" not in p and "?" not in p and "\\" not in p}
     out = []
     for d, dirs, files in os.walk(pie):
         rel = os.path.relpath(d, pie)
+        dirs[:] = [name for name in dirs if name != ".git"]
         if rel == ".":
             dirs[:] = [x for x in dirs if x not in ("debian", "build", ".git", ".pc")]
         elif rel == "toolchain":
             dirs[:] = [x for x in dirs if x not in ("build", "prefix", "sdk")]
         for f in files + [x for x in dirs if os.path.islink(os.path.join(d, x))]:
+            if f == ".git":
+                continue
             path = os.path.normpath(os.path.join(rel, f))
-            if path.startswith(tuple(t + "/" for t in trees)) and path not in exact and not any(r.match(path) for r in rx):
+            if path not in exact and not any(r.match(path) for r in rx):
                 continue
             out.append(path)
     return out
@@ -329,9 +332,9 @@ def join_all(pars, files):
 
 def package_files(pie, included, trees):
     """The files the source package keeps, debian/ included."""
-    files = kept_files(pie, included, trees)
+    files = kept_files(pie, included)
     for tree in trees:
-        if not any(f.startswith(tree + "/") for f in files):
+        if any(p.startswith(tree + "/") for p in included) and not any(f.startswith(tree + "/") for f in files):
             sys.exit("mksrccopyright.py: no files of %s (check out the submodules)" % tree)
     for d, dirs, fs in os.walk(os.path.join(pie, "debian")):
         files += [os.path.relpath(os.path.join(d, f), pie) for f in fs]
@@ -340,7 +343,7 @@ def package_files(pie, included, trees):
 
 def check_files(pie, header_included, trees, tree_pars, all_pars):
     errors = []
-    files = kept_files(pie, header_included, trees)
+    files = kept_files(pie, header_included)
     for tree, pars in tree_pars:
         mine = [f for f in files if f.startswith(tree + "/")]
         compiled = [[matcher(p) for p in field(par, "Files").split()] for par in pars]
@@ -366,14 +369,17 @@ def check_files(pie, header_included, trees, tree_pars, all_pars):
 
 def main():
     pie, check = sys.argv[1], "--check" in sys.argv
-    texts, trees, included = {}, [], []
+    texts, trees = {}, []
+    with open(os.path.join(pie, "sdk", "source-files", "pietoolchain")) as stream:
+        included = [line.strip() for line in stream if line.strip()]
     for tree, f in vendored(pie):
-        if not os.path.isdir(os.path.join(pie, tree)):
-            sys.exit("mksrccopyright.py: no %s" % tree)
         lst = os.path.join(pie, source_files(f))
         if not os.path.exists(lst):
             sys.exit("mksrccopyright.py: no %s" % source_files(f))
-        included += [tree + "/" + l.strip() for l in open(lst) if l.strip()]
+        entries = [tree + "/" + l.strip() for l in open(lst) if l.strip()]
+        if entries and not os.path.isdir(os.path.join(pie, tree)):
+            sys.exit("mksrccopyright.py: no %s" % tree)
+        included += entries
         pars, own = [], {}
         for par in paragraphs(open(os.path.join(pie, f)).read()):
             lic = field(par, "License")
@@ -398,7 +404,7 @@ def main():
     header = ["Format: " + FORMAT, "Upstream-Name: pietoolchain",
               "Source: https://github.com/blueberrypieos/pietoolchain"]
     files = package_files(pie, included, [t for t, p in trees])
-    text, all_pars = render(pie, header + ["Files-Excluded: src/* xnu/*", "Files-Included:"] +
+    text, all_pars = render(pie, header + ["Files-Excluded: *", "Files-Included:"] +
                             [" " + p for p in included], OWN, trees, texts, files)
     outputs = [(os.path.join(pie, "debian", "copyright"), text)]
     if check:
@@ -414,26 +420,41 @@ def main():
         open(path, "w").write(want)
 
 
+def prune_patterns(pars, files):
+    used = set(last_matches(pars, files).values())
+    result = []
+    for index, par in enumerate(pars):
+        names = dep5_field(par, "Files")
+        if names is None:
+            result.append(par)
+            continue
+        keep = [name for name in names.split() if (index, name) in used]
+        if keep:
+            result.append(set_field(par, "Files", keep))
+    return result
+
+
 def render(pie, header, own_pars, trees, texts, files=None):
     """A copyright file: HEADER, our files, the OWN_PARS and the TREES'
     paragraphs, then the texts of the licences they name. With FILES, the
     Files paragraphs are joined as join_all does."""
-    used = {"BSD-2-Clause"}
     all_pars = ["Files: *\nCopyright: 2026 The Blueberry Pie OS Authors\nLicense: BSD-2-Clause"]
     for names, copyright, licence in own_pars:
         par = "Files: " + names + "\nCopyright: " + copyright + "\nLicense: " + licence
         all_pars.append(par)
-        used.update(licence_names(licence))
     for tree, pars in trees:
         for par in pars:
             lic = field(par, "License")
             if "\n" in lic.strip("\n"):
                 par = with_texts(pie, par)
-            else:
-                used.update(licence_names(lic))
             all_pars.append(par)
     if files is not None:
-        all_pars = join_all(["\n".join(header)] + all_pars, files)[1:]
+        all_pars = prune_patterns(join_all(["\n".join(header)] + all_pars, files), files)[1:]
+    used = set()
+    for par in all_pars:
+        lic = field(par, "License")
+        if "\n" not in lic.strip("\n"):
+            used.update(licence_names(lic))
     out = list(header)
     for par in all_pars:
         out += ["", par]

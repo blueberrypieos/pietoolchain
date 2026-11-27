@@ -2,9 +2,10 @@
 # SPDX-License-Identifier: BSD-2-Clause
 # Copyright (c) 2026 The Blueberry Pie OS Authors
 """
-usage: mkcopyright.py PIE PROVIDERS
+usage: mkcopyright.py [--device] PIE PROVIDERS
 
-PROVIDERS is providers.py's output.
+PROVIDERS is providers.py's output. --device bundles the text of every
+licence the file names, for a package installed on the device.
 """
 import collections
 import os
@@ -35,15 +36,16 @@ def source(pie, provider):
     sys.exit("mkcopyright.py: no copyright file for %s" % provider)
 
 
-def with_texts(pie, text):
+def with_texts(pie, text, device=False):
     have = os.listdir(os.path.join(pie, "sdk", "licenses"))
+    ubuntu = {} if device else UBUNTU
     needed = []
 
     def repl(m):
         lid = m.group(3)
-        for spdx in sorted(UBUNTU, key=len, reverse=True):
+        for spdx in sorted(ubuntu, key=len, reverse=True):
             if lid == spdx or lid.startswith(spdx + "-"):
-                return m.group(0)[:-len(lid)] + UBUNTU[spdx]
+                return m.group(0)[:-len(lid)] + ubuntu[spdx]
         for known in sorted(have, key=len, reverse=True):
             if lid.startswith(known):
                 if known not in needed:
@@ -61,18 +63,27 @@ def with_texts(pie, text):
 
 
 def main():
-    pie, providers = sys.argv[1], sys.argv[2]
+    args = sys.argv[1:]
+    device = args[:1] == ["--device"]
+    if device:
+        args = args[1:]
+    if len(args) != 2:
+        sys.exit(__doc__.strip())
+    pie, providers = args
     count = collections.OrderedDict()
     for line in open(providers):
         name = line.split("\t", 1)[0]
         count[name] = count.get(name, 0) + 1
-    out = ["""pietoolchain-sdk: the darwin-arm64 SDK for pietoolchain
+    title = ("pie-sdk: the SDK on the device, in /usr/lib/pie/sdk" if device
+             else "pietoolchain-sdk: the darwin-arm64 SDK for pietoolchain")
+    texts = "the licences they name" if device else "uncommon licences"
+    out = [title + """
 
 Source: https://github.com/blueberrypieos/pietoolchain
 
 The SDK headers, libraries and frameworks, built from the projects below or
 taken from the packages of PIE's ports. Each section is that project's or
-package's copyright file; the texts of uncommon licences are at the end."""]
+package's copyright file; the texts of %s are at the end.""" % texts]
     for name, n in count.items():
         out.append("\n" + "=" * 76)
         heading = name
@@ -90,7 +101,7 @@ package's copyright file; the texts of uncommon licences are at the end."""]
         out.append("%s: %d file%s" % (heading, n, "" if n == 1 else "s"))
         out.append("=" * 76 + "\n")
         out.append(open(source(pie, name)).read().strip("\n"))
-    sys.stdout.write(with_texts(pie, "\n".join(out) + "\n"))
+    sys.stdout.write(with_texts(pie, "\n".join(out) + "\n", device))
 
 
 if __name__ == "__main__":

@@ -100,6 +100,7 @@ src/queue.c
 src/queue_internal.h
 src/semaphore.c
 src/semaphore_internal.h
+src/shims.h
 src/shims/atomic.h
 src/shims/atomic_sfb.h
 src/shims/getprogname.h
@@ -113,7 +114,6 @@ src/shims/time.h
 src/shims/tsd.h
 src/shims/yield.c
 src/shims/yield.h
-src/shims.h
 src/source.c
 src/source_internal.h
 src/time.c

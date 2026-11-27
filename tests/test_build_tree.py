@@ -53,7 +53,9 @@ def fixture_tree(tree):
           "Package: pietoolchain-sdk\nArchitecture: all\nProvides: ${sdk:Provides}\n"
           "Description: fixture SDK\n\n"
           "Package: libfixture\nArchitecture: darwin-arm64\nX-Pie-Project: Libc\n"
-          "X-Pie-Version: 1\nX-Pie-ABI-Minimum: 1\nDepends: ${runtime:Depends}\nDescription: fixture library\n")
+          "X-Pie-Version: 1\nX-Pie-ABI-Minimum: 1\nDepends: ${runtime:Depends}\nDescription: fixture library\n\n"
+          "Package: pie-sdk\nArchitecture: darwin-arm64\nDepends: ${sdk:Depends}\n"
+          "Description: fixture device SDK\n")
     write(tree / "xnu/Makefile", "fixture=original\n")
     write(tree / "xnu/EXTERNAL_HEADERS/ptrcheck.h", "fixture header\n")
     write(tree / "xnu-patches/fixture.patch", "--- a/Makefile\n+++ b/Makefile\n@@ -1 +1 @@\n"
@@ -165,7 +167,14 @@ def test_build_and_packages_leave_source_unchanged(tmp_path):
                        env=environment, check=True, capture_output=True, timeout=30)
     assert (tmp_path / "libfixture_1_darwin-arm64.deb").is_file()
     assert (tmp_path / "pietoolchain-sdk_0.2.0_all.deb").is_file()
-    assert snapshot(tree, ("libfixture", "pietoolchain-sdk")) == before
+    device = list(tmp_path.glob("pie-sdk_*_darwin-arm64.deb"))
+    assert len(device) == 1
+    listing = subprocess.check_output(["dpkg-deb", "-c", device[0]], text=True)
+    assert "./usr/lib/pie/sdk/usr/include/" in listing
+    assert "./usr/lib/pietoolchain/" not in listing
+    fields = subprocess.check_output(["dpkg-deb", "-f", device[0], "Depends", "Provides"], text=True)
+    assert fields.startswith("Depends: libfixture (= 1)") and "Provides" not in fields
+    assert snapshot(tree, ("libfixture", "pietoolchain-sdk", "pie-sdk")) == before
     subprocess.run([tree / "debian/rules", "clean"], cwd=tree, check=True, capture_output=True)
     assert not work.exists()
     assert snapshot(tree) == before

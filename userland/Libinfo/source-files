@@ -1,8 +1,8 @@
+Libinfo.xcodeproj/*
 Libinfo/darwin_directory_enabled.h
 Libinfo/libinfo_common.h
 Libinfo/od_debug.c
 Libinfo/od_debug.h
-Libinfo.xcodeproj/*
 dns.subproj/*
 gen.subproj/*
 lookup.subproj/aliasdb.h

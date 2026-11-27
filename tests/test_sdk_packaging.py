@@ -121,3 +121,92 @@ def test_runtime_archive_dependencies_survive_packaging_revisions(tmp_path, monk
         assert subprocess.check_output(["dpkg-deb", "-f", str(package), "Depends"], text=True).strip() == "libsecond (>= " + minimum + ")"
         assert subprocess.check_output(["dpkg-deb", "-f", str(package), "Essential"], text=True).strip() == "yes"
         assert module.sdk_provides(str(pie)) == "libfirst (= " + release + "), libsecond (= " + release + ")"
+
+
+def test_device_sdk_is_a_darwin_package_with_exact_runtime_pins():
+    module = load("mkdebs")
+    pars = {p.get("Package"): p for p in module.stanzas(str(ROOT / "debian/control"))}
+    sdk = pars["pie-sdk"]
+    assert sdk["Architecture"] == "darwin-arm64"
+    assert "Provides" not in sdk and "X-Pie-Project" not in sdk
+    assert sdk["Depends"].startswith("${sdk:Depends}")
+    pins = module.sdk_provides(str(ROOT))
+    runtimes = [p for p in pars.values() if "X-Pie-Project" in p]
+    assert pins.count("(= ") == len(runtimes)
+
+
+def fake_pie(tmp_path, elf):
+    pie = tmp_path / "pie"
+    (pie / "sdk").mkdir(parents=True)
+    (pie / "debian/build").mkdir(parents=True)
+    (pie / "sdk/README.source").write_text("one\n")
+    (pie / "sdk/README.source.ports").write_text("two\n")
+    script = pie / "sdk/mksdk.sh"
+    payload = "printf '\\177ELF' > \"$S/usr/lib/tool\"" if elf else "true"
+    script.write_text(
+        "#!/bin/sh\nset -e\n[ \"$1 $2\" = \"-d -r\" ]\nR=$3\n"
+        "S=\"$R/usr/lib/pietoolchain/toolchain/sdk/MacOSX.platform/Developer/SDKs/MacOSX.sdk\"\n"
+        "mkdir -p \"$S/usr/include\" \"$S/usr/lib\" \"$R/usr/share/doc/pietoolchain-sdk\"\n"
+        "echo '#define X 1' > \"$S/usr/include/x.h\"\n"
+        "printf '\\317\\372\\355\\376' > \"$S/usr/lib/libx.dylib\"\n"
+        + payload + "\n"
+        "echo copyright > \"$R/usr/share/doc/pietoolchain-sdk/copyright\"\n")
+    script.chmod(0o755)
+    return pie
+
+
+def test_device_sdk_moves_the_sdk_and_its_copyright(tmp_path, monkeypatch):
+    module = load("mkdebs")
+    pie = fake_pie(tmp_path, elf=False)
+    made = {}
+    monkeypatch.setattr(module, "sdk_provides", lambda p: "libx (= 1)")
+    monkeypatch.setattr(module, "finish", lambda p, pkg, dst, **kw: made.update(pkg=pkg, dst=dst, **kw))
+    module.device_sdk(str(pie))
+    dst = Path(made["dst"])
+    assert made["pkg"] == "pie-sdk"
+    assert made["substvars"] == [("sdk:Depends", "libx (= 1)")]
+    assert (dst / "usr/lib/pie/sdk/usr/include/x.h").is_file()
+    assert (dst / "usr/lib/pie/sdk/usr/lib/libx.dylib").is_file()
+    assert (dst / "usr/share/doc/pie-sdk/copyright").read_text() == "copyright\n"
+    assert (dst / "usr/share/doc/pie-sdk/README.source").read_text() == "one\ntwo\n"
+    assert not (dst / "usr/lib/pietoolchain").exists()
+    assert not (pie / "debian/build/pie-sdk").exists()
+
+
+def test_device_sdk_refuses_host_files(tmp_path, monkeypatch):
+    module = load("mkdebs")
+    pie = fake_pie(tmp_path, elf=True)
+    monkeypatch.setattr(module, "sdk_provides", lambda p: "")
+    monkeypatch.setattr(module, "finish", lambda *a, **kw: pytest.fail("packaged host files"))
+    with pytest.raises(SystemExit):
+        module.device_sdk(str(pie))
+
+
+def test_device_copyright_bundles_every_text(texts):
+    module = load("mkcopyright")
+    (texts / "sdk/licenses/Apache-2.0").write_text("apache\n")
+    (texts / "sdk/licenses/GPL-2.0-or-later").write_text("gpl\n")
+    text = ("The full text is in /usr/share/common-licenses/Apache-2.0.\n"
+            "The full text is in /usr/share/common-licenses/GPL-2.0-or-later.\n")
+    host = module.with_texts(str(texts), text)
+    assert "/usr/share/common-licenses/Apache-2.0" in host and "/usr/share/common-licenses/GPL-2." in host
+    device = module.with_texts(str(texts), text, device=True)
+    assert "/usr/share/common-licenses/" not in device
+    assert device.count("Licence text: Apache-2.0") == 1
+    assert device.count("Licence text: GPL-2.0-or-later") == 1
+    assert device.endswith("gpl\n")
+
+
+@pytest.mark.parametrize("args, title, texts_line", [
+    ([], "pietoolchain-sdk: ", "the texts of uncommon licences are at the end."),
+    (["--device"], "pie-sdk: ", "the texts of the licences they name are at the end.")])
+def test_copyright_title_names_the_package(texts, args, title, texts_line):
+    notice = texts / "sdk/copyright/fixture"
+    notice.parent.mkdir(parents=True)
+    notice.write_text("Fixture notice\n")
+    providers = texts / "providers"
+    providers.write_text("fixture\tusr/include/x.h\n")
+    out = subprocess.check_output(["python3", str(ROOT / "sdk/mkcopyright.py"), *args, str(texts), str(providers)],
+                                  text=True)
+    assert out.startswith(title)
+    assert texts_line in out

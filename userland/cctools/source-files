@@ -1,8 +1,5 @@
 APPLE_LICENSE
 include/i386/*
-include/mach/arm/*
-include/mach/i386/*
-include/mach/machine-cctools.h
 include/mach-o/arch.h
 include/mach-o/arm/*
 include/mach-o/arm64/*
@@ -18,6 +15,9 @@ include/mach-o/reloc.h
 include/mach-o/stab.h
 include/mach-o/swap.h
 include/mach-o/x86_64/*
+include/mach/arm/*
+include/mach/i386/*
+include/mach/machine-cctools.h
 include/stuff/openstep_mach.h
 libmacho/arch.c
 libmacho/get_end.c

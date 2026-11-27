@@ -381,3 +381,10 @@ X-Pie-Version: 96-5
 X-Pie-ABI-Minimum: 96-3
 Description: DNS resolver library
  Part of libSystem, built by pietoolchain.
+
+Package: pie-sdk
+Architecture: darwin-arm64
+Depends: ${sdk:Depends}, ${misc:Depends}
+Description: SDK for building on the device
+ The headers, libraries and frameworks that a compiler on the device builds
+ against, in /usr/lib/pie/sdk. They match the installed runtime packages.

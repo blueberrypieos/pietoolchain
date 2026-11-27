@@ -6,8 +6,8 @@
 Fails unless SRCROOT is an extracted source package that keeps only the
 upstream files debian/copyright's Files-Excluded and Files-Included leave
 in: it must not be a git tree, and every file outside debian/ must be one
-those fields keep or one that debian/patches creates. rules.mk runs it
-before the build unless PIE_FULL_SOURCE=1 (pie-trace's analysis build).
+those fields keep or one that debian/patches creates. debian/rules runs it
+before the build. With PIE_FULL_SOURCE=1 it only reads the manifest.
 """
 import os
 import re
@@ -62,7 +62,8 @@ def main():
     if len(sys.argv) != 2:
         die(__doc__)
     root = os.path.abspath(sys.argv[1])
-    if os.path.exists(os.path.join(root, ".git")):
+    full = bool(os.environ.get("PIE_FULL_SOURCE"))
+    if not full and os.path.exists(os.path.join(root, ".git")):
         die("%s is a git tree: build from the source package (dpkg-source -x)" % root)
     fields = header(os.path.join(root, "debian", "copyright"))
     if "files-excluded" not in fields:
@@ -70,6 +71,8 @@ def main():
     excluded = matcher(fields["files-excluded"])
     included = matcher(fields.get("files-included", []))
     made = created_by_patches(root)
+    if full:
+        return
     extra = []
     for d, dirs, files in os.walk(root):
         rel = os.path.relpath(d, root)

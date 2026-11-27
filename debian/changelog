@@ -1,10 +1,15 @@
 pietoolchain (0.3.2) resolute; urgency=medium
 
+  * pie-sdk puts the SDK on the device, in /usr/lib/pie/sdk, for a compiler
+    that runs there. It depends on the runtime packages it matches.
   * Runtime packages depend on runtime revision 3 or newer, so systems
     with revision 3 can upgrade.
   * Move each runtime package to revision 5.
+  * The source package keeps the files the build reads, and the records of
+    the vendored code.
+  * The full and the reduced source packages build identical packages.
 
- -- Maxwell <maxwell@blueberrypieos.com>  Thu, 26 Nov 2026 21:00:00 +0000
+ -- Maxwell <maxwell@blueberrypieos.com>  Fri, 27 Nov 2026 12:00:00 +0000
 
 pietoolchain (0.3.1) resolute; urgency=medium
 
